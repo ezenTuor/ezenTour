@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/ezen")
+@RequestMapping("")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -34,6 +34,13 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	
+	@RequestMapping("/index.do")
+	public String index(Locale locale, Model model) {
+		
+		return "index";
 	}
 	
 }
