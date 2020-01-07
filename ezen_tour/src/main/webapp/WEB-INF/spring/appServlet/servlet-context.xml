@@ -36,4 +36,6 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	     <beans:property name="order" value="0" />
 	</beans:bean>
+
+	
 </beans:beans>
