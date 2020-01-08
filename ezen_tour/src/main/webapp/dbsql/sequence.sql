@@ -35,12 +35,12 @@ nocache;
 
 
 
-create sequence PACKAGE_seq
+create sequence PACK_seq
 start with 1
 increment by 1
 nocache;
 
-create sequence PACKAGE_DETAIL_seq
+create sequence PACK_DETAIL_seq
 start with 1
 increment by 1
 nocache;

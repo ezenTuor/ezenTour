@@ -18,6 +18,12 @@ drop sequence PACKAGE_seq;
 
 drop sequence PACKAGE_DETAIL_seq;
 
+--
+drop sequence PACK_seq;
+
+drop sequence PACK_DETAIL_seq;
+--
+
 -------------ezenDB4-----------------
 
 drop sequence HOTEL_seq;
