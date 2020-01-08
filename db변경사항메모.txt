@@ -1,4 +1,10 @@
 예약가능 불가능 여부를 판별하기 위해
 package_detail 테이블에 인원수 관련 컬럼 필요
 
-2020-01-08 15:42 package_detail 1차 수정 by 최상현, 윤해서
+2020-01-08 15:42 package_detail 수정 by 최상현, 윤해서
+
+2020-01-08 16:20 member, manager 수정 by 최상현, 김상준
+
+2020-01-08 16:20 payment, wishlist 수정 by 최상현, 김준하
+
+2020-01-08 16:20 pack, pack_detail 수정 by 최상현
