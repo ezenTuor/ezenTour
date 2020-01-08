@@ -13,6 +13,6 @@ public class ManagerController {
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
 		logger.info("관리자 메인 화면 보여주기");
-		return "manager/managreMain";
+		return "manager/managerMain";
 	}
 }

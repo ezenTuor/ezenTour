@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-</section>
-
 <section id="bottom-part">
 (주)하나투어┃대표:김진국┃주소:(03161) 서울특별시 종로구 인사동 5길 41
 사업자 등록번호: 102-81-39440┃통신판매업신고번호: 종로 01-1806호┃사업자정보확인┃관광사업자 등록번호: 제1993-000006호┃영업보증보험: 22억1천만원 가입
