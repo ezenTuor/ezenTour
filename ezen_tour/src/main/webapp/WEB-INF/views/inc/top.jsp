@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1 style="text-align: center; color:black">EZEN TOUR</h1>
-	<section id="main-body">
+	<section id="header-part">
 		<div id="container">
 		    <nav>
 		        <ul>
@@ -50,5 +50,5 @@
 		        </ul>
 		    </nav>
 		</div>
-	
+	</section>
 	

@@ -10,51 +10,57 @@
 <title>top.jsp</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/clear.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/top.css"/>
-
 </head>
 <body>
-	<header id="main-body">
+	<h1 style="text-align: center; color:black">EZEN TOUR</h1>
+	<section id="header-part">
 		<div id="container">
 		    <nav>
 		        <ul>
-		            <li><a href="#">Home</a></li>
-		            <li><a href="#">WordPress</a>
-		            <!-- First Tier Drop Down -->
+		            <li><a href="#">EZEN MANAGER MAIN</a></li>
+		            <li><a href="#">상품관리</a>
 		            <ul>
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
+		                <li><a href="#">상품등록</a></li>
+		                <li><a href="#">상품목록</a></li>
+		                <li><a href="#">상품이벤트</a></li>
 		            </ul>        
 		            </li>
-		            <li><a href="#">Web Design</a>
-		            <!-- First Tier Drop Down -->
+		     
+		            <li><a href="#">주문관리</a>
 		            <ul>
-		                <li><a href="#">Resources</a></li>
-		                <li><a href="#">Links</a></li>
-		                <li><a href="#">Tutorials</a>
-		            	<!-- Second Tier Drop Down -->
-		                <ul>
-		                    <li><a href="#">HTML/CSS</a></li>
-		                    <li><a href="#">jQuery</a></li>
-		                    <li><a href="#">Other</a>
-		                        <!-- Third Tier Drop Down -->
-		                        <ul>
-		                            <li><a href="#">Stuff</a></li>
-		                            <li><a href="#">Things</a></li>
-		                            <li><a href="#">Other Stuff</a></li>
-		                        </ul>
-		                    </li>
-		                </ul>
-		                </li>
-		            </ul>
+		                <li><a href="#">주문리스트</a></li>
+		                <li><a href="#">결제리스트</a></li>
+		                <li><a href="#">주문통계</a></li>
+		            </ul>        
 		            </li>
-		            <li><a href="#">Graphic Design</a></li>
-		            <li><a href="#">Inspiration</a></li>
-		            <li><a href="#">Contact</a></li>
-		            <li><a href="#">About</a></li>
+		            
+		            
+		            <li><a href="#">사용자관리</a>
+		            <ul>
+		                <li><a href="#">회원리스트</a></li>
+		                <li><a href="#">회원등록</a></li>
+		                <li><a href="#">매니저등록</a></li>
+		                <li><a href="#">회원등급</a></li>
+		            </ul>        
+		            </li>
+		            
+		            <li><a href="#">게시판관리</a>
+		            <ul>
+		                <li><a href="#">후기게시판</a></li>
+		                <li><a href="#">FAQ</a></li>
+		                <li><a href="#">건의게시판</a></li>
+		                <li><a href="#">공지사항</a></li>
+		            </ul>        
+		            </li>
+		            
+		            <li><a href="#">기타 관리</a>
+		            <ul>
+		                <li><a href="#">쿠폰리스트</a></li>
+		                <li><a href="#">쿠폰등록</a></li>
+		            </ul>        
+		            </li>
 		        </ul>
 		    </nav>
 		</div>
-	</header>
-	
+	</section>
 	
