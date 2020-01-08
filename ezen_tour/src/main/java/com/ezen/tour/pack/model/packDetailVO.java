@@ -3,7 +3,7 @@ package com.ezen.tour.pack.model;
 import java.sql.Timestamp;
 
 public class packDetailVO {
-	
+	/*테스트*/
 	private int package_dno;
 	private int package_no;
 	private Timestamp depart;
