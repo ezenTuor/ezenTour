@@ -2,7 +2,7 @@ package com.ezen.tour.pack.model;
 
 import java.sql.Timestamp;
 
-public class packDetailVO {
+public class PackDetailVO {
 
 	private int pack_dno;
 	private int pack_no;

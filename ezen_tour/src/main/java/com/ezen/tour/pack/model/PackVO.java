@@ -1,6 +1,6 @@
 package com.ezen.tour.pack.model;
 
-public class packVO {
+public class PackVO {
 	
 	private int pack_no;
 	private String name;
