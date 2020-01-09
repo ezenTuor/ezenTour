@@ -10,11 +10,11 @@ CREATE TABLE PAYMENT (
 	TYPE VARCHAR2(300), /* 경제방법 */
 	REGDATE DATE, /* 결제일 */
 	DETAIL CLOB, /* 결제상세 */
-	EMAIL2 VARCHAR2(30), /* 이메일1 */
-	COL VARCHAR2(30), /* 이메일2 */
-	HP2 VARCHAR2(3), /* 전화번호1 */
-	COL2 VARCHAR2(4), /* 전화번호2 */
-	COL3 VARCHAR2(4) /* 전화번호3 */
+	EMAIL1 VARCHAR2(30), /* 이메일1 */
+	EMAIL2 VARCHAR2(30), /* 이메일2 */
+	HP1 VARCHAR2(3), /* 전화번호1 */
+	HP2 VARCHAR2(4), /* 전화번호2 */
+	HP3 VARCHAR2(4) /* 전화번호3 */
 );
 
 CREATE UNIQUE INDEX PK_PAYMENT
@@ -39,11 +39,11 @@ CREATE TABLE WISHLIST (
 	WISH_DATE DATE, /* 찜날짜 */
 	START_DATE DATE, /* 해당 시작날짜 */
 	END_DATE DATE, /* 해당 끝날짜 */
-	EMAIL2 VARCHAR2(30), /* 이메일1 */
-	COL VARCHAR2(30), /* 이메일2 */
-	HP2 VARCHAR2(3), /* 전화번호1 */
-	COL2 VARCHAR2(4), /* 전화번호2 */
-	COL3 VARCHAR2(4) /* 전화번호3 */
+	EMAIL1 VARCHAR2(30), /* 이메일1 */
+	EMAIL2 VARCHAR2(30), /* 이메일2 */
+	HP1 VARCHAR2(3), /* 전화번호1 */
+	HP2 VARCHAR2(4), /* 전화번호2 */
+	HP3 VARCHAR2(4) /* 전화번호3 */
 );
 
 CREATE UNIQUE INDEX PK_WISHLIST

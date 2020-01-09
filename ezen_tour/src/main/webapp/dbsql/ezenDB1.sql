@@ -1,14 +1,13 @@
-/* 관리자 */
 CREATE TABLE MANAGER (
 	ADMIN_ID VARCHAR2(60) NOT NULL, /* 아이디 */
 	ADMIN_PWD VARCHAR2(60) NOT NULL, /* 비밀번호 */
 	NAME VARCHAR2(30), /* 이름 */
 	POSITION VARCHAR2(10) DEFAULT 'STEP' NOT NULL, /* 관리자구분 */
-	EMAIL2 VARCHAR2(30), /* 이메일1 */
-	COL VARCHAR2(30), /* 이메일2 */
-	HP2 VARCHAR2(3), /* 전화번호1 */
-	COL2 VARCHAR2(4), /* 전화번호2 */
-	COL3 VARCHAR2(4) /* 전화번호3 */
+	EMAIL1 VARCHAR2(30), /* 이메일1 */
+	EMAIL2 VARCHAR2(30), /* 이메일2 */
+	HP1 VARCHAR2(3), /* 전화번호1 */
+	HP2 VARCHAR2(4), /* 전화번호2 */
+	HP3 VARCHAR2(4) /* 전화번호3 */
 );
 
 CREATE UNIQUE INDEX PK_MANAGER
@@ -32,11 +31,11 @@ CREATE TABLE MEMBER (
 	ZIPCODE NUMBER, /* 우편번호 */
 	ADDRESS VARCHAR2(200), /* 주소 */
 	ADDRESS_DETAIL VARCHAR2(200), /* 상세주소 */
-	HP VARCHAR2(3), /* 전화번호1 */
-	COL2 VARCHAR2(4), /* 전화번호2 */
-	COL3 VARCHAR2(4), /* 전화번호3 */
-	EMAIL VARCHAR2(30), /* 이메일1 */
-	COL VARCHAR2(30), /* 이메일2 */
+	HP1 VARCHAR2(3), /* 전화번호1 */
+	HP2 VARCHAR2(4), /* 전화번호2 */
+	HP3 VARCHAR2(4), /* 전화번호3 */
+	EMAIL1 VARCHAR2(30), /* 이메일1 */
+	EMAIL2 VARCHAR2(30), /* 이메일2 */
 	GRADE CHAR NOT NULL, /* 회원등급 */
 	USER_SSR VARCHAR2(15), /* 주민번호 */
 	GENDER CHAR NOT NULL, /* 성별 */
@@ -60,9 +59,9 @@ ALTER TABLE MEMBER
 /* 회원등급 */
 CREATE TABLE MEMBER_GRADE (
 	GRADE CHAR NOT NULL, /* 회원등급 */
-	NAME CLOB, /* 등급기준 */
-	EMAIL VARCHAR2(60), /* 혜택내용 */
-	POSITION NUMBER NOT NULL /* 적립퍼센트 */
+	DETAIL CLOB, /* 등급기준 */
+	BENEFIT VARCHAR2(60), /* 혜택내용 */
+	POINT NUMBER NOT NULL /* 적립퍼센트 */
 );
 
 CREATE UNIQUE INDEX PK_MEMBER_GRADE
@@ -76,6 +75,7 @@ ALTER TABLE MEMBER_GRADE
 		PRIMARY KEY (
 			GRADE
 		);
+		
 /* 통계 */
 CREATE TABLE CHART (
 	CHART_NO NUMBER NOT NULL, /* 통계번호 */
