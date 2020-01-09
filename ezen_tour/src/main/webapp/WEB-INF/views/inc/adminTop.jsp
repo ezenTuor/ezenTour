@@ -17,10 +17,10 @@
 		<div id="container">
 		    <nav>
 		        <ul>
-		            <li><a href="#">EZEN MANAGER MAIN</a></li>
+		            <li><a href="<c:url value="/manager/managerMain.do"/>">EZEN MANAGER MAIN</a></li>
 		            <li><a href="#">상품관리</a>
 		            <ul>
-		                <li><a href="#">상품등록</a></li>
+		                <li><a href="<c:url value="/manager/pack/packWrite.do"/>">상품등록</a></li>
 		                <li><a href="#">상품목록</a></li>
 		                <li><a href="#">상품이벤트</a></li>
 		            </ul>        

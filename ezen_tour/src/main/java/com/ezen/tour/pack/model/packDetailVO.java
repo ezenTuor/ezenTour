@@ -3,8 +3,9 @@ package com.ezen.tour.pack.model;
 import java.sql.Timestamp;
 
 public class packDetailVO {
-	private int package_dno;
-	private int package_no;
+
+	private int pack_dno;
+	private int pack_no;
 	private String dep_code;
 	private Timestamp korea_dep;
 	private Timestamp local_ent;
@@ -23,17 +24,18 @@ public class packDetailVO {
 	private String dates;
 	private String travel_flag;
 	private int capecity;
-	public int getPackage_dno() {
-		return package_dno;
+	
+	public int getPack_dno() {
+		return pack_dno;
 	}
-	public void setPackage_dno(int package_dno) {
-		this.package_dno = package_dno;
+	public void setpack_dno(int pack_dno) {
+		this.pack_dno = pack_dno;
 	}
-	public int getPackage_no() {
-		return package_no;
+	public int getpack_no() {
+		return pack_no;
 	}
-	public void setPackage_no(int package_no) {
-		this.package_no = package_no;
+	public void setpack_no(int pack_no) {
+		this.pack_no = pack_no;
 	}
 	public String getDep_code() {
 		return dep_code;
@@ -148,8 +150,8 @@ public class packDetailVO {
 	
 	
 	/*
-	PACKAGE_DNO NUMBER NOT NULL,  패키지 소분류 번호
-	PACKAGE_NO NUMBER NOT NULL,  패키지번호 
+	pack_DNO NUMBER NOT NULL,  패키지 소분류 번호
+	pack_NO NUMBER NOT NULL,  패키지번호 
 	DEPART DATE NOT NULL, 한국출발날짜 
 	ENTER DATE NOT NULL, 한국도착날짜 
 	MAN NUMBER,  성인가격 
