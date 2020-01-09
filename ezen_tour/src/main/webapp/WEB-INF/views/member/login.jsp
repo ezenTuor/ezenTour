@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../inc/top.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -30,14 +31,14 @@
 	<fieldset>
 		<legend>로그인</legend>
 		<div>
-			<label for="userid" class="label">아이디</label>
-			<input type="text" name="userid" id="userid" 
+			<label for="user_id" class="label">아이디</label>
+			<input type="text" name="user_id" id="user_id" 
 				class="infobox">
 			<span class="error">아이디를 입력하세요</span>
 		</div>			
 		<div>
-			<label for="pwd" class="label">비밀번호</label>
-			<input type="password" name="pwd" id="pwd"
+			<label for="user_pwd" class="label">비밀번호</label>
+			<input type="password" name="user_pwd" id="user_pwd"
 				class="infobox">
 			<span class="error">비밀번호를 입력하세요</span>
 		</div>
@@ -50,3 +51,4 @@
 </form>
 </body>
 </html>
+<%@ include file="../inc/bottom.jsp" %>

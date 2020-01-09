@@ -17,12 +17,16 @@
 
 	<select id="selectMember" parameterType="string" resultType="memberVo">
 		select * from member
-		where userid=#{userid} and deldate is null
+		where user_id=#{user_id} and deldate is null
 	</select>
 	
 	<select id="selectPwd" parameterType="string" resultType="string">
-		select pwd from member 
-		where userid=#{userid} and outdate is null
+		select user_pwd from member 
+		where user_id=#{user_id} and deldate is null
+	</select>
+	<select id="selectDuplicate" parameterType="string" resultType="int">
+		select count(*) from member
+		where user_id=#{user_id}
 	</select>
 </mapper>
 

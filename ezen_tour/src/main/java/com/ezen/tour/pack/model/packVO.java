@@ -2,7 +2,7 @@ package com.ezen.tour.pack.model;
 
 public class packVO {
 	
-	private int package_no;
+	private int pack_no;
 	private String name;
 	private String img_names;
 	private String img_sizes;
@@ -12,7 +12,7 @@ public class packVO {
 	private String days_week;
 	
 	/*
-	PACKAGE_NO NUMBER NOT NULL,  패키지번호 
+	pack_NO NUMBER NOT NULL,  패키지번호 
 	NAME VARCHAR2(100),  패키지이름 
 	IMG_NAMES VARCHAR2(1000),  이미지이름(LIST) 
 	IMG_SIZES VARCHAR2(1000),  D이미지크기(LIST) 
@@ -22,11 +22,11 @@ public class packVO {
 	DAYS_WEEK VARCHAR2(60)  출발요일 
 	*/
 	
-	public int getPackage_no() {
-		return package_no;
+	public int getpack_no() {
+		return pack_no;
 	}
-	public void setPackage_no(int package_no) {
-		this.package_no = package_no;
+	public void setpack_no(int pack_no) {
+		this.pack_no = pack_no;
 	}
 	public String getName() {
 		return name;

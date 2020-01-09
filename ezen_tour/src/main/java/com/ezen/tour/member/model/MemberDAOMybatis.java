@@ -17,13 +17,17 @@ public class MemberDAOMybatis implements MemberDAO{
 	}
 
 	@Override
-	public MemberVO selectMember(String userid) {
-		return sqlSession.selectOne(namespace+"selectMember",userid);
+	public MemberVO selectMember(String user_id) {
+		return sqlSession.selectOne(namespace+"selectMember",user_id);
 	}
 
 	@Override
-	public String selectPwd(String userid) {
-		return sqlSession.selectOne(namespace+"selectPwd",userid);
+	public String selectPwd(String user_id) {
+		return sqlSession.selectOne(namespace+"selectPwd",user_id);
 	}
-	
+
+	@Override
+	public int selectDuplicate(String user_id) {
+		return sqlSession.selectOne(namespace+"selectDuplicate",user_id);
+	}
 }

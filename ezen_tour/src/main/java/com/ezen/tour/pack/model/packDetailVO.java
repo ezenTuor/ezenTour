@@ -3,11 +3,15 @@ package com.ezen.tour.pack.model;
 import java.sql.Timestamp;
 
 public class packDetailVO {
-	/*테스트*/
-	private int package_dno;
-	private int package_no;
-	private Timestamp depart;
-	private Timestamp enter;
+
+	private int pack_dno;
+	private int pack_no;
+	private String dep_code;
+	private Timestamp korea_dep;
+	private Timestamp local_ent;
+	private String ent_code;
+	private Timestamp local_dep;
+	private Timestamp korea_ent;
 	private int man;
 	private int child;
 	private int baby;
@@ -19,30 +23,55 @@ public class packDetailVO {
 	private String destinations;
 	private String dates;
 	private String travel_flag;
+	private int capecity;
 	
-	public int getPackage_dno() {
-		return package_dno;
+	public int getPack_dno() {
+		return pack_dno;
 	}
-	public void setPackage_dno(int package_dno) {
-		this.package_dno = package_dno;
+	public void setpack_dno(int pack_dno) {
+		this.pack_dno = pack_dno;
 	}
-	public int getPackage_no() {
-		return package_no;
+	public int getpack_no() {
+		return pack_no;
 	}
-	public void setPackage_no(int package_no) {
-		this.package_no = package_no;
+	public void setpack_no(int pack_no) {
+		this.pack_no = pack_no;
 	}
-	public Timestamp getDepart() {
-		return depart;
+	public String getDep_code() {
+		return dep_code;
 	}
-	public void setDepart(Timestamp depart) {
-		this.depart = depart;
+	public void setDep_code(String dep_code) {
+		this.dep_code = dep_code;
 	}
-	public Timestamp getEnter() {
-		return enter;
+	public Timestamp getKorea_dep() {
+		return korea_dep;
 	}
-	public void setEnter(Timestamp enter) {
-		this.enter = enter;
+	public void setKorea_dep(Timestamp korea_dep) {
+		this.korea_dep = korea_dep;
+	}
+	public Timestamp getLocal_ent() {
+		return local_ent;
+	}
+	public void setLocal_ent(Timestamp local_ent) {
+		this.local_ent = local_ent;
+	}
+	public String getEnt_code() {
+		return ent_code;
+	}
+	public void setEnt_code(String ent_code) {
+		this.ent_code = ent_code;
+	}
+	public Timestamp getLocal_dep() {
+		return local_dep;
+	}
+	public void setLocal_dep(Timestamp local_dep) {
+		this.local_dep = local_dep;
+	}
+	public Timestamp getKorea_ent() {
+		return korea_ent;
+	}
+	public void setKorea_ent(Timestamp korea_ent) {
+		this.korea_ent = korea_ent;
 	}
 	public int getMan() {
 		return man;
@@ -110,10 +139,19 @@ public class packDetailVO {
 	public void setTravel_flag(String travel_flag) {
 		this.travel_flag = travel_flag;
 	}
+	public int getCapecity() {
+		return capecity;
+	}
+	public void setCapecity(int capecity) {
+		this.capecity = capecity;
+	}
+	
+	
+	
 	
 	/*
-	PACKAGE_DNO NUMBER NOT NULL,  패키지 소분류 번호
-	PACKAGE_NO NUMBER NOT NULL,  패키지번호 
+	pack_DNO NUMBER NOT NULL,  패키지 소분류 번호
+	pack_NO NUMBER NOT NULL,  패키지번호 
 	DEPART DATE NOT NULL, 한국출발날짜 
 	ENTER DATE NOT NULL, 한국도착날짜 
 	MAN NUMBER,  성인가격 

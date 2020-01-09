@@ -8,4 +8,4 @@
 *.plx
 
 # Properties Files
-.properties
+pom.properties
