@@ -10,6 +10,7 @@ public interface MemberService {
 	int NONE_USERID=3;
 	
 	int insertMember(MemberVO vo);
-	MemberVO selectMember(String userid);
-	public int loginCheck(String userid, String pwd);
+	MemberVO selectMember(String user_id);
+	public int loginCheck(String user_id, String user_pwd);
+	int selectDuplicate(String  user_id);
 }

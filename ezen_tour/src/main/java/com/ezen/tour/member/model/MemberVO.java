@@ -10,8 +10,41 @@ public class MemberVO {
 	private int zipcode;
 	private String address;
 	private String address_detail;
-	private String hp;
-	private String email;
+	private String hp1;
+	public String getHp1() {
+		return hp1;
+	}
+	public void setHp1(String hp1) {
+		this.hp1 = hp1;
+	}
+	public String getHp2() {
+		return hp2;
+	}
+	public void setHp2(String hp2) {
+		this.hp2 = hp2;
+	}
+	public String getHp3() {
+		return hp3;
+	}
+	public void setHp3(String hp3) {
+		this.hp3 = hp3;
+	}
+	public String getEmail1() {
+		return email1;
+	}
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+	private String hp2;
+	private String hp3;
+	private String email1;
+	private String email2;
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
 	private String grade;
 	private String user_ssr;
 	private String gender;
@@ -60,18 +93,6 @@ public class MemberVO {
 	public void setAddress_detail(String address_detail) {
 		this.address_detail = address_detail;
 	}
-	public String getHp() {
-		return hp;
-	}
-	public void setHp(String hp) {
-		this.hp = hp;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getGrade() {
 		return grade;
 	}
@@ -111,8 +132,9 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [user_no=" + user_no + ", user_id=" + user_id + ", user_pwd=" + user_pwd + ", name=" + name
-				+ ", zipcode=" + zipcode + ", address=" + address + ", address_detail=" + address_detail + ", hp=" + hp
-				+ ", email=" + email + ", grade=" + grade + ", user_ssr=" + user_ssr + ", gender=" + gender
-				+ ", regdate=" + regdate + ", del_flag=" + del_flag + ", deldate=" + deldate + "]";
+				+ ", zipcode=" + zipcode + ", address=" + address + ", address_detail=" + address_detail + ", hp1="
+				+ hp1 + ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade="
+				+ grade + ", user_ssr=" + user_ssr + ", gender=" + gender + ", regdate=" + regdate + ", del_flag="
+				+ del_flag + ", deldate=" + deldate + "]";
 	}
 }

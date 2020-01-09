@@ -14,19 +14,19 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO selectMember(String userid) {
-		return memberDao.selectMember(userid);
+	public MemberVO selectMember(String user_id) {
+		return memberDao.selectMember(user_id);
 	}
 
 	@Override
-	public int loginCheck(String userid, String pwd) {
-		String dbPwd = memberDao.selectPwd(userid);
+	public int loginCheck(String user_id, String user_pwd) {
+		String dbPwd = memberDao.selectPwd(user_id);
 		
 		int result=0;
 		if(dbPwd==null || dbPwd.isEmpty()) {
 			result=NONE_USERID;  //해당 아이디가 없다
 		}else {
-			if(dbPwd.equals(pwd)) {
+			if(dbPwd.equals(user_pwd)) {
 				result=LOGIN_OK;  //로그인 성공
 			}else {
 				result=DISAGREE_PWD; //비밀번호 불일치
@@ -34,5 +34,9 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 		return result;
+	}
+	@Override
+	public int selectDuplicate(String user_id) {
+		return memberDao.selectDuplicate(user_id);
 	}
 }
