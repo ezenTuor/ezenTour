@@ -16,4 +16,16 @@ public class PackageController {
 		logger.info("패키지 상세 보여주기");
 		return "package/packageDetail";
 	}
+	
+	@RequestMapping("/packageList.do")
+	public String packageList() {
+		logger.info("패키지 리스트 보여주기");
+		return "package/packageList";
+	}
+	
+	@RequestMapping("/packageListDetail.do")
+	public String packageListDetail() {
+		logger.info("패키지 항목별 리스트 보여주기");
+		return "package/packageListDetail";
+	}
 }
