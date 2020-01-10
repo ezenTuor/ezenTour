@@ -10,7 +10,7 @@ schedule 필요 컬럼
 식사 - varchar2(300) - 그날의 식자에 대한 간단 정보를 담고있는 컬럼
 숙박 - varcar2(300) - 그날 숙박할 장소에 대한 간단 정보를 담고있는 컬럼
 
-pack / region 테이블 필요
+pack / country 테이블 필요
 국가코드 - varchar2(4) - 국가 지명 코드
 이름 - varchar2(40) - 국가 이름
 영어이름 - varcar2(40) - 국가 이름(eng)
