@@ -5,13 +5,6 @@ start with 1
 increment by 1
 nocache;
 
-create sequence chart_seq
-start with 1
-increment by 1
-nocache;
-
-
-
 ---------------ezenDB2------------------
 
 
@@ -41,6 +34,12 @@ increment by 1
 nocache;
 
 create sequence PACK_DETAIL_seq
+start with 1
+increment by 1
+nocache;
+
+
+create sequence SCHEDULE_seq
 start with 1
 increment by 1
 nocache;
@@ -107,6 +106,13 @@ increment by 1
 nocache;
 
 create sequence SUPPORT_seq
+start with 1
+increment by 1
+nocache;
+
+-------------ezenDB6-------------------
+
+create sequence CHART_seq
 start with 1
 increment by 1
 nocache;

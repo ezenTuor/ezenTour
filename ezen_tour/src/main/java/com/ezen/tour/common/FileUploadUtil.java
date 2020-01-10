@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -33,23 +32,17 @@ public class FileUploadUtil {
 	private Properties props;
 	
 	public List<Map<String, Object>> fileUpload(HttpServletRequest request,
-			int uploadPathType) {
+			int uploadPathType, String paramName) {
 		//파일 업로드 처리
-		MultipartHttpServletRequest multiReq
-			=(MultipartHttpServletRequest)request;
+		MultipartHttpServletRequest multiReq=(MultipartHttpServletRequest)request;
 		
-		Map<String, MultipartFile> fileMap=multiReq.getFileMap();
+		List<MultipartFile> olist=multiReq.getFiles(paramName);
+		//Map<String, MultipartFile> fileMap=multiReq.getFileMap();
 		
 		//결과를 넣을 List
-		List<Map<String, Object>> list
-			=new ArrayList<Map<String,Object>>();
+		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
 		
-		Iterator<String> iter=fileMap.keySet().iterator();
-		while(iter.hasNext()) {
-			String key=iter.next();
-			MultipartFile tempFile=fileMap.get(key);
-			
-			//업로드된 경우
+		for(MultipartFile tempFile: olist) {
 			if(!tempFile.isEmpty()) {
 				//변경전 (원래) 파일명
 				String originFileName=tempFile.getOriginalFilename();
@@ -58,8 +51,7 @@ public class FileUploadUtil {
 				//파일 크기
 				long fileSize=tempFile.getSize();
 				
-				Map<String, Object> map
-					=new HashMap<String, Object>();
+				Map<String, Object> map=new HashMap<String, Object>();
 				map.put("originalFileName", originFileName);
 				map.put("fileName", fileName);
 				map.put("fileSize", fileSize);
@@ -81,7 +73,7 @@ public class FileUploadUtil {
 				}			
 				
 			}
-		}//while
+		}
 		
 		return list;
 	}
