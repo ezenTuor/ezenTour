@@ -1,5 +1,7 @@
 package com.ezen.tour.pack.model;
 
-public interface PackDetailService {
+import java.util.List;
 
+public interface PackDetailService {
+	List<PackDetailVO> selectPackDetailList(String packNo);
 }

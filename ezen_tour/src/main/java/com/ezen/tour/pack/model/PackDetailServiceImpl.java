@@ -1,5 +1,18 @@
 package com.ezen.tour.pack.model;
 
-public interface PackDetailServiceImpl {
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class PackDetailServiceImpl implements PackDetailService {
+
+	@Autowired
+	private PackDetailDAO packDetailDao;
+	
+	@Override
+	public List<PackDetailVO> selectPackDetailList(String packNo) {
+		
+		return packDetailDao.selectPackDetailList(packNo);
+	}
 
 }

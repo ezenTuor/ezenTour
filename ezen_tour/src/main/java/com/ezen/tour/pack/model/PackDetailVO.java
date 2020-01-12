@@ -18,23 +18,22 @@ public class PackDetailVO {
 	private String airline;
 	private String days_detail;
 	private char shopping;
-	private char hotel_grade;
 	private String details;
 	private String destinations;
 	private String dates;
 	private String travel_flag;
+	private int capecity_min;
 	private int capecity;
-	
 	public int getPack_dno() {
 		return pack_dno;
 	}
-	public void setpack_dno(int pack_dno) {
+	public void setPack_dno(int pack_dno) {
 		this.pack_dno = pack_dno;
 	}
-	public int getpack_no() {
+	public int getPack_no() {
 		return pack_no;
 	}
-	public void setpack_no(int pack_no) {
+	public void setPack_no(int pack_no) {
 		this.pack_no = pack_no;
 	}
 	public String getDep_code() {
@@ -109,12 +108,6 @@ public class PackDetailVO {
 	public void setShopping(char shopping) {
 		this.shopping = shopping;
 	}
-	public char getHotel_grade() {
-		return hotel_grade;
-	}
-	public void setHotel_grade(char hotel_grade) {
-		this.hotel_grade = hotel_grade;
-	}
 	public String getDetails() {
 		return details;
 	}
@@ -139,14 +132,18 @@ public class PackDetailVO {
 	public void setTravel_flag(String travel_flag) {
 		this.travel_flag = travel_flag;
 	}
+	public int getCapecity_min() {
+		return capecity_min;
+	}
+	public void setCapecity_min(int capecity_min) {
+		this.capecity_min = capecity_min;
+	}
 	public int getCapecity() {
 		return capecity;
 	}
 	public void setCapecity(int capecity) {
 		this.capecity = capecity;
 	}
-	
-	
 	
 	
 	/*
