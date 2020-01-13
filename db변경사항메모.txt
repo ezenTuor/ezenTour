@@ -8,4 +8,4 @@
 
 2020-01-13 18:20 schedule, country추가  by 최상현
 
-2020-01-13 18:51 AREA, AREA_DETAIL추가 BY 
+2020-01-13 18:51 AREA, AREA_DETAIL추가 BY 최상현
