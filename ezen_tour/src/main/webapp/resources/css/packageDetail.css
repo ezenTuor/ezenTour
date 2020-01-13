@@ -2,7 +2,6 @@
 
 #pack-detail {
 	background: lightblue;
-	height: 1000px;
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -136,6 +135,53 @@
 }
 
 
+<!-- 스티키바 부분-->
+
+.content-1 {
+	background: blue;
+	height: 300px;
+	width: 100%;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #BFFFF3;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.menu li {
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+}
+
+.menu li:hover,
+.menu li:focus {
+    background-color: #66FFE3;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.sticky {
+    top: 0;
+    position: fixed;
+}
+
+.container {
+  padding: 0 20px;
+  color: #989898;
+}
+
+
+
 #travel-detail {
 	display: flex;
 	justify-content: space-between;
@@ -150,3 +196,4 @@
 	width: 29%;
 	background: lightgreen;
 }
+
