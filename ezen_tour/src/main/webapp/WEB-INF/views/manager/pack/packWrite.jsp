@@ -35,6 +35,11 @@
 			<input type="text" id="daysWeek" name="daysWeek">
 		</div>
 		
+		<div>
+			<label for="daysWeek">출발요일</label>
+			<input type="text" id="daysWeek" name="daysWeek">
+		</div>
+		
 		<input type="submit" value="전송">
 	</form>
 </section>

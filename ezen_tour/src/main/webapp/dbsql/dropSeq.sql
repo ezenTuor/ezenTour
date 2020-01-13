@@ -57,3 +57,7 @@ drop sequence SUPPORT_seq;
 -------------ezenDB7-------------------
 
 drop sequence CHART_seq;
+
+drop sequence AREA_seq;
+
+drop sequence AREA_DETAIL_seq;
