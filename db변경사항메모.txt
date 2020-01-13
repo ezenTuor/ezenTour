@@ -6,4 +6,6 @@
 
 2020-01-08 16:20 pack, pack_detail 수정 by 최상현
 
-2020-01-13 18:20 schedule , country추가,  by 최상현
+2020-01-13 18:20 schedule, country추가  by 최상현
+
+2020-01-13 18:51 AREA, AREA_DETAIL추가 BY 
