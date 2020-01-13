@@ -151,6 +151,8 @@
     top: 0;
     position: -webkit-sticky;
     position: sticky;
+    color: black;
+    text-align: center;
 }
 
 .menu li {

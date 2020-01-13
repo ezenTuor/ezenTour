@@ -58,10 +58,9 @@
 				<span>가나다라마바사</span>
 			</div>
 			<ul class="menu">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Portfolio</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="#">여행일정</a></li>
+				<li><a href="#">여행자 보험</a></li>
+				<li><a href="#">참고사항</a></li>
 			</ul>
 			<div class="container">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
