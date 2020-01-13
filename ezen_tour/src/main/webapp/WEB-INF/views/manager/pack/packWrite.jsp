@@ -6,8 +6,8 @@
 	<form name="pdWrite" method="post" enctype="multipart/form-data"
 		action="<c:url value="/manager/pack/packWrite.do"/>">
 		<div>
-			<label for="packNo">패키지명</label>
-			<input type="text" id="packNo" name="packNo">
+			<label for="name">패키지명</label>
+			<input type="text" id="name" name="name">
 		</div>
 		
 		<div>
@@ -16,13 +16,8 @@
 		</div>
 		
 		<div>
-			<label for="destination">대표 목적지</label>
-			<input type="text" id="destination" name="destination">
-		</div>
-		
-		<div>
-			<label for="airport">대표 이용 항공사</label>
-			<input type="text" id="airport" name="airport">
+			<label for="destnation">대표 목적지</label>
+			<input type="text" id="destnation" name="destnation">
 		</div>
 		
 		<div>
