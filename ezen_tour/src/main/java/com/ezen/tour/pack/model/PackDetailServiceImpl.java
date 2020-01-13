@@ -12,9 +12,15 @@ public class PackDetailServiceImpl implements PackDetailService {
 	private PackDetailDAO packDetailDao;
 	
 	@Override
-	public List<PackDetailVO> selectPackDetailList(int packNo) {
+	public List<PackVO> selectPackDetailList(int packNo) {
 		
-		return packDetailDao.selectPackDetailList(packNo);
+		return null;
+	}
+
+	@Override
+	public PackDetailVO selectPackDetail(int packDno) {
+
+		return packDetailDao.selectPackDetail(packDno);
 	}
 
 }

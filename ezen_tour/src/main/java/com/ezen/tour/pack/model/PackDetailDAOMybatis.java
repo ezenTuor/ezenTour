@@ -15,8 +15,13 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	private String namespace = "com.mybatis.mapper.pack";
 	
 	@Override
-	public List<PackDetailVO> selectPackDetailList(int packNo){
+	public List<PackVO> selectPackDetailList(int packNo){
 		return sqlSession.selectList(namespace+"selectPackDetailList", packNo);
 	} //이건 디테일 리스트에 이용
+	
+	@Override
+	public PackDetailVO selectPackDetail(int packDno) {
+		return sqlSession.selectOne(namespace+"selectPackDetail", packDno);
+	}
 
 }

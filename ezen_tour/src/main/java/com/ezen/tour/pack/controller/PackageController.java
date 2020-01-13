@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
+import com.ezen.tour.pack.model.PackVO;
 
 @Controller
 @RequestMapping("/package")
@@ -21,12 +22,14 @@ public class PackageController {
 	private PackDetailService packDetailService;
 	
 	@RequestMapping("/packageDetail.do")
-	public String packageDetail(@RequestParam(defaultValue = "0") int packNo, Model model) {
+	public String packageDetail(@RequestParam(defaultValue = "0") int packDno, Model model) {
 		logger.info("패키지 개별 상세 정보");
 		
-		if(packNo==0) {
+		if(packDno==0) {
 			logger.info("없는 페이지");
 		}
+		
+		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
 		
 		
 		return "package/packageDetail";
