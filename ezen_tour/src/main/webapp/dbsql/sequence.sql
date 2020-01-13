@@ -110,9 +110,19 @@ start with 1
 increment by 1
 nocache;
 
--------------ezenDB6-------------------
+-------------ezenDB7-------------------
 
 create sequence CHART_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence AREA_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence AREA_DETAIL_seq
 start with 1
 increment by 1
 nocache;

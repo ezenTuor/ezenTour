@@ -40,3 +40,5 @@ drop table SUPPORT cascade constraints;
 drop table CHART cascade constraints;
 drop table MANAGER cascade constraints;
 drop table COUNTRY cascade constraints;
+drop table AREA cascade constraints;
+drop table AREA_DETAIL cascade constraints;
