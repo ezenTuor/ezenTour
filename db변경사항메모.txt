@@ -5,3 +5,5 @@
 2020-01-08 16:20 payment, wishlist 수정 by 최상현, 김준하
 
 2020-01-08 16:20 pack, pack_detail 수정 by 최상현
+
+2020-01-13 18:20 schedule , country추가,  by 최상현
