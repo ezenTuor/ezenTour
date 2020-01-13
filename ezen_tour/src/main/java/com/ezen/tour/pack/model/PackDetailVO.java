@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 
 public class PackDetailVO {
 
-	private int pack_dno;
-	private int pack_no;
-	private String dep_code;
-	private Timestamp korea_dep;
-	private Timestamp local_ent;
-	private String ent_code;
-	private Timestamp local_dep;
-	private Timestamp korea_ent;
+	private int packDno;
+	private int packNo;
+	private String depCode;
+	private Timestamp koreaDep;
+	private Timestamp localEnt;
+	private String entCode;
+	private Timestamp localDep;
+	private Timestamp koreaEnt;
 	private int man;
 	private int child;
 	private int baby;
@@ -24,53 +24,54 @@ public class PackDetailVO {
 	private String travel_flag;
 	private int capecity_min;
 	private int capecity;
-	public int getPack_dno() {
-		return pack_dno;
+	
+	public int getPackDno() {
+		return packDno;
 	}
-	public void setPack_dno(int pack_dno) {
-		this.pack_dno = pack_dno;
+	public void setPackDno(int packDno) {
+		this.packDno = packDno;
 	}
-	public int getPack_no() {
-		return pack_no;
+	public int getPackNo() {
+		return packNo;
 	}
-	public void setPack_no(int pack_no) {
-		this.pack_no = pack_no;
+	public void setPackNo(int packNo) {
+		this.packNo = packNo;
 	}
-	public String getDep_code() {
-		return dep_code;
+	public String getDepCode() {
+		return depCode;
 	}
-	public void setDep_code(String dep_code) {
-		this.dep_code = dep_code;
+	public void setDepCode(String depCode) {
+		this.depCode = depCode;
 	}
-	public Timestamp getKorea_dep() {
-		return korea_dep;
+	public Timestamp getKoreaDep() {
+		return koreaDep;
 	}
-	public void setKorea_dep(Timestamp korea_dep) {
-		this.korea_dep = korea_dep;
+	public void setKoreaDep(Timestamp koreaDep) {
+		this.koreaDep = koreaDep;
 	}
-	public Timestamp getLocal_ent() {
-		return local_ent;
+	public Timestamp getLocalEnt() {
+		return localEnt;
 	}
-	public void setLocal_ent(Timestamp local_ent) {
-		this.local_ent = local_ent;
+	public void setLocalEnt(Timestamp localEnt) {
+		this.localEnt = localEnt;
 	}
-	public String getEnt_code() {
-		return ent_code;
+	public String getEntCode() {
+		return entCode;
 	}
-	public void setEnt_code(String ent_code) {
-		this.ent_code = ent_code;
+	public void setEntCode(String entCode) {
+		this.entCode = entCode;
 	}
-	public Timestamp getLocal_dep() {
-		return local_dep;
+	public Timestamp getLocalDep() {
+		return localDep;
 	}
-	public void setLocal_dep(Timestamp local_dep) {
-		this.local_dep = local_dep;
+	public void setLocalDep(Timestamp localDep) {
+		this.localDep = localDep;
 	}
-	public Timestamp getKorea_ent() {
-		return korea_ent;
+	public Timestamp getKoreaEnt() {
+		return koreaEnt;
 	}
-	public void setKorea_ent(Timestamp korea_ent) {
-		this.korea_ent = korea_ent;
+	public void setKoreaEnt(Timestamp koreaEnt) {
+		this.koreaEnt = koreaEnt;
 	}
 	public int getMan() {
 		return man;
@@ -145,25 +146,15 @@ public class PackDetailVO {
 		this.capecity = capecity;
 	}
 	
-	
-	/*
-	pack_DNO NUMBER NOT NULL,  패키지 소분류 번호
-	pack_NO NUMBER NOT NULL,  패키지번호 
-	DEPART DATE NOT NULL, 한국출발날짜 
-	ENTER DATE NOT NULL, 한국도착날짜 
-	MAN NUMBER,  성인가격 
-	CHILD NUMBER, 유아가격 
-	BABY NUMBER, 아동가격 
-	AIRLINE VARCHAR2(300), 항공사명 
-	DAYS_DETAIL VARCHAR2(30) NOT NULL, 여행기간 
-	SHOPPING CHAR, 쇼핑여부
-	HOTEL_GRADE CHAR, 숙소등급 
-	DETAILS CLOB, 내용 
-	DESTINATIONS VARCHAR2(1000), 경유지 
-	DATES VARCHAR2(1000), 시간 
-	TRAVEL_FLAG VARCHAR2(30)  여행구분 
-	*/
-	
+	@Override
+	public String toString() {
+		return "PackDetailVO [packDno=" + packDno + ", packNo=" + packNo + ", depCode=" + depCode + ", koreaDep="
+				+ koreaDep + ", localEnt=" + localEnt + ", entCode=" + entCode + ", localDep=" + localDep
+				+ ", koreaEnt=" + koreaEnt + ", man=" + man + ", child=" + child + ", baby=" + baby + ", airline="
+				+ airline + ", days_detail=" + days_detail + ", shopping=" + shopping + ", details=" + details
+				+ ", destinations=" + destinations + ", dates=" + dates + ", travel_flag=" + travel_flag
+				+ ", capecity_min=" + capecity_min + ", capecity=" + capecity + "]";
+	}
 	
 	
 }

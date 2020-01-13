@@ -5,4 +5,5 @@ import java.util.List;
 public interface PackDetailService {
 	List<PackVO> selectPackDetailList(int packNo);
 	PackDetailVO selectPackDetail(int packDno);
+	PackVO selectPack(int packNo);
 }

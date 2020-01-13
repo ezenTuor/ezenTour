@@ -2,13 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="\">
+<mapper namespace="com.mybatis.mapper.pack">
 	<select id="selectPackDetail" parameterType="int" resultType="packDetailVo">
 		select * from pack_detail
 		where pack_dno=#{packDno}
 	</select>
 	
 	<select id="selectPackDetailList">
+		select * from pack
+		where pack_no=#{packNo}
+	</select>
+	
+	<select id="selectPack" parameterType="int" resultType="packVo">
 		select * from pack
 		where pack_no=#{packNo}
 	</select>

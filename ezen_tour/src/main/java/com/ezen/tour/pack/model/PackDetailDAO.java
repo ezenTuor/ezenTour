@@ -8,4 +8,6 @@ public interface PackDetailDAO {
 
 	PackDetailVO selectPackDetail(int packDno);
 
+	PackVO selectPack(int packNo);
+
 }

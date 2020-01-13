@@ -9,7 +9,7 @@
 
 
 <div id="pack-detail">
-	<div>패키지 상품명 부분입니다</div>
+	<div>${packVo.name }</div>
 	
 	<div id="fir-line"></div>
 	

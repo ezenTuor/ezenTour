@@ -22,16 +22,22 @@ public class PackageController {
 	private PackDetailService packDetailService;
 	
 	@RequestMapping("/packageDetail.do")
-	public String packageDetail(@RequestParam(defaultValue = "0") int packDno, Model model) {
-		logger.info("패키지 개별 상세 정보");
+	public String packageDetail(@RequestParam(defaultValue = "1") int packDno, Model model) {
+		logger.info("패키지 개별 상세 정보, packDno={}", packDno);
 		
 		if(packDno==0) {
 			logger.info("없는 페이지");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
+		logger.info("상세보기 결과, vo={}", packDetailVo);
 		
+		int packNumber = packDetailVo.getPackNo();
 		
+		PackVO packVo = packDetailService.selectPack(packNumber);
+		
+		model.addAttribute("packDetailVo", packDetailVo);
+		model.addAttribute("packVo", packVo);
 		return "package/packageDetail";
 	}
 	

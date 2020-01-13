@@ -23,4 +23,9 @@ public class PackDetailServiceImpl implements PackDetailService {
 		return packDetailDao.selectPackDetail(packDno);
 	}
 
+	@Override
+	public PackVO selectPack(int packNo) {
+		return packDetailDao.selectPack(packNo);
+	}
+
 }
