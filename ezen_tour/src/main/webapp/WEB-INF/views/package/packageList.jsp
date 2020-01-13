@@ -4,5 +4,7 @@
 
 <div>
 
+<%@include file="packCategory.jsp"%>	
+	
 </div>
 <%@include file="../inc/bottom.jsp"%>

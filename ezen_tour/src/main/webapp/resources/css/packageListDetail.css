@@ -1,1 +1,11 @@
 @charset "UTF-8";
+
+#pack-cate {
+	display: flex;
+	
+}
+
+#pack-cate li {
+	background: lightyellow;
+	border: 1px solid gray;
+}

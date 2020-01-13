@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface PackDetailDAO {
 
-	List<PackDetailVO> selectPackDetailList(String packNo);
+	List<PackDetailVO> selectPackDetailList(int packNo);
 
 }

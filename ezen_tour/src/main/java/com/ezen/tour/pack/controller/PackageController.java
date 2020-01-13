@@ -4,9 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.pack.model.PackDetailService;
+import com.ezen.tour.pack.model.PackDetailVO;
 
 @Controller
 @RequestMapping("/package")
@@ -18,9 +21,12 @@ public class PackageController {
 	private PackDetailService packDetailService;
 	
 	@RequestMapping("/packageDetail.do")
-	public String packageDetail() {
-		logger.info("íŒ¨í‚¤ì§€ ìƒì„¸ ë³´ì—¬ì£¼ê¸°");
+	public String packageDetail(@RequestParam(defaultValue = "0") int packNo, Model model) {
+		logger.info("ÆĞÅ°Áö °³º° »ó¼¼ Á¤º¸");
 		
+		if(packNo==0) {
+			logger.info("¾ø´Â ÆäÀÌÁö");
+		}
 		
 		
 		return "package/packageDetail";
@@ -28,13 +34,13 @@ public class PackageController {
 	
 	@RequestMapping("/packageList.do")
 	public String packageList() {
-		logger.info("íŒ¨í‚¤ì§€ ë¦¬ìŠ¤íŠ¸ ë³´ì—¬ì£¼ê¸°");
+		logger.info("ÆĞÅ°Áö ¸®½ºÆ®");
 		return "package/packageList";
 	}
 	
 	@RequestMapping("/packageListDetail.do")
 	public String packageListDetail() {
-		logger.info("íŒ¨í‚¤ì§€ í•­ëª©ë³„ ë¦¬ìŠ¤íŠ¸ ë³´ì—¬ì£¼ê¸°");
+		logger.info("ÆĞÅ°Áö ¸®½ºÆ® »ó¼¼ Á¤º¸");
 		return "package/packageListDetail";
 	}
 }
