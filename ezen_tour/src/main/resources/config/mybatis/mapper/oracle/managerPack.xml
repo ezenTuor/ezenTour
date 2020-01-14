@@ -7,8 +7,8 @@
 		<selectKey keyProperty="packNo" resultType="int" order="BEFORE">
 			select pack_seq.nextval from dual
 		</selectKey>
-		insert into Pack
-		values(#{packNo}, #{name}, #{imgNames}, #{imgSizes}, #{destnation}, #{airport}, #{days}, #{daysWeek}, sysdate, #{detail})
+		insert into Pack(pack_no, name, img_names, img_sizes, COUNTRY, city, keyword, airport, days, days_week, detail, regdate)
+		values(#{packNo}, #{name}, #{imgNames}, #{imgSizes}, #{country}, #{city}, #{keyword}, #{airport}, #{days}, #{daysWeek}, #{detail}, sysdate)
 	</insert>
 </mapper>
 

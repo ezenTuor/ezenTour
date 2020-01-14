@@ -1,14 +1,21 @@
 package com.ezen.tour.manager.pack.model;
 
+import java.sql.Timestamp;
+
 public class ManagerPackVo {
 	private int packNo;
 	private String name;
 	private String imgNames;
 	private String imgSizes;
-	private String destnation;
+	private String country;
+	private String city;
+	private String keyword;
 	private String airport;
 	private String days;
 	private String daysWeek;
+	private String detail;
+	private Timestamp REGDATE;
+	
 	public int getPackNo() {
 		return packNo;
 	}
@@ -33,11 +40,23 @@ public class ManagerPackVo {
 	public void setImgSizes(String imgSizes) {
 		this.imgSizes = imgSizes;
 	}
-	public String getDestnation() {
-		return destnation;
+	public String getCountry() {
+		return country;
 	}
-	public void setDestnation(String destnation) {
-		this.destnation = destnation;
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	public String getAirport() {
 		return airport;
@@ -57,11 +76,23 @@ public class ManagerPackVo {
 	public void setDaysWeek(String daysWeek) {
 		this.daysWeek = daysWeek;
 	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	public Timestamp getREGDATE() {
+		return REGDATE;
+	}
+	public void setREGDATE(Timestamp rEGDATE) {
+		REGDATE = rEGDATE;
+	}
 	@Override
 	public String toString() {
 		return "ManagerPackVo [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes="
-				+ imgSizes + ", destnation=" + destnation + ", airport=" + airport + ", days=" + days + ", daysWeek="
-				+ daysWeek + "]";
+				+ imgSizes + ", country=" + country + ", city=" + city + ", keyword=" + keyword + ", airport=" + airport
+				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", REGDATE=" + REGDATE + "]";
 	}
 	
 }

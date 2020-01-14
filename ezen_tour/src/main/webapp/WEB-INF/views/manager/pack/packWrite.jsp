@@ -16,8 +16,18 @@
 		</div>
 		
 		<div>
-			<label for="destnation">대표 목적지</label>
-			<input type="text" id="destnation" name="destnation">
+			<label for="country">해당국가</label>
+			<input type="text" id="country" name="country">
+		</div>
+		
+		<div>
+			<label for="city">해당도시</label>
+			<input type="text" id="city" name="city">
+		</div>
+		
+		<div>
+			<label for="keyword">키워드</label>
+			<input type="text" id="keyword" name="keyword">
 		</div>
 		
 		<div>
@@ -36,8 +46,8 @@
 		</div>
 		
 		<div>
-			<label for="daysWeek">출발요일</label>
-			<input type="text" id="daysWeek" name="daysWeek">
+			<label for="detail">상세설명</label>
+			<input type="text" id="detail" name="detail">
 		</div>
 		
 		<input type="submit" value="전송">
