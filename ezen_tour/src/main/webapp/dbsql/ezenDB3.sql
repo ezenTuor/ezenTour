@@ -6,6 +6,7 @@ CREATE TABLE PACK (
 	IMG_SIZES VARCHAR2(1000), /* 이미지크기(LIST) */
 	CONUTRY VARCHAR2(40), /* 여행국가 */
 	CITY VARCHAR2(100), /* 여행도시 */
+	KEYWORD VARCHAR2(1000), /* 패키지 키워드 */
 	AIRPORT VARCHAR2(100), /* 이용항공 */
 	DAYS VARCHAR2(60), /* 여행기간 */
 	DAYS_WEEK VARCHAR2(60), /* 출발요일 */
@@ -67,9 +68,9 @@ CREATE TABLE SCHEDULE (
 	SCHEDULE_NO NUMBER NOT NULL, /* 일정번호 */
 	PACK_DNO NUMBER, /* 소분류 번호 */
 	DETAIL CLOB, /* 내용 */
-	DAY DATE, /* 날짜 */
+	DAY NUMBER, /* 일차 */
 	MEAL VARCHAR2(300), /* 식사 */
-	HOTEL VARCAR2(300), /* 숙박 */
+	HOTEL VARCHAR2(300), /* 숙박 */
 	HOTEL_H VARCHAR2(40), /* 경도 */
 	HOTEL_V VARCHAR2(40) /* 위도 */
 );
