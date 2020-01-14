@@ -37,6 +37,22 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int selectDuplicate(String user_id) {
-		return memberDao.selectDuplicate(user_id);
+		int result=0;
+		
+		int count = memberDao.selectDuplicate(user_id);
+		
+		if(count>0) {
+			result=EXIST_ID; //해당 아이디 이미 존재
+		}else {
+			result=USEFUL_ID; //사용가능
+		}
+		
+		return result;
+
+	}
+
+	@Override
+	public int editMember(MemberVO vo) {
+		return memberDao.editMember(vo);
 	}
 }

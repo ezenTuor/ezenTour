@@ -24,14 +24,14 @@ import com.ezen.tour.member.model.MemberVO;
 public class MemberController {
 	private static final Logger logger
 		=LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private MemberService memberService;
-	
+
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login_get() {
 		logger.info("로그인 화면 보여주기");
-		
+
 		return "member/login";
 	}
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
@@ -43,7 +43,7 @@ public class MemberController {
 
 		logger.info("로그인 처리, 파라미터 userid={}, pwd={}", user_id, user_pwd);
 		logger.info("chkSave={}", chkSave);
-		
+
 		int result=memberService.loginCheck(user_id, user_pwd);
 		String msg="", url="/login/login.do";
 		if(result==MemberService.LOGIN_OK) {
@@ -91,10 +91,12 @@ public class MemberController {
 		logger.info("회원가입 화면 보여주기");		
 	}
 	
+
 	@RequestMapping("/memberWrite.do")
-	public String memberInsert(@ModelAttribute MemberVO vo, 
-			@RequestParam String email3,
-			ModelMap model) {
+	public String write(@ModelAttribute MemberVO vo, 
+			@RequestParam(required = false) String email3,
+			Model model) {
+		
 		logger.info("회원가입 처리, 파라미터 vo={}, email3={}", vo, email3);
 		
 		String hp1=vo.getHp1();
@@ -123,6 +125,12 @@ public class MemberController {
 		
 		logger.info("값 변경 후 vo={}", vo);
 		
+		/*
+		 * if(vo.getAddress()==null || vo.getAddress().isEmpty()) { vo.setAddress(" ");
+		 * vo.setAddress_detail(" "); }
+		 */
+		
+		
 		int cnt=memberService.insertMember(vo);
 		logger.info("회원가입 결과, cnt={}", cnt);
 				
@@ -138,13 +146,13 @@ public class MemberController {
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
-		return "common/message";				
+		return "common/message";	
 	}
 	
 	@RequestMapping("/idCheck.do")
 	public String checkUserid(@RequestParam String user_id,
 			Model model) {
-		logger.info("아이디 중복확인, 파라미터 userid={}", user_id);
+		logger.info("아이디 중복확인, 파라미터 user_id={}", user_id);
 		
 		int result=0;
 		
@@ -159,6 +167,84 @@ public class MemberController {
 		
 		return "member/idCheck";
 	}
+	@RequestMapping(value="/memberEdit.do", method = RequestMethod.GET)
+	public String memberEdit_get(HttpSession session, Model model) {
+		String user_id=(String) session.getAttribute("userid");		
+		logger.info("회원수정 화면 보여주기, 파라미터 userid={}", user_id);
+		
+		/*
+		if(userid==null || userid.isEmpty()) {
+			model.addAttribute("msg", "먼저 로그인하세요");
+			model.addAttribute("url", "/login/login.do");
+			
+			return "common/message";
+		}*/
+		
+		MemberVO vo=memberService.selectMember(user_id);
+		logger.info("회원정보 조회 결과, vo={}", vo);
+		
+		model.addAttribute("vo", vo);
+		
+		return "member/memberEdit";		
+	}
 	
-	
+	@RequestMapping(value="/memberEdit.do", method = RequestMethod.POST)
+	public String memberEdit_post(@ModelAttribute MemberVO vo,
+			@RequestParam(required = false) String email3,
+			HttpSession session, Model model) {
+		//1
+		String user_id=(String) session.getAttribute("userid");
+		vo.setUser_id(user_id);
+		logger.info("회원수정처리, 파라미터 vo={}, email3={}", vo, email3);
+				
+		//2
+		String hp1=vo.getHp1();
+		String hp2=vo.getHp2();
+		String hp3=vo.getHp3();
+		
+		if(hp2==null || hp2.isEmpty() || hp3==null || hp3.isEmpty()) {
+			vo.setHp1("");
+			vo.setHp2("");
+			vo.setHp3("");			
+		}
+		
+		String email1=vo.getEmail1();
+		String email2=vo.getEmail2();
+		if(email1==null || email1.isEmpty()) {
+			email1="";
+			email2="";			
+		}else {
+			if(email2.equals("etc")) {
+				if(email3!=null && !email3.isEmpty()) {
+					email2=email3;
+				}else {
+					email1="";
+					email2="";
+				}
+			}
+		}
+		vo.setEmail1(email1);
+		vo.setEmail2(email2);
+		
+		int result=memberService.loginCheck(user_id, vo.getUser_pwd());
+		
+		String msg="", url="/member/memberEdit.do";
+		if(result==MemberService.LOGIN_OK) {
+			int cnt=memberService.editMember(vo);
+			if(cnt>0) {
+				msg="회원정보 수정되었습니다.";
+			}else {
+				msg="회원정보 수정 실패!";
+			}		
+		}else if(result==MemberService.DISAGREE_PWD) {
+			msg="비밀번호가 일치하지 않습니다.";
+		}else {
+			msg="비밀번호 체크 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
 }

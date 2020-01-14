@@ -11,6 +11,16 @@ public class MemberVO {
 	private String address;
 	private String address_detail;
 	private String hp1;
+	private String hp2;
+	private String hp3;
+	private String email1;
+	private String email2;
+	private String grade;
+	private String user_ssr;
+	private String gender;
+	private Timestamp regdate;
+	private String del_flag;
+	private Timestamp deldate;
 	public String getHp1() {
 		return hp1;
 	}
@@ -35,22 +45,14 @@ public class MemberVO {
 	public void setEmail1(String email1) {
 		this.email1 = email1;
 	}
-	private String hp2;
-	private String hp3;
-	private String email1;
-	private String email2;
+	
 	public String getEmail2() {
 		return email2;
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
-	private String grade;
-	private String user_ssr;
-	private String gender;
-	private Timestamp regdate;
-	private String del_flag;
-	private Timestamp deldate;
+	
 	public int getUser_no() {
 		return user_no;
 	}

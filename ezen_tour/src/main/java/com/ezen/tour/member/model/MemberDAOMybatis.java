@@ -9,7 +9,7 @@ public class MemberDAOMybatis implements MemberDAO{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	String namespace="com.mybatis.mapper.eztuor.";
+	String namespace="config.mybatis.mapper.oracle.ezentour.";
 	
 	@Override
 	public int insertMember(MemberVO vo) {
@@ -28,6 +28,11 @@ public class MemberDAOMybatis implements MemberDAO{
 
 	@Override
 	public int selectDuplicate(String user_id) {
-		return sqlSession.selectOne(namespace+"selectDuplicate",user_id);
+		return sqlSession.selectOne(namespace+"selectDup",user_id);
+	}
+
+	@Override
+	public int editMember(MemberVO vo) {
+		return sqlSession.update(namespace+"editMember",vo);
 	}
 }

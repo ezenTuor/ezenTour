@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mybatis.mapper.ezentour">
-	<insert id="">
+<mapper namespace="config.mybatis.mapper.oracle.ezentour">
+	<insert id="insertMember" parameterType="memberVo">
 		<selectKey keyProperty="user_no" resultType="int" order="BEFORE">
 			select member_seq.nextval from dual
 		</selectKey>
 		insert into member(user_no,user_id,user_pwd,name,zipcode,
-			address,address_detail,hp,email,grade,user_ssr,gender,
-			regdate,del_flag, deldate)
+			address,address_detail,hp1,hp2,hp3,email1,email2,grade,user_ssr,gender
+			,regdate)
 		values(#{user_no},#{user_id},#{user_pwd},#{name},#{zipcode},
-			#{address},#{address_detail},#{hp},#{email},#{grade},
-			#{user_ssr},#{gender},#{del_flag},#{deldate},)
+			#{address},#{address_detail},#{hp1},#{hp2},#{hp3},#{email1},#{email2},
+			#{grade},#{user_ssr},#{gender},sysdate)
 	</insert>
 
 	<select id="selectMember" parameterType="string" resultType="memberVo">
@@ -24,10 +24,22 @@
 		select user_pwd from member 
 		where user_id=#{user_id} and deldate is null
 	</select>
-	<select id="selectDuplicate" parameterType="string" resultType="int">
+	<select id="selectDup" parameterType="string" resultType="int">
 		select count(*) from member
 		where user_id=#{user_id}
 	</select>
+	<update id="memberUpdate" parameterType="memberVo">
+		update member
+		set zipcode = #{zipcode}, address = #{address}, 
+		address_detail = #{address_detail}, hp1 = #{hp1}, hp2 = #{hp2}, 
+		hp3 = #{hp3}, email1 = #{email1}, email2 = #{email2}
+		where user_id=#{user_id};
+	</update>
+	<update id="delMember">
+		update member
+		set del_flag = 1, deldate = sysdate
+		where user_id= ?;
+	</update>
 </mapper>
 
 

@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- jquery파일 추가 부분 -->
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript">
+var j_ctxPath="/tour";
 $(function(){
 	$("#email2").change(function(){
 		if($(this).val()=='etc'){
@@ -20,29 +16,16 @@ $(function(){
 	});
 	
 	$("#btnChkId").click(function(){
-		var userid=$("#userid").val();
+		var user_id=$("#user_id").val();
 		
 		window.open(j_ctxPath+"/member/idCheck.do?user_id="+user_id,"chkId",
 	"width=450,height=200,left=0,top=0,location=yes,resizable=yes");
-	});
-	
-	$("#btChkAdminId").click(function(){
-		var user_id=$("#user_id").val();
-		
-		window.open(j_ctxPath+"/admin/manager/idCheck.do?user_id="+user_id,"chkId",
-		"width=450,height=200,left=0,top=0,location=yes,resizable=yes");
-	});
-
-		
-	$("#btnZipcode").click(function(){
-		window.open(j_ctxPath+"/zipcode/zipcode.do","zip",
-	"width=500,height=600,left=0,top=0,location=yes,resizable=yes");		
 	});
 });
 
 
 </script>
-
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 function validate_phone(ph){
 	 var pattern=new RegExp(/^[0-9]*$/g);
@@ -52,6 +35,42 @@ function validate_phone(ph){
 function validate_userid(uid){
   var pattern= new RegExp(/^[a-zA-Z0-9_]+$/g);
   return pattern.test(uid);
+}
+function Postcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            if(data.userSelectedType === 'R'){
+                
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                document.getElementById("extraAddress").value = extraAddr;
+            
+            } else {
+                document.getElementById("extraAddress").value = '';
+            }
+
+            document.getElementById('zipcode').value = data.zonecode;
+            document.getElementById("address").value = addr;
+            document.getElementById("address_detail").focus();
+        }
+    }).open();
 }
 </script>
 </head>
@@ -81,16 +100,11 @@ function validate_userid(uid){
         <input type="Password" name="pwd2" id="pwd2">
     </div>
     <div>
-        <label for="zipcode">주소</label>
-        <input type="text" name="zipcode" id="zipcode" ReadOnly  
-        	title="우편번호" class="width_80">
-        <input type="Button" value="우편번호 찾기" id="btnZipcode" 
-        	title="새창열림"><br />
-        <span class="sp1">&nbsp;</span>
-        <input type="text" name="address" ReadOnly title="주소"  
-        	class="width_350"><br />
-        <span class="sp1">&nbsp;</span>
-        <input type="text" name="addressDetail" title="상세주소"  class="width_350">
+       <input type="text" id="zipcode" name = "zipcode" placeholder="우편번호">
+		<input type="button" onclick="Postcode()" value="우편번호 찾기"><br>
+		<input type="text" id="address" name="address" placeholder="주소"><br>
+		<input type="text" id="address_detail" name="address_detail" placeholder="상세주소">
+		<input type="text" id="extraAddress" placeholder="참고항목">
     </div>
     <div>
         <label for="hp1">핸드폰</label>&nbsp;
@@ -121,9 +135,20 @@ function validate_userid(uid){
         <input type="text" name="email3" id="email3" title="직접입력인 경우 이메일주소 뒷자리"
         	style="visibility:hidden">
     </div>
+     <div>
+    	<label for="user_ssr">주민등록 번호</label>
+    	<input type="text" name="user_ssr" placeholder="xxxxxx-ooooooo">
+    </div>
+    <div>
+    	<label for="gender">성별</label>
+    	<input type="radio" name="gender" value="M">남
+    	<input type="radio" name="gender" value="F">여
+    </div>
     <div class="center">
          <input type="submit" id="wr_submit" value="회원가입">
     </div>
+    <input type="hidden" value="C" name="grade">
+    <input type="hidden" value=" " name="del_flag">
 </fieldset>
 
     <input type ="text" name="chkId" id="chkId">
@@ -131,6 +156,4 @@ function validate_userid(uid){
 </form>
 </div>
 </article>
-</body>
-</html>
 <%@ include file="../inc/bottom.jsp" %>
