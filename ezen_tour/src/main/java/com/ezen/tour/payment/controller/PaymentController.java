@@ -1,0 +1,19 @@
+package com.ezen.tour.payment.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/payment")
+public class PaymentController {
+	public static final Logger logger
+		=LoggerFactory.getLogger(PaymentController.class);
+	
+	@RequestMapping("/payment.do")
+	public void payment() {
+		logger.info("결제화면 보여주기");
+	}
+	
+}
