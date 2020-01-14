@@ -23,14 +23,14 @@ public class PackageController {
 	
 	@RequestMapping("/packageDetail.do")
 	public String packageDetail(@RequestParam(defaultValue = "1") int packDno, Model model) {
-		logger.info("ÆÐÅ°Áö °³º° »ó¼¼ Á¤º¸, packDno={}", packDno);
+		logger.info("ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, packDno={}", packDno);
 		
 		if(packDno==0) {
-			logger.info("¾ø´Â ÆäÀÌÁö");
+			logger.info("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
-		logger.info("»ó¼¼º¸±â °á°ú, vo={}", packDetailVo);
+		logger.info("ï¿½ó¼¼ºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, vo={}", packDetailVo);
 		
 		int packNumber = packDetailVo.getPackNo();
 		
@@ -43,19 +43,19 @@ public class PackageController {
 	
 	@RequestMapping("/packageList.do")
 	public String packageList() {
-		logger.info("ÆÐÅ°Áö ¸®½ºÆ®");
+		logger.info("ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®");
 		return "package/packageList";
 	}
 	
 	@RequestMapping("/packageListDetail.do")
 	public String packageListDetail() {
-		logger.info("ÆÐÅ°Áö ¸®½ºÆ® »ó¼¼ Á¤º¸");
+		logger.info("ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		return "package/packageListDetail";
 	}
 	
-	@RequestMapping("/packageSelectSchedule.do")
+	@RequestMapping("/packSelectSchedule.do")
 	public String packageSelectSchedule() {
-		logger.info("ÆÐÅ°Áö ¸®½ºÆ® »ó¼¼ Á¤º¸");
-		return "package/packageSelectSchedule";
+		logger.info("ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		return "package/packSelectSchedule";
 	}
 }

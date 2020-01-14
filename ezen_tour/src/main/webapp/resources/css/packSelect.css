@@ -23,8 +23,42 @@
 	background: lightgray;
 	height: 50px;
 	width:100%;
+	display: flex;
+	align-items: center;
+	
 }
 
-#title-tag {
-	display: flex;
+#title-tag div {
+	border: 1px solid gray;
+}
+
+
+.dep {
+	text-align: center;
+	width:24%;
+}
+
+.air {
+	text-align: center;
+	width:15%;	
+}
+
+.during {
+	text-align: center;
+	width:10%;		
+}
+
+.packname{
+	text-align: center;
+	width:27%;	
+}
+
+.price{
+	text-align: center;
+	width:14%;	
+}
+
+.res {
+	text-align: center;
+	width:10%;	
 }
