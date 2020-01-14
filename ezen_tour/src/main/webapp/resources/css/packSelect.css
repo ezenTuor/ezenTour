@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#packSel-body {
+	background: lightblue;
+	width: 1300px;
+	margin: 0 auto;
+	height: 500px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#left-menu {
+	width:20%;
+	background: purple;
+}
+
+#right-menu {
+	width: 78%;
+	background: yellow;
+}
+
+#title-tag {
+	background: lightgray;
+	height: 50px;
+	width:100%;
+}
+
+#title-tag {
+	display: flex;
+}

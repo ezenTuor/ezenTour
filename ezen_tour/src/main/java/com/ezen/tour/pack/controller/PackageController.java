@@ -52,4 +52,10 @@ public class PackageController {
 		logger.info("패키지 리스트 상세 정보");
 		return "package/packageListDetail";
 	}
+	
+	@RequestMapping("/packageSelectSchedule.do")
+	public String packageSelectSchedule() {
+		logger.info("패키지 리스트 상세 정보");
+		return "package/packageSelectSchedule";
+	}
 }
