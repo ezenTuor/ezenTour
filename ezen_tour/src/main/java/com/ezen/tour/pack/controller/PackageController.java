@@ -23,14 +23,14 @@ public class PackageController {
 	
 	@RequestMapping("/packageDetail.do")
 	public String packageDetail(@RequestParam(defaultValue = "1") int packDno, Model model) {
-		logger.info("��Ű�� ���� �� ����, packDno={}", packDno);
+		logger.info("패키지 디테일 페이지, packDno={}", packDno);
 		
 		if(packDno==0) {
 			logger.info("���� ������");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
-		logger.info("�󼼺��� ���, vo={}", packDetailVo);
+		logger.info("패키지 디테일 넘버, vo={}", packDetailVo);
 		
 		int packNumber = packDetailVo.getPackNo();
 		
