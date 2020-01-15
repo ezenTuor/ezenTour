@@ -25,9 +25,12 @@ values(pack_detail_seq.nextval, 1, '213ka1', TO_DATE('2020/01/18 17:30:00','yyyy
 
 commit;
 
-select min(man) from pack_detail 
+select min(man) as "minPrice", 
+max(man) as "maxPrice"
+from pack_detail  
 where pack_no=1;
 
-select max(man) from pack_detail 
+select max(man) as "maxPrice"
+from pack_detail 
 where pack_no=1;
 
