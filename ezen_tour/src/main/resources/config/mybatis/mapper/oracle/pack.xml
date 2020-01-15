@@ -18,6 +18,15 @@
 		where pack_no=#{packNo}
 	</select>
 	
+	<select id="selectMinPrice" parameterType="int" resultType="int">
+		select min(man) from pack_detail 
+		where pack_no=#{packNo};
+	</select>
+	
+	<select id="selectMaxPrice" parameterType="int" resultType="int">
+		select max(man) from pack_detail 
+		where pack_no=#{packNo};
+	</select>
 	
 </mapper>
 

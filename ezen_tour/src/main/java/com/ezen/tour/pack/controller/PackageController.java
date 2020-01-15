@@ -26,7 +26,7 @@ public class PackageController {
 		logger.info("패키지 디테일 페이지, packDno={}", packDno);
 		
 		if(packDno==0) {
-			logger.info("���� ������");
+			logger.info("when packDno it 0");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
@@ -43,19 +43,26 @@ public class PackageController {
 	
 	@RequestMapping("/packageList.do")
 	public String packageList() {
-		logger.info("��Ű�� ����Ʈ");
+		logger.info("This is packageList");
 		return "package/packageList";
 	}
 	
 	@RequestMapping("/packageListDetail.do")
 	public String packageListDetail() {
-		logger.info("��Ű�� ����Ʈ �� ����");
+		logger.info("This is packageListDetail");
 		return "package/packageListDetail";
 	}
 	
 	@RequestMapping("/packSelectSchedule.do")
-	public String packageSelectSchedule() {
-		logger.info("��Ű�� ����Ʈ �� ����");
+	public String packageSelectSchedule(@RequestParam() int packNo, Model model) {
+		logger.info("this is pack SelectSchedule, packNo={}", packNo);
+		
+		if(packNo==0) {
+			logger.info("when packNo it 0");
+		}
+		
+		PackVO packVo = packDetailService.selectPack(packNo);
+		
 		return "package/packSelectSchedule";
 	}
 }

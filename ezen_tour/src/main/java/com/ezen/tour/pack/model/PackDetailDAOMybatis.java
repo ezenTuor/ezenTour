@@ -29,6 +29,16 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		return sqlSession.selectOne(namespace+"selectPack", packNo);
 	}
 	
+	@Override
+	public int selectMinPrice(int packNo) {
+		return sqlSession.selectOne(namespace+"selectMinPrice", packNo);
+	}
+	
+	@Override
+	public int selectMaxPrice(int packNo) {
+		return sqlSession.selectOne(namespace+"selectMaxPrice", packNo);
+	}
+	
 	
 
 }
