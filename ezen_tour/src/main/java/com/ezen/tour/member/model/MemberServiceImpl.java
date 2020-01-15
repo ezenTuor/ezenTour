@@ -52,7 +52,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int editMember(MemberVO vo) {
-		return memberDao.editMember(vo);
+	public int memberUpdate(MemberVO vo) {
+		return memberDao.memberUpdate(vo);
+	}
+
+	@Override
+	public int deleteMember(String user_id) {
+		return memberDao.deleteMember(user_id);
+	}
+
+	@Override
+	public int selectUser_no(String user_id) {
+		return memberDao.selectUser_no(user_id);
 	}
 }

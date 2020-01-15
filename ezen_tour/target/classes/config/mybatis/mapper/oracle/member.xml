@@ -35,11 +35,15 @@
 		hp3 = #{hp3}, email1 = #{email1}, email2 = #{email2}
 		where user_id=#{user_id};
 	</update>
-	<update id="delMember">
+	<update id="deleteMember" parameterType="string">
 		update member
 		set del_flag = 1, deldate = sysdate
-		where user_id= ?;
+		where user_id= #{user_id};
 	</update>
+	<select id="selectUser_no" parameterType="string" resultType="int">
+		select user_no from member
+		where user_id=#{user_id}
+	</select>
 </mapper>
 
 

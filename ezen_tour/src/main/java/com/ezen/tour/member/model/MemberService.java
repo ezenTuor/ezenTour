@@ -13,5 +13,7 @@ public interface MemberService {
 	MemberVO selectMember(String user_id);
 	public int loginCheck(String user_id, String user_pwd);
 	int selectDuplicate(String  user_id);
-	int editMember(MemberVO vo);
+	int memberUpdate(MemberVO vo);
+	int deleteMember(String user_id);
+	int selectUser_no(String user_id);
 }

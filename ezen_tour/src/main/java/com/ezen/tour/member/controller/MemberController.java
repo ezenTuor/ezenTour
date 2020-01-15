@@ -169,8 +169,8 @@ public class MemberController {
 	}
 	@RequestMapping(value="/memberEdit.do", method = RequestMethod.GET)
 	public String memberEdit_get(HttpSession session, Model model) {
-		String user_id=(String) session.getAttribute("userid");		
-		logger.info("회원수정 화면 보여주기, 파라미터 userid={}", user_id);
+		String user_id=(String) session.getAttribute("user_id");		
+		logger.info("회원수정 화면 보여주기, 파라미터 user_id={}", user_id);
 		
 		/*
 		if(userid==null || userid.isEmpty()) {
@@ -193,7 +193,7 @@ public class MemberController {
 			@RequestParam(required = false) String email3,
 			HttpSession session, Model model) {
 		//1
-		String user_id=(String) session.getAttribute("userid");
+		String user_id=(String) session.getAttribute("user_id");
 		vo.setUser_id(user_id);
 		logger.info("회원수정처리, 파라미터 vo={}, email3={}", vo, email3);
 				
@@ -230,12 +230,56 @@ public class MemberController {
 		
 		String msg="", url="/member/memberEdit.do";
 		if(result==MemberService.LOGIN_OK) {
-			int cnt=memberService.editMember(vo);
+			int cnt=memberService.memberUpdate(vo);
 			if(cnt>0) {
 				msg="회원정보 수정되었습니다.";
 			}else {
 				msg="회원정보 수정 실패!";
 			}		
+		}else if(result==MemberService.DISAGREE_PWD) {
+			msg="비밀번호가 일치하지 않습니다.";
+		}else {
+			msg="비밀번호 체크 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	@RequestMapping(value = "/memberOut.do", method = RequestMethod.GET)
+	public void memberOut_get() {
+		logger.info("회원탈퇴 화면 보여주기");
+	}
+	
+	@RequestMapping(value="/memberOut.do", method=RequestMethod.POST)
+	public String memberOut_post(@RequestParam String pwd,
+			HttpSession session, Model model,
+			HttpServletResponse response) {
+		String user_id=(String) session.getAttribute("user_id");		
+		logger.info("회원탈퇴, 파라미터 user_id={}, pwd={}", user_id, pwd);
+		
+		int result=memberService.loginCheck(user_id, pwd);
+		logger.info("비밀번호 체크 결과, result={}", result);
+		
+		String msg="", url="/member/memberOut.do";
+		if(result==MemberService.LOGIN_OK) {
+			int cnt=memberService.deleteMember(user_id);
+			if(cnt>0) {
+				msg="회원탈퇴 처리되었습니다.";
+				url="/index.do";
+				
+				//session
+				session.invalidate();
+				
+				//cookie
+				Cookie ck = new Cookie("ck_userid", user_id);
+				ck.setPath("/");
+				ck.setMaxAge(0);
+				response.addCookie(ck);
+			}else {
+				msg="회원탈퇴 실패";
+			}
 		}else if(result==MemberService.DISAGREE_PWD) {
 			msg="비밀번호가 일치하지 않습니다.";
 		}else {

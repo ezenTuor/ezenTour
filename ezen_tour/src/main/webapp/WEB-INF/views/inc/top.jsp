@@ -40,9 +40,9 @@
 		            <li><a href="#">마이페이지</a>
 		            <!-- Third Tier Drop Down -->
 		            <ul>
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
+		                <li><a href="#">내가받은 쿠폰</a></li>
+		                <li><a href="#">마일리지</a></li>
+		                <li><a href="#">Wish List</a></li>
 		            </ul>        
 		            </li>
 		            
