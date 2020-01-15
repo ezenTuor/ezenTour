@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.pack.model.MaxMinPriceVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackVO;
@@ -23,14 +24,14 @@ public class PackageController {
 	
 	@RequestMapping("/packageDetail.do")
 	public String packageDetail(@RequestParam(defaultValue = "1") int packDno, Model model) {
-		logger.info("��Ű�� ���� �� ����, packDno={}", packDno);
+		logger.info("패키지 디테일 페이지, packDno={}", packDno);
 		
 		if(packDno==0) {
-			logger.info("���� ������");
+			logger.info("when packDno it 0");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
-		logger.info("�󼼺��� ���, vo={}", packDetailVo);
+		logger.info("패키지 디테일 넘버, vo={}", packDetailVo);
 		
 		int packNumber = packDetailVo.getPackNo();
 		
@@ -43,19 +44,31 @@ public class PackageController {
 	
 	@RequestMapping("/packageList.do")
 	public String packageList() {
-		logger.info("��Ű�� ����Ʈ");
+		logger.info("This is packageList");
 		return "package/packageList";
 	}
 	
 	@RequestMapping("/packageListDetail.do")
 	public String packageListDetail() {
-		logger.info("��Ű�� ����Ʈ �� ����");
+		logger.info("This is packageListDetail");
 		return "package/packageListDetail";
 	}
 	
 	@RequestMapping("/packSelectSchedule.do")
-	public String packageSelectSchedule() {
-		logger.info("��Ű�� ����Ʈ �� ����");
+	public String packageSelectSchedule(@RequestParam(defaultValue="1") int packNo, Model model) {
+		logger.info("this is pack SelectSchedule, packNo={}", packNo);
+		
+		if(packNo==0) {
+			logger.info("when packNo is 0");
+		}
+		
+		PackVO packVo = packDetailService.selectPack(packNo);
+		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
+		logger.info("when minPrice is={}", maxMin);
+		
+		model.addAttribute("packVo", packVo);
+		model.addAttribute("maxMin",maxMin);
+		
 		return "package/packSelectSchedule";
 	}
 }

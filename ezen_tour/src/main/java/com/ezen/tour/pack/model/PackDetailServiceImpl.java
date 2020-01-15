@@ -28,4 +28,10 @@ public class PackDetailServiceImpl implements PackDetailService {
 		return packDetailDao.selectPack(packNo);
 	}
 
+	@Override
+	public MaxMinPriceVO selectMinMaxPrice(int packNo) {
+		return packDetailDao.selectMinMaxPrice(packNo);
+	}
+	
+	
 }

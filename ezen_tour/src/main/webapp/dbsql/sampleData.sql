@@ -20,3 +20,17 @@ select * from pack_detail;
 insert into pack_detail
 values(pack_detail_seq.nextval, 1, '21321', TO_DATE('2020/01/14 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/15 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21823' , TO_DATE('2020/01/20 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/21 11:30:00','yyyy/mm/dd hh24:mi:ss'), 2900000, 2100000, 700000, '김포공항', '6일', 'Y', '내용 상세', '필요없는 컬럼(삭제예정) - 예시:파리', '필요없는 컬럼', '필요없는 컬럼', 25, 40, 12);
 
+insert into pack_detail
+values(pack_detail_seq.nextval, 1, '213ka1', TO_DATE('2020/01/18 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/19 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21829' , TO_DATE('2020/01/24 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/25 11:30:00','yyyy/mm/dd hh24:mi:ss'), 350000, 230000, 800000, '김포공항', '6일', 'Y', '내용 상세', '필요없는 컬럼(삭제예정) - 예시:파리', '필요없는 컬럼', '필요없는 컬럼', 25, 40, 16);
+
+commit;
+
+select min(man) as "minPrice", 
+max(man) as "maxPrice"
+from pack_detail  
+where pack_no=1;
+
+select max(man) as "maxPrice"
+from pack_detail 
+where pack_no=1;
+

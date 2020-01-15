@@ -1,8 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packSelect.css"/>
+
+<script type="text/javascript" 
+	src="<c:url value='/resources/js/vanilla-calendar-min.js'/>"></script>
+	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/vanilla-calendar-min.css" />
+
+
+
 <div id="packSel-body">
+
 
 <!-- 예시:https://www.ybtour.co.kr/product/localList.yb?menu=PKG&dspSid=AADC000&goodsCd=CIP1106 -->
 
@@ -11,10 +21,14 @@
 	</div>
 	
 	<div id="right-menu">
-	
-		<h3>패키지 상품명이 들어가는 부분</h3>
-		<div><span>가격최저</span>~<span>가격최대</span></div>
-		<div><span>주요 방문 도시</span>   <span>주요 도시 목록</span></div>
+
+		<div class="cal-container">
+		</div>
+
+		<!-- 이하 본문 -->
+		<h3>${packVo.name}</h3>
+		<div><span>${maxMin.minPrice}원</span>~<span>${maxMin.maxPrice}원</span></div>
+		<div><span>주요 방문 도시 |</span>   <span>${packVo.city }</span></div>
 	
 		<ul>
 			<li id="title-tag">
@@ -43,4 +57,6 @@
 	</div>
 
 </div>
+
+
 <%@include file="../inc/bottom.jsp"%>

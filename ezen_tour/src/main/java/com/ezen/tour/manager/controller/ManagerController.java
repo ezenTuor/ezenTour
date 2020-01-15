@@ -36,7 +36,7 @@ public class ManagerController {
 	@Autowired
 	private ManagerPackService managerPackService;
 	
-	@RequestMapping("/test")
+	@RequestMapping("/test2.do")
 	public void test() {
 		logger.info("에디터 테스트중");
 	}
@@ -88,7 +88,7 @@ public class ManagerController {
 		int cnt=managerPackService.insertPack(packVo);
 		logger.info("pack 입력 처리 cnt={}", cnt);
 		
-		return "manager/pack/detailWrite";
+		return "redirect:/manager/pack/detailWrite.do";
 	}
 
 	
@@ -136,4 +136,8 @@ public class ManagerController {
 		return;
 	}
 	
+	@RequestMapping(value="/pack/detailWrite.do", method=RequestMethod.GET)
+	public void detailWrite_get() {
+		logger.info("패키지 상세 작성 화면 처리");
+	}
 }

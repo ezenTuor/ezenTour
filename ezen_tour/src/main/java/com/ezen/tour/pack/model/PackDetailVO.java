@@ -16,14 +16,15 @@ public class PackDetailVO {
 	private int child;
 	private int baby;
 	private String airline;
-	private String days_detail;
+	private String daysDetail;
 	private char shopping;
 	private String details;
 	private String destinations;
 	private String dates;
-	private String travel_flag;
-	private int capecity_min;
+	private String travelFlag;
+	private int capecityMin;
 	private int capecity;
+	private int capecityCur;
 	
 	public int getPackDno() {
 		return packDno;
@@ -97,11 +98,11 @@ public class PackDetailVO {
 	public void setAirline(String airline) {
 		this.airline = airline;
 	}
-	public String getDays_detail() {
-		return days_detail;
+	public String getDaysDetail() {
+		return daysDetail;
 	}
-	public void setDays_detail(String days_detail) {
-		this.days_detail = days_detail;
+	public void setDaysDetail(String daysDetail) {
+		this.daysDetail = daysDetail;
 	}
 	public char getShopping() {
 		return shopping;
@@ -127,17 +128,17 @@ public class PackDetailVO {
 	public void setDates(String dates) {
 		this.dates = dates;
 	}
-	public String getTravel_flag() {
-		return travel_flag;
+	public String getTravelFlag() {
+		return travelFlag;
 	}
-	public void setTravel_flag(String travel_flag) {
-		this.travel_flag = travel_flag;
+	public void setTravelFlag(String travelFlag) {
+		this.travelFlag = travelFlag;
 	}
-	public int getCapecity_min() {
-		return capecity_min;
+	public int getCapecityMin() {
+		return capecityMin;
 	}
-	public void setCapecity_min(int capecity_min) {
-		this.capecity_min = capecity_min;
+	public void setCapecityMin(int capecityMin) {
+		this.capecityMin = capecityMin;
 	}
 	public int getCapecity() {
 		return capecity;
@@ -145,15 +146,21 @@ public class PackDetailVO {
 	public void setCapecity(int capecity) {
 		this.capecity = capecity;
 	}
+	public int getCapecityCur() {
+		return capecityCur;
+	}
+	public void setCapecityCur(int capecityCur) {
+		this.capecityCur = capecityCur;
+	}
 	
 	@Override
 	public String toString() {
 		return "PackDetailVO [packDno=" + packDno + ", packNo=" + packNo + ", depCode=" + depCode + ", koreaDep="
 				+ koreaDep + ", localEnt=" + localEnt + ", entCode=" + entCode + ", localDep=" + localDep
 				+ ", koreaEnt=" + koreaEnt + ", man=" + man + ", child=" + child + ", baby=" + baby + ", airline="
-				+ airline + ", days_detail=" + days_detail + ", shopping=" + shopping + ", details=" + details
-				+ ", destinations=" + destinations + ", dates=" + dates + ", travel_flag=" + travel_flag
-				+ ", capecity_min=" + capecity_min + ", capecity=" + capecity + "]";
+				+ airline + ", daysDetail=" + daysDetail + ", shopping=" + shopping + ", details=" + details
+				+ ", destinations=" + destinations + ", dates=" + dates + ", travelFlag=" + travelFlag
+				+ ", capecityMin=" + capecityMin + ", capecity=" + capecity + ", capecityCur=" + capecityCur + "]";
 	}
 	
 	
