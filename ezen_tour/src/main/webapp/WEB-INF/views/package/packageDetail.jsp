@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
-<script type="text/javascript" 
-	src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 
 
 
