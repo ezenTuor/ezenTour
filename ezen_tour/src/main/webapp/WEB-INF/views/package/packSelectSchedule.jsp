@@ -12,9 +12,9 @@
 	
 	<div id="right-menu">
 	
-		<h3>패키지 상품명이 들어가는 부분</h3>
-		<div><span>가격최저</span>~<span>가격최대</span></div>
-		<div><span>주요 방문 도시</span>   <span>주요 도시 목록</span></div>
+		<h3>${packVo.name}</h3>
+		<div><span>${maxMin.minPrice}원</span>~<span>${maxMin.maxPrice}원</span></div>
+		<div><span>주요 방문 도시 |</span>   <span>${packVo.city }</span></div>
 	
 		<ul>
 			<li id="title-tag">

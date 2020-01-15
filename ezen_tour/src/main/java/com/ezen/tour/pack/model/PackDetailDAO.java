@@ -10,8 +10,6 @@ public interface PackDetailDAO {
 
 	PackVO selectPack(int packNo);
 
-	int selectMinPrice(int packNo);
-
-	int selectMaxPrice(int packNo);
+	MaxMinPriceVO selectMinMaxPrice(int packNo);
 
 }

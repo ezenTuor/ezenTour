@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.pack.model.MaxMinPriceVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackVO;
@@ -54,14 +55,19 @@ public class PackageController {
 	}
 	
 	@RequestMapping("/packSelectSchedule.do")
-	public String packageSelectSchedule(@RequestParam() int packNo, Model model) {
+	public String packageSelectSchedule(@RequestParam(defaultValue="1") int packNo, Model model) {
 		logger.info("this is pack SelectSchedule, packNo={}", packNo);
 		
 		if(packNo==0) {
-			logger.info("when packNo it 0");
+			logger.info("when packNo is 0");
 		}
 		
 		PackVO packVo = packDetailService.selectPack(packNo);
+		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
+		logger.info("when minPrice is={}", maxMin);
+		
+		model.addAttribute("packVo", packVo);
+		model.addAttribute("maxMin",maxMin);
 		
 		return "package/packSelectSchedule";
 	}
