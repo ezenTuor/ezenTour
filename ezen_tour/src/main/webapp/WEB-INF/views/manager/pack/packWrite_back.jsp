@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
-<script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script type="text/javascript">
-$(function(){
-    CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
-    	filebrowserUploadUrl: "<c:url value='/manager/imageUpload.do'/>"
-    });
-});
-</script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
 		<form name="pdWrite" method="post" enctype="multipart/form-data"
@@ -53,13 +45,11 @@ $(function(){
 			
 			<div>
 				<label for="detail">상세설명</label>
-				<textarea name="detail" id="detail" rows="10" cols="80">
-					This is my textarea to be replaced with CKEditor.
-			    </textarea>
+				<input type="text" id="detail" name="detail">
 			</div>
-			<p class="managerSubmit">
-				<input type="submit" value="전송">
-			</p>
+			
+			<input type="submit" value="전송">
+			
 		</form>
 	</article>
 <%@include file="../../inc/adminBottom.jsp"%>

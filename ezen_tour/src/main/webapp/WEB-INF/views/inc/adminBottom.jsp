@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     </section>
+    <section class="clearBoth">
+    </section>
 </section>
 <footer class="bottom-part">
 (주)하나투어┃대표:김진국┃주소:(03161) 서울특별시 종로구 인사동 5길 41

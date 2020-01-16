@@ -68,6 +68,7 @@ ALTER TABLE COUNTRY
 /* 지역대분류 */
 CREATE TABLE AREA (
 	AREA_NO NUMBER NOT NULL, /* 지역번호 */
+	AREA_C varchar2(4) NOT NULL, /* 지역코드 */
 	NAME VARCHAR2(30), /* 지역이름 */
 	DETAIL CLOB /* 설명 */
 );

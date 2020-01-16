@@ -8,13 +8,26 @@
 <title>테스트 화면입니다.</title>
 </head>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.4.1.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/ckeditor/ckeditor.js"/>"></script>
+<script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
 $(function(){
-    
+	CKEDITOR.config.allowedContent = true;
+	CKEDITOR.filebrowserUploadMethod = 'form';
     CKEDITOR.replace('editor1', {//해당 이름으로 된 textarea에 에디터를 적용
-        filebrowserUploadUrl: "${pageContext.request.contextPath}/manager/fileTest.do"
+    	filebrowserUploadUrl: "<c:url value='/manager/imageUpload.do'/>"
     });
+    CKEDITOR.on('dialogDefinition', function( ev ){
+	    var dialogName = ev.data.name;
+	    var dialogDefinition = ev.data.definition;
+	 
+	    switch (dialogName) {
+	    	case 'image': //Image Properties dialog
+	        	//dialogDefinition.removeContents('info');
+	            dialogDefinition.removeContents('Link');
+	            dialogDefinition.removeContents('advanced');
+	            break;
+	    }
+	});
 });
 </script>
 <body>

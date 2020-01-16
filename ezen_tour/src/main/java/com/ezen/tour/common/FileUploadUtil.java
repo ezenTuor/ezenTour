@@ -109,7 +109,7 @@ public class FileUploadUtil {
 		return path;
 	}
 
-	private String getUniqueFileName(String originFileName) {
+	public String getUniqueFileName(String originFileName) {
 		//파일명에 현재시간(년월일시분초밀리초)을 붙여서 파일명 변경
 		//abc.txt => abc20191224120350123.txt
 		int idx=originFileName.lastIndexOf(".");

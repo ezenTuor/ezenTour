@@ -4,5 +4,18 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	
+	CKEDITOR.config.allowedContent = true;
+	CKEDITOR.filebrowserUploadMethod = 'form';
+	CKEDITOR.on('dialogDefinition', function( ev ){
+	    var dialogName = ev.data.name;
+	    var dialogDefinition = ev.data.definition;
+	 
+	    switch (dialogName) {
+	    	case 'image': //Image Properties dialog
+	        	//dialogDefinition.removeContents('info');
+	            dialogDefinition.removeContents('Link');
+	            dialogDefinition.removeContents('advanced');
+	            break;
+	    }
+	});
 };
