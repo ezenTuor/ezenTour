@@ -1,17 +1,10 @@
 package com.ezen.tour.manager.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ezen.tour.common.FileUploadUtil;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
-import com.google.gson.JsonObject;
 
 @Controller
 @RequestMapping("/manager")
@@ -38,11 +27,6 @@ public class ManagerController{
 	
 	@Autowired
 	private ManagerPackService managerPackService;
-	
-	@RequestMapping("/test.do")
-	public void test() {
-		logger.info("에디터 테스트중");
-	}
 	
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
@@ -62,7 +46,7 @@ public class ManagerController{
 		//파일 업로드 처리
 		String paramName="packImages";
 		
-		List<Map<String, Object>> list=fileUtil.fileUpload(request, FileUploadUtil.IMAGE_UPLOAD, paramName);
+		List<Map<String, Object>> list=fileUtil.fileUpload(request, FileUploadUtil.PD_UPLOAD, paramName);
 		
 		//아직 테스트중
 		String fileNames="", fileSizes="";
@@ -94,58 +78,6 @@ public class ManagerController{
 		return "redirect:/manager/pack/detailWrite.do";
 	}
 
-	@RequestMapping("/imageUpload.do")
-	@ResponseBody
-	public void imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartHttpServletRequest multipart) throws IOException {
-		JsonObject json=new JsonObject();
-		PrintWriter printWriter=null;
-		OutputStream out=null;
-		MultipartFile file=multipart.getFile("upload");
-		if(file!=null) {
-			if(file.getSize()>0 && StringUtils.isNotBlank(file.getName())) {
-				if(file.getContentType().toLowerCase().startsWith("image/")) {
-					try {
-						String fileName=file.getOriginalFilename();
-						byte[] bytes=file.getBytes();
-						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.IMAGE_UPLOAD);
-						File uploadFile=new File(uploadPath);
-						System.out.println("파일 이름"+fileName);
-						
-						System.out.println("파일 업로드 위치 찍기"+uploadPath);
-						if(!uploadFile.exists()) {
-							uploadFile.mkdirs();
-						}
-						
-						fileName=fileUtil.getUniqueFileName(fileName);
-						uploadPath=uploadPath+"/"+fileName;
-						out=new FileOutputStream(new File(uploadPath));
-						out.write(bytes);
-						
-						//톰캣 임시파일에도 넣어주기
-						String tempupload="D:\\lecture\\workspace_list\\finalP_ws\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ezen_tour\\resources\\pd_images";
-						tempupload=tempupload+"/"+fileName;
-						out=new FileOutputStream(new File(tempupload));
-						out.write(bytes);
-						
-						printWriter = response.getWriter();
-						response.setContentType("text/html;charset=UTF-8");
-						String fileUrl=request.getContextPath()+"/resources/pd_images/"+fileName;
-						System.out.println("파일 url위치"+fileUrl);
-						json.addProperty("uploaded", 1);
-						json.addProperty("fileName", fileName);
-						json.addProperty("url", fileUrl);
-						
-						printWriter.println(json);
-					}catch(IOException e) {
-						e.printStackTrace();
-					}finally {
-						if(out!=null) out.close();
-						if(printWriter!=null) printWriter.close();
-					}
-				}
-			}
-		}
-	}
 	/*
 	@RequestMapping("/fileTest.do")
 	public void fileTest(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile upload)

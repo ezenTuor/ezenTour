@@ -4,7 +4,7 @@ CREATE TABLE PACK (
 	NAME VARCHAR2(100), /* 패키지이름 */
 	IMG_NAMES VARCHAR2(1000), /* 이미지이름(LIST) */
 	IMG_SIZES VARCHAR2(1000), /* 이미지크기(LIST) */
-	CONUTRY VARCHAR2(40), /* 여행국가 */
+	COUNTRY VARCHAR2(40), /* 여행국가 */
 	CITY VARCHAR2(100), /* 여행도시 */
 	KEYWORD VARCHAR2(1000), /* 키워드 */
 	AIRPORT VARCHAR2(100), /* 이용항공 */

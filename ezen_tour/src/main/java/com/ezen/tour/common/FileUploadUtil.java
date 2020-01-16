@@ -25,7 +25,8 @@ public class FileUploadUtil {
 		=LoggerFactory.getLogger(FileUploadUtil.class);
 	
 	public static final int FILE_UPLOAD=1;  //자료실 파일 업로드
-	public static final int IMAGE_UPLOAD=2; //상품 등록-이미지 업로드
+	public static final int MANAGER_UPLOAD=2; //에디터내 이미지 넣기
+	public static final int PD_UPLOAD=3;	//상품 관련 이미지 넣기
 	
 	
 	@Resource(name = "fileUpProperties")
@@ -88,15 +89,19 @@ public class FileUploadUtil {
 		if(type.equals("test")) {  //테스트 경로
 			if(uploadPathType==FILE_UPLOAD) {
 				path=props.getProperty("file.upload.path.test");
-			}else if(uploadPathType==IMAGE_UPLOAD) {
+			}else if(uploadPathType==MANAGER_UPLOAD) {
+				path=props.getProperty("imageFile.upload.path.test");
+			}else if(uploadPathType==PD_UPLOAD) {
 				path=props.getProperty("imageFile.upload.path.test");
 			}
 		}else { //배포시 실제 경로
 			String upDir="";
 			if(uploadPathType==FILE_UPLOAD) {			
 				upDir=props.getProperty("file.upload.path");
-			}else if(uploadPathType==IMAGE_UPLOAD) {
+			}else if(uploadPathType==MANAGER_UPLOAD) {
 				upDir=props.getProperty("imageFile.upload.path");
+			}else if(uploadPathType==PD_UPLOAD) {
+				path=props.getProperty("imageFile.upload.path");
 			}
 			
 			path
