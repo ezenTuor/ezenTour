@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+
+#area-nav {
+	background: lightgreen;
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
+	justify-content: space-around;
+	
+}
+
+.area-sel a:hover {
+	background: green;
+	font-weight: 800;
+}
+
+#pack-ex{
+	width: 1200px;
+	background: blue;
+	margin: 0 auto;
+	height: 300px;
+}

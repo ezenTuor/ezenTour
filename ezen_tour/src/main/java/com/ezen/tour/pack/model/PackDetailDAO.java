@@ -12,4 +12,6 @@ public interface PackDetailDAO {
 
 	MaxMinPriceVO selectMinMaxPrice(int packNo);
 
+	List<AreaVO> areaSelect();
+
 }

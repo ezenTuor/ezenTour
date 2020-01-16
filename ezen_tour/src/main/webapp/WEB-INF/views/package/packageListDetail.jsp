@@ -5,6 +5,12 @@
 <!-- 예시:https://www.ybtour.co.kr/product/localMain.yb?menu=PKG&dspSid=AAD0000 -->
 <div id="pack-list-detail">
 
+	<div id="left-menu">
+	</div>
+	
+	<div id="right-menu">
+	</div>
+
 
 </div>
 <%@include file="../inc/bottom.jsp"%>

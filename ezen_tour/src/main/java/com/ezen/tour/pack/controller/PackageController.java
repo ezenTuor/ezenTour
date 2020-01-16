@@ -1,5 +1,7 @@
 package com.ezen.tour.pack.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.pack.model.AreaVO;
 import com.ezen.tour.pack.model.MaxMinPriceVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
@@ -43,8 +46,14 @@ public class PackageController {
 	}
 	
 	@RequestMapping("/packageList.do")
-	public String packageList() {
+	public String packageList(Model model) {
 		logger.info("This is packageList");
+		
+		List<AreaVO> areaList = packDetailService.areaSelect();
+		logger.info("areaList.size={}", areaList.size());
+		
+		model.addAttribute("areaList", areaList);
+		
 		return "package/packageList";
 	}
 	

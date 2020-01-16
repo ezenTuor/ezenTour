@@ -9,3 +9,12 @@
 	background: lightyellow;
 	border: 1px solid gray;
 }
+#left-menu {
+	width:20%;
+	background: purple;
+}
+
+#right-menu {
+	width: 78%;
+	background: yellow;
+}

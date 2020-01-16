@@ -25,6 +25,10 @@
 		where pack_no=#{packNo}
 	</select>
 	
+	<select id="areaSelect" resultType="areaVo">
+		select * from area order by area_no
+	</select>
+	
 	
 </mapper>
 

@@ -7,4 +7,5 @@ public interface PackDetailService {
 	PackDetailVO selectPackDetail(int packDno);
 	PackVO selectPack(int packNo);
 	MaxMinPriceVO selectMinMaxPrice(int packNo);
+	List<AreaVO> areaSelect();
 }
