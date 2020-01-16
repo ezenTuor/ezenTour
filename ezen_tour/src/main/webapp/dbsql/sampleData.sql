@@ -30,7 +30,28 @@ max(man) as "maxPrice"
 from pack_detail  
 where pack_no=1;
 
-select max(man) as "maxPrice"
-from pack_detail 
-where pack_no=1;
+select * from area order by area_no;
 
+insert into area
+values(area_seq.nextval, '유럽', '유럽 대분류');
+
+insert into area
+values(area_seq.nextval, '동남아', '동남아 대분류');
+
+insert into area
+values(area_seq.nextval, '일본', '일본 대분류');
+
+insert into area
+values(area_seq.nextval, '중국/마카오/홍콩', '중국 대분류');
+
+insert into area
+values(area_seq.nextval, '괌/사이판', '괌/사이판 대분류');
+
+insert into area
+values(area_seq.nextval, '호주/뉴질랜드', '호주/뉴질랜드 대분류');
+
+insert into area
+values(area_seq.nextval, '미국/캐나다/중미', '미국/캐나다/중미 대분류');
+
+insert into area
+values(area_seq.nextval, '인도/아프리카', '인도/아프리카 대분류');
