@@ -29,6 +29,11 @@
 		select * from area order by area_no
 	</select>
 	
+	<select id="packSelAreaNo" parameterType="int" resultType="packVo">
+		select * from pack
+		where area_no=#{areaNo}
+	</select>
+	
 	
 </mapper>
 

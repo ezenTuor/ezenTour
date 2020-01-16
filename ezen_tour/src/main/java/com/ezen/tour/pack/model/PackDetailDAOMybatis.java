@@ -37,6 +37,11 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	@Override
 	public List<AreaVO> areaSelect() {
 		return sqlSession.selectList(namespace+"areaSelect");
+	} //대분류 네비용
+	
+	@Override
+	public List<PackVO> packSelAreaNo(int areaNo) {
+		return sqlSession.selectList(namespace+"packSelAreaNo", areaNo);
 	}
 	
 

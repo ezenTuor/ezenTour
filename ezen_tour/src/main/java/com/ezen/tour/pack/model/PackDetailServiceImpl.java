@@ -37,6 +37,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public List<AreaVO> areaSelect() {
 		return packDetailDao.areaSelect();
 	}
+
+	@Override
+	public List<PackVO> packSelAreaNo(int areaNo) {
+		return packDetailDao.packSelAreaNo(areaNo);
+	}
 	
 	
 }

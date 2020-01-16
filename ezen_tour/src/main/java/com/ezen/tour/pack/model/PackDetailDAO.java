@@ -14,4 +14,6 @@ public interface PackDetailDAO {
 
 	List<AreaVO> areaSelect();
 
+	List<PackVO> packSelAreaNo(int areaNo);
+
 }

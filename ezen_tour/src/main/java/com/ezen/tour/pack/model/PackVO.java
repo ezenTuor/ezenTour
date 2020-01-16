@@ -16,7 +16,7 @@ public class PackVO {
 	private String daysWeek;
 	private String detail;
 	private Timestamp regdate;
-	private int areaC;
+	private int areaNo;
 	
 	public int getPackNo() {
 		return packNo;
@@ -90,19 +90,20 @@ public class PackVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	
-	
-	public int getAreaC() {
-		return areaC;
+	public int getAreaNo() {
+		return areaNo;
 	}
-	public void setAreaC(int areaC) {
-		this.areaC = areaC;
+	public void setAreaNo(int areaNo) {
+		this.areaNo = areaNo;
 	}
 	@Override
 	public String toString() {
 		return "PackVO [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes=" + imgSizes
 				+ ", conutry=" + conutry + ", city=" + city + ", keyword=" + keyword + ", airport=" + airport
-				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate + "]";
-	} 
+				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate
+				+ ", areaNo=" + areaNo + "]";
+	}
+	
+	
 	
 }
