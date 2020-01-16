@@ -13,7 +13,7 @@ values('admin123', '123', '김관리', 'ADMIN', 'test2', 'naver.com', '010', '2222'
 select * from pack;
 
 insert into pack
-values(pack_seq.nextval, '테스트용 패키지', '메인이미지1.jpg | 메인이미지2.jpg', '21432|31324', '프랑스', '파리', '프랑스|파리|서유럽|에펠탑', '김포공항', '6~7일', '월, 수, 금', '테스트용 대분류 내용', sysdate);
+values(pack_seq.nextval, '테스트용 패키지', '메인이미지1.jpg | 메인이미지2.jpg', '21432|31324', '프랑스', '파리', '프랑스|파리|서유럽|에펠탑', '김포공항', '6~7일', '월, 수, 금', '테스트용 대분류 내용', sysdate, 1);
 
 select * from pack_detail;
 
@@ -33,25 +33,29 @@ where pack_no=1;
 select * from area order by area_no;
 
 insert into area
-values(area_seq.nextval, '유럽', '유럽 대분류');
+values(area_seq.nextval, 'EU', '유럽', '유럽 대분류');
 
 insert into area
-values(area_seq.nextval, '동남아', '동남아 대분류');
+values(area_seq.nextval, 'ASE', '동남아', '동남아 대분류');
 
 insert into area
-values(area_seq.nextval, '일본', '일본 대분류');
+values(area_seq.nextval, 'JP', '일본', '일본 대분류');
 
 insert into area
-values(area_seq.nextval, '중국/마카오/홍콩', '중국 대분류');
+values(area_seq.nextval,'CN', '중국/마카오/홍콩', '중국 대분류');
 
 insert into area
-values(area_seq.nextval, '괌/사이판', '괌/사이판 대분류');
+values(area_seq.nextval,'GS', '괌/사이판', '괌/사이판 대분류');
 
 insert into area
-values(area_seq.nextval, '호주/뉴질랜드', '호주/뉴질랜드 대분류');
+values(area_seq.nextval,'OSN', '호주/뉴질랜드', '호주/뉴질랜드 대분류');
 
 insert into area
-values(area_seq.nextval, '미국/캐나다/중미', '미국/캐나다/중미 대분류');
+values(area_seq.nextval, 'USA', '미국/캐나다/중미', '미국/캐나다/중미 대분류');
 
 insert into area
-values(area_seq.nextval, '인도/아프리카', '인도/아프리카 대분류');
+values(area_seq.nextval,'AF', '인도/아프리카', '인도/아프리카 대분류');
+
+commit;
+
+select * from area order by area_no;
