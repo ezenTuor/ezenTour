@@ -16,6 +16,7 @@ public class PackVO {
 	private String daysWeek;
 	private String detail;
 	private Timestamp regdate;
+	private int areaC;
 	
 	public int getPackNo() {
 		return packNo;
@@ -90,6 +91,13 @@ public class PackVO {
 		this.regdate = regdate;
 	}
 	
+	
+	public int getAreaC() {
+		return areaC;
+	}
+	public void setAreaC(int areaC) {
+		this.areaC = areaC;
+	}
 	@Override
 	public String toString() {
 		return "PackVO [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes=" + imgSizes

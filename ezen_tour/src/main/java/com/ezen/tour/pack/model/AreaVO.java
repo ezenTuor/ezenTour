@@ -2,6 +2,7 @@ package com.ezen.tour.pack.model;
 
 public class AreaVO {
 	private int areaNo;
+	private String areaC;
 	private String name;
 	private String detail;
 	
@@ -10,6 +11,12 @@ public class AreaVO {
 	}
 	public void setAreaNo(int areaNo) {
 		this.areaNo = areaNo;
+	}
+	public String getAreaC() {
+		return areaC;
+	}
+	public void setAreaC(String areaC) {
+		this.areaC = areaC;
 	}
 	public String getName() {
 		return name;
@@ -23,11 +30,12 @@ public class AreaVO {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	
 	@Override
 	public String toString() {
-		return "AreaVO [areaNo=" + areaNo + ", name=" + name + ", detail=" + detail + "]";
+		return "AreaVO [areaNo=" + areaNo + ", areaC=" + areaC + ", name=" + name + ", detail=" + detail + "]";
 	}
+	
+	
 	
 	
 }

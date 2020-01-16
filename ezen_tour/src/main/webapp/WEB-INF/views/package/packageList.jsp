@@ -9,18 +9,20 @@
 <script>
 	$(function(){
 		$('a').click(function(){
-			
+			var id = $(this).attr('id'); 
+			var aa = "<c:url value='areaPack.do?no="+ id +"'/>";
+			console.log(aa);
 			$.ajax({
 				type:"get",
-				url:"",
+				url:"<c:url value='areaPack.do'/>",
 				dataType:"json", 
-				success: function(res){
-					console.log('aa');
-				},
-				error: function(xhr, status, error){
-					alert("Error:"+ status+", "+error);
-				}
-			})
+			//	success: function(res){
+			//		console.log('aa');
+			//	},
+			//	error: function(xhr, status, error){
+			//		alert("Error:"+ status+", "+error);
+			//	}
+			//})
 			
 			//$('#유럽').click(function(){
 			//	console.log('aa');
@@ -37,7 +39,7 @@
 		
 		<c:if test="${!empty areaList }">
 			<c:forEach var="areaVo" items="${areaList }">	
-				<li class="area-sel" id="${areaVo.name}"><a href=#>${areaVo.name}</a></li>
+				<li class="area-sel"><a href=# id="${areaVo.name}">${areaVo.name}</a></li>
 			</c:forEach>
 		</c:if>
 	</ul>
