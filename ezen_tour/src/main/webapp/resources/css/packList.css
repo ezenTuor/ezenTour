@@ -21,3 +21,38 @@
 	margin: 0 auto;
 	height: 300px;
 }
+
+#packList {
+	display: inline-block;
+}
+
+.odd{
+	float: right;
+	width: 550px;
+}
+
+.even {
+	float: left;
+	width: 550px;
+}
+
+#pack-img {
+	width: 220px;
+}
+
+.smallerBox {
+	display: flex;
+	vertical-align: middle;
+	flex-direction: column;
+	margin-top: 40px;
+	margin-left: 30px;
+}
+
+#packList li {
+	display: flex;
+	background: yellow;
+}
+
+#packList li div {
+	border: 1px solid black;
+}

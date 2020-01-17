@@ -49,9 +49,33 @@
 	
 	<div id="pack-ex">
 		<ul id="packList">
-			<li>
-				<img src="https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg">
-				<div id="smallerBox">
+			<li class="even">
+				<img src="https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg" id="pack-img">
+				<div class="smallerBox">
+					<div>name</div>
+					<div>price</div>
+				</div>
+			</li>	
+			
+			<li class="odd">
+				<img src="https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg" id="pack-img">
+				<div class="smallerBox">
+					<div>name</div>
+					<div>price</div>
+				</div>
+			</li>	
+			
+			<li class="even">
+				<img src="https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg" id="pack-img">
+				<div class="smallerBox">
+					<div>name</div>
+					<div>price</div>
+				</div>
+			</li>	
+			
+			<li class="odd">
+				<img src="https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg" id="pack-img">
+				<div class="smallerBox">
 					<div>name</div>
 					<div>price</div>
 				</div>
