@@ -25,10 +25,17 @@
 				dataType:"xml",
 				contentType:"application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(res){
-					alert(res);
-					if ($(res).find('item').length>0) {
+					//alert(res);
+					if($(res).find('item').length>0) {
 						$(res).find('item').each(function() {
-						$("#al").append($(this).find('airlineKorean').text());
+						$("#al").append("항공사명 : ");
+						$("#al").append($(this).find('airlineKorean').text()+"<br>");
+						$("#al").append("도착공항 : ");
+						$("#al").append($(this).find('airport').text()+"<br>");
+						$("#al").append("출발공항 : ");
+						$("#al").append($(this).find('city').text()+"<br>");
+						$("#al").append("항공편 : ");
+						$("#al").append($(this).find('internationalNum').text()+"<br><br>");
 						});
 					}
 				},

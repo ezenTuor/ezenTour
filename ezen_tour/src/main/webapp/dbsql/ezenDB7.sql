@@ -89,7 +89,7 @@ ALTER TABLE AREA
 CREATE TABLE AREA_DETAIL (
 	TAG_NO NUMBER NOT NULL, /* 태그번호 */
 	AREA_NO NUMBER, /* 지역번호 */
-	NAME VARCHAR2(30), /* 소분류이름 */
+	NAME VARCHAR2(100), /* 소분류이름 */
 	KEYWORD VARCHAR2(100) /* 검색 키워드 */
 );
 
