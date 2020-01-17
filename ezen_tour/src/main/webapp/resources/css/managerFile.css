@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#drag-over {
+	border:5px dotted black;
+}
+
+.thumb {
+	padding:5px; 
+	float:left;
+	border:1px solid skyblue;
+}
+.thumb > .close {
+	position:absolute;
+	background-color:red;
+	cursor:pointer; 
+}

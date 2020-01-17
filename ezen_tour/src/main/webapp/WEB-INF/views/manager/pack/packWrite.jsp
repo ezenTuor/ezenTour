@@ -1,25 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
-<script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerFile.css">
+<script type="text/javascript" src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
+//ckeditor부분
 $(function(){
     CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
-    	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>"
+    	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>",
     });
 });
 </script>
-<script type="text/javascript">
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-</script>
+<script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
 		<form name="pdWrite" method="post" enctype="multipart/form-data"
@@ -28,13 +20,14 @@ $(function(){
 				<label for="name">패키지명</label>
 				<input type="text" id="name" name="name">
 			</div>
-			<div>
+			<div class="drop">
 				<label for="packImages">패키지 이미지</label>
 				<input type="file" id="packImages" name="packImages" multiple>
-				<input type='file' onchange="readURL(this);" multiple/>
-        		<img id="blah" src="#" alt="your image" />
+				<div id="thumbnails">
+					<div>
+					</div>
+				</div>
 			</div>
-			
 			<div>
 				<label for="country">해당국가</label>
 				<input type="text" id="country" name="country">
@@ -67,10 +60,10 @@ $(function(){
 			<div>
 				<label for="detail">상세설명</label>
 				<textarea name="detail" id="detail" rows="10" cols="80">
-					This is my textarea to be replaced with CKEditor.
 			    </textarea>
 			</div>
 			<p class="managerSubmit">
+				<input type="button" value="테스트버튼" id="test">
 				<input type="submit" value="전송">
 			</p>
 		</form>
