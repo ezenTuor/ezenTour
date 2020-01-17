@@ -23,7 +23,7 @@ public class AirController {
 		logger.info("항공편 보여주기");
 	}
 	
-	@RequestMapping("/airLine.do")
+	@RequestMapping(value="/airLine.do", produces="application/text; charset=utf8")
 	@ResponseBody
 	public String airLine() {
 		logger.info("airLine.do 처리화면");
@@ -71,8 +71,8 @@ public class AirController {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
-		return re.toString();
+	    
+		return re;
 	}
 	
 	

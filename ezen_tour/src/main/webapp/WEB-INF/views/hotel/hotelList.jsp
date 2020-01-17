@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../inc/top.jsp" %>
-<script type="text/javascript" src="https://www.googleapis.com/travelpartner/v2.0/AIzaSyAbMoUC3vQQj__ksWWxKzz_dBKu8bX6oIs/hotels"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<script type="text/javascript">
+	
+</script>
+
 <style type="text/css">
 	.hf{
 		border: 3px solid gray;
@@ -98,7 +102,7 @@
 		</div>
 		<br>
 		<div>
-			호텔 리스트불러서 뿌려주기
+			호텔 리스트 뿌리기
 		</div>
 	</div>
 </div>
