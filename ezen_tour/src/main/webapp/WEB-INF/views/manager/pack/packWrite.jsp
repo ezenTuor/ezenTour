@@ -9,6 +9,17 @@ $(function(){
     });
 });
 </script>
+<script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
 		<form name="pdWrite" method="post" enctype="multipart/form-data"
@@ -20,6 +31,8 @@ $(function(){
 			<div>
 				<label for="packImages">패키지 이미지</label>
 				<input type="file" id="packImages" name="packImages" multiple>
+				<input type='file' onchange="readURL(this);" multiple/>
+        		<img id="blah" src="#" alt="your image" />
 			</div>
 			
 			<div>

@@ -92,7 +92,7 @@ public class FileUploadUtil {
 			}else if(uploadPathType==MANAGER_UPLOAD) {
 				path=props.getProperty("imageFile.upload.path.test");
 			}else if(uploadPathType==PD_UPLOAD) {
-				path=props.getProperty("imageFile.upload.path.test");
+				path=props.getProperty("pdImageFile.upload.path.test");
 			}
 		}else { //배포시 실제 경로
 			String upDir="";
@@ -101,7 +101,7 @@ public class FileUploadUtil {
 			}else if(uploadPathType==MANAGER_UPLOAD) {
 				upDir=props.getProperty("imageFile.upload.path");
 			}else if(uploadPathType==PD_UPLOAD) {
-				path=props.getProperty("imageFile.upload.path");
+				path=props.getProperty("pdImageFile.upload.path");
 			}
 			
 			path
