@@ -10,8 +10,9 @@
 <script type="text/javascript">
 	$(function(){
 		$("#userid").focus();
+		$(".error").hide();
 	
-		$(".simpleForm form[name=frmLogin]").submit(function(){
+		$("form[name=frmLogin]").submit(function(){
 			$(".infobox").each(function(){
 				if($(this).val().length<1){
 					$(this).next().show();
@@ -21,6 +22,14 @@
 					$(this).next().hide();
 				}
 			});
+		});
+		$("#FindId").click(function() {
+			window.open("<c:url value='/member/idFind.do'/>","아이디 찾기",
+					"width=700, height=600, resizable=yes");
+		});
+		$("#FindPwd").click(function() {
+			window.open("<c:url value='/member/pwdFind.do'/>","비밀번호 찾기",
+					"width=700, height=600, resizable=yes");
 		});
 	});
 </script>
@@ -46,6 +55,8 @@
 			<input type="submit" value="로그인">
 			<input type="checkbox" name="chkSave" id="chkSave">
 			<label for="chkSave">아이디 저장하기</label>
+			<a id="FindId" href="#" style="color: black">Find ID</a>
+			<a id="FindPwd" href="#" style="color: black">Find PassWord</a>
 		</div>
 	</fieldset>
 </form>

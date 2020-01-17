@@ -125,11 +125,6 @@ public class MemberController {
 		
 		logger.info("값 변경 후 vo={}", vo);
 		
-		/*
-		 * if(vo.getAddress()==null || vo.getAddress().isEmpty()) { vo.setAddress(" ");
-		 * vo.setAddress_detail(" "); }
-		 */
-		
 		
 		int cnt=memberService.insertMember(vo);
 		logger.info("회원가입 결과, cnt={}", cnt);
@@ -172,14 +167,6 @@ public class MemberController {
 		String user_id=(String) session.getAttribute("user_id");		
 		logger.info("회원수정 화면 보여주기, 파라미터 user_id={}", user_id);
 		
-		/*
-		if(userid==null || userid.isEmpty()) {
-			model.addAttribute("msg", "먼저 로그인하세요");
-			model.addAttribute("url", "/login/login.do");
-			
-			return "common/message";
-		}*/
-		
 		MemberVO vo=memberService.selectMember(user_id);
 		logger.info("회원정보 조회 결과, vo={}", vo);
 		
@@ -192,12 +179,10 @@ public class MemberController {
 	public String memberEdit_post(@ModelAttribute MemberVO vo,
 			@RequestParam(required = false) String email3,
 			HttpSession session, Model model) {
-		//1
 		String user_id=(String) session.getAttribute("user_id");
 		vo.setUser_id(user_id);
 		logger.info("회원수정처리, 파라미터 vo={}, email3={}", vo, email3);
 				
-		//2
 		String hp1=vo.getHp1();
 		String hp2=vo.getHp2();
 		String hp3=vo.getHp3();
@@ -269,10 +254,8 @@ public class MemberController {
 				msg="회원탈퇴 처리되었습니다.";
 				url="/index.do";
 				
-				//session
 				session.invalidate();
 				
-				//cookie
 				Cookie ck = new Cookie("ck_userid", user_id);
 				ck.setPath("/");
 				ck.setMaxAge(0);
