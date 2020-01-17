@@ -34,6 +34,11 @@
 		where area_no=#{areaNo}
 	</select>
 	
+	<select id="">
+		select * from area_detail
+		where keyword like '%유럽%';
+	</select> <!-- 소분류 불러오기 -->
+	
 	
 </mapper>
 
