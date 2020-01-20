@@ -51,10 +51,6 @@
 								
 								$("#pack-ex").append(str);
 								
-								var myStylesLocation = "${pageContext.request.contextPath}/resources/css/packList.css";
-								$('<style type="text/css"></style>')
-							    .html('@import url("' + myStylesLocation + '")')
-							    .appendTo("head");
 							}
 						
 

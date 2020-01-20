@@ -20,20 +20,24 @@
 	background: blue;
 	margin: 0 auto;
 	height: 300px;
+	list-style: none;
 }
 
 #packList {
 	display: inline-block;
+	
 }
 
 .odd{
 	float: right;
 	width: 550px;
+	display: flex;
 }
 
 .even {
 	float: left;
 	width: 550px;
+	display: flex;
 }
 
 #pack-img {
