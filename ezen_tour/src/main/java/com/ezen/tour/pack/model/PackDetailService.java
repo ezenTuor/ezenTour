@@ -9,5 +9,6 @@ public interface PackDetailService {
 	MaxMinPriceVO selectMinMaxPrice(int packNo);
 	List<AreaVO> areaSelect();
 	List<PackVO> packSelAreaNo(int areaNo);
-	List<AreaDetailVO> areaDetailSearch(String searchAreaKeyword);
+	List<PackVO> areaDetailSearch(String searchAreaKeyword);
+	List<AreaDetailVO> selectAreaDetail(int areaNo);
 }

@@ -9,8 +9,18 @@
 	</div>
 	
 	<div id="right-menu">
-	
-		
+		<ul id="areaDetail-nav">
+			<c:if test="${empty areaDetailList }">
+				<span>페이지 오류입니다</span>
+			</c:if>
+
+			<c:if test="${!empty areaDetailList }">
+				<c:forEach var="areaDetailVo" items="${areaDetailList }">
+					<li class="areaDetail-sel"><a href=# id="${areaDetailVo.tagNo}">${areaDetailVo.name}</a></li>
+				</c:forEach>
+			</c:if>
+		</ul>
+
 	</div>
 
 

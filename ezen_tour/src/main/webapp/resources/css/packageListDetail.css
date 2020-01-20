@@ -1,14 +1,9 @@
 @charset "UTF-8";
 
-#pack-cate {
+#pack-list-detail {
 	display: flex;
-	
 }
 
-#pack-cate li {
-	background: lightyellow;
-	border: 1px solid gray;
-}
 #left-menu {
 	width:20%;
 	background: purple;
@@ -17,4 +12,28 @@
 #right-menu {
 	width: 78%;
 	background: yellow;
+}
+
+#areaDetail-nav {
+
+	display: flex;
+	width: 70%;
+	font-size: 14px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.areaDetail-sel {
+	align-items: center;
+	height: 40px;
+	width: 170px;
+	border: 1px solid gray;
+	text-align: center;
+}
+
+.areaDetail-sel a {
+	color: black;
+	text-decoration: none;
+	
 }

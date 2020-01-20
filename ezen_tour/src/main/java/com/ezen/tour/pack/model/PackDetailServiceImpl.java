@@ -44,8 +44,13 @@ public class PackDetailServiceImpl implements PackDetailService {
 	}
 
 	@Override
-	public List<AreaDetailVO> areaDetailSearch(String searchAreaKeyword) {
+	public List<PackVO> areaDetailSearch(String searchAreaKeyword) {
 		return packDetailDao.areaDetailSearch(searchAreaKeyword);
+	}
+
+	@Override
+	public List<AreaDetailVO> selectAreaDetail(int areaNo) {
+		return packDetailDao.selectAreaDetail(areaNo);
 	}
 	
 	

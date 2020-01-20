@@ -16,6 +16,8 @@ public interface PackDetailDAO {
 
 	List<PackVO> packSelAreaNo(int areaNo);
 
-	List<AreaDetailVO> areaDetailSearch(String searchAreaKeyword);
+	List<PackVO> areaDetailSearch(String searchAreaKeyword);
+
+	List<AreaDetailVO> selectAreaDetail(int areaNo);
 
 }

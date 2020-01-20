@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.pack.model.AreaDetailVO;
 import com.ezen.tour.pack.model.AreaVO;
 import com.ezen.tour.pack.model.MaxMinPriceVO;
 import com.ezen.tour.pack.model.PackDetailService;
@@ -57,11 +58,18 @@ public class PackageController {
 		return "package/packageList";
 	}
 	
+	
 	@RequestMapping("/packageListDetail.do")
-	public String packageListDetail() {
-		logger.info("This is packageListDetail");
+	public String packageListDetail(@RequestParam(defaultValue = "1") int areaNo, Model model) {
+		logger.info("This is packageListDetail, areaNo={}", areaNo);
+		
+		List<AreaDetailVO> areaDetailList = packDetailService.selectAreaDetail(areaNo);
+		logger.info("areaDetailList={}", areaDetailList);
+		
+		model.addAttribute("areaDetailList", areaDetailList);
 		return "package/packageListDetail";
 	}
+	
 	
 	@RequestMapping("/packSelectSchedule.do")
 	public String packageSelectSchedule(@RequestParam(defaultValue="1") int packNo, Model model) {
@@ -80,4 +88,5 @@ public class PackageController {
 		
 		return "package/packSelectSchedule";
 	}
+	
 }
