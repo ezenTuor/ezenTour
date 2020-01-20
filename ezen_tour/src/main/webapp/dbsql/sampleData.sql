@@ -13,7 +13,11 @@ values('admin123', '123', '김관리', 'ADMIN', 'test2', 'naver.com', '010', '2222'
 select * from pack;
 
 insert into pack
-values(pack_seq.nextval, '테스트용 패키지', '메인이미지1.jpg | 메인이미지2.jpg', '21432|31324', '프랑스', '파리', '프랑스|파리|서유럽|에펠탑', '김포공항', '6~7일', '월, 수, 금', '테스트용 대분류 내용', sysdate, 1);
+values(pack_seq.nextval, '테스트용 패키지', 'https://dimgcdn.ybtour.co.kr/TN/3c/3c48dd0e2bf489ad54f6c0da2e07fa66.tn.410x280.jpg | 메인이미지2.jpg', '21432|31324', '프랑스', '파리', '프랑스|파리|서유럽|에펠탑', '김포공항', '6~7일', '월, 수, 금', '테스트용 대분류 내용', sysdate, 1);
+
+insert into pack
+values(pack_seq.nextval, '테스트용 패키지2', 'https://dimgcdn.ybtour.co.kr/TN/ad/ad33ab1dc5d49b3bec7bb72478bd0a8b.tn.410x280.jpg | 메인이미지2.jpg', '21432|31324', '스웨덴', '어쩌고', '프랑스|파리|서유럽|에펠탑', '인천공항', '7~8일', '화, 수, 금', '테스트용 대분류 내용2', sysdate, 1);
+
 
 select * from pack_detail;
 
@@ -86,4 +90,7 @@ insert into area_detail
 values(area_detail_seq.nextval, 1 , '이집트/이스라엘/요르단', '이집트|이스라엘|요르단');
 
 commit;
+
+select * from area_detail
+where area_no=1;
 
