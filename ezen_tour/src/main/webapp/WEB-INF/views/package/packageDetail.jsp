@@ -280,9 +280,26 @@
 		</div>
 
 
-
 		<div id="travel-credit">
-		결제 정보 들어감
+			<div><span>출발</span><span>날짜</span></div>
+			<div><span>도착</span><span>날짜</span></div>
+			<div><span>항공</span><span>항공표시</span></div>
+			<button>출발일 변경</button>
+			<br>
+			<hr>
+			<div>가격</div>
+			<div><span>성인</span><span>성인가</span></div>
+			<div><span>아동</span><span>아동가</span></div>
+			<div><span>유아</span><span>유아가</span></div>
+			
+			<div><span>남은좌석</span><span>n석</span></div>
+			
+			<form>
+			성인
+				<select>
+					<!-- 남은 수만큼 select 하게 해주기 -->
+				</select>
+			</form>
 		</div>
 	
 	</div>
