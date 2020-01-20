@@ -49,12 +49,12 @@
 									'</div>'+
 								'</li>'
 								
-								$("#pack-ex").append(str);
-								
+								$("#pack-ex").append(str);	
 							}
-						
-
 						})
+					} else {
+						var str= "상품이 존재하지 않습니다";
+						$("#pack-ex").append(str);	
 					}
 				},
 				error: function(xhr, status, error){
