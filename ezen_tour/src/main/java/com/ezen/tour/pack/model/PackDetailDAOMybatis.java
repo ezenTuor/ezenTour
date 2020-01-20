@@ -44,5 +44,10 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		return sqlSession.selectList(namespace+"packSelAreaNo", areaNo);
 	}
 	
+	@Override
+	public List<AreaDetailVO> areaDetailSearch(String searchAreaKeyword){
+		return sqlSession.selectList(namespace+"searchAreaKeyword", searchAreaKeyword);
+	}
+	
 
 }

@@ -34,10 +34,15 @@
 		where area_no=#{areaNo}
 	</select>
 	
-	<select id="">
+	<select id="selectAreaDetail" parameterType="int" resultType="areaDetailVo">
 		select * from area_detail
-		where keyword like '%유럽%';
-	</select> <!-- 소분류 불러오기 -->
+		where area_no=#{areaNo}
+	</select> <!-- 대분류별 소분류 불러오기 -->
+	
+	<select id="searchAreaKeyword" parameterType="packSearchVo" resultType="packVo">
+		select * from pack
+		where keyword like '%'||#{searchAreaKeyword}||'%'
+	</select> <!-- 소분류 서치 -->
 	
 	
 </mapper>
