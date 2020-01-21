@@ -39,6 +39,7 @@ $(function(){
 			<div>
 				<label for="country">해당국가</label>
 				<select multiple="multiple">
+					
 				</select>
 				<input type="text" id="country" name="country">
 			</div>
