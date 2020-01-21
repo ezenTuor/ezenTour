@@ -14,6 +14,13 @@ $(function(){
 <script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
+		<div class='progress'>
+			<img src="<c:url value='/resources/images/on.png'/>">
+			<img src="<c:url value='/resources/images/off.png'/>">
+			<img src="<c:url value='/resources/images/off.png'/>">
+			<img src="<c:url value='/resources/images/off.png'/>">
+		</div>
+		<h4>1.패키지 대분류 작성</h4>
 		<form name="pdWrite" method="post" enctype="multipart/form-data"
 			action="<c:url value="/manager/pack/packWrite.do"/>">
 			<div>
@@ -23,6 +30,7 @@ $(function(){
 			<div class="drop">
 				<label for="packImages">패키지 이미지</label>
 				<input type="file" id="packImages" name="packImages" multiple>
+				<span class='notice'>*이미지 파일만 첨부 가능하며, 첫 이미지가 대표 이미지가 됩니다.</span>
 				<div id="thumbnails">
 					<div>
 					</div>
@@ -30,6 +38,8 @@ $(function(){
 			</div>
 			<div>
 				<label for="country">해당국가</label>
+				<select multiple="multiple">
+				</select>
 				<input type="text" id="country" name="country">
 			</div>
 			<div>
