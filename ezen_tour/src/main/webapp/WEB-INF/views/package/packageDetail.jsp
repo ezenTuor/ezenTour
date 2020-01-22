@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
 
@@ -281,23 +282,25 @@
 
 
 		<div id="travel-credit">
-			<div><span>출발</span><span>날짜</span></div>
-			<div><span>도착</span><span>날짜</span></div>
-			<div><span>항공</span><span>항공표시</span></div>
+			<div><span>출발</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaDep }" /></span></div>
+			<div><span>도착</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaEnt }" /></span></div>
+			<div><span>항공</span><span>${packDetailVo.airline }</span></div>
 			<button>출발일 변경</button>
 			<br>
 			<hr>
 			<div>가격</div>
-			<div><span>성인</span><span>성인가</span></div>
-			<div><span>아동</span><span>아동가</span></div>
-			<div><span>유아</span><span>유아가</span></div>
+			<div><span>성인</span><span>${packDetailVo.man }</span></div>
+			<div><span>아동</span><span>${packDetailVo.child }</span></div>
+			<div><span>유아</span><span>${packDetailVo.baby }</span></div>
 			
-			<div><span>남은좌석</span><span>n석</span></div>
+			<div><span>남은좌석</span><span>${packDetailVo.capecityCur }석</span></div>
 			
 			<form>
 			성인
 				<select>
-					<!-- 남은 수만큼 select 하게 해주기 -->
+					<c:forEach var="i" begin="1" end="${packDetailVo.capecityCur }" step="1">
+						<option value="${i}">${i}</option>
+					</c:forEach>
 				</select>
 			</form>
 		</div>
