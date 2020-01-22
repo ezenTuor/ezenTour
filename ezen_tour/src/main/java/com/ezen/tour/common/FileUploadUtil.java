@@ -86,7 +86,7 @@ public class FileUploadUtil {
 		String type=props.getProperty("file.upload.type");
 		logger.info("type={}", type);
 		
-		if(type.equals("test")) {  //테스트 경로
+		if(type.equals("test")) { 
 			if(uploadPathType==FILE_UPLOAD) {
 				path=props.getProperty("file.upload.path.test");
 			}else if(uploadPathType==MANAGER_UPLOAD) {
@@ -115,7 +115,6 @@ public class FileUploadUtil {
 	}
 
 	public String getUniqueFileName(String originFileName) {
-		//파일명에 현재시간(년월일시분초밀리초)을 붙여서 파일명 변경
 		//abc.txt => abc20191224120350123.txt
 		int idx=originFileName.lastIndexOf(".");
 		String fName=originFileName.substring(0, idx); //abc

@@ -41,6 +41,7 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>*.do</url-pattern>
+        <url-pattern>/ckupload</url-pattern>
     </filter-mapping>
 	
 	

@@ -89,6 +89,10 @@ start with 1
 increment by 1
 nocache;
 
+create sequence HISTORY_seq
+start with 1
+increment by 1
+nocache;
 
 create sequence REPLY_seq
 start with 1
