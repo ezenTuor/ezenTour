@@ -24,9 +24,9 @@ public class FileUploadUtil {
 	private static final Logger logger
 		=LoggerFactory.getLogger(FileUploadUtil.class);
 	
-	public static final int FILE_UPLOAD=1;  //자료실 파일 업로드
-	public static final int MANAGER_UPLOAD=2; //에디터내 이미지 넣기
-	public static final int PD_UPLOAD=3;	//상품 관련 이미지 넣기
+	public static final int FILE_UPLOAD=1;  //파일 업로드의 경우
+	public static final int MANAGER_UPLOAD=2; //글 업로드의 경우
+	public static final int PD_UPLOAD=3;	//상품 업로드의 경우
 	
 	
 	@Resource(name = "fileUpProperties")
@@ -34,22 +34,22 @@ public class FileUploadUtil {
 	
 	public List<Map<String, Object>> fileUpload(HttpServletRequest request,
 			int uploadPathType, String paramName) {
-		//파일 업로드 처리
+		//request 받기
 		MultipartHttpServletRequest multiReq=(MultipartHttpServletRequest)request;
 		
 		List<MultipartFile> olist=multiReq.getFiles(paramName);
 		//Map<String, MultipartFile> fileMap=multiReq.getFileMap();
 		
-		//결과를 넣을 List
+		//멀티플 file List
 		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
 		
 		for(MultipartFile tempFile: olist) {
 			if(!tempFile.isEmpty()) {
-				//변경전 (원래) 파일명
+				//오리지널 이름
 				String originFileName=tempFile.getOriginalFilename();
-				//변경된 파일명
+				//바꾼이름
 				String fileName=getUniqueFileName(originFileName);
-				//파일 크기
+				//사이즈
 				long fileSize=tempFile.getSize();
 				
 				Map<String, Object> map=new HashMap<String, Object>();
@@ -59,8 +59,6 @@ public class FileUploadUtil {
 				
 				list.add(map);
 				
-				//업로드 처리
-				//업로드할 경로 구하기
 				String upPath=getFilePath(request, uploadPathType);
 				
 				File file=new File(upPath, fileName);
@@ -80,13 +78,13 @@ public class FileUploadUtil {
 	}
 
 	public String getFilePath(HttpServletRequest request, int uploadPathType) {
-		//업로드할 경로 구하기
+		
 		String path="";
 		
 		String type=props.getProperty("file.upload.type");
 		logger.info("type={}", type);
 		
-		if(type.equals("test")) {  //테스트 경로
+		if(type.equals("test")) { 
 			if(uploadPathType==FILE_UPLOAD) {
 				path=props.getProperty("file.upload.path.test");
 			}else if(uploadPathType==MANAGER_UPLOAD) {
@@ -94,7 +92,7 @@ public class FileUploadUtil {
 			}else if(uploadPathType==PD_UPLOAD) {
 				path=props.getProperty("pdImageFile.upload.path.test");
 			}
-		}else { //배포시 실제 경로
+		}else { 
 			String upDir="";
 			if(uploadPathType==FILE_UPLOAD) {			
 				upDir=props.getProperty("file.upload.path");
@@ -109,13 +107,12 @@ public class FileUploadUtil {
 			
 			//config.getServletContext().getRealPath(upDir);
 		}
-		logger.info("업로드 경로  path={}", path);
+		logger.info("�뾽濡쒕뱶 寃쎈줈  path={}", path);
 		
 		return path;
 	}
 
 	public String getUniqueFileName(String originFileName) {
-		//파일명에 현재시간(년월일시분초밀리초)을 붙여서 파일명 변경
 		//abc.txt => abc20191224120350123.txt
 		int idx=originFileName.lastIndexOf(".");
 		String fName=originFileName.substring(0, idx); //abc
@@ -126,7 +123,7 @@ public class FileUploadUtil {
 		String time=sdf.format(d);
 		
 		String fileName=fName+time+ext;
-		logger.info("변경된 fileName={}", fileName);
+		logger.info("이름 바꾸기 fileName={}", fileName);
 		
 		return fileName;
 	}

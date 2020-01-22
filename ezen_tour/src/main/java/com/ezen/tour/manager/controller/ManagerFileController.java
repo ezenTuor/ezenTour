@@ -34,7 +34,7 @@ public class ManagerFileController {
 	@ResponseBody
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response
 			, MultipartHttpServletRequest multipart) throws IOException {
-		logger.info("에디터내 이미지 업로드 처리");
+		logger.info("이미지 업로드 처리");
 		JsonObject json=new JsonObject();
 		PrintWriter printWriter=null;
 		OutputStream out=null;
@@ -47,33 +47,33 @@ public class ManagerFileController {
 						byte[] bytes=file.getBytes();
 						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.MANAGER_UPLOAD);
 						File uploadFile=new File(uploadPath);
-						logger.info("파일 오리지널 이름 fileName={}", fileName);
+						logger.info("파일 이름 fileName={}", fileName);
 						
-						logger.info("파일 업로드 위치 uploadPath={}", uploadPath);
+						logger.info("파일 업로드 경로 uploadPath={}", uploadPath);
 						if(!uploadFile.exists()) {
-							//혹시 폴더가 존재하지 않으면 만들어라
 							uploadFile.mkdirs();
 						}
 						
 						fileName=fileUtil.getUniqueFileName(fileName);
-						logger.info("변경 후 파일 이름 fileName={}", fileName);
+						logger.info("바뀐 파일 이름 fileName={}", fileName);
 						
 						uploadPath=uploadPath+"/"+fileName;
 						out=new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 						
-						//톰캣 임시파일에도 넣어주기(배포시에는 지울 것)
+						
 						String tempupload="D:\\lecture\\workspace_list\\finalP_ws\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ezen_tour\\resources\\manager_images";
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
 						
 						printWriter = response.getWriter();
+						response.setCharacterEncoding("UTF-8");
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("파일 url위치"+fileUrl);
+						System.out.println("파일 url"+fileUrl);
 						
-						logger.info("넘겨줄 파일 url 주소 url={}", fileUrl);
+						logger.info("파일 업로드 완료, 파일 url={}", fileUrl);
 						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);

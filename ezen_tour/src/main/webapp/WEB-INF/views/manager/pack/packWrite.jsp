@@ -1,3 +1,5 @@
+<%@page import="com.ezen.tour.country.model.CountryVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
@@ -9,6 +11,46 @@ $(function(){
     CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
     	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>",
     });
+});
+
+</script>
+<script>
+//국가 선택 부분
+$( function() {
+	var availableTags = [
+			"선택없음"
+			<c:forEach var="vo" items="${list}">
+			,"${vo.name}"
+			</c:forEach>
+		];
+	function split( val ) {
+		return val.split( /,\s*/ );
+	}
+	function extractLast( term ) {
+		return split( term ).pop();
+	}
+	$( "#country" ).on( "keydown", function( event ) {
+    	if ( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( "instance" ).menu.active ) {
+    		event.preventDefault();
+    	}
+    }).autocomplete({
+    	minLength: 0,
+    	source: function( request, response ) {
+    		response( $.ui.autocomplete.filter(
+    				availableTags, extractLast( request.term ) 
+    		) 
+    	);
+      },focus: function() {
+    	  return false;
+      },select: function( event, ui ) {
+    	  var terms = split( this.value );
+    	  terms.pop();
+    	  terms.push( ui.item.value );
+    	  terms.push( "" );
+    	  this.value = terms.join( ", " );
+    	  return false;
+   		}
+   });
 });
 </script>
 <script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
@@ -30,7 +72,7 @@ $(function(){
 			<div class="drop">
 				<label for="packImages">패키지 이미지</label>
 				<input type="file" id="packImages" name="packImages" multiple>
-				<span class='notice'>*이미지 파일만 첨부 가능하며, 첫 이미지가 대표 이미지가 됩니다.</span>
+				<span class='notice'>*첫 이미지가 대표 이미지가 됩니다.</span>
 				<div id="thumbnails">
 					<div>
 					</div>
@@ -38,10 +80,17 @@ $(function(){
 			</div>
 			<div>
 				<label for="country">해당국가</label>
-				<select multiple="multiple">
-					
-				</select>
-				<input type="text" id="country" name="country">
+				
+				<%-- <select multiple="multiple" >
+				<c:if test="${!empty list}">
+					<c:forEach var="vo" items="${list}">
+						<option>${vo.name}</option>
+					</c:forEach>
+				</c:if>
+				</select> --%>
+				
+				<input id="country" name="country">
+				<div id="extends"></div>
 			</div>
 			<div>
 				<label for="city">해당도시</label>

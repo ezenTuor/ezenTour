@@ -2,6 +2,7 @@
 CREATE TABLE REVIEW (
 	REVIEW_NO NUMBER NOT NULL, /* 글번호 */
 	USER_NO NUMBER, /* 회원번호 */
+	HISTORY_NO NUMBER, /* 내역번호 */
 	TITLE VARCHAR2(300), /* 글제목 */
 	PD_NUMBER NUMBER, /* 분류번호 */
 	CONTENT CLOB, /* 글내용 */
@@ -19,6 +20,30 @@ ALTER TABLE REVIEW
 		CONSTRAINT PK_REVIEW
 		PRIMARY KEY (
 			REVIEW_NO
+		);
+		
+/* 이용내역 */
+CREATE TABLE HISTORY (
+	HISTORY_NO NUMBER NOT NULL, /* 내역번호 */
+	USER_NO NUMBER, /* 회원번호 */
+	STATE VARCHAR2(20), /* 결제상태 */
+	PACK_DNO NUMBER, /* 패키지 소분류 번호 */
+	S_DATE DATE, /* 시작날짜 */
+	E_DATE DATE, /* 끝날짜 */
+	PRICE NUMBER, /* 결제금액 */
+	REVIEW CHAR(4) DEFAULT 'N' /* 후기여부 */
+);
+
+CREATE UNIQUE INDEX PK_HISTORY
+	ON HISTORY (
+		HISTORY_NO ASC
+	);
+
+ALTER TABLE HISTORY
+	ADD
+		CONSTRAINT PK_HISTORY
+		PRIMARY KEY (
+			HISTORY_NO
 		);
 
 /* 댓글 */

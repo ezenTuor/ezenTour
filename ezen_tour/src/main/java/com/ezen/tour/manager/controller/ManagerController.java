@@ -1,25 +1,22 @@
 package com.ezen.tour.manager.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ezen.tour.common.FileUploadUtil;
 import com.ezen.tour.country.model.CountryService;
+import com.ezen.tour.country.model.CountryVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
 
@@ -44,9 +41,10 @@ public class ManagerController{
 	}
 	
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.GET)
-	public void packWrite_get() {
+	public void packWrite_get(Model model) {
 		logger.info("패키지 상품 작성 화면 보여주기");
-		
+		List<CountryVO> list=countryService.selectAll();
+		model.addAttribute("list", list);
 	}
 	
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.POST)

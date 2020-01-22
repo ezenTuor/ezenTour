@@ -45,6 +45,8 @@ drop sequence WISHLIST_seq;
 
 drop sequence REVIEW_seq;
 
+drop sequence HISTORY_seq;
+
 drop sequence REPLY_seq;
 
 drop sequence FAQ_seq;
