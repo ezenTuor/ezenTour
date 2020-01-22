@@ -1,5 +1,6 @@
 package com.ezen.tour.pack.model;
 
+
 import java.util.List;
 
 public interface PackDetailService {
@@ -11,4 +12,5 @@ public interface PackDetailService {
 	List<PackVO> packSelAreaNo(int areaNo);
 	List<PackVO> areaDetailSearch(String searchAreaKeyword);
 	List<AreaDetailVO> selectAreaDetail(int areaNo);
+	List<PackDetailVO> selectByDate(String koreaDep);
 }

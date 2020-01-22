@@ -3,13 +3,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packSelect.css"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script type="text/javascript" 
-	src="<c:url value='/resources/js/vanilla-calendar-min.js'/>"></script>
-	
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/vanilla-calendar-min.css" />
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
+  } );
+  
 
+	    
+	    
+	$(function() {
+		$(document).on("change", ".dateVal", function() { 
+			//ajax 붙여서 띄우기
+		     //console.log($(this).val());
+		     //console.log(typeof $(this).val());
+		     var selDate = $(this).val();
+		     $.ajax({
+		    	type:"get",
+		    	url:"<c:url value='/dateSelect.do?koreaDep="+ selDate +"'/>",
+		    	dataType: "json",
+		    	success: function(res) {
+		    		console.log(res);
+				},
+				error: function(xhr, status, error){
+					alert("Error:"+ status+", "+error);
+				}
+		     })
+		     
 
+		}) //내부 change function
+	})
+</script>
 
 <div id="packSel-body">
 
@@ -22,7 +49,8 @@
 	
 	<div id="right-menu">
 
-		<div class="cal-container">
+		<div class="cal-container">		 
+			<div id="datepicker" class="dateVal"></div>
 		</div>
 
 		<!-- 이하 본문 -->
@@ -57,6 +85,7 @@
 	</div>
 
 </div>
+
 
 
 <%@include file="../inc/bottom.jsp"%>

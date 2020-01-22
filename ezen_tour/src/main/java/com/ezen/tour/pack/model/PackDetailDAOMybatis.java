@@ -1,5 +1,10 @@
 package com.ezen.tour.pack.model;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -53,6 +58,12 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	public List<AreaDetailVO> selectAreaDetail(int areaNo){
 		return sqlSession.selectList(namespace+"selectAreaDetail", areaNo);
 	}
+	
+	@Override
+	public List<PackDetailVO> selectByDate(String koreaDep){		
+		 return sqlSession.selectList(namespace+"selectByDate", koreaDep);
+	}
+	
 	
 
 }

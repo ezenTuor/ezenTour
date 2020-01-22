@@ -1,5 +1,8 @@
 package com.ezen.tour.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,5 +47,15 @@ public class MemberDAOMybatis implements MemberDAO{
 	@Override
 	public int selectUser_no(String user_id) {
 		return sqlSession.selectOne(namespace+"selectUser_no",user_id);
+	}
+
+	@Override
+	public String FindUserIdByEmail(Map<String, String> map) {
+		return sqlSession.selectOne(namespace+"FindUserIdByEmail",map);
+	}
+
+	@Override
+	public String FindPwd(Map<String, String> map) {
+		return sqlSession.selectOne(namespace+"FindPwd",map);
 	}
 }

@@ -1,5 +1,12 @@
 ﻿package com.ezen.tour.member.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.common.Utility;
+import com.ezen.tour.member.controller.EmailSender;
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 
@@ -27,6 +36,8 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private EmailSender emailSender;
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login_get() {
@@ -274,4 +285,111 @@ public class MemberController {
 		
 		return "common/message";
 	}
+	
+	
+	@RequestMapping(value = "/idFind.do", method = RequestMethod.GET)
+	public void findIdByEmail_get() {
+		logger.info("아이디 찾기 처리");
+	}
+	
+	
+	
+	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
+	public String findIdByEmail(@ModelAttribute MemberVO vo, 
+			@RequestParam(required = false) String email3,
+			Model model) {
+		
+		logger.info("이메일로 아이디 찾기 처리, 파라미터 vo={}, email3={}", vo, email3);
+		String email1=vo.getEmail1();
+		String email2=vo.getEmail2();
+		if(email1==null || email1.isEmpty()) {
+			vo.setEmail2("");
+		}else {
+			if(email2.equals("etc")) {
+				if(email3!=null && !email3.isEmpty()) {
+					vo.setEmail2(email3);
+				}else {
+					vo.setEmail1("");
+					vo.setEmail2("");					
+				}
+			}
+		}
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("email1", email1);
+		map.put("email2", email2);
+		
+		
+		String user_id = "";
+		user_id=memberService.FindUserIdByEmail(map);
+		logger.info("아이디 찾기 결과, user_id={}", user_id);
+		
+		String subject="아이디 찾기에 대한 답변입니다.";
+		String content="회원님의 아이디는 ["+user_id+"] 입니다.";
+		String receiver="kimsangjoon95@gmail.com";
+		String sender="kimsangjoon95@gmail.com";
+				
+		try {
+			emailSender.sendMail(subject, content, receiver, sender);
+			logger.info("이메일 발송 성공");
+		} catch (MessagingException e) {
+			logger.info("이메일 발송 실패!!");
+			e.printStackTrace();
+		}
+		
+		String msg="", url="/member/idFind.do";
+		if(user_id!=null && !user_id.isEmpty()) {
+			msg="회원님의 아이디는 ["+user_id+"] 입니다.";
+		}else {
+			msg="등록된 아이디가 없습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	@RequestMapping(value = "/pwdFind.do", method = RequestMethod.GET)
+	public void findUser_Pwd_get() {
+		logger.info("비밀번호 찾기 화면 띄우기");
+	}
+	
+	@RequestMapping(value = "/pwdFind.do", method = RequestMethod.POST)
+	public String findUser_Pwd(@ModelAttribute MemberVO vo, 
+			@RequestParam(required = false) String email3,
+			Model model) {
+		logger.info("비밀번호 찾기 처리, 파라미터 vo={}, email3={}", vo, email3);
+		String email1=vo.getEmail1();
+		String email2=vo.getEmail2();
+		if(email1==null || email1.isEmpty()) {
+			vo.setEmail2("");
+		}else {
+			if(email2.equals("etc")) {
+				if(email3!=null && !email3.isEmpty()) {
+					vo.setEmail2(email3);
+				}else {
+					vo.setEmail1("");
+					vo.setEmail2("");					
+				}
+			}
+		}
+		String sb = Utility.randomNum();
+		String subject="아이디 찾기에 대한 답변입니다.";
+		String content="회원님의 인증번호는 ["+sb.toString()+"] 입니다.";
+		String receiver="kimsangjoon95@gmail.com";
+		String sender="kimsangjoon95@gmail.com";
+				
+		try {
+			emailSender.sendMail(subject, content, receiver, sender);
+			logger.info("이메일 발송을 성공했습니다.");
+		} catch (MessagingException e) {
+			logger.info("이메일 발송을 실패했습니다.");
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("sb",sb);
+		return "member/certified";
+	}
+	
+	
 }

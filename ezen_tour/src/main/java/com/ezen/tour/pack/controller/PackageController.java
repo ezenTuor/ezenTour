@@ -83,6 +83,7 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
+		
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
 		
