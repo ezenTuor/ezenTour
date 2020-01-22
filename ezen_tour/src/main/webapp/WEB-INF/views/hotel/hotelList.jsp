@@ -3,7 +3,13 @@
 <%@include file="../inc/top.jsp" %>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript">
-	
+	var map;
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: -34.397, lng: 150.644},
+	    zoom: 8
+	  });
+	}
 </script>
 
 <style type="text/css">
@@ -35,6 +41,14 @@
 		text-decoration: none;
 	}
 	
+	#map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 </style>
 
 <div class="mn">
@@ -101,9 +115,9 @@
 			<a href="#">평점순</a>
 		</div>
 		<br>
-		<div>
-			호텔 리스트 뿌리기
-		</div>
+		<div id="map"></div>
+		
+    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvWcAdXzxsKLjjdso74DEjMXsHAyqP3tk&callback=initMap" async defer></script>
 	</div>
 </div>
 <br>
