@@ -48,24 +48,6 @@ $(function(){
 		})(file, idx);
 		reader.readAsDataURL(file);
 	}
-
-	/*$("#test").on("click", function() {
-		var formData = new FormData();
-		$.each(uploadFiles, function(i, file) {
-			if(file.upload != 'disable')  //삭제하지 않은 이미지만 업로드 항목으로 추가
-			formData.append('upload-file', file, file.name);
-		});*/
-	/*$.ajax({
-		url: '/api/etc/file/upload',
-	    data : formData,
-	    type : 'post',
-	    contentType : false,
-	    processData: false,
-	    success : function(ret) {
-	    	alert("완료");
-	    	}
-		});
-	});*/
 	
 	$("#thumbnails").on("click", ".close", function(e) {
 		var $target = $(e.target);

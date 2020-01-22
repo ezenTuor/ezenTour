@@ -61,6 +61,16 @@ a {
 	font-weight: bold;
 	padding:20px 0 10px 40px;
 }
+.managerMain h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	padding:20px 0 10px 40px;
+}
+.managerMain h4 {
+	font-size: 1em;
+	font-weight: bold;
+	padding:20px 0 10px 40px;
+}
 .clearBoth{
 	clear: both;
 }
