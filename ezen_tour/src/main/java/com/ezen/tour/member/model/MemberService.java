@@ -1,5 +1,8 @@
 package com.ezen.tour.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 public interface MemberService {
 	
 	public static final int EXIST_ID=1;  //아이디가 이미 존재하는 경우
@@ -16,4 +19,6 @@ public interface MemberService {
 	int memberUpdate(MemberVO vo);
 	int deleteMember(String user_id);
 	int selectUser_no(String user_id);
+	String FindUserIdByEmail(Map<String, String> map);
+	String FindPwd(Map<String, String> map);
 }

@@ -1,5 +1,8 @@
 package com.ezen.tour.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,5 +67,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int selectUser_no(String user_id) {
 		return memberDao.selectUser_no(user_id);
+	}
+
+	@Override
+	public String FindUserIdByEmail(Map<String, String> map) {
+		return memberDao.FindUserIdByEmail(map);
+	}
+
+	@Override
+	public String FindPwd(Map<String, String> map) {
+		return memberDao.FindPwd(map);
 	}
 }
