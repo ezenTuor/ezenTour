@@ -19,7 +19,7 @@ $(function(){
 $( function() {
 	var availableTags = [
 			"선택없음"
-			<c:forEach var="vo" items="${list}">
+			<c:forEach var="vo" items="${countryList}">
 			,"${vo.name}"
 			</c:forEach>
 		];
@@ -53,6 +53,26 @@ $( function() {
    });
 });
 </script>
+<script type="text/javascript">
+//자동 submit 막기
+$(function(){
+	$('input[type=text]').keydown(function() {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+		};
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#area_no").change(function(){
+		var val=$(this).find("option:selected").val();
+		var name=$(this).find("option:selected").text();
+		alert("값 변화 확인, 값="+val+", 이름="+name);
+		$("#extends").html(val+", "+name);
+	});
+});
+</script>
 <script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
@@ -79,18 +99,17 @@ $( function() {
 				</div>
 			</div>
 			<div>
-				<label for="country">해당국가</label>
-				
-				<%-- <select multiple="multiple" >
-				<c:if test="${!empty list}">
-					<c:forEach var="vo" items="${list}">
-						<option>${vo.name}</option>
-					</c:forEach>
-				</c:if>
-				</select> --%>
-				
-				<input id="country" name="country">
+				<label for="area_no">해당 대륙</label>		
+				<select name="area_no" id="area_no">
+				<c:forEach var="area" items="${areaList}">
+					<option value="${area.areaNo}">${area.name}</option>
+				</c:forEach>
+				</select>
 				<div id="extends"></div>
+			</div>
+			<div>
+				<label for="country">해당국가</label>		
+				<input type="text" id="country" name="country">
 			</div>
 			<div>
 				<label for="city">해당도시</label>
@@ -114,7 +133,15 @@ $( function() {
 			
 			<div>
 				<label for="daysWeek">출발요일</label>
-				<input type="text" id="daysWeek" name="daysWeek">
+				<input type="checkbox" value="월" class="item">월
+				<input type="checkbox" value="화" class="item">화
+				<input type="checkbox" value="수" class="item">수
+				<input type="checkbox" value="목" class="item">목
+				<input type="checkbox" value="금" class="item">금
+				<input type="checkbox" value="토" class="item">토
+				<input type="checkbox" value="일" class="item">일
+				<br>
+				<input type="text" id="daysWeek" name="daysWeek">나중에 히든처리
 			</div>
 			
 			<div>

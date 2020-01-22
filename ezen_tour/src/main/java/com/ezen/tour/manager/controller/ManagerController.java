@@ -13,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.common.FileUploadUtil;
 import com.ezen.tour.country.model.CountryService;
 import com.ezen.tour.country.model.CountryVO;
+import com.ezen.tour.manager.area.model.AreaService;
+import com.ezen.tour.manager.area.model.ManagerAreaVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
 
@@ -34,6 +37,9 @@ public class ManagerController{
 	@Autowired
 	private CountryService countryService;
 	
+	@Autowired
+	private AreaService areaService;
+	
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
 		logger.info("관리자 메인 화면 보여주기");
@@ -43,12 +49,17 @@ public class ManagerController{
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.GET)
 	public void packWrite_get(Model model) {
 		logger.info("패키지 상품 작성 화면 보여주기");
+		
 		List<CountryVO> list=countryService.selectAll();
-		model.addAttribute("list", list);
+		List<ManagerAreaVO> list2=areaService.selectArea();
+		
+		model.addAttribute("countryList", list);
+		model.addAttribute("areaList", list2);
 	}
 	
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.POST)
-	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request) {
+	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request
+			, Model model) {
 		logger.info("패키지 상품 작성 처리, 파라미터 packVo={}", packVo);
 		
 		//파일 업로드 처리
@@ -83,12 +94,16 @@ public class ManagerController{
 		int cnt=managerPackService.insertPack(packVo);
 		logger.info("pack 입력 처리 cnt={}", cnt);
 		
-		return "redirect:/manager/pack/detailWrite.do";
+		//패키지 대분류 넘버
+		model.addAttribute("packVo", packVo);
+		model.addAttribute("pack_no", packVo.getPackNo());
+		
+		return "redirect:/manager/pack/detailWrite.do?packNo="+packVo.getPackNo();
 	}
 	
-	@RequestMapping(value="/pack/detailWrite.do", method=RequestMethod.GET)
-	public void detailWrite_get() {
-		logger.info("패키지 상세 작성 화면 처리");
+	@RequestMapping("/pack/detailWrite.do")
+	public void packDetail(@RequestParam int packNo) {
+		logger.info("디테일 작성 화면 보여주기, 파라미터 packNo={}", packNo);
 	}
 	
 }

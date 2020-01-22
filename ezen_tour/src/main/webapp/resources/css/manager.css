@@ -49,7 +49,7 @@ section.managerMain {
     font-size: 12pt;
 }
 .managerNav>div{
-	padding:10px 0 10px 20px;
+	padding:5px 0 5px 10px;
 }
 a {
     text-decoration: none;
@@ -59,7 +59,7 @@ a {
 .managerMain h2 {
 	font-size: 2em;
 	font-weight: bold;
-	padding:20px 0 10px 40px;
+	padding:5px 0 5px 20px;
 }
 .managerMain h3 {
 	font-size: 1.2em;
@@ -101,10 +101,13 @@ article {
 	display: inline-block;
 	width: 120px;
 	text-align: left;
-	padding: 20px 0 20px 10px;
+	padding: 5px 0 5px 3px;
 	background-color:#e8e8e8;
 	border-right:2px solid lightgray;
 }
 .managerForm input{
 	margin-left:20px;
+}
+.managerForm input[type=text]{
+	width: 50%;
 }

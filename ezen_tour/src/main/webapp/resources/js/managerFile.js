@@ -58,7 +58,19 @@ $(function(){
 	});
 	
 	$("#test").click(function(){
-		$("#packImages").prop("files",files);//드래그&드랍한 이미지 input type=file에 저장
+		alert("버튼눌림");
+		var str="";
+		$(".item").each(function(){
+			if($(this).is(":checked")){
+				if(str==""){
+					str+=$(this).val();
+				}else{
+					str+=", "+$(this).val();
+				}
+			}
+		});
+		alert(str);
+		$("#daysWeek").val(str);
 	});
 });
 
