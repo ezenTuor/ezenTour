@@ -1,5 +1,6 @@
 package com.ezen.tour.pack.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	@Override
 	public List<AreaDetailVO> selectAreaDetail(int areaNo) {
 		return packDetailDao.selectAreaDetail(areaNo);
+	}
+
+	@Override
+	public List<PackDetailVO> selectByDate(String koreaDep) {
+		return packDetailDao.selectByDate(koreaDep);
 	}
 	
 	

@@ -44,6 +44,17 @@
 		where keyword like '%'||#{searchAreaKeyword}||'%'
 	</select> <!-- 소분류 서치 -->
 	
+	<select id="selectByDate" parameterType="String" resultType="packDetailVo">
+	
+		select * from pack_detail
+		where korea_dep >= TO_DATE(#{koreaDep}) 		
+		<![CDATA[
+			AND korea_dep <= TO_DATE(#{koreaDep})+1	
+		]]>
+
+
+	</select>
+	
 	
 </mapper>
 

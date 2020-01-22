@@ -1,5 +1,6 @@
 package com.ezen.tour.pack.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface PackDetailDAO {
@@ -19,5 +20,7 @@ public interface PackDetailDAO {
 	List<PackVO> areaDetailSearch(String searchAreaKeyword);
 
 	List<AreaDetailVO> selectAreaDetail(int areaNo);
+
+	List<PackDetailVO> selectByDate(String koreaDep);
 
 }
