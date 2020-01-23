@@ -30,6 +30,7 @@ drop table WISHLIST cascade constraints;
 ----------------ezenDB6-----------------
 
 drop table REVIEW cascade constraints;
+drop table HISTORY cascade constraints;
 drop table REPLY cascade constraints;
 drop table FAQ cascade constraints;
 drop table NOTICE cascade constraints;
