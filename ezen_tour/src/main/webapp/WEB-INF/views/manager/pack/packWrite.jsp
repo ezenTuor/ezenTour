@@ -70,6 +70,20 @@ $(function(){
 		var name=$(this).find("option:selected").text();
 		alert("값 변화 확인, 값="+val+", 이름="+name);
 		$("#extends").html(val+", "+name);
+		
+		$.ajax({
+			url:"<c:url value='/manager/area.do'/>",
+			data:{"no":val},
+			dataType:"json",
+			type:"post",
+			success:function(res){
+				//{"no":7,"name":"홍길동","content":"테스트용 내용입니다."}
+				var str="[번호 - "+res.no+"], [이름 - "+res.name+"], [내용 - "+res.content+"]<br>"
+				$("#result").append(str);
+			},error:function(xhr, status, error){
+				alert("error : "+status+", "+error);
+			}
+		})
 	});
 });
 </script>

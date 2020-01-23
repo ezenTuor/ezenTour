@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.tour.common.FileUploadUtil;
 import com.ezen.tour.country.model.CountryService;
 import com.ezen.tour.country.model.CountryVO;
 import com.ezen.tour.manager.area.model.AreaService;
 import com.ezen.tour.manager.area.model.ManagerAreaVO;
+import com.ezen.tour.manager.areadetail.model.AreaDetailService;
+import com.ezen.tour.manager.areadetail.model.ManagerAreaDetailVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
 
@@ -40,6 +43,9 @@ public class ManagerController{
 	@Autowired
 	private AreaService areaService;
 	
+	@Autowired
+	private AreaDetailService areaDetailService;
+	
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
 		logger.info("관리자 메인 화면 보여주기");
@@ -55,6 +61,13 @@ public class ManagerController{
 		
 		model.addAttribute("countryList", list);
 		model.addAttribute("areaList", list2);
+	}
+	
+	@RequestMapping("/area.do")
+	@ResponseBody
+	public List<ManagerAreaDetailVO> area(@RequestParam int no){
+		logger.info("area 디테일 처리, 파라미터 no={}",no);
+		return areaDetailService.selectAreaDetail(no);
 	}
 	
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.POST)
