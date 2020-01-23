@@ -90,4 +90,20 @@ public class PackageController {
 		return "package/packSelectSchedule";
 	}
 	
+	@RequestMapping("/packDetailListSelect.do")
+	public String packDetailListSelect(@RequestParam(defaultValue = "1") int tagNo, Model model) {
+		logger.info("This is packDetailListSelect, tagNo={}", tagNo);
+		
+		//List<String> areaKwList = packDetailService.selKWList(tagNo);
+		String keyword = packDetailService.areaKeyword(tagNo);
+		List<PackVO> packVo = packDetailService.selectPackByKw(keyword);
+		
+		logger.info("keyword={}",keyword);
+		
+		model.addAttribute("packVo", packVo);
+		
+		
+		return "package/packDetailListSelect";
+	}
+	
 }

@@ -68,7 +68,6 @@
 				<div class="res">예약상태</div>
 			</li>
 			
-			<!-- for문 돌리기 -->
 			<!-- 
 			<li>
 				<div class="dep">출발/도착 일시</div>
@@ -76,10 +75,12 @@
 				<div class="during">기간</div>
 				<div class="packname">상품명</div>
 				<div class="price">기타</div>
-				<div class="res"><button value=""></div>
+				<div class="res"><button value="예약가능"></div>
 			</li>
 			
 			 -->
+			
+			
 		</ul>
 	
 	</div>

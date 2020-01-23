@@ -23,4 +23,11 @@ public interface PackDetailDAO {
 
 	List<PackDetailVO> selectByDate(String koreaDep);
 
+	List<String> selKWList(int tagNo);
+
+	List<PackVO> selectPackByKw(String keyword);
+
+	String areaKeyword(int tagNo);
+
+
 }

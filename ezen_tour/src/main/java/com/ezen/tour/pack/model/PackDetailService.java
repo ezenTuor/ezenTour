@@ -13,4 +13,8 @@ public interface PackDetailService {
 	List<PackVO> areaDetailSearch(String searchAreaKeyword);
 	List<AreaDetailVO> selectAreaDetail(int areaNo);
 	List<PackDetailVO> selectByDate(String koreaDep);
+	List<String> selKWList(int tagNo);
+	List<PackVO> selectPackByKw(String keyword);
+	String areaKeyword(int tagNo);
+
 }
