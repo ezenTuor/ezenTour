@@ -1,57 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
+
 <style type="text/css">
-	/*나중에 수정+이미지 첨부 태그 추가*/
-	a{
-		color: black;
-		text-decoration: none;
+	.reviewWrite {
+		-ms-user-select: none;
+		-moz-user-select: -moz-none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		user-select:none;
+		text-align: center;
+	}
+
+	#title {
+		border: 0px solid;
+		border-bottom: 1px solid gray;
+		text-align: center;
+		font-size: 25px;
+	}
+
+	.contentEditor {
+		margin: auto;
+		width: 65%;
 	}
 </style>
 
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
 		$("form[name=frmWrite]").submit(function(){
+			var str=CKEDITOR.instances.content.getData();
+			
+			var newText=str.replace(/(<([^>]+)>)/ig, "");
+			var newText2=newText.replace(/&nbsp;/gi, "");
+			var newText3=newText2.replace(/\n/g,"");
+			var newText4=newText3.replace(/\s/g,"");
+			
 			if($("#title").val().length<1){
-				alert("제목 입력");
+				alert("제목을 입력해주세요");
 				event.preventDefault();
 				$("#title").focus();
-			}else if($("#content").val().length<1){
-				alert("내용 입력");
-				event.preventDefault();
-				$("#content").focus();
 			}else if($('select option:selected').val()==0){
-				alert("만족도 선택");
+				alert("해당 패키지의 평점을 선택해주세요");
 				event.preventDefault();
 				$("#rating").focus();
-			}/* else{
-				alert($("#rating option:selected").val());
-			} */
+			}else if(newText4.length<1){
+				alert("작성된 내용이 없습니다.");
+				event.preventDefault();
+				$("#content").focus();
+			}
+		});
+		
+		CKEDITOR.replace('content', {
+			filebrowserUploadUrl:"<c:url value='/managerFile/imageUpload.do'/>"
 		});
 	});
 </script>
 
-<div>
-	<form name="frmWrite" method="post" action="<c:url value='/review/list.do'/>">
+<div class="reviewWrite">
+	<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
+		<!-- 합칠 때, value수정 -->
+		<input type="hidden" name="userNo" value="1">
+		<input type="hidden" name="historyNo" value="1">
 		<fieldset>
-			<legend>리뷰 작성 화면</legend>
+			<legend>[패키지 이름]</legend>
+			
 			<br>
+			
 			<div>
-				<label for="title">제목</label>
+				<label for="title">제목 : </label>
 				<input type="text" id="title" name="title"/>
 			</div>
+			
+			<br>
+			
 			<div>
-				<label for="userid">작성자</label>
-				<input type="text" name="userid" value="회원아이디" disabled="disabled"/>
-			</div>
-			<div>
-				<label for="content">내용</label>
-				<textarea id="content" name="content" rows="12" cols="40"></textarea>
-			</div>
-			<div>
-				<label for="score">만족도</label>
+				<label for="score">평점 : </label>
 				<select id="score" name="score">
-					<option></option>
+					<option>선택하세요</option>
 					<option value="1">☆</option>
 					<option value="2">☆☆</option>
 					<option value="3">☆☆☆</option>
@@ -59,17 +84,23 @@
 					<option value="5">☆☆☆☆☆</option>
 				</select>
 			</div>
-			<div>
-				이미지 첨부 들어갈 곳(위치 수정 예정)
+			
+			<br>
+			
+			<div class="contentEditor">
+				<textarea id="content" name="content" rows="12" cols="40"></textarea>
 			</div>
+			
+			<br>
+			
 			<div>
-				<input type="submit" value="리뷰 작성" onclick="message()"/>
-				<input type="reset" value="취소"/>
-				<a href="<c:url value='/review/list.do'/>">☞리뷰 목록으로</a>
-<%-- <input type="button" value="리뷰 목록으로..." onclick="location.href='<c:url value='/review/list.do'/>'"/> --%>
+				<input type="submit" value="작성하기" onclick="message()"/>
+				<input type="button" value="목록으로" onclick="location.href='<c:url value='/review/list.do'/>'"/>
 			</div>
 		</fieldset>
 	</form>
 </div>
+
+<br>
 
 <%@ include file="../inc/bottom.jsp" %>

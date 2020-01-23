@@ -39,8 +39,13 @@ public class SearchVO {
     /** ³¡ ÀÎµ¦½º */
     private int lastRecordIndex = 1;
     
+<<<<<<< HEAD
+    /**íŽ˜ì´ì§€ ë³„ ë ˆì½”ë“œ ê°¯ìˆ˜ (pageSize) */
+    private int recordCountPerPage;
+=======
     /**ÆäÀÌÁö º° ·¹ÄÚµå °¹¼ö (pageSize) */
     private int recordCountPerPage; 
+>>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
     
    /**
      * °Ë»ö Á¶°ÇÀ»  ¼³Á¤ÇÑ´Ù.

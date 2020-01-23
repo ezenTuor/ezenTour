@@ -63,7 +63,11 @@ public class ManagerFileController {
 						out.write(bytes);
 						
 						
+<<<<<<< HEAD
+						String tempupload="D:\\lecture\\workspace_list\\ezenTour\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ezen_tour\\resources\\manager_images";
+=======
 						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/manager_images";
+>>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
