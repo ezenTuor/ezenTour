@@ -92,22 +92,24 @@ article {
 .managerForm>form>div{
 	background-color:white;
 	border:2px solid lightgray;
-	display:inline-block;
+	display: flex;
     margin: 10px;
     width : 90%;
+}
+.managerForm>form>div>div{
+	display: inline-block;
+	margin: 5px 0px 5px 20px;
+	width: 100%;
 }
 
 .managerForm label {
 	display: inline-block;
-	width: 120px;
+	width: 140px;
 	text-align: left;
-	padding: 5px 0 5px 3px;
+	padding: 5px 0 5px 5px;
 	background-color:#e8e8e8;
 	border-right:2px solid lightgray;
 }
-.managerForm input{
-	margin-left:20px;
-}
 .managerForm input[type=text]{
-	width: 50%;
+	width: 70%;
 }
