@@ -4,10 +4,11 @@ CREATE TABLE REVIEW (
 	USER_NO NUMBER, /* 회원번호 */
 	HISTORY_NO NUMBER, /* 내역번호 */
 	TITLE VARCHAR2(300), /* 글제목 */
-	PD_NUMBER NUMBER, /* 분류번호 */
+	PACK_DNO NUMBER, /* 패키지 소분류 번호 */
+	PACK_NO NUMBER, /* 패키지번호 */
 	CONTENT CLOB, /* 글내용 */
 	SCORE NUMBER, /* 별점 */
-	REGDATE DATE DEFAULT SYSDATE/* 작성일 */
+	REGDATE DATE /* 작성일 */
 );
 
 CREATE UNIQUE INDEX PK_REVIEW
@@ -28,6 +29,7 @@ CREATE TABLE HISTORY (
 	USER_NO NUMBER, /* 회원번호 */
 	STATE VARCHAR2(20), /* 결제상태 */
 	PACK_DNO NUMBER, /* 패키지 소분류 번호 */
+	PACK_NO NUMBER, /* 패키지 번호 */
 	S_DATE DATE, /* 시작날짜 */
 	E_DATE DATE, /* 끝날짜 */
 	PRICE NUMBER, /* 결제금액 */

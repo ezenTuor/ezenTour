@@ -2,8 +2,8 @@
 CREATE TABLE PAYMENT (
 	PAYMENT_NO NUMBER NOT NULL, /* 결제번호 */
 	USER_NO NUMBER, /* 회원번호 */
-	PD_CATE CHAR NOT NULL, /* 상품분류 */
-	PD_NUMBER NUMBER NOT NULL, /* 상품번호 */
+	PACK_DNO NUMBER NOT NULL, /* 패키지 소분류 번호 */
+	PACK_NO NUMBER, /* 패키지번호 */
 	DISCOUNT NUMBER, /* 할인금액 */
 	PRICE NUMBER NOT NULL, /* 최종금액 */
 	STATE CHAR, /* 결제상태 */
@@ -33,8 +33,8 @@ ALTER TABLE PAYMENT
 CREATE TABLE WISHLIST (
 	WISH_NO NUMBER NOT NULL, /* 찜번호 */
 	USER_NO NUMBER, /* 회원번호 */
-	PD_CATE CHAR NOT NULL, /* 상품분류 */
-	PD_NUMBER NUMBER NOT NULL, /* 상품번호 */
+	PACK_DNO NUMBER NOT NULL, /* 패키지 소분류 번호 */
+	PACK_NO NUMBER, /* 패키지 번호 */
 	DETAIL CLOB, /* 찜상세 */
 	WISH_DATE DATE, /* 찜날짜 */
 	START_DATE DATE, /* 해당 시작날짜 */
