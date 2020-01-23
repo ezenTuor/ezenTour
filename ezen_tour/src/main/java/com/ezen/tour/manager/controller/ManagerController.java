@@ -67,6 +67,7 @@ public class ManagerController{
 	@ResponseBody
 	public List<ManagerAreaDetailVO> area(@RequestParam int no){
 		logger.info("area 디테일 처리, 파라미터 no={}",no);
+		//[{"tagNo":1,"areaNo":1,"name":"서유럽","keyword":"서유럽|영국|프랑스|이태리"},...
 		return areaDetailService.selectAreaDetail(no);
 	}
 	
@@ -119,4 +120,9 @@ public class ManagerController{
 		logger.info("디테일 작성 화면 보여주기, 파라미터 packNo={}", packNo);
 	}
 	
+	@RequestMapping("/test.do")
+	public String test() {
+		logger.info("테스트");
+		return "manager/test";
+	}
 }
