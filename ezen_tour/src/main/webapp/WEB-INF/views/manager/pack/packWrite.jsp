@@ -61,11 +61,28 @@ $(function(){
 			event.preventDefault();
 		};
 	});
+	$("#test").click(function(){
+		alert("버튼눌림");
+		var str="";
+		$(".item").each(function(){
+			if($(this).is(":checked")){
+				if(str==""){
+					str+=$(this).val();
+				}else{
+					str+=", "+$(this).val();
+				}
+			}
+		});
+		alert(str);
+		$("#daysWeek").val(str);
+		
+	});
 });
 </script>
 <script type="text/javascript">
 $(function(){
-	$("#area_no").change(function(){
+	$("#areaNo").change(function(){
+		alert($(this).val());
 		var val=$(this).find("option:selected").val();
 		var name=$(this).find("option:selected").text();
 		//alert("값 변화 확인, 값="+val+", 이름="+name);
@@ -106,67 +123,89 @@ $(function(){
 			action="<c:url value="/manager/pack/packWrite.do"/>">
 			<div>
 				<label for="name">패키지명</label>
-				<input type="text" id="name" name="name">
+				<div>
+					<input type="text" id="name" name="name">
+				</div>
 			</div>
 			<div class="drop">
 				<label for="packImages">패키지 이미지</label>
-				<input type="file" id="packImages" name="packImages" multiple>
-				<span class='notice'>*첫 이미지가 대표 이미지가 됩니다.</span>
-				<div id="thumbnails">
-					<div>
+				<div>
+					<input type="file" id="packImages" name="packImages" multiple>
+					<span class='notice'>*첫 이미지가 대표 이미지가 됩니다.</span>
+					<div id="thumbnails">
+						<div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div>
-				<label for="area_no">해당 대륙</label>		
-				<select name="area_no" id="area_no">
-				<c:forEach var="area" items="${areaList}">
-					<option value="${area.areaNo}">${area.name}</option>
-				</c:forEach>
-				</select>
-				<div id="extends"></div>
+				<label for="areaNo">해당 대륙</label>	
+				<div>
+					<select name="areaNo" id="areaNo">
+					<c:forEach var="area" items="${areaList}">
+						<option value="${area.areaNo}">${area.name}</option>
+					</c:forEach>
+					</select>
+					<div id="extends"></div>
+				</div>	
 			</div>
 			<div>
-				<label for="country">해당국가</label>		
-				<input type="text" id="country" name="country">
+				<label for="country">해당국가</label>	
+				<div>
+					<input type="text" id="country" name="country">
+				</div>
 			</div>
 			<div>
 				<label for="city">해당도시</label>
-				<input type="text" id="city" name="city">
+				<div>
+					<input type="text" id="city" name="city">
+				</div>
 			</div>
 			
 			<div>
 				<label for="keyword">키워드</label>
-				<input type="text" id="keyword" name="keyword">
+				<div>
+					<span class='notice'>*각 키워드들은 ", "로 구분해 주세요.</span>
+					<input type="text" id="keys" name="keys" placeholder="예) 프랑스, 파리, 서유럽">
+					<input type="text" id="keyword" name="keyword">
+				</div>
 			</div>
 			
 			<div>
 				<label for="airport">이용 항공사</label>
-				<input type="text" id="airport" name="airport">
+				<div>
+					<input type="text" id="airport" name="airport">
+				</div>
 			</div>
 			
 			<div>
 				<label for="days">여행계획일</label>
-				<input type="text" id="days" name="days">
+				<div>
+					<input type="text" id="days" name="days">
+				</div>
 			</div>
 			
 			<div>
 				<label for="daysWeek">출발요일</label>
-				<input type="checkbox" value="월" class="item">월
-				<input type="checkbox" value="화" class="item">화
-				<input type="checkbox" value="수" class="item">수
-				<input type="checkbox" value="목" class="item">목
-				<input type="checkbox" value="금" class="item">금
-				<input type="checkbox" value="토" class="item">토
-				<input type="checkbox" value="일" class="item">일
-				<br>
-				<input type="text" id="daysWeek" name="daysWeek">나중에 히든처리
+				<div>
+					<input type="checkbox" value="월" class="item">월
+					<input type="checkbox" value="화" class="item">화
+					<input type="checkbox" value="수" class="item">수
+					<input type="checkbox" value="목" class="item">목
+					<input type="checkbox" value="금" class="item">금
+					<input type="checkbox" value="토" class="item">토
+					<input type="checkbox" value="일" class="item">일
+					<br>
+					<input type="text" id="daysWeek" name="daysWeek">나중에 히든처리
+				</div>
 			</div>
 			
 			<div>
 				<label for="detail">상세설명</label>
-				<textarea name="detail" id="detail" rows="10" cols="80">
-			    </textarea>
+				<div>
+					<textarea name="detail" id="detail" rows="10" cols="80">
+				    </textarea>
+			    </div>
 			</div>
 			<p class="managerSubmit">
 				<input type="button" value="테스트버튼" id="test">

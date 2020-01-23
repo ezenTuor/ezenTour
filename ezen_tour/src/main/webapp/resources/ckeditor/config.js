@@ -25,4 +25,5 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.removeButtons = 'Source,Templates,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Flash';
+	
 };

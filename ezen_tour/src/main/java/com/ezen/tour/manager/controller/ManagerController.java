@@ -25,6 +25,7 @@ import com.ezen.tour.manager.areadetail.model.AreaDetailService;
 import com.ezen.tour.manager.areadetail.model.ManagerAreaDetailVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
+import com.ezen.tour.pack.model.PackDetailVO;
 
 @Controller
 @RequestMapping("/manager")
@@ -72,8 +73,7 @@ public class ManagerController{
 	}
 	
 	@RequestMapping(value="/pack/packWrite.do", method=RequestMethod.POST)
-	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request
-			, Model model) {
+	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request) {
 		logger.info("패키지 상품 작성 처리, 파라미터 packVo={}", packVo);
 		
 		//파일 업로드 처리
@@ -103,21 +103,39 @@ public class ManagerController{
 		packVo.setImgNames(fileNames);
 		packVo.setImgSizes(fileSizes);
 		
+		
+		String keyword=packVo.getKeyword();
+		String keyArr[]=keyword.split(",");
+		for(int i=0;i<keyArr.length;i++) {
+			if(i==0) {
+				keyword=keyArr[i];
+			}else {
+				keyword+="|"+keyArr[i].trim();
+			}
+		}
+		packVo.setKeyword(keyword);
+		
 		logger.info("처리후 packVo={}", packVo);
 		
 		int cnt=managerPackService.insertPack(packVo);
 		logger.info("pack 입력 처리 cnt={}", cnt);
 		
 		//패키지 대분류 넘버
-		model.addAttribute("packVo", packVo);
-		model.addAttribute("pack_no", packVo.getPackNo());
+		//model.addAttribute("packVo", packVo);
+		//model.addAttribute("pack_no", packVo.getPackNo());
 		
 		return "redirect:/manager/pack/detailWrite.do?packNo="+packVo.getPackNo();
 	}
 	
-	@RequestMapping("/pack/detailWrite.do")
+	@RequestMapping(value="/pack/detailWrite.do", method=RequestMethod.GET)
 	public void packDetail(@RequestParam int packNo) {
 		logger.info("디테일 작성 화면 보여주기, 파라미터 packNo={}", packNo);
+	}
+	
+	@RequestMapping(value="/pack/detailWrite.do", method=RequestMethod.POST)
+	public String packDetailWrite(@ModelAttribute PackDetailVO detailVo) {
+		logger.info("디테일 작성 처리, 파라미터 detailVo={}", detailVo);
+		return null;
 	}
 	
 	@RequestMapping("/test.do")

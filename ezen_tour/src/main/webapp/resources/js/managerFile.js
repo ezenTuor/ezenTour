@@ -57,21 +57,6 @@ $(function(){
 		//파일도 같이 업로드에서 제외처리(테스트 중)
 	});
 	
-	$("#test").click(function(){
-		alert("버튼눌림");
-		var str="";
-		$(".item").each(function(){
-			if($(this).is(":checked")){
-				if(str==""){
-					str+=$(this).val();
-				}else{
-					str+=", "+$(this).val();
-				}
-			}
-		});
-		alert(str);
-		$("#daysWeek").val(str);
-	});
 });
 
 //직접 입력의 경우
