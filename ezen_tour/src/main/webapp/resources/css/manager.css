@@ -89,17 +89,17 @@ article {
     margin: 0 auto;
     font-size: 13pt;
 }
+.managerForm>form>div>div{
+	display: inline-block;
+	margin: 5px 0px 5px 20px;
+	width: 100%;
+}
 .managerForm>form>div{
 	background-color:white;
 	border:2px solid lightgray;
 	display: flex;
     margin: 10px;
     width : 90%;
-}
-.managerForm>form>div>div{
-	display: inline-block;
-	margin: 5px 0px 5px 20px;
-	width: 100%;
 }
 
 .managerForm label {
@@ -109,7 +109,4 @@ article {
 	padding: 5px 0 5px 5px;
 	background-color:#e8e8e8;
 	border-right:2px solid lightgray;
-}
-.managerForm input[type=text]{
-	width: 70%;
 }

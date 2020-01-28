@@ -76,6 +76,7 @@ $(function(){
 		alert(str);
 		$("#daysWeek").val(str);
 		
+		
 	});
 });
 </script>
@@ -109,6 +110,11 @@ $(function(){
 	});
 });
 </script>
+<style>
+	.managerForm input[type=text]{
+		width: 70%;
+	}
+</style>
 <script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
@@ -165,9 +171,8 @@ $(function(){
 			<div>
 				<label for="keyword">키워드</label>
 				<div>
-					<span class='notice'>*각 키워드들은 ", "로 구분해 주세요.</span>
-					<input type="text" id="keys" name="keys" placeholder="예) 프랑스, 파리, 서유럽">
-					<input type="text" id="keyword" name="keyword">
+					<span class='notice'>*각 키워드들은 ", "로 구분해 주세요.</span><br>
+					<input type="text" id="keyword" name="keyword" placeholder="예) 프랑스, 파리, 서유럽">
 				</div>
 			</div>
 			

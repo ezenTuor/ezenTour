@@ -43,7 +43,7 @@
 				<div>
 					<ul>
 		                <li><a href="<c:url value="/manager/pack/packWrite.do"/>">상품등록</a></li>
-		                <li><a href="#">상품목록</a></li>
+		                <li><a href="<c:url value='/manager/pack/packList.do'/>">상품목록</a></li>
 		                <li><a href="#">상품이벤트</a></li>
 		            </ul>  
 				</div>

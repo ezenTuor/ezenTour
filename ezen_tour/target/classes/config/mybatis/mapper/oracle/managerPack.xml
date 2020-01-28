@@ -10,6 +10,11 @@
 		insert into Pack(pack_no, name, img_names, img_sizes, country, city, keyword, airport, days, days_week, detail, regdate)
 		values(#{packNo}, #{name}, #{imgNames}, #{imgSizes}, #{country}, #{city}, #{keyword}, #{airport}, #{days}, #{daysWeek}, #{detail}, sysdate)
 	</insert>
+	
+	<select id="selectList" resultType="managerPackVo">
+		select * from pack
+		order by 
+	</select>
 </mapper>
 
 

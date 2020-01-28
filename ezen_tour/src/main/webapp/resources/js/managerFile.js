@@ -40,23 +40,13 @@ $(function(){
 		var reader = new FileReader();
 		reader.onload = (function(f, idx) {
 			return function(e) {
-				var div = '<div class="thumb"> \<div class="close" data-idx="'
-				+ idx + '">X</div> \<img src="' + e.target.result + '" title="'
+				var div = '<div class="thumb"> \<img src="' + e.target.result + '" title="'
 				+ escape(f.name) + '"/> \</div>';
 				$("#thumbnails").append(div);
 			};
 		})(file, idx);
 		reader.readAsDataURL(file);
 	}
-	
-	$("#thumbnails").on("click", ".close", function(e) {
-		var $target = $(e.target);
-		var idx = $target.attr('data-idx');
-		uploadFiles[idx].upload = 'disable';  //삭제된 항목은 업로드하지 않기 위해 플래그 생성
-		$target.parent().remove();  //프리뷰 삭제
-		//파일도 같이 업로드에서 제외처리(테스트 중)
-	});
-	
 });
 
 //직접 입력의 경우
@@ -76,23 +66,11 @@ function handleImgsFileSelect(e){
 		
 		var reader=new FileReader();
 		reader.onload=function(e){
-			var img_html="<div class='thumb'><div class='close' data-idx='"
-				+ index + "'>X</div><img id='img_id"+index+"'src=\""+e.target.result+"\" title='"+escape(f.name)+"' onclick=\"deleteImageAction("+index+")\" /></div>";
+			var img_html="<div class='thumb'> <img id='img_id"+index+"'src=\""+e.target.result+"\" title='"+escape(f.name)+"' /></div>";
 			$("#thumbnails").append(img_html);
 			index++;
 		}
 		reader.readAsDataURL(f);
 	});
-}
-
-function deleteImageAction(i){
-	console.log("index : "+i);
-	uploadFiles.splice(i, 1);
-	
-	var img_id="#img_id"+i;
-	//alert(img_id);
-	$(img_id).remove();
-	
-	console.log(sel_files);
 }
 //

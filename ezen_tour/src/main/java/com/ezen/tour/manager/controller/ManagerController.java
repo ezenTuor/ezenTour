@@ -33,20 +33,16 @@ public class ManagerController{
 	private Logger logger=LoggerFactory.getLogger(ManagerController.class);
 	
 	@Autowired
-	private FileUploadUtil fileUtil;
-	
+	private FileUploadUtil fileUtil;	
 	@Autowired
 	private ManagerPackService managerPackService;
-	
 	@Autowired
 	private CountryService countryService;
-	
 	@Autowired
 	private AreaService areaService;
-	
 	@Autowired
 	private AreaDetailService areaDetailService;
-	
+
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
 		logger.info("관리자 메인 화면 보여주기");
@@ -136,6 +132,14 @@ public class ManagerController{
 	public String packDetailWrite(@ModelAttribute PackDetailVO detailVo) {
 		logger.info("디테일 작성 처리, 파라미터 detailVo={}", detailVo);
 		return null;
+	}
+	
+	@RequestMapping("/pack/packList.do")
+	public void packList(Model model) {
+		logger.info("관리자 상품 리스트 띄우기");
+		
+		//List<ManagerPackVo> list=managerPackService.selectList();
+		//model.addAttribute("list", list);
 	}
 	
 	@RequestMapping("/test.do")
