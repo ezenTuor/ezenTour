@@ -20,6 +20,6 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 
 	@Override
 	public List<ManagerPackVo> selectList() {
-		return sqlSession.selectList(namespace+"");
+		return sqlSession.selectList(namespace+"selectList");
 	}
 }
