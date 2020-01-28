@@ -17,16 +17,29 @@
 	    
 	$(function() {
 		$(document).on("change", ".dateVal", function() { 
-			//ajax 붙여서 띄우기
-		     //console.log($(this).val());
-		     //console.log(typeof $(this).val());
 		     var selDate = $(this).val();
 		     $.ajax({
 		    	type:"get",
 		    	url:"<c:url value='/dateSelect.do?koreaDep="+ selDate +"'/>",
 		    	dataType: "json",
 		    	success: function(res) {
-		    		console.log(res);
+		    		if(res.length>0){
+		    			//alert("!!");
+		    			var str = '';
+			    		console.log(res);
+						$.each(res, function(idx, item) {
+					
+							str='<li id="title-tag">'+
+		    				'<div class="dep">'+item.koreaDep+'</div>'+
+		    				'<div class="air">'+item.airline+'</div>'+
+		    				'<div class="during">'+item.daysDetail+'</div>'+
+		    				'<div class="packname">'+item.name+'</div>'+
+		    				'<div class="price">'+item.man+'</div>'+
+		    				'<div class="res">'+item.shopping+'</div>'+
+		    				'</li>'
+		    				$("#pack-ex").append(str);
+						})		    			
+		    		}
 				},
 				error: function(xhr, status, error){
 					alert("Error:"+ status+", "+error);
@@ -67,21 +80,24 @@
 				<div class="price">기타</div>
 				<div class="res">예약상태</div>
 			</li>
-			
-			<!-- 
-			<li>
+		</ul>
+		
+		<ul id="pack-ex">
+		</ul>
+		<!-- 
+		
+			<li class="contents-tag">
 				<div class="dep">출발/도착 일시</div>
 				<div class="air">항공</div>
 				<div class="during">기간</div>
 				<div class="packname">상품명</div>
 				<div class="price">기타</div>
-				<div class="res"><button value="예약가능"></div>
+				<div class="res"><button type="button" value="예약가능">예약가능</button></div>
 			</li>
+		
+		 -->	
 			
-			 -->
-			
-			
-		</ul>
+
 	
 	</div>
 

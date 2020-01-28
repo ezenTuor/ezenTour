@@ -55,7 +55,7 @@ public class PackDetailServiceImpl implements PackDetailService {
 	}
 
 	@Override
-	public List<PackDetailVO> selectByDate(String koreaDep) {
+	public List<PackDetailViewVO> selectByDate(String koreaDep) {
 		return packDetailDao.selectByDate(koreaDep);
 	}
 
