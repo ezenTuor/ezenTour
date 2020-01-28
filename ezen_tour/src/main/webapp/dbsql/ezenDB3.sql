@@ -68,7 +68,7 @@ CREATE TABLE SCHEDULE (
 	DETAIL CLOB, /* 내용 */
 	DAY DATE, /* 날짜 */
 	MEAL VARCHAR2(300), /* 식사 */
-	HOTEL VARCAR2(300), /* 숙박 */
+	HOTEL VARCHAR2(300), /* 숙박 */
 	HOTEL_H VARCHAR2(40), /* 경도 */
 	HOTEL_V VARCHAR2(40) /* 위도 */
 );
