@@ -64,6 +64,19 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		 return sqlSession.selectList(namespace+"selectByDate", koreaDep);
 	}
 	
+	@Override
+	public List<String> selKWList(int tagNo){
+		return sqlSession.selectList(namespace+"packDetailListSelect", tagNo);
+	}
 	
+	@Override
+	public List<PackVO> selectPackByKw(String keyword){
+		return sqlSession.selectList(namespace+"selectPackByKw", keyword);
+	}
+	
+	@Override
+	public String areaKeyword(int tagNo) {
+		return sqlSession.selectOne(namespace+"areaKeyword", tagNo);
+	}
 
 }

@@ -51,8 +51,27 @@
 		<![CDATA[
 			AND korea_dep <= TO_DATE(#{koreaDep})+1	
 		]]>
-
-
+	</select>
+	
+	<!-- 
+	<select id="selKWList" parameterType="int" resultType="String">
+		select 
+		distinct regexp_substr(A.KW, '[^|]+', 1, LEVEL) KW
+		FROM (SELECT keyword KW FROM area_detail where tag_no=#{tagNo}) A
+		<![CDATA[
+		CONNECT BY LEVEL <= length(regexp_replace(A.KW, '[^|]+',''))+1
+		]]>
+	</select>
+	 -->
+	
+	<select id="areaKeyword" resultType="String" parameterType="int">
+		select keyword from area_detail
+		where tag_no=#{tagNo}
+	</select>
+	
+	<select id="selectPackByKw" resultType="packVo" parameterType="areaDetailVo">
+		select * from pack
+		where regexp_like (keyword, #{keyword})
 	</select>
 	
 	

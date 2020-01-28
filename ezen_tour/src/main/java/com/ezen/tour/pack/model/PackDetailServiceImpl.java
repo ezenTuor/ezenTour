@@ -58,6 +58,22 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public List<PackDetailVO> selectByDate(String koreaDep) {
 		return packDetailDao.selectByDate(koreaDep);
 	}
+
+	@Override
+	public List<String> selKWList(int tagNo) {
+		return packDetailDao.selKWList(tagNo);
+	}
+
+	@Override
+	public List<PackVO> selectPackByKw(String keyword) {
+		return packDetailDao.selectPackByKw(keyword);
+	}
+
+	@Override
+	public String areaKeyword(int tagNo) {
+		return packDetailDao.areaKeyword(tagNo);
+	}
+
 	
 	
 }
