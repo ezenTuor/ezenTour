@@ -1,0 +1,19 @@
+필요한 view 목록
+
+패키지 소분류, 대분류 VIEW 형태로 변환
+
+HISTORY - PACKDETAIL - PACK
+VIEW(패키지 이름, 패키지번호, 시작날짜 끝날짜 필요)
+
+REVIEW - PACKDETIAL - PACK
+VIEW(패키지 이름, 패키지 번호 필요)
+
+WISHLIST - PACKDETAIL - PACK
+VIEW(패키지 이름, 시작날짜, 끝날짜 필요)
+
+PAYMENT_DETAIL - PACKDETAIL - PACK
+VIEW(패키지 이름, 시작날짜, 끝날짜, 패키지번호 필요)
+
+통계 VIEW화
+PAYMENT - PAYMENT_DETAIL - MEMBER - PACK_DETAIL - PACK
+VIEW(최종금액, 결제일, 성별, 나이, 지역번호)
