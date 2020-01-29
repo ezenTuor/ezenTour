@@ -29,26 +29,6 @@ $( function() {
 		$("#koreaDepHour").append(html.join('')); */
 } );
 </script>
-<style type="text/css">
-	.triple{
-		border-left:0px !important;
-	}
-	.double{
-		border-left:0px !important;
-	}
-	.triple>div{
-		width:25% !important;
-	}
-	.double>div{
-		width:40% !important;
-	}
-	.triple>label{
-		border-left:2px solid lightgray !important;
-	}
-	.double>label{
-		border-left:2px solid lightgray !important;
-	}
-</style>
 <article class="managerForm">
 	<h2>디테일 테스트중</h2>
 	<form name="frm1" method="post" action="#">
@@ -86,18 +66,12 @@ $( function() {
 				도착시간 : <input type="text" name="">
 			</div>
 		</div>
-		<div class="triple">
-			<label for="man">성인가격</label>
+		<div>
+			<label>패키지가격</label>
 			<div>
-				<input type="text" name="man"> 원
-			</div>
-			<label for="child">유아가격</label>
-			<div>
-				<input type="text" name="child"> 원
-			</div>
-			<label for="baby">아동가격</label>
-			<div>
-				<input type="text" name="baby"> 원
+				성인 : <input type="text" name="man"> 원 <br>
+				유아 : <input type="text" name="child"> 원 <br>
+				아동 : <input type="text" name="baby"> 원
 			</div>
 		</div>
 		<div>
@@ -121,15 +95,11 @@ $( function() {
 			</div>
 		</div>
 		
-		<div class="double">
-			<label for="capecity">수용인원</label>
+		<div>
+			<label>인원설정</label>
 			<div>
-				<input type="text" name="capecity"> 명
-			</div>
-			
-			<label for="capecityMin">최소인원</label>
-			<div>
-				<input type="text" name="capecityMin"> 명
+				수용인원 : <input type="text" name="capecity"> 명 <br>
+				최소인원 : <input type="text" name="capecityMin"> 명
 			</div>
 		</div>
 		

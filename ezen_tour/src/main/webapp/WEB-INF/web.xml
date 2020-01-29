@@ -47,7 +47,12 @@
 	
     <session-config>
         <session-timeout>20</session-timeout>
+        <cookie-config>
+			<name>JSESSIONID</name>
+			<secure>false</secure>
+		</cookie-config>
     </session-config>
+    
 
     <!-- <error-page>
       <error-code>404</error-code>
