@@ -21,7 +21,7 @@ public interface PackDetailDAO {
 
 	List<AreaDetailVO> selectAreaDetail(int areaNo);
 
-	List<PackDetailVO> selectByDate(String koreaDep);
+	List<PackDetailViewVO> selectByDate(String koreaDep);
 
 	List<String> selKWList(int tagNo);
 
