@@ -44,10 +44,12 @@
 		where keyword like '%'||#{searchAreaKeyword}||'%'
 	</select> <!-- 소분류 서치 -->
 	
-	<select id="selectByDate" parameterType="String" resultType="packDetailViewVo">
+	<select id="selectByDate" parameterType="packAjaxVo" resultType="packDetailViewVo">
 	
 		select * from pack_detail_view
-		where korea_dep >= TO_DATE(#{koreaDep}) 		
+		where 
+		pack_no=#{packNo} and
+		korea_dep >= TO_DATE(#{koreaDep}) 		
 		<![CDATA[
 			AND korea_dep <= TO_DATE(#{koreaDep})+1	
 		]]>

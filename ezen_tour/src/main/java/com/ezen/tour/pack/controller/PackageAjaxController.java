@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ezen.tour.pack.model.PackAjaxVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackDetailViewVO;
@@ -38,9 +39,14 @@ public class PackageAjaxController {
 	
 	@RequestMapping("/dateSelect.do")
 	@ResponseBody
-	public List<PackDetailViewVO> packDateSelect(@RequestParam String koreaDep){
-		logger.info("에이젝스 화면 임시={}", koreaDep);
-		List<PackDetailViewVO> packDetailList = packDetailService.selectByDate(koreaDep);
+	public List<PackDetailViewVO> packDateSelect(@RequestParam String koreaDep, @RequestParam int packNo){
+		logger.info("에이젝스 화면 임시1={}", koreaDep);
+		logger.info("에이젝스 화면 임시2={}", packNo);
+		PackAjaxVO pjaxVo = new PackAjaxVO();
+		pjaxVo.setKoreaDep(koreaDep);
+		pjaxVo.setPackNo(packNo);
+		
+		List<PackDetailViewVO> packDetailList = packDetailService.selectByDate(pjaxVo);
 		logger.info("selectedByDate.size()={}", packDetailList.size());
 		
 		return packDetailList;

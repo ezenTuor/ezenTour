@@ -4,12 +4,13 @@
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerFile.css">
-<script type="text/javascript" src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 //ckeditor부분
 $(function(){
     CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
     	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>",
+    	extraPlugins : 'uploadimage'
     });
 });
 
@@ -115,7 +116,7 @@ $(function(){
 		width: 70%;
 	}
 </style>
-<script type="text/javascript" src="<c:url value='/resources/js/managerFile.js'/>"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/managerFile.js"></script>
 	<article class="managerForm">
 		<h2>패키지 등록 화면</h2>
 		<div class='progress'>

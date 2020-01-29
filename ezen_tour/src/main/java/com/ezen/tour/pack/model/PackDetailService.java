@@ -12,7 +12,7 @@ public interface PackDetailService {
 	List<PackVO> packSelAreaNo(int areaNo);
 	List<PackVO> areaDetailSearch(String searchAreaKeyword);
 	List<AreaDetailVO> selectAreaDetail(int areaNo);
-	List<PackDetailViewVO> selectByDate(String koreaDep);
+	List<PackDetailViewVO> selectByDate(PackAjaxVO pjaxVo);
 	List<String> selKWList(int tagNo);
 	List<PackVO> selectPackByKw(String keyword);
 	String areaKeyword(int tagNo);

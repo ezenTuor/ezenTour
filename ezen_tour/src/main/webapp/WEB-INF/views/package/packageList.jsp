@@ -23,13 +23,13 @@
 						$.each(res, function(idx, item) {
 							if(idx%2==0){
 								var imageName = item.imgNames.split('|')[0]
-								str = '<li class="even">'+
+								str = '<li class="even"><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo='+item.packNo+'">'+
 									'<img src="'+imageName+'" id="pack-img">'+
 									'<div class="smallerBox">'+
 									'<div>'+item.name+'</div>'+
 									'<div>'+item.city+'</div>'+
 									'<div>'+item.detail+'</div>'+
-									'</div>'+
+									'</a></div>'+
 								'</li>'
 								
 								$("#pack-ex").append(str);
@@ -40,13 +40,13 @@
 							    .appendTo("head");
 							} else if(idx%2!==0){
 								var imageName = item.imgNames.split('|')[0]
-								str = '<li class="odd">'+
+								str = '<li class="odd"><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo='+item.packNo+'">'+
 									'<img src="'+imageName+'" id="pack-img">'+
 									'<div class="smallerBox">'+
 									'<div>'+item.name+'</div>'+
 									'<div>'+item.city+'</div>'+
 									'<div>'+item.detail+'</div>'+
-									'</div>'+
+									'</a></div>'+
 								'</li>'
 								
 								$("#pack-ex").append(str);	

@@ -27,15 +27,15 @@ public class PackageController {
 	private PackDetailService packDetailService;
 	
 	@RequestMapping("/packageDetail.do")
-	public String packageDetail(@RequestParam(defaultValue = "1") int packDno, Model model) {
-		logger.info("패키지 디테일 페이지, packDno={}", packDno);
+	public String packageDetail(@RequestParam(defaultValue = "0") int packDno, Model model) {
+		logger.info("packDetail, packDno={}", packDno);
 		
 		if(packDno==0) {
 			logger.info("when packDno it 0");
 		}
 		
 		PackDetailVO packDetailVo = packDetailService.selectPackDetail(packDno);
-		logger.info("패키지 디테일 넘버, vo={}", packDetailVo);
+		logger.info("packDetail, vo={}", packDetailVo);
 		
 		int packNumber = packDetailVo.getPackNo();
 		
@@ -72,7 +72,7 @@ public class PackageController {
 	
 	
 	@RequestMapping("/packSelectSchedule.do")
-	public String packageSelectSchedule(@RequestParam(defaultValue="1") int packNo, Model model) {
+	public String packageSelectSchedule(@RequestParam(defaultValue="0") int packNo, Model model) {
 		logger.info("this is pack SelectSchedule, packNo={}", packNo);
 		
 		if(packNo==0) {
@@ -83,7 +83,7 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
-		
+
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
 		
