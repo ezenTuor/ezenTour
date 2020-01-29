@@ -17,10 +17,13 @@
 	    
 	$(function() {
 		$(document).on("change", ".dateVal", function() { 
+			$("#pack-ex").empty();
 		     var selDate = $(this).val();
+		     var packNo = $('h4').html();
+		     console.log(packNo);
 		     $.ajax({
 		    	type:"get",
-		    	url:"<c:url value='/dateSelect.do?koreaDep="+ selDate +"'/>",
+		    	url:"<c:url value='/dateSelect.do?koreaDep="+ selDate +"&packNo="+packNo+"'/>",
 		    	dataType: "json",
 		    	success: function(res) {
 		    		if(res.length>0){
@@ -30,10 +33,10 @@
 						$.each(res, function(idx, item) {
 					
 							str='<li id="title-tag">'+
-		    				'<div class="dep">'+item.koreaDep+'</div>'+
+		    				'<div class="dep"><div>'+item.koreaDep+'</div><div>'+item.koreaEnt+'</div></div>'+
 		    				'<div class="air">'+item.airline+'</div>'+
 		    				'<div class="during">'+item.daysDetail+'</div>'+
-		    				'<div class="packname">'+item.name+'</div>'+
+		    				'<div class="packname"><a href=#>'+item.name+'</a></div>'+
 		    				'<div class="price">'+item.man+'</div>'+
 		    				'<div class="res">'+item.shopping+'</div>'+
 		    				'</li>'
@@ -68,6 +71,7 @@
 
 		<!-- 이하 본문 -->
 		<h3>${packVo.name}</h3>
+		<h4 style="display: none">${packVo.packNo}</h4>
 		<div><span>${maxMin.minPrice}원</span>~<span>${maxMin.maxPrice}원</span></div>
 		<div><span>주요 방문 도시 |</span>   <span>${packVo.city }</span></div>
 	

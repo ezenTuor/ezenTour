@@ -72,7 +72,7 @@ public class PackageController {
 	
 	
 	@RequestMapping("/packSelectSchedule.do")
-	public String packageSelectSchedule(@RequestParam(defaultValue="1") int packNo, Model model) {
+	public String packageSelectSchedule(@RequestParam(defaultValue="0") int packNo, Model model) {
 		logger.info("this is pack SelectSchedule, packNo={}", packNo);
 		
 		if(packNo==0) {
@@ -83,7 +83,7 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
-		
+
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
 		

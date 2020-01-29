@@ -60,8 +60,8 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	}
 	
 	@Override
-	public List<PackDetailViewVO> selectByDate(String koreaDep){		
-		 return sqlSession.selectList(namespace+"selectByDate", koreaDep);
+	public List<PackDetailViewVO> selectByDate(PackAjaxVO packAjaxVo){		
+		 return sqlSession.selectList(namespace+"selectByDate", packAjaxVo);
 	}
 	
 	@Override
