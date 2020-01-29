@@ -12,8 +12,21 @@
     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
   } );
   
+  function getFormatDate(date){
+	  	var yoil = ['일','월','화','수','목','금','토'];
+	    var year = date.getFullYear();              //yyyy
+	    var month = (1 + date.getMonth());          //M
+	    month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+	    var day = date.getDate();                   //d
+	    day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+	    var yo = date.getDay()
+	    var time = date.getHours();
+	    time = time>=10 ? time : '0' +time;
+	    var min=date.getMinutes();
+	    min = min>=10 ? min : '0' +min;
+	    return  year + '.' + month + '.' + day+'('+yoil[yo]+") "+time+":"+min;
+	}
 
-	    
 	    
 	$(function() {
 		$(document).on("change", ".dateVal", function() { 
@@ -31,12 +44,20 @@
 		    			var str = '';
 			    		console.log(res);
 						$.each(res, function(idx, item) {
+							var curdate = new Date(null);
+							curdate.setTime(item.koreaDep);
+							var korDep1 = getFormatDate(curdate);
+							
+							var curdate2 = new Date(null);
+							curdate2.setTime(item.koreaEnt);
+							var korEnt2 = getFormatDate(curdate2);
+							
 					
 							str='<li id="title-tag">'+
-		    				'<div class="dep"><div>'+item.koreaDep+'</div><div>'+item.koreaEnt+'</div></div>'+
+		    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
 		    				'<div class="air">'+item.airline+'</div>'+
 		    				'<div class="during">'+item.daysDetail+'</div>'+
-		    				'<div class="packname"><a href=#>'+item.name+'</a></div>'+
+		    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
 		    				'<div class="price">'+item.man+'</div>'+
 		    				'<div class="res">'+item.shopping+'</div>'+
 		    				'</li>'

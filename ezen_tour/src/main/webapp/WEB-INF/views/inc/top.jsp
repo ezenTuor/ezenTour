@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>top.jsp</title>
+<title>Ezen Tour</title>
 <script type="text/javascript" 
 	src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/clear.css"/>
