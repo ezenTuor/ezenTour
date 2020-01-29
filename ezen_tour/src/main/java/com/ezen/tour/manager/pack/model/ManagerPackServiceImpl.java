@@ -1,9 +1,9 @@
 package com.ezen.tour.manager.pack.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ezen.tour.pack.model.PackVO;
 
 @Service
 public class ManagerPackServiceImpl implements ManagerPackService{
@@ -13,5 +13,10 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 	@Override
 	public int insertPack(ManagerPackVo packVo) {
 		return managerPackDao.insertPack(packVo);
+	}
+
+	@Override
+	public List<ManagerPackVo> selectList() {
+		return managerPackDao.selectList();
 	}
 }

@@ -3,7 +3,16 @@ insert into member_grade
 values('C', '회원 가입시 기본으로 주어지는 일반회원 등급입니다.', '등급 혜택 해당사항 없음, 마일리지 적립 5%', 5);
 
 insert into member
-values(member_seq.nextval, 'hong', '1234', '홍길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '990101-1122333', 'M', sysdate, 'N', null);
+values(member_seq.nextval, 'hong', '1234', '홍길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '990101-1122333', 'M', sysdate, 'N', null, default);
+
+insert into member
+values(member_seq.nextval, 'kim', '1234', '김길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '010101-3122333', 'M', sysdate, 'N', null, default);
+
+insert into member
+values(member_seq.nextval, 'lee', '1234', '이길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '920101-2122333', 'F', sysdate, 'N', null, default);
+
+insert into member
+values(member_seq.nextval, 'park', '1234', '박길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '040101-4122333', 'F', sysdate, 'N', null, default);
 
 --관리자 --
 insert into manager
