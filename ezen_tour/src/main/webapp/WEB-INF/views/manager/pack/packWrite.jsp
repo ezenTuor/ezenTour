@@ -8,9 +8,22 @@
 <script type="text/javascript">
 //ckeditor부분
 $(function(){
+	
     CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
-    	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>",
+    	filebrowserUploadUrl : "<c:url value='/managerFile/imageUpload.do'/>",
     	extraPlugins : 'uploadimage'
+    });
+    CKEDITOR.on('dialogDefinition', function( ev ){
+        var dialogName = ev.data.name;
+        var dialogDefinition = ev.data.definition;
+
+        switch (dialogName) {
+            case 'image': 
+            //dialogDefinition.removeContents('info');
+            dialogDefinition.removeContents('Link');
+            dialogDefinition.removeContents('advanced');
+            break;
+        }
     });
 });
 

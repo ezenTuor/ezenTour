@@ -24,9 +24,9 @@ public class FileUploadUtil {
 	private static final Logger logger
 		=LoggerFactory.getLogger(FileUploadUtil.class);
 	
-	public static final int FILE_UPLOAD=1;  //�옄猷뚯떎 �뙆�씪 �뾽濡쒕뱶
-	public static final int MANAGER_UPLOAD=2; //�뿉�뵒�꽣�궡 �씠誘몄� �꽔湲�
-	public static final int PD_UPLOAD=3;	//�긽�뭹 愿��젴 �씠誘몄� �꽔湲�
+	public static final int FILE_UPLOAD=1;
+	public static final int MANAGER_UPLOAD=2;
+	public static final int PD_UPLOAD=3;
 	
 	
 	@Resource(name = "fileUpProperties")
@@ -34,22 +34,22 @@ public class FileUploadUtil {
 	
 	public List<Map<String, Object>> fileUpload(HttpServletRequest request,
 			int uploadPathType, String paramName) {
-		//�뙆�씪 �뾽濡쒕뱶 泥섎━
+		
 		MultipartHttpServletRequest multiReq=(MultipartHttpServletRequest)request;
 		
 		List<MultipartFile> olist=multiReq.getFiles(paramName);
 		//Map<String, MultipartFile> fileMap=multiReq.getFileMap();
 		
-		//寃곌낵瑜� �꽔�쓣 List
+		
 		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
 		
 		for(MultipartFile tempFile: olist) {
 			if(!tempFile.isEmpty()) {
-				//蹂�寃쎌쟾 (�썝�옒) �뙆�씪紐�
+				
 				String originFileName=tempFile.getOriginalFilename();
-				//蹂�寃쎈맂 �뙆�씪紐�
+				
 				String fileName=getUniqueFileName(originFileName);
-				//�뙆�씪 �겕湲�
+				
 				long fileSize=tempFile.getSize();
 				
 				Map<String, Object> map=new HashMap<String, Object>();
@@ -59,8 +59,7 @@ public class FileUploadUtil {
 				
 				list.add(map);
 				
-				//�뾽濡쒕뱶 泥섎━
-				//�뾽濡쒕뱶�븷 寃쎈줈 援ы븯湲�
+				
 				String upPath=getFilePath(request, uploadPathType);
 				
 				File file=new File(upPath, fileName);
@@ -80,7 +79,6 @@ public class FileUploadUtil {
 	}
 
 	public String getFilePath(HttpServletRequest request, int uploadPathType) {
-		//�뾽濡쒕뱶�븷 寃쎈줈 援ы븯湲�
 		String path="";
 		
 		String type=props.getProperty("file.upload.type");
@@ -94,7 +92,7 @@ public class FileUploadUtil {
 			}else if(uploadPathType==PD_UPLOAD) {
 				path=props.getProperty("pdImageFile.upload.path.test");
 			}
-		}else { //諛고룷�떆 �떎�젣 寃쎈줈
+		}else {
 			String upDir="";
 			if(uploadPathType==FILE_UPLOAD) {			
 				upDir=props.getProperty("file.upload.path");
@@ -109,7 +107,7 @@ public class FileUploadUtil {
 			
 			//config.getServletContext().getRealPath(upDir);
 		}
-		logger.info("�뾽濡쒕뱶 寃쎈줈  path={}", path);
+		logger.info("저장 위치  path={}", path);
 		
 		return path;
 	}
@@ -126,7 +124,7 @@ public class FileUploadUtil {
 		
 		//String fileName=fName+time+ext;
 		String fileName=time+ext;
-		logger.info("蹂�寃쎈맂 fileName={}", fileName);
+		logger.info("최종 파일 이름 fileName={}", fileName);
 		
 		return fileName;
 	}

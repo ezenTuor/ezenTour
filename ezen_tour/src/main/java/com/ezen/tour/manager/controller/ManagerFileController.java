@@ -34,6 +34,7 @@ public class ManagerFileController {
 	@ResponseBody
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response
 			, MultipartHttpServletRequest multipart) throws IOException {
+		
 		logger.info("이미지 업로드 처리");
 		JsonObject json=new JsonObject();
 		PrintWriter printWriter=null;
@@ -62,16 +63,16 @@ public class ManagerFileController {
 						out.write(bytes);
 						
 						
-						String tempupload="D:\\lecture\\workspace_list\\finalP_ws\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ezen_tour\\resources\\manager_images";
+						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/manager_images";
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
 						
 						printWriter = response.getWriter();
-						response.setCharacterEncoding("UTF-8");
+
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("파일 url"+fileUrl);
+						System.out.println("파일 url - "+fileUrl);
 						
 						logger.info("파일 업로드 완료, 파일 url={}", fileUrl);
 						
