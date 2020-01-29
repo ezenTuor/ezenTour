@@ -5,6 +5,7 @@
 
 CKEDITOR.editorConfig = function( config ) {
 	config.language = 'ko';
+	config.extraPlugins = 'uploadimage';
 	
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
@@ -27,3 +28,15 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeButtons = 'Source,Templates,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Flash';
 	
 };
+CKEDITOR.on('dialogDefinition', function( ev ){
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+
+    switch (dialogName) {
+        case 'image': //Image Properties dialog
+        //dialogDefinition.removeContents('info');
+        dialogDefinition.removeContents('Link');
+        dialogDefinition.removeContents('advanced');
+        break;
+    }
+});
