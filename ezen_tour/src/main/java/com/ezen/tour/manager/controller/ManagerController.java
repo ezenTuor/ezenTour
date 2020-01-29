@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -138,8 +139,9 @@ public class ManagerController{
 	public void packList(Model model) {
 		logger.info("관리자 상품 리스트 띄우기");
 		
-		//List<ManagerPackVo> list=managerPackService.selectList();
-		//model.addAttribute("list", list);
+		List<ManagerPackVo> list=managerPackService.selectList();
+		logger.info("관리자 상품(대분류) list.size={}",list.size());
+		model.addAttribute("list", list);
 	}
 	
 	@RequestMapping("/test.do")
