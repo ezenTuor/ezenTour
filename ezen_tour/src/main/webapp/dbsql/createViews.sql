@@ -51,5 +51,3 @@ left join pack_detail pd
 on d.pack_dno=pd.pack_dno
 left join pack pa
 on pd.pack_no=pa.pack_no;
-
-select * from chart_view;
