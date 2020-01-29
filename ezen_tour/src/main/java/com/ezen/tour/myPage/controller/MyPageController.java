@@ -18,6 +18,8 @@ import com.ezen.tour.coupon.model.CouponService;
 import com.ezen.tour.coupon.model.CouponVO;
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
+import com.ezen.tour.mileage.model.MileageService;
+import com.ezen.tour.mileage.model.MileageVO;
 import com.ezen.tour.common.PaginationInfo;
 import com.ezen.tour.common.Utility;
 
@@ -31,6 +33,8 @@ public class MyPageController {
 	private CouponService couponService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MileageService mileageService;
 	
 	@RequestMapping("/coupon.do")
 	public String couponList(@ModelAttribute SearchVO searchVo
@@ -93,5 +97,42 @@ public class MyPageController {
 				model.addAttribute("N_list", N_list);
 				model.addAttribute("N_pagingInfo", N_pagingInfo);
 		return "myPage/coupon";
+	}
+	@RequestMapping("/mileage.do")
+	public String mileageList(@ModelAttribute SearchVO searchVo
+		,HttpSession session, Model model) {
+		String user_id=(String) session.getAttribute("user_id");
+		//int user_no = memberService.selectUser_no(user_id);
+		int user_no = 1;
+		//1
+		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
+				
+		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
+		PaginationInfo pagingInfo=new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
+		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setUser_no(user_no);
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		
+		//2
+		List<MileageVO> list=mileageService.selectAll(searchVo);
+		logger.info("글목록 결과, list.size={}", list.size());
+		
+		//[3] 레코드 개수 조회후 셋팅
+		int totalRecord=mileageService.selectTotalRecord(user_no);
+		logger.info("totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+			
+		//3
+		model.addAttribute("list", list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "myPage/mileage";
 	}
 }

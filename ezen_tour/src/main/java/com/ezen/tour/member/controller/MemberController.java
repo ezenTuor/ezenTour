@@ -390,6 +390,11 @@ public class MemberController {
 		model.addAttribute("sb",sb);
 		return "member/certified";
 	}
-	
-	
+	@RequestMapping(value = "/certified.do", method = RequestMethod.POST)
+	public String newPwd(@RequestParam String cer_num) {
+		logger.info("새 비밀번호 찾기");
+		String msg = "인증되었습니다.", url = "/member/newPwd.jsp";
+		//여기까지
+		return "common/message";
+	}
 }

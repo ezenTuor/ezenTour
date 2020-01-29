@@ -71,6 +71,15 @@ function Postcode() {
     }).open();
 }
 </script>
+<style>
+	form{
+		width: 800px;
+		margin-left: 551.5px;
+	}
+	fieldset{
+		margin-left: 222.5px;
+	}
+</style>
 </head>
 <article>
 <div class="divForm">

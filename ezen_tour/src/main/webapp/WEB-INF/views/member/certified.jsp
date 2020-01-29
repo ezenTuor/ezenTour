@@ -12,9 +12,9 @@
 	$(function() {
 		$.ajax({
 			url:"<c:url value='/pwdFind.do'/>",
-			data:"sb=${param.sb}",
+			data:"#cer_num.val()=${param.sb}",
 			success:function(res){
-				location.href('<c:url value="/member/newPwd.do"/>')
+				location.href('<c:url value="/member/certified.do"/>')
 			},
 			error:function(xhr,status,error){
 				alert("error : "+status+","+ error);
@@ -24,7 +24,7 @@
 </script>
 </head>
 <body>
-	<form>
+	<form> 
 		<div>
 			<label >인증번호</label>
 			<input type="text" name="cer_num" id="cer_num" placeholder="인증번호"
