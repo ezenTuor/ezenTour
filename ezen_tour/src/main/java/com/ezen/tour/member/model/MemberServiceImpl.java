@@ -78,4 +78,9 @@ public class MemberServiceImpl implements MemberService{
 	public String FindPwd(Map<String, String> map) {
 		return memberDao.FindPwd(map);
 	}
+
+	@Override
+	public int updateUser_Pwd(Map<String, String> map) {
+		return memberDao.updateUser_Pwd(map);
+	}
 }

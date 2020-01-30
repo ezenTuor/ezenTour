@@ -52,4 +52,9 @@
 		select user_pwd from member
 		where user_id=#{user_id} and email1=#{email1} and email2=#{email2}
 	</select>
+	<update id="updateUser_Pwd" parameterType="map">
+		update member
+		set user_pwd = #{user_pwd}
+		where user_id = #{user_id}
+	</update>
 </mapper>

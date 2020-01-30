@@ -58,4 +58,9 @@ public class MemberDAOMybatis implements MemberDAO{
 	public String FindPwd(Map<String, String> map) {
 		return sqlSession.selectOne(namespace+"FindPwd",map);
 	}
+
+	@Override
+	public int updateUser_Pwd(Map<String, String> map) {
+		return sqlSession.update(namespace+"updateUser_Pwd",map);
+	}
 }

@@ -326,8 +326,8 @@ public class MemberController {
 		
 		String subject="아이디 찾기에 대한 답변입니다.";
 		String content="회원님의 아이디는 ["+user_id+"] 입니다.";
-		String receiver="kimsangjoon95@gmail.com";
-		String sender="kimsangjoon95@gmail.com";
+		String receiver=email1+"@"+email2;
+		String sender=email1+"@"+email2;
 				
 		try {
 			emailSender.sendMail(subject, content, receiver, sender);
@@ -357,8 +357,10 @@ public class MemberController {
 	@RequestMapping(value = "/pwdFind.do", method = RequestMethod.POST)
 	public String findUser_Pwd(@ModelAttribute MemberVO vo, 
 			@RequestParam(required = false) String email3,
-			Model model) {
+			Model model,
+			HttpSession session, HttpServletRequest request) {
 		logger.info("비밀번호 찾기 처리, 파라미터 vo={}, email3={}", vo, email3);
+		String user_id = vo.getUser_id();
 		String email1=vo.getEmail1();
 		String email2=vo.getEmail2();
 		if(email1==null || email1.isEmpty()) {
@@ -367,34 +369,95 @@ public class MemberController {
 			if(email2.equals("etc")) {
 				if(email3!=null && !email3.isEmpty()) {
 					vo.setEmail2(email3);
-				}else {
+				}else{
 					vo.setEmail1("");
 					vo.setEmail2("");					
 				}
 			}
 		}
-		String sb = Utility.randomNum();
-		String subject="아이디 찾기에 대한 답변입니다.";
-		String content="회원님의 인증번호는 ["+sb.toString()+"] 입니다.";
-		String receiver="kimsangjoon95@gmail.com";
-		String sender="kimsangjoon95@gmail.com";
-				
-		try {
-			emailSender.sendMail(subject, content, receiver, sender);
-			logger.info("이메일 발송을 성공했습니다.");
-		} catch (MessagingException e) {
-			logger.info("이메일 발송을 실패했습니다.");
-			e.printStackTrace();
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email1", email1);
+		map.put("email2", email2);
+		
+		String result = memberService.FindUserIdByEmail(map);
+		int cnt = memberService.selectDuplicate(user_id);
+		
+		String msg = "", url ="";
+		if(result == null || result.isEmpty() || cnt==0) {
+			msg = "입력하신 정보가 정확하지 않습니다.";
+			url = "/pwdFind.do";
+		}else {
+			msg = "이메일 확인되었습니다. 인증번호가 전송되었습니다.";
+			url = "/certified.do";
+			
+			String sb = Utility.randomNum();
+			String subject="비밀번호 찾기에 대한 답변입니다.";
+			String content="회원님의 인증번호는 ["+sb.toString()+"] 입니다.";
+			String receiver=email1+"@"+email2;
+			String sender=email1+"@"+email2;
+			
+			session.setAttribute("user_id_newPwd", user_id);
+			session.setAttribute("sb", sb);
+			session.setMaxInactiveInterval(3*60);
+			
+			try {
+				emailSender.sendMail(subject, content, receiver, sender);
+				logger.info("이메일 발송을 성공했습니다.");
+			} catch (MessagingException e) {
+				logger.info("이메일 발송을 실패했습니다.");
+				e.printStackTrace();
+			}
 		}
 		
-		model.addAttribute("sb",sb);
-		return "member/certified";
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
 	}
-	@RequestMapping(value = "/certified.do", method = RequestMethod.POST)
-	public String newPwd(@RequestParam String cer_num) {
-		logger.info("새 비밀번호 찾기");
-		String msg = "인증되었습니다.", url = "/member/newPwd.jsp";
-		//여기까지
+	@RequestMapping("/certify.do")
+	public String certify(@RequestParam String cer_num, HttpSession session,
+			Model model) {
+		logger.info("인증번호 처리");
+		
+		String sb = (String)session.getAttribute("sb");
+		
+		String msg = "", url = "";
+		if(sb==cer_num) {
+			msg = "인증되었습니다.";
+			url = "/newPwd.do";
+		}else {
+			msg = "인증에 실패하였습니다.";
+			url = "/certified.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	@RequestMapping("/newPwd.do")
+	public String newPwd(@RequestParam String new_Pwd, HttpSession session,
+			Model model) {
+		logger.info("비밀번호 변경 처리");
+		String user_id_newPwd = (String)session.getAttribute("user_id_newPwd");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id_newPwd", user_id_newPwd);
+		map.put("new_Pwd", new_Pwd);
+		
+		int cnt = memberService.updateUser_Pwd(map);
+		String msg = "", url = "/login.do";
+		if(cnt>0) {
+			msg = "비밀번호가 변경되었습니다.";
+		}else {
+			msg = "비밀번호 변경을 실패하였습니다.";
+		}
+		session.removeAttribute("user_id_newPwd");
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
 		return "common/message";
 	}
 }

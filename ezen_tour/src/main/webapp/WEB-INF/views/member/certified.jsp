@@ -14,7 +14,7 @@
 			url:"<c:url value='/pwdFind.do'/>",
 			data:"#cer_num.val()=${param.sb}",
 			success:function(res){
-				location.href('<c:url value="/member/certified.do"/>')
+				location.href('<c:url value="/member/certify.do"/>')
 			},
 			error:function(xhr,status,error){
 				alert("error : "+status+","+ error);
