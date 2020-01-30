@@ -9,3 +9,6 @@
 
 # Properties Files
 pom.properties
+
+#java class file
+*.class
