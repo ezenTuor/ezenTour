@@ -107,7 +107,7 @@ public class FileUploadUtil {
 			
 			//config.getServletContext().getRealPath(upDir);
 		}
-		logger.info("ì €ì¥ ìœ„ì¹˜  path={}", path);
+		logger.info("ÆÄÀÏ ÀúÀå À§Ä¡  path={}", path);
 		
 		return path;
 	}
@@ -124,7 +124,7 @@ public class FileUploadUtil {
 		
 		//String fileName=fName+time+ext;
 		String fileName=time+ext;
-		logger.info("ìµœì¢… íŒŒì¼ ì´ë¦„ fileName={}", fileName);
+		logger.info("ÃÖÁ¾ ÆÄÀÏ ÀÌ¸§ fileName={}", fileName);
 		
 		return fileName;
 	}
