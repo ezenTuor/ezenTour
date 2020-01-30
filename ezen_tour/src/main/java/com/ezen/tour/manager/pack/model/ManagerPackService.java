@@ -5,4 +5,6 @@ import java.util.List;
 public interface ManagerPackService {
 	int insertPack(ManagerPackVo packVo);
 	List<ManagerPackVo> selectList();
+	ManagerPackVo selectPack(int packNo);
+	int updatePack(ManagerPackVo packVo);
 }

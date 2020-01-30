@@ -19,4 +19,15 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 	public List<ManagerPackVo> selectList() {
 		return managerPackDao.selectList();
 	}
+
+	@Override
+	public ManagerPackVo selectPack(int packNo) {
+		return managerPackDao.selectPack(packNo);
+	}
+
+	@Override
+	public int updatePack(ManagerPackVo packVo) {
+		return managerPackDao.updatePack(packVo);
+	}
+	
 }

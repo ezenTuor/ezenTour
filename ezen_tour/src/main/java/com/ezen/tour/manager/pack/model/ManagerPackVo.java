@@ -14,8 +14,15 @@ public class ManagerPackVo {
 	private String days;
 	private String daysWeek;
 	private String detail;
-	private Timestamp REGDATE;
+	private Timestamp regdate;
+	private int areaNo;
 	
+	public int getAreaNo() {
+		return areaNo;
+	}
+	public void setAreaNo(int areaNo) {
+		this.areaNo = areaNo;
+	}
 	public int getPackNo() {
 		return packNo;
 	}
@@ -82,17 +89,18 @@ public class ManagerPackVo {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public Timestamp getREGDATE() {
-		return REGDATE;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setREGDATE(Timestamp rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
 	@Override
 	public String toString() {
 		return "ManagerPackVo [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes="
 				+ imgSizes + ", country=" + country + ", city=" + city + ", keyword=" + keyword + ", airport=" + airport
-				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", REGDATE=" + REGDATE + "]";
+				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate
+				+ ", areaNo=" + areaNo + "]";
 	}
 	
 }

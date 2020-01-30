@@ -15,6 +15,17 @@
 		select * from pack
 		order by pack_no desc
 	</select>
+	
+	<select id="selectPack" parameterType="int" resultType="managerPackVo">
+		select * from pack
+		where pack_no=#{packNo}
+	</select>
+	
+	<update id="updatePack" parameterType="managerPackVo">
+		update pack
+		set name=#{name}, img_names=#{imgNames}, img_sizes=#{imgSizes}, country=#{country}, city=#{city}, keyword=#{keyword}, airport=#{airport}, days=#{days}, days_week=#{daysWeek}, detail=#{detail}, area_no=#{areaNo}
+		where pack_no=#{packNo}
+	</update>
 </mapper>
 
 

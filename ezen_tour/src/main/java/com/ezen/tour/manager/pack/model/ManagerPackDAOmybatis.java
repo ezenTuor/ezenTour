@@ -22,4 +22,14 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 	public List<ManagerPackVo> selectList() {
 		return sqlSession.selectList(namespace+"selectList");
 	}
+
+	@Override
+	public ManagerPackVo selectPack(int packNo) {
+		return sqlSession.selectOne(namespace+"selectPack", packNo);
+	}
+
+	@Override
+	public int updatePack(ManagerPackVo packVo) {
+		return sqlSession.update(namespace+"updatePack", packVo);
+	}
 }
