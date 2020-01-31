@@ -16,4 +16,9 @@ public class PaymentController {
 		logger.info("결제화면 보여주기");
 	}
 	
+	@RequestMapping("/payment2.do")
+	public void payment2() {
+		logger.info("결제화면 보여주기");
+	}
+	
 }
