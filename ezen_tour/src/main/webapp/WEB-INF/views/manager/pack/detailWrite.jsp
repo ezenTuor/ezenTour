@@ -8,11 +8,13 @@
 <script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
 <script>
 $(function(){
-	$('#datetimepicker').appendDtpicker({
+	$('.datetimepicker').appendDtpicker({
 		'locale':'ko',
-		'dateFormat': 'YY/MM/DD h:m',
+		'dateFormat': 'yyyy/MM/dd [hh:mm]',
 		'minuteInterval': 5,
-		'closeOnSelected': true
+		'closeOnSelected': true,
+		'autodateOnStart': false,
+		'futureOnly': true
 	});
 });
 </script>
@@ -27,7 +29,7 @@ $(function(){
 <article class="managerForm">
 	<h2>디테일 테스트중</h2>
 	<form name="frm1" method="post" action="#">
-		<input type="text" id="datetimepicker">
+		<input type="text" class="datetimepicker">
 	</form>
 		<h2>packNo 잘 받는지 테스트</h2>
 	<div>
@@ -48,17 +50,20 @@ $(function(){
 		<div>
 			<label for="depCode">출국티켓</label>
 			<div>
+				<label for="depCode">번호</label>
 				번호 : <input type="text" name="depCode">
-				출발시간 : <input type="text" name="">
-				도착시간 : <input type="text" name="">
+				<label for="depCode">번호</label>
+				출발시간 : <input type="text" name="" class="datetimepicker">
+				<label for="depCode">번호</label>
+				도착시간 : <input type="text" name="" class="datetimepicker">
 			</div>
 		</div>
 		<div>
 			<label for="entCode">입국티겟</label>
 			<div>
 				번호 : <input type="text" name="entCode">
-				출발시간 : <input type="text" name="">
-				도착시간 : <input type="text" name="">
+				출발시간 : <input type="text" name="" class="datetimepicker">
+				도착시간 : <input type="text" name="" class="datetimepicker">
 			</div>
 		</div>
 		<div>

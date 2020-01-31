@@ -22,10 +22,11 @@ on h.pack_dno=p.pack_dno;
 
 create or replace view review_view
 as
-select r.*, h.name, h.pack_dno
+select m.user_id, m.name, r.*, h.name as PACK_NAME, h.pack_dno
 from review r left join history_view h
-on r.history_no = h.history_no;
-
+on r.history_no = h.history_no
+left join member m
+on r.USER_NO=m.USER_NO;
 
 create or replace view wishlist_view
 as
