@@ -83,7 +83,6 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
-
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
 		
@@ -97,7 +96,7 @@ public class PackageController {
 		//List<String> areaKwList = packDetailService.selKWList(tagNo);
 		String keyword = packDetailService.areaKeyword(tagNo);
 		List<PackVO> packVo = packDetailService.selectPackByKw(keyword);
-		
+
 		logger.info("keyword={}",keyword);
 		
 		model.addAttribute("packVo", packVo);
