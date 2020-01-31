@@ -47,7 +47,8 @@ var j_ctxPath="/tour";
 		width: 600px;
 		height: 500px;
 		margin-left: 646px;
-		border-color: #e4e4e5;
+		margin-top: 200px;
+		box-shadow: 5px 10px 5px rgba(0,0,0,2), 6px 11px 5px rgba(0,0,0,-2); 
 	}
 	fieldset div{
 		margin-top: 20px;
@@ -75,14 +76,35 @@ var j_ctxPath="/tour";
 	.infobox{
 		border-radius: .4em;
 	}
+	h1 {
+	margin-top: 30px;
+	text-align:center;
+	font-size:60px;
+	font-family: 'Bree Serif', 'serif';
+	}
+	html{
+		background-image: url("<c:url value='/resources/images/tour3.jpg'/>");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	label {
+	color: white;
+	}
+	div input[type=checkbox]{
+		margin-left: 20px;
+	}
+	div input[type=submit]{
+		box-shadow: 2px 2px 2px rgba(0,0,0,2), 2px 2px 2px rgba(0,0,0,-2);
+	}
 </style>
 </head>
 <body>
 <form name="frmLogin" method="post" 
-	action="<c:url value='/login.do'/>">
+	action="<c:url value='/member/login.do'/>">
 	<div>
 	<fieldset>
-		<div align="center" style="margin-top: 150px;">
+		<h1>EZEN TOUR</h1>
+		<div align="center" style="margin-top: 80px;">
 			<label for="user_id" class="label">아이디</label><br>
 			<input type="text" name="user_id" id="user_id" 
 				class="infobox" style="width: 300px; height: 35px;
@@ -97,18 +119,18 @@ var j_ctxPath="/tour";
 			<span class="error">비밀번호를 입력하세요</span>
 		</div>
 		<div align="center">
-			<input type="submit" value="로그인">
+			<input type="submit" value="로그인" style="border-radius: 0.4em">
 			<input type="checkbox" name="chkSave" id="chkSave">
-			<label for="chkSave">아이디 저장하기</label>
+			<label for="chkSave" id="chkSave">아이디 저장하기</label>
 			<br>
 		</div>
 		<div id="find" align="center">
-			<a id="FindId" href="#" style="color: black" class="search">Find ID</a>
-			<a id="FindPwd" href="#" style="color: black" class="search">Find PassWord</a>
+			<a id="FindId" href="#" style="color: white" class="search">Find ID</a>
+			<a id="FindPwd" href="#" style="color: white" class="search">Find PassWord</a>
+			<a id="Register" href="#" style="color: white;" class="Register">Sign Up</a>
 		</div>
 	</fieldset>
 	</div>
 </form>
 </body>
 </html>
-<%@ include file="../inc/bottom.jsp" %>
