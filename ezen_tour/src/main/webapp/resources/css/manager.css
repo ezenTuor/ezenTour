@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+.managerTitle {
+    text-align: left;
+    font-size: 60px;
+    font-family: 'Bree Serif', 'serif';
+    width:400px;
+    display:inline;
+}
+.managerHeader{
+	margin:5px;
+	overflow:hidden;
+}
+.managerMain{
+	margin:5px;
+}
+.managerLogin{
+	float:right;
+	margin:20px 20px 0 0;
+}
+.managerLogin form{
+	display: inline;
+}
+.navSection {
+	margin:5px;
+	float: left;
+	width: 15%;
+}
+
+section.managerMain {
+    float: right;
+    width: 82%;
+}
+
+.bottom-part {
+    color: lightgray;
+    background: black;
+    clear: both;
+    margin:5px;
+	border:1px solid black;
+}
+.managerNav {
+    font-size: 14pt;
+}
+.managerNav li {
+    font-size: 12pt;
+}
+.managerNav>div{
+	padding:5px 0 5px 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.managerMain h2 {
+	font-size: 2em;
+	font-weight: bold;
+	padding:5px 0 5px 20px;
+}
+.managerMain h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	padding:20px 0 10px 40px;
+}
+.managerMain h4 {
+	font-size: 1em;
+	font-weight: bold;
+	padding:20px 0 10px 40px;
+}
+.clearBoth{
+	clear: both;
+}
+article {
+    overflow: hidden;
+}
+.managerForm{
+	padding:20px;
+	background-color:#ecf0f7;
+}
+.managerSubmit{
+	display: block;
+}
+.managerForm input[type="submit"] {
+	display: block;
+    margin: 0 auto;
+    font-size: 13pt;
+}
+.managerForm>form>div>div{
+	display: inline-block;
+	margin: 5px 0px 5px 20px;
+	width: 100%;
+}
+.managerForm>form>div{
+	background-color:white;
+	border:2px solid lightgray;
+	display: flex;
+    margin: 10px;
+    width : 90%;
+}
+
+.managerForm label {
+	display: inline-block;
+	width: 140px;
+	text-align: left;
+	padding: 5px 0 5px 5px;
+	background-color:#e8e8e8;
+	border-right:2px solid lightgray;
+}

@@ -18,6 +18,64 @@
 		where pack_no=#{packNo}
 	</select>
 	
+	<select id="selectMinMaxPrice" parameterType="int" resultType="maxMinPriceVo">
+		select min(man) as "MINPRICE", 
+		max(man) as "MAXPRICE"
+		from pack_detail  
+		where pack_no=#{packNo}
+	</select>
+	
+	<select id="areaSelect" resultType="areaVo">
+		select * from area order by area_no
+	</select>
+	
+	<select id="packSelAreaNo" parameterType="int" resultType="packVo">
+		select * from pack
+		where area_no=#{areaNo}
+	</select>
+	
+	<select id="selectAreaDetail" parameterType="int" resultType="areaDetailVo">
+		select * from area_detail
+		where area_no=#{areaNo}
+	</select> <!-- 대분류별 소분류 불러오기 -->
+	
+	<select id="searchAreaKeyword" parameterType="packSearchVo" resultType="packVo">
+		select * from pack
+		where keyword like '%'||#{searchAreaKeyword}||'%'
+	</select> <!-- 소분류 서치 -->
+	
+	<select id="selectByDate" parameterType="packAjaxVo" resultType="packDetailViewVo">
+	
+		select * from pack_detail_view
+		where 
+		pack_no=#{packNo} and
+		korea_dep >= TO_DATE(#{koreaDep}) 		
+		<![CDATA[
+			AND korea_dep <= TO_DATE(#{koreaDep})+1	
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="selKWList" parameterType="int" resultType="String">
+		select 
+		distinct regexp_substr(A.KW, '[^|]+', 1, LEVEL) KW
+		FROM (SELECT keyword KW FROM area_detail where tag_no=#{tagNo}) A
+		<![CDATA[
+		CONNECT BY LEVEL <= length(regexp_replace(A.KW, '[^|]+',''))+1
+		]]>
+	</select>
+	 -->
+	
+	<select id="areaKeyword" resultType="String" parameterType="int">
+		select keyword from area_detail
+		where tag_no=#{tagNo}
+	</select>
+	
+	<select id="selectPackByKw" resultType="packVo" parameterType="areaDetailVo">
+		select * from pack
+		where regexp_like (keyword, #{keyword})
+	</select>
+	
 	
 </mapper>
 

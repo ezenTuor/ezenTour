@@ -2,19 +2,12 @@
 CREATE TABLE PAYMENT (
 	PAYMENT_NO NUMBER NOT NULL, /* 결제번호 */
 	USER_NO NUMBER, /* 회원번호 */
-	PD_CATE CHAR NOT NULL, /* 상품분류 */
-	PD_NUMBER NUMBER NOT NULL, /* 상품번호 */
 	DISCOUNT NUMBER, /* 할인금액 */
 	PRICE NUMBER NOT NULL, /* 최종금액 */
 	STATE CHAR, /* 결제상태 */
-	TYPE VARCHAR2(300), /* 경제방법 */
+	TYPE VARCHAR2(300), /* 결제방법 */
 	REGDATE DATE, /* 결제일 */
-	DETAIL CLOB, /* 결제상세 */
-	EMAIL1 VARCHAR2(30), /* 이메일1 */
-	EMAIL2 VARCHAR2(30), /* 이메일2 */
-	HP1 VARCHAR2(3), /* 전화번호1 */
-	HP2 VARCHAR2(4), /* 전화번호2 */
-	HP3 VARCHAR2(4) /* 전화번호3 */
+	DETAIL CLOB /* 결제상세 */
 );
 
 CREATE UNIQUE INDEX PK_PAYMENT
@@ -28,22 +21,41 @@ ALTER TABLE PAYMENT
 		PRIMARY KEY (
 			PAYMENT_NO
 		);
+		
+/* 결제 디테일 */
+CREATE TABLE PAYMENT_DETAIL (
+	PD_NO NUMBER NOT NULL, /* 디테일번호 */
+	PAYMENT_NO NUMBER, /* 결제번호 */
+	PACK_DNO NUMBER, /* 패키지 소분류 번호 */
+	MAN NUMBER, /* 성인 */
+	CHILD NUMBER, /* 아동 */
+	BABY NUMBER, /* 유아 */
+	PRICE NUMBER /* 금액 */
+);
 
-/* 장바구니 */
+CREATE UNIQUE INDEX PK_PAYMENT_DETAIL
+	ON PAYMENT_DETAIL (
+		PD_NO ASC
+	);
+
+ALTER TABLE PAYMENT_DETAIL
+	ADD
+		CONSTRAINT PK_PAYMENT_DETAIL
+		PRIMARY KEY (
+			PD_NO
+		);
+
+/* 찜목록 */
 CREATE TABLE WISHLIST (
 	WISH_NO NUMBER NOT NULL, /* 찜번호 */
 	USER_NO NUMBER, /* 회원번호 */
-	PD_CATE CHAR NOT NULL, /* 상품분류 */
-	PD_NUMBER NUMBER NOT NULL, /* 상품번호 */
+	PACK_DNO NUMBER NOT NULL, /* 패키지 소분류 번호 */
+	MAN NUMBER, /* 성인 */
+	CHILD NUMBER, /* 아동 */
+	BABY NUMBER, /* 유아 */
+	PRICE NUMBER, /* 총가격 */
 	DETAIL CLOB, /* 찜상세 */
-	WISH_DATE DATE, /* 찜날짜 */
-	START_DATE DATE, /* 해당 시작날짜 */
-	END_DATE DATE, /* 해당 끝날짜 */
-	EMAIL1 VARCHAR2(30), /* 이메일1 */
-	EMAIL2 VARCHAR2(30), /* 이메일2 */
-	HP1 VARCHAR2(3), /* 전화번호1 */
-	HP2 VARCHAR2(4), /* 전화번호2 */
-	HP3 VARCHAR2(4) /* 전화번호3 */
+	WISH_DATE DATE /* 찜날짜 */
 );
 
 CREATE UNIQUE INDEX PK_WISHLIST

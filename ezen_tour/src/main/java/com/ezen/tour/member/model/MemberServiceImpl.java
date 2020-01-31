@@ -1,5 +1,8 @@
 package com.ezen.tour.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +40,47 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int selectDuplicate(String user_id) {
-		return memberDao.selectDuplicate(user_id);
+		int result=0;
+		
+		int count = memberDao.selectDuplicate(user_id);
+		
+		if(count>0) {
+			result=EXIST_ID; //해당 아이디 이미 존재
+		}else {
+			result=USEFUL_ID; //사용가능
+		}
+		
+		return result;
+
+	}
+
+	@Override
+	public int memberUpdate(MemberVO vo) {
+		return memberDao.memberUpdate(vo);
+	}
+
+	@Override
+	public int deleteMember(String user_id) {
+		return memberDao.deleteMember(user_id);
+	}
+
+	@Override
+	public int selectUser_no(String user_id) {
+		return memberDao.selectUser_no(user_id);
+	}
+
+	@Override
+	public String FindUserIdByEmail(Map<String, String> map) {
+		return memberDao.FindUserIdByEmail(map);
+	}
+
+	@Override
+	public String FindPwd(Map<String, String> map) {
+		return memberDao.FindPwd(map);
+	}
+
+	@Override
+	public int updateUser_Pwd(Map<String, String> map) {
+		return memberDao.updateUser_Pwd(map);
 	}
 }

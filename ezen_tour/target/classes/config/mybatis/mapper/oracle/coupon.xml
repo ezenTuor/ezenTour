@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.coupon">
+	<select id="selectAll" parameterType="searchVo" resultType="couponVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		       select a.CUPON_SERIAL, a.CUPON_DETAIL, a.CUPON_KIND,
+				 a.DISCOUNT, a.DELDATE
+		        from coupon c join cupon_admin a
+		        on c.CUPON_SERIAL = a.CUPON_SERIAL
+				where c.USER_NO = #{user_no} and c.USEDATE is null and c.DEL_FLAG is null
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	<select id="selectTotalRecord" parameterType="int" 
+		resultType="int">
+		select count(*) 
+		from coupon c join cupon_admin a
+		on c.CUPON_SERIAL = a.CUPON_SERIAL
+		where c.USER_NO = #{user_no} and c.USEDATE is null and c.DEL_FLAG is null
+	</select>
+	<select id="selectAll_N" parameterType="searchVo" resultType="couponVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		       select a.CUPON_SERIAL, a.CUPON_DETAIL, a.CUPON_KIND,
+				 a.DISCOUNT, a.DELDATE
+		        from coupon c join cupon_admin a
+		        on c.CUPON_SERIAL = a.CUPON_SERIAL
+				where c.USER_NO = #{user_no} and c.DEL_FLAG ='N'
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	<select id="selectTotalRecord_N" parameterType="int" 
+		resultType="int">
+		select count(*) 
+		from coupon c join cupon_admin a
+		on c.CUPON_SERIAL = a.CUPON_SERIAL
+		where c.USER_NO = #{user_no} and c.DEL_FLAG ='N'
+	</select>
+</mapper>
+
+
+
+
+
+
+

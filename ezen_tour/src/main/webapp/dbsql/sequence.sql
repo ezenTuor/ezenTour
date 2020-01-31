@@ -48,53 +48,6 @@ nocache;
 -------------ezenDB4-----------------
 
 
-create sequence HOTEL_seq
-start with 1
-increment by 1
-nocache;
-
-
-create sequence HOTEL_DETAIL_seq
-start with 1
-increment by 1
-nocache;
-
-
-create sequence AIRLINE_seq
-start with 1
-increment by 1
-nocache;
-
-
-
-----------ezenDB5---------
-
-
-create sequence PAYMENT_seq
-start with 1
-increment by 1
-nocache;
-
-
-create sequence WISHLIST_seq
-start with 1
-increment by 1
-nocache;
-
--------------ezenDB6-------------------
-
-
-create sequence REVIEW_seq
-start with 1
-increment by 1
-nocache;
-
-
-create sequence REPLY_seq
-start with 1
-increment by 1
-nocache;
-
 create sequence FAQ_seq
 start with 1
 increment by 1
@@ -110,12 +63,45 @@ start with 1
 increment by 1
 nocache;
 
--------------ezenDB7-------------------
 
-create sequence CHART_seq
+
+----------ezenDB5---------
+
+
+create sequence PAYMENT_seq
 start with 1
 increment by 1
 nocache;
+
+create sequence PAYMENT_DETAIL_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence WISHLIST_seq
+start with 1
+increment by 1
+nocache;
+
+-------------ezenDB6-------------------
+
+
+create sequence REVIEW_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence HISTORY_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence REPLY_seq
+start with 1
+increment by 1
+nocache;
+
+-------------ezenDB7-------------------
 
 create sequence AREA_seq
 start with 1

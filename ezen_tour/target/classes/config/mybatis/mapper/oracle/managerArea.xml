@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.managerArea">
+	<select id="selectArea" resultType="managerAreaVo">
+		select * from area
+	</select>
+	<select id="selectAreaDetail" parameterType="int" resultType="managerAreaDetailVo">
+		select * from area_detail
+		where area_no=#{areaNo}
+	</select>
+</mapper>
+
+
+
+
+
+
+

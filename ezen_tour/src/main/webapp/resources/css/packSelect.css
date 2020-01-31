@@ -4,7 +4,6 @@
 	background: lightblue;
 	width: 1300px;
 	margin: 0 auto;
-	height: 500px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -23,8 +22,53 @@
 	background: lightgray;
 	height: 50px;
 	width:100%;
+	display: flex;
+	align-items: center;
+	margin-top: 25px;
+	
 }
 
-#title-tag {
+#title-tag div {
+	border: 1px solid gray;
+}
+
+.contents-tag{
+	background: coral;
+	height: 50px;
+	width:100%;
 	display: flex;
+	align-items: center;
+	
+}
+
+
+
+.dep {
+	text-align: center;
+	width:24%;
+}
+
+.air {
+	text-align: center;
+	width:15%;	
+}
+
+.during {
+	text-align: center;
+	width:10%;		
+}
+
+.packname{
+	text-align: center;
+	width:27%;	
+}
+
+.price{
+	text-align: center;
+	width:14%;	
+}
+
+.res {
+	text-align: center;
+	width:10%;	
 }

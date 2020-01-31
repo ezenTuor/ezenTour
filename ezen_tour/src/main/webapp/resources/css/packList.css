@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+
+#area-nav {
+	background: lightgreen;
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
+	justify-content: space-around;
+	
+}
+
+.area-sel a:hover {
+	background: green;
+	font-weight: 800;
+}
+
+#pack-ex{
+	width: 1200px;
+	background: blue;
+	margin: 0 auto;
+	height: 300px;
+	list-style: none;
+}
+
+#packList {
+	display: inline-block;
+	
+}
+
+.odd{
+	float: right;
+	width: 550px;
+	display: flex;
+}
+
+.even {
+	float: left;
+	width: 550px;
+	display: flex;
+}
+
+#pack-img {
+	width: 220px;
+}
+
+.smallerBox {
+	display: flex;
+	vertical-align: middle;
+	flex-direction: column;
+	margin-top: 40px;
+	margin-left: 30px;
+}
+
+#packList li {
+	display: flex;
+	background: yellow;
+}
+
+#packList li div {
+	border: 1px solid black;
+}

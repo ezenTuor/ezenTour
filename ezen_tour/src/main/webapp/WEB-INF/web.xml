@@ -41,12 +41,18 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>*.do</url-pattern>
+        <url-pattern>/ckupload</url-pattern>
     </filter-mapping>
 	
 	
     <session-config>
         <session-timeout>20</session-timeout>
+        <cookie-config>
+			<name>JSESSIONID</name>
+			<secure>false</secure>
+		</cookie-config>
     </session-config>
+    
 
     <!-- <error-page>
       <error-code>404</error-code>
@@ -57,6 +63,7 @@
       <location>/code500.jsp</location>
     </error-page> -->
     
+	
 	 <welcome-file-list>
 	    <welcome-file>index.html</welcome-file>
 	    <welcome-file>index.htm</welcome-file>

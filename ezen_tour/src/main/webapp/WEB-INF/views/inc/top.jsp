@@ -7,9 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>top.jsp</title>
+<title>Ezen Tour</title>
+<script type="text/javascript" 
+	src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/clear.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/top.css"/>
+<script type="text/javascript" src=<c:url value="/resources/js/jquery-3.4.1.min.js"/>></script>
 </head>
 <body>
 	<h1 style="text-align: center; color:black">EZEN TOUR</h1>
@@ -40,9 +43,9 @@
 		            <li><a href="#">마이페이지</a>
 		            <!-- Third Tier Drop Down -->
 		            <ul>
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
+		                <li><a href="#">내가받은 쿠폰</a></li>
+		                <li><a href="#">마일리지</a></li>
+		                <li><a href="#">Wish List</a></li>
 		            </ul>        
 		            </li>
 		            

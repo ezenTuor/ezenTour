@@ -13,6 +13,11 @@ public class HotelController {
 	@RequestMapping("/hotelList.do")
 	public void hotelList() {
 		logger.info("호텔 리스트 보여주기");
+	}
+	
+	@RequestMapping("/test.do")
+	public void test() {
 		
 	}
+	
 }

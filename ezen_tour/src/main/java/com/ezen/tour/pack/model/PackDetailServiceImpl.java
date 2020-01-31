@@ -1,5 +1,6 @@
 package com.ezen.tour.pack.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,51 @@ public class PackDetailServiceImpl implements PackDetailService {
 		return packDetailDao.selectPack(packNo);
 	}
 
+	@Override
+	public MaxMinPriceVO selectMinMaxPrice(int packNo) {
+		return packDetailDao.selectMinMaxPrice(packNo);
+	}
+
+	@Override
+	public List<AreaVO> areaSelect() {
+		return packDetailDao.areaSelect();
+	}
+
+	@Override
+	public List<PackVO> packSelAreaNo(int areaNo) {
+		return packDetailDao.packSelAreaNo(areaNo);
+	}
+
+	@Override
+	public List<PackVO> areaDetailSearch(String searchAreaKeyword) {
+		return packDetailDao.areaDetailSearch(searchAreaKeyword);
+	}
+
+	@Override
+	public List<AreaDetailVO> selectAreaDetail(int areaNo) {
+		return packDetailDao.selectAreaDetail(areaNo);
+	}
+
+	@Override
+	public List<PackDetailViewVO> selectByDate(PackAjaxVO packAjaxVo) {
+		return packDetailDao.selectByDate(packAjaxVo);
+	}
+
+	@Override
+	public List<String> selKWList(int tagNo) {
+		return packDetailDao.selKWList(tagNo);
+	}
+
+	@Override
+	public List<PackVO> selectPackByKw(String keyword) {
+		return packDetailDao.selectPackByKw(keyword);
+	}
+
+	@Override
+	public String areaKeyword(int tagNo) {
+		return packDetailDao.areaKeyword(tagNo);
+	}
+
+	
+	
 }

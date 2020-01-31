@@ -1,3 +1,14 @@
+---------not use--------
+drop sequence HOTEL_seq;
+
+drop sequence HOTEL_DETAIL_seq;
+
+drop sequence AIRLINE_seq;
+
+drop sequence CHART_seq;
+
+
+
 ----------------ezenDB1-----------------
 
 drop sequence member_seq;
@@ -25,17 +36,19 @@ drop sequence SCHEDULE_seq;
 -------------ezenDB4-----------------
 
 
-drop sequence HOTEL_seq;
+drop sequence FAQ_seq;
 
-drop sequence HOTEL_DETAIL_seq;
+drop sequence NOTICE_seq;
 
-drop sequence AIRLINE_seq;
+drop sequence SUPPORT_seq;
 
 
 ----------ezenDB5---------
 
 
 drop sequence PAYMENT_seq;
+
+drop sequence PAYMENT_DETAIL_seq;
 
 drop sequence WISHLIST_seq;
 
@@ -45,18 +58,14 @@ drop sequence WISHLIST_seq;
 
 drop sequence REVIEW_seq;
 
+drop sequence HISTORY_seq;
+
 drop sequence REPLY_seq;
-
-drop sequence FAQ_seq;
-
-drop sequence NOTICE_seq;
-
-drop sequence SUPPORT_seq;
 
 
 -------------ezenDB7-------------------
 
-drop sequence CHART_seq;
+
 
 drop sequence AREA_seq;
 

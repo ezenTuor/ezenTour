@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.review">
+	<insert id="insertReview" parameterType="reviewVo">
+		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
+			select review_seq.nextval from dual
+		</selectKey>
+		insert into review(review_no, user_no, history_no, title, content, score)
+		values(#{reviewNo}, #{userNo}, #{historyNo}, #{title}, #{content}, #{score})
+	</insert>
+	
+	<sql id="searchWhere">
+		<if test="searchKeyword!=null and searchKeyword!=''">
+			where ${searchCondition} like '%' || #{searchKeyword} || '%'
+		</if>
+	</sql>
+	
+	<select id="selectAll" parameterType="searchVo" resultType="reviewVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		        select 
+		        	*
+		        from review
+				<include refid="searchWhere"/>
+				order by review_no desc
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectTotalRecord" parameterType="searchVo" resultType="int">
+		select count(*) from review
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="selectByNo" parameterType="int" resultType="reviewVo">
+		select * from review where review_no=#{no}
+	</select>
+
+	<update id="updateReview" parameterType="reviewVo">
+		update review
+		set title=#{title}, content=#{content}, score=#{score}, regdate=sysdate
+		where review_no=#{reviewNo}
+	</update>
+
+	<delete id="deleteReview" parameterType="int">
+		delete from review
+		where review_no=#{no}
+	</delete>
+</mapper>
