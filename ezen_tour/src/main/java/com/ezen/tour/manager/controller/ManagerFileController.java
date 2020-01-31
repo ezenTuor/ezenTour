@@ -35,7 +35,7 @@ public class ManagerFileController {
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response
 			, MultipartHttpServletRequest multipart) throws IOException {
 		
-		logger.info("ÀÌ¹ÌÁö ¾÷·Îµå Ã³¸®");
+		logger.info("ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ Ã³ï¿½ï¿½");
 		JsonObject json=new JsonObject();
 		PrintWriter printWriter=null;
 		OutputStream out=null;
@@ -48,26 +48,22 @@ public class ManagerFileController {
 						byte[] bytes=file.getBytes();
 						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.MANAGER_UPLOAD);
 						File uploadFile=new File(uploadPath);
-						logger.info("ÆÄÀÏ ÀÌ¸§={}", fileName);
+						logger.info("ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½={}", fileName);
 						
-						logger.info("¾÷·Îµå °æ·Î uploadPath={}", uploadPath);
+						logger.info("ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ uploadPath={}", uploadPath);
 						if(!uploadFile.exists()) {
 							uploadFile.mkdirs();
 						}
 						
 						fileName=fileUtil.getUniqueFileName(fileName);
-						logger.info("¹Ù²ï ÆÄÀÏ ÀÌ¸§ fileName={}", fileName);
+						logger.info("ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ fileName={}", fileName);
 						
 						uploadPath=uploadPath+"/"+fileName;
 						out=new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 						
-						
-<<<<<<< HEAD
-						String tempupload="D:\\lecture\\workspace_list\\ezenTour\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ezen_tour\\resources\\manager_images";
-=======
+
 						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/manager_images";
->>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
@@ -76,9 +72,9 @@ public class ManagerFileController {
 
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("º¸³»ÁÙ ÀÌ¹ÌÁö ÁÖ¼Ò url - "+fileUrl);
+						System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ url - "+fileUrl);
 						
-						logger.info("º¸³»ÁÙ ÀÌ¹ÌÁö ÁÖ¼Ò url={}", fileUrl);
+						logger.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ url={}", fileUrl);
 						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);

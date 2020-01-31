@@ -1,11 +1,8 @@
 package com.ezen.tour.common;
 
+import org.springframework.stereotype.Component;
 
-/**
- * °Ë»ö Á¤º¸¸¦ ´ã°íÀÖ´Â Bean
- * ÆäÀÌÂ¡ Ã³¸® °ü·Ã º¯¼ö Æ÷ÇÔ
-*/
-
+@Component
 public class SearchVO {
 	
 	private int user_no = 0;
@@ -17,39 +14,34 @@ public class SearchVO {
 		this.user_no = user_no;
 	}
 
-	/** °Ë»öÁ¶°Ç */
+	/** ê²€ìƒ‰ ì¡°ê±´ */
 	private String searchCondition = "";
 	
-	/** °Ë»öÅ°¿öµå */
+	/** ê²€ìƒ‰ ê°’ */
 	private String searchKeyword = "";
     
-	/** °Ë»ö »ç¿ë¿©ºÎ */
+	/** ê²€ìƒ‰ ì‚¬ìš© */
 	private String searchUseYn = "";
 	
-	/** ÇöÀç ÆäÀÌÁö */
+	/** í˜„ì¬ í˜ì´ì§€ */
 	private int currentPage = 1;
 	
     
-    /**ºí·°´ç º¸¿©Áú ÆäÀÌÁö ¼ö,  ÆäÀÌÁö »çÀÌÁî */
-    private int blockSize; // properties¿¡¼­ ¼³Á¤
+    /** í•œ ë¸”ë¡ì˜ ì‚¬ì´ì¦ˆ */
+    private int blockSize; 
     
-    /** ½ÃÀÛ ÀÎµ¦½º */
+    /**  */
     private int firstRecordIndex = 1;
     
-    /** ³¡ ÀÎµ¦½º */
+    /** ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ */
     private int lastRecordIndex = 1;
     
-<<<<<<< HEAD
     /**í˜ì´ì§€ ë³„ ë ˆì½”ë“œ ê°¯ìˆ˜ (pageSize) */
     private int recordCountPerPage;
-=======
-    /**ÆäÀÌÁö º° ·¹ÄÚµå °¹¼ö (pageSize) */
-    private int recordCountPerPage; 
->>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
     
    /**
-     * °Ë»ö Á¶°ÇÀ»  ¼³Á¤ÇÑ´Ù.
-     * @param bean °Ë»öÁ¶°Ç
+     * ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+     * @param bean ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;
