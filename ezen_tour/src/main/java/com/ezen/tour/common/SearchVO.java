@@ -2,8 +2,8 @@ package com.ezen.tour.common;
 
 
 /**
- * ê²€ìƒ‰ ì •ë³´ë¥¼ ë‹´ê³ ìˆëŠ” Bean
- * í˜ì´ì§• ì²˜ë¦¬ ê´€ë ¨ ë³€ìˆ˜ í¬í•¨
+ * °Ë»ö Á¤º¸¸¦ ´ã°íÀÖ´Â Bean
+ * ÆäÀÌÂ¡ Ã³¸® °ü·Ã º¯¼ö Æ÷ÇÔ
 */
 
 public class SearchVO {
@@ -17,34 +17,34 @@ public class SearchVO {
 		this.user_no = user_no;
 	}
 
-	/** ê²€ìƒ‰ì¡°ê±´ */
+	/** °Ë»öÁ¶°Ç */
 	private String searchCondition = "";
 	
-	/** ê²€ìƒ‰í‚¤ì›Œë“œ */
+	/** °Ë»öÅ°¿öµå */
 	private String searchKeyword = "";
     
-	/** ê²€ìƒ‰ ì‚¬ìš©ì—¬ë¶€ */
+	/** °Ë»ö »ç¿ë¿©ºÎ */
 	private String searchUseYn = "";
 	
-	/** í˜„ì¬ í˜ì´ì§€ */
+	/** ÇöÀç ÆäÀÌÁö */
 	private int currentPage = 1;
 	
     
-    /**ë¸”ëŸ­ë‹¹ ë³´ì—¬ì§ˆ í˜ì´ì§€ ìˆ˜,  í˜ì´ì§€ ì‚¬ì´ì¦ˆ */
-    private int blockSize; // propertiesì—ì„œ ì„¤ì •
+    /**ºí·°´ç º¸¿©Áú ÆäÀÌÁö ¼ö,  ÆäÀÌÁö »çÀÌÁî */
+    private int blockSize; // properties¿¡¼­ ¼³Á¤
     
-    /** ì‹œì‘ ì¸ë±ìŠ¤ */
+    /** ½ÃÀÛ ÀÎµ¦½º */
     private int firstRecordIndex = 1;
     
-    /** ë ì¸ë±ìŠ¤ */
+    /** ³¡ ÀÎµ¦½º */
     private int lastRecordIndex = 1;
     
-    /**í˜ì´ì§€ ë³„ ë ˆì½”ë“œ ê°¯ìˆ˜ (pageSize) */
+    /**ÆäÀÌÁö º° ·¹ÄÚµå °¹¼ö (pageSize) */
     private int recordCountPerPage; 
     
    /**
-     * ê²€ìƒ‰ ì¡°ê±´ì„  ì„¤ì •í•œë‹¤.
-     * @param bean ê²€ìƒ‰ì¡°ê±´
+     * °Ë»ö Á¶°ÇÀ»  ¼³Á¤ÇÑ´Ù.
+     * @param bean °Ë»öÁ¶°Ç
      */
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;

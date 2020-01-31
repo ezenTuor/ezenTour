@@ -35,7 +35,7 @@ public class ManagerFileController {
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response
 			, MultipartHttpServletRequest multipart) throws IOException {
 		
-		logger.info("ì´ë¯¸ì§€ ì—…ë¡œë“œ ì²˜ë¦¬");
+		logger.info("ÀÌ¹ÌÁö ¾÷·Îµå Ã³¸®");
 		JsonObject json=new JsonObject();
 		PrintWriter printWriter=null;
 		OutputStream out=null;
@@ -48,15 +48,15 @@ public class ManagerFileController {
 						byte[] bytes=file.getBytes();
 						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.MANAGER_UPLOAD);
 						File uploadFile=new File(uploadPath);
-						logger.info("íŒŒì¼ ì´ë¦„ fileName={}", fileName);
+						logger.info("ÆÄÀÏ ÀÌ¸§={}", fileName);
 						
-						logger.info("íŒŒì¼ ì—…ë¡œë“œ ê²½ë¡œ uploadPath={}", uploadPath);
+						logger.info("¾÷·Îµå °æ·Î uploadPath={}", uploadPath);
 						if(!uploadFile.exists()) {
 							uploadFile.mkdirs();
 						}
 						
 						fileName=fileUtil.getUniqueFileName(fileName);
-						logger.info("ë°”ë€ íŒŒì¼ ì´ë¦„ fileName={}", fileName);
+						logger.info("¹Ù²ï ÆÄÀÏ ÀÌ¸§ fileName={}", fileName);
 						
 						uploadPath=uploadPath+"/"+fileName;
 						out=new FileOutputStream(new File(uploadPath));
@@ -72,9 +72,9 @@ public class ManagerFileController {
 
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("íŒŒì¼ url - "+fileUrl);
+						System.out.println("º¸³»ÁÙ ÀÌ¹ÌÁö ÁÖ¼Ò url - "+fileUrl);
 						
-						logger.info("íŒŒì¼ ì—…ë¡œë“œ ì™„ë£Œ, íŒŒì¼ url={}", fileUrl);
+						logger.info("º¸³»ÁÙ ÀÌ¹ÌÁö ÁÖ¼Ò url={}", fileUrl);
 						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);
