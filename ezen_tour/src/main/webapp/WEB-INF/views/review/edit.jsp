@@ -21,6 +21,12 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
+		$('#title').keydown(function() {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+			};
+		});
+		
 		$("form[name=frmEdit]").submit(function(){
 			var str=CKEDITOR.instances.content.getData();
 			

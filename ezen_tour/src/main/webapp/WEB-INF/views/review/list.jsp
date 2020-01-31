@@ -29,10 +29,6 @@
 	tbody tr:nth-child(2n) {
 	  background: lightgray;
 	}
-	tbody {
-		border-top: 2px solid red;
-		border-bottom: 1px solid gray;
-	}
 	
 	table {
 		margin: auto;
@@ -89,12 +85,7 @@
 					</c:if>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="5" style="text-align: right">
-					<a href='<c:url value="#"/>' style="color:green">☞리뷰 작성하러 가기</a>
-				</td>
-			</tr>
-			<tr style="height: 40px">
+			<tr style="height: 40px; border-bottom: 3px solid red">
 				<!-- 검색 부분을 변형해서 정렬조건으로 변경 -->
 				<th scope="col">번호</th>
 				<th scope="col">제목</th>
@@ -125,16 +116,19 @@
 							</a>
 						</td>
 						<td>★(${vo.score})</td>
-						<td>세션 userid</td>
+						<td>${vo.userId }</td>
 						<td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>
+		<tr style="border-top:1px solid gray">
+			<td colspan="5" style="text-align: right">
+				<a href='<c:url value="#"/>' style="color:green">☞이용내역 확인하고 리뷰 작성하기</a>
+			</td>
+		</tr>
 	</table>
 </div>
-
-<br>
 
 <div class="pagingNo">
 	<c:if test="${pagingInfo.firstPage>1}">

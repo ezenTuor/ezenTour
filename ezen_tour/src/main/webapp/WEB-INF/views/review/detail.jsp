@@ -23,14 +23,14 @@
 </style>
 
 <div class="reviewDetail">
-	<p>[패키지 이름]</p>
+	<p>[패키지] 상세 패키지 명</p>
 	
 	<br>
 	
-	<p style="float: right">평점 : ★(${vo.score})</p>
-	<p>제목 : ${vo.title}</p>
-	<p style="float: right">작성일 : <fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
-	<p>작성자 : 세션 userid</p>
+	<p style="float: right">★(${vo.score})</p>
+	<p>${vo.title}</p>
+	<p style="float: right"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
+	<p>홍길동</p>
 	<hr>
 	
 	<br>

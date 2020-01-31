@@ -17,6 +17,7 @@ import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.common.Utility;
 import com.ezen.tour.review.model.ReviewService;
 import com.ezen.tour.review.model.ReviewVO;
+import com.ezen.tour.review.model.ReviewViewVO;
 
 @Controller
 @RequestMapping("/review")
@@ -71,7 +72,7 @@ public class ReviewController {
 		
 		logger.info("값 셋팅 후 vo={}", vo);
 		
-		List<ReviewVO> list=reviewService.selectAll(vo);
+		List<ReviewViewVO> list=reviewService.selectAll(vo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		int totalRecord=reviewService.selectTotalRecord(vo);

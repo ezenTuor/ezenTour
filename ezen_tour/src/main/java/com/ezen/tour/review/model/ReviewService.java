@@ -6,7 +6,7 @@ import com.ezen.tour.common.SearchVO;
 
 public interface ReviewService {
 	public int insertReview(ReviewVO reviewVo);
-	public List<ReviewVO> selectAll(SearchVO searchVo);
+	public List<ReviewViewVO> selectAll(SearchVO searchVo);
 	public int selectTotalRecord(SearchVO searchVo);
 	public ReviewVO selectByNo(int no);
 	public int updateReview(ReviewVO reviewVo);
