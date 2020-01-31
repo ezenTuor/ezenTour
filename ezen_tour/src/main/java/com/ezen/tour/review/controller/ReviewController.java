@@ -95,10 +95,10 @@ public class ReviewController {
 			return "common/message";
 		}
 		
-		ReviewVO reviewVo=reviewService.selectByNo(no);
-		logger.info("상세보기 결과, reviewVo={}", reviewVo);
+		ReviewViewVO reviewViewVO=reviewService.selectByNo(no);
+		logger.info("상세보기 결과, reviewVo={}", reviewViewVO);
 		
-		model.addAttribute("vo", reviewVo);
+		model.addAttribute("vo", reviewViewVO);
 		
 		return "review/detail";
 	}
@@ -142,10 +142,10 @@ public class ReviewController {
 			return "common/message";
 		}
 		
-		ReviewVO reviewVo=reviewService.selectByNo(no);
-		logger.info("수정 결과, reviewVo={}", reviewVo);
+		ReviewViewVO reviewViewVO=reviewService.selectByNo(no);
+		logger.info("수정 결과, reviewVo={}", reviewViewVO);
 		
-		model.addAttribute("reviewVo", reviewVo);
+		model.addAttribute("reviewVo", reviewViewVO);
 		
 		return "review/edit";
 	}

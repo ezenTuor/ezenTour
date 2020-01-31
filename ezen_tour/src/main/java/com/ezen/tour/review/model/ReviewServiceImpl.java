@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public ReviewVO selectByNo(int no) {
+	public ReviewViewVO selectByNo(int no) {
 		return reviewDao.selectByNo(no);
 	}
 

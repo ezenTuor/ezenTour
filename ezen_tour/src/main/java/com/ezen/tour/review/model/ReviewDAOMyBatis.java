@@ -33,7 +33,7 @@ public class ReviewDAOMyBatis implements ReviewDAO{
 	}
 
 	@Override
-	public ReviewVO selectByNo(int no) {
+	public ReviewViewVO selectByNo(int no) {
 		return sqlSession.selectOne(namespace+"selectByNo", no);
 	}
 

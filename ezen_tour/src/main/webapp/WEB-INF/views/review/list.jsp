@@ -116,7 +116,7 @@
 							</a>
 						</td>
 						<td>★(${vo.score})</td>
-						<td>${vo.userId }</td>
+						<td>${vo.userId}</td>
 						<td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>

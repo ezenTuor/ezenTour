@@ -63,7 +63,7 @@
 		<input type="hidden" name="historyNo" value="${reviewVo.historyNo}">
    
 		<fieldset>
-			<legend>[패키지 이름]</legend>
+			<legend>[${reviewVo.packName}]</legend>
 			<hr>
 			
 			<br>

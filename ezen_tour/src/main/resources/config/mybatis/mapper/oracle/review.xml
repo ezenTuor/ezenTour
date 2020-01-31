@@ -42,8 +42,8 @@
 		<include refid="searchWhere"></include>
 	</select>
 	
-	<select id="selectByNo" parameterType="int" resultType="reviewVo">
-		select * from review where review_no=#{no}
+	<select id="selectByNo" parameterType="int" resultType="reviewViewVo">
+		select * from review_view where review_no=#{no}
 	</select>
 
 	<update id="updateReview" parameterType="reviewVo">
