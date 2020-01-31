@@ -75,6 +75,11 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	}
 	
 	@Override
+	public List<PackTwoVO> selectPackByKw2(String keyword){
+		return sqlSession.selectList(namespace+"selectPackByKw2", keyword);
+	}
+	
+	@Override
 	public String areaKeyword(int tagNo) {
 		return sqlSession.selectOne(namespace+"areaKeyword", tagNo);
 	}

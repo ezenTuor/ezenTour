@@ -74,6 +74,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 		return packDetailDao.areaKeyword(tagNo);
 	}
 
+	@Override
+	public List<PackTwoVO> selectPackByKw2(String keyword) {
+		return packDetailDao.selectPackByKw2(keyword);
+	}
+
 	
 	
 }
