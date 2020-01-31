@@ -23,21 +23,20 @@ public class ManagerController{
 
 	@RequestMapping("/managerMain.do")
 	public String adminMain() {
-		logger.info("°ü¸®ÀÚ ¸ŞÀÎ È­¸é º¸¿©ÁÖ±â");
+		logger.info("ë§¤ë‹ˆì € ë©”ì¸í™”ë©´ ë³´ì—¬ì£¼ê¸°");
 		return "manager/managerMain";
 	}
 	
 	@RequestMapping("/area.do")
 	@ResponseBody
 	public List<ManagerAreaDetailVO> area(@RequestParam int no){
-		logger.info("area µğÅ×ÀÏ Ã³¸®, ÆÄ¶ó¹ÌÅÍ no={}",no);
-		//[{"tagNo":1,"areaNo":1,"name":"¼­À¯·´","keyword":"¼­À¯·´|¿µ±¹|ÇÁ¶û½º|ÀÌÅÂ¸®"},...
+		logger.info("areaì˜ ìƒì„¸ì •ë³´ ì½ì–´ì˜¤ê¸°, íŒŒë¼ë¯¸í„° no={}",no);
 		return areaDetailService.selectAreaDetail(no);
 	}
 	
 	@RequestMapping("/test.do")
 	public String test() {
-		logger.info("Å×½ºÆ®");
+		logger.info("í…ŒìŠ¤íŠ¸");
 		return "manager/test";
 	}
 	

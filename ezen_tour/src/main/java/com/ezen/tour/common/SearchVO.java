@@ -1,11 +1,8 @@
 package com.ezen.tour.common;
 
+import org.springframework.stereotype.Component;
 
-/**
- * 검색 정보를 담고있는 Bean
- * 페이징 처리 관련 변수 포함
-*/
-
+@Component
 public class SearchVO {
 	
 	private int user_no = 0;
@@ -17,35 +14,32 @@ public class SearchVO {
 		this.user_no = user_no;
 	}
 
-	/** 검색조건 */
+	/** 검색 조건 */
 	private String searchCondition = "";
 	
-	/** 검색키워드 */
+	/** 검색 값 */
 	private String searchKeyword = "";
     
-	/** 검색 사용여부 */
+	/** 검색 사용 */
 	private String searchUseYn = "";
 	
 	/** 현재 페이지 */
 	private int currentPage = 1;
 	
     
-    /**블럭당 보여질 페이지 수,  페이지 사이즈 */
-    private int blockSize; // properties에서 설정
+    /** 한 블록의 사이즈 */
+    private int blockSize; 
     
-    /** 시작 인덱스 */
+    /** 페이지 시작 레코드 인덱스 */
     private int firstRecordIndex = 1;
     
-    /** 끝 인덱스 */
+    /** 페이지 끝 레코드 인덱스 */
     private int lastRecordIndex = 1;
     
     /**페이지 별 레코드 갯수 (pageSize) */
-    private int recordCountPerPage; 
+    private int recordCountPerPage;
     
-   /**
-     * 검색 조건을  설정한다.
-     * @param bean 검색조건
-     */
+
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;
     	this.searchCondition = bean.getSearchCondition();

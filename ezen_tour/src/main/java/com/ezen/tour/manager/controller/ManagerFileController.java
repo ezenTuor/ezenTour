@@ -48,21 +48,21 @@ public class ManagerFileController {
 						byte[] bytes=file.getBytes();
 						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.MANAGER_UPLOAD);
 						File uploadFile=new File(uploadPath);
-						logger.info("파일 이름 fileName={}", fileName);
+						logger.info("파일 이름={}", fileName);
 						
-						logger.info("파일 업로드 경로 uploadPath={}", uploadPath);
+						logger.info("업로드 경로 uploadPath={}", uploadPath);
 						if(!uploadFile.exists()) {
 							uploadFile.mkdirs();
 						}
 						
 						fileName=fileUtil.getUniqueFileName(fileName);
-						logger.info("바뀐 파일 이름 fileName={}", fileName);
+						logger.info("변경된 파일 이름 fileName={}", fileName);
 						
 						uploadPath=uploadPath+"/"+fileName;
 						out=new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 						
-						
+
 						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/manager_images";
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
@@ -72,9 +72,9 @@ public class ManagerFileController {
 
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("파일 url - "+fileUrl);
+						System.out.println("미리보기용으로 넘겨줄 url - "+fileUrl);
 						
-						logger.info("파일 업로드 완료, 파일 url={}", fileUrl);
+						logger.info("이미지 url={}", fileUrl);
 						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);

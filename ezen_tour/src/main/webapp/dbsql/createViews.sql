@@ -12,29 +12,35 @@ select d.*, p.name
 from pack_detail d left join pack p
 on d.pack_no= p.pack_no;
 
+
 create or replace view history_view
 as
 select h.*, p.korea_dep, p.korea_ent, p.name
 from history h left join pack_detail_view p
 on h.pack_dno=p.pack_dno;
 
+
 create or replace view review_view
 as
-select r.*, h.name, h.pack_dno
+select m.user_id, m.name, r.*, h.name as PACK_NAME, h.pack_dno
 from review r left join history_view h
-on r.history_no = h.history_no;
+on r.history_no = h.history_no
+left join member m
+on r.USER_NO=m.USER_NO;
 
 create or replace view wishlist_view
 as
 select w.*, p.name, p.korea_dep, p.korea_ent
 from wishlist w left join pack_detail_view p
-on w.pd_number=p.pack_dno;
+on w.pack_dno=p.pack_dno;
+
 
 create or replace view payment_detail_view
 as
 select p.*, d.name
 from payment_detail p left join pack_detail_view d
 on p.pack_dno= d.pack_dno;
+
 
 create or replace view chart_view
 as

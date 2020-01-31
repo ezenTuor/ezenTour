@@ -20,6 +20,9 @@
 				</c:forEach>
 			</c:if>
 		</ul>
+		<div id ="pack-space">
+		
+		</div>
 
 	</div>
 

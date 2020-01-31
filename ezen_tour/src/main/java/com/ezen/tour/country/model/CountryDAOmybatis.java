@@ -14,6 +14,6 @@ public class CountryDAOmybatis implements CountryDAO{
 	private String namespace="config.mybatis.mapper.oracle.country.";
 	@Override
 	public List<CountryVO> selectAll() {
-		return sqlSession.selectList(namespace+"selectAll");
+		return sqlSession.selectList(namespace+"selectall");
 	}
 }

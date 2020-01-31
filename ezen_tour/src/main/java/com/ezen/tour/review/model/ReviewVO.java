@@ -3,33 +3,32 @@ package com.ezen.tour.review.model;
 import java.sql.Timestamp;
 
 public class ReviewVO {
-	private int review_no; //글번호
-	private int user_no; //회원번호
-	private int history_no; //내역번호
+	private int reviewNo; //글번호
+	private int userNo; //회원번호
+	private int historyNo; //내역번호
 	private String title; //글제목
-	//private int pd_number; //분류번호(보류)
 	private String content; //글내용
 	private int score; //별점
 	private Timestamp regdate; //작성일
 	
 	
-	public int getReview_no() {
-		return review_no;
+	public int getReviewNo() {
+		return reviewNo;
 	}
-	public void setReview_no(int review_no) {
-		this.review_no = review_no;
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
 	}
-	public int getUser_no() {
-		return user_no;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	public int getHistory_no() {
-		return history_no;
+	public int getHistoryNo() {
+		return historyNo;
 	}
-	public void setHistory_no(int history_no) {
-		this.history_no = history_no;
+	public void setHistoryNo(int historyNo) {
+		this.historyNo = historyNo;
 	}
 	public String getTitle() {
 		return title;
@@ -59,7 +58,7 @@ public class ReviewVO {
 	
 	@Override
 	public String toString() {
-		return "ReviewVO [review_no=" + review_no + ", user_no=" + user_no + ", history_no=" + history_no + ", title="
-				+ title + ", content=" + content + ", score=" + score + ", regdate=" + regdate + "]";
+		return "ReviewVO [reviewNo=" + reviewNo + ", userNo=" + userNo + ", historyNo=" + historyNo + ", title=" + title
+				+ ", content=" + content + ", score=" + score + ", regdate=" + regdate + "]";
 	}
 }
