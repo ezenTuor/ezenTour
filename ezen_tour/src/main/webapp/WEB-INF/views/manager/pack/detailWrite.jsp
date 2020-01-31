@@ -3,6 +3,19 @@
 <%@include file="../../inc/adminTop.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerFile.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+<script>
+$(function(){
+	$('#datetimepicker').appendDtpicker({
+		'locale':'ko',
+		'dateFormat': 'YY/MM/DD h:m',
+		'minuteInterval': 5,
+		'closeOnSelected': true
+	});
+});
+</script>
 <script type="text/javascript">
 //ckeditor부분
 $(function(){
@@ -11,28 +24,10 @@ $(function(){
     });
 });
 </script>
-<script type="text/javascript">
-$( function() {
-		$( "#datepicker" ).datepicker();
-		
-		/* var html=[];
-		var value="";
-		
-		for(var i=0; i<24; i++){
-			if(i<10){
-				value="0"+i;
-			}else{
-				value=i;
-			}
-			html[i]="<option value="+value+">"+value+"</option>";
-		}
-		$("#koreaDepHour").append(html.join('')); */
-} );
-</script>
 <article class="managerForm">
 	<h2>디테일 테스트중</h2>
 	<form name="frm1" method="post" action="#">
-		<input type="text" id="datepicker">
+		<input type="text" id="datetimepicker">
 	</form>
 		<h2>packNo 잘 받는지 테스트</h2>
 	<div>
