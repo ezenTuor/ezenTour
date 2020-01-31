@@ -2,7 +2,7 @@ package com.ezen.tour.pack.model;
 
 import java.sql.Timestamp;
 
-public class PackVO {
+public class PackTwoVO {
 	
 	private int packNo;
 	private String name;
@@ -17,6 +17,7 @@ public class PackVO {
 	private String detail;
 	private Timestamp regdate;
 	private int areaNo;
+	private int manmax;
 
 	public int getPackNo() {
 		return packNo;
@@ -97,14 +98,19 @@ public class PackVO {
 		this.areaNo = areaNo;
 	}
 	
-	@Override
-	public String toString() {
-		return "PackVO [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes=" + imgSizes
-				+ ", conutry=" + conutry + ", city=" + city + ", keyword=" + keyword + ", airport=" + airport
-				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate
-				+ ", areaNo=" + areaNo + "]";
+	public int getManmax() {
+		return manmax;
+	}
+	public void setManmax(int manmax) {
+		this.manmax = manmax;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "PackTwoVO [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes=" + imgSizes
+				+ ", conutry=" + conutry + ", city=" + city + ", keyword=" + keyword + ", airport=" + airport
+				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate
+				+ ", areaNo=" + areaNo + ", manmax=" + manmax + "]";
+	}
 	
 }

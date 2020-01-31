@@ -16,5 +16,5 @@ public interface PackDetailService {
 	List<String> selKWList(int tagNo);
 	List<PackVO> selectPackByKw(String keyword);
 	String areaKeyword(int tagNo);
-
+	List<PackTwoVO> selectPackByKw2(String keyword);
 }

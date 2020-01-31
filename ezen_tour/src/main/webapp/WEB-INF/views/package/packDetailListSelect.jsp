@@ -14,17 +14,17 @@
 <div id="packListSel">
 
 	<ul>
-		<c:if test="${empty packVo }">
+		<c:if test="${empty packTwoVo }">
 			<span>페이지 오류입니다.</span>
 		</c:if>
-		<c:if test="${!empty packVo }">
-			<c:forEach var="item" items="${packVo}">
+		<c:if test="${!empty packTwoVo }">
+			<c:forEach var="item" items="${packTwoVo}">
 			<c:set var="string3" value="${item.imgNames}"></c:set>
 			<c:set var = "string4" value ="${fn:split(string3, '|')}" />
 				<li>
 					<img src="${string4[0]}"/>
 					<div>${item.name}</div>
-					<div>${item.packNo }</div>
+					<div>${item.manmax }원~</div>
 				</li>
 			</c:forEach>
 		</c:if>
