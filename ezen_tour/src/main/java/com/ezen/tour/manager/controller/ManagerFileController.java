@@ -35,7 +35,7 @@ public class ManagerFileController {
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response
 			, MultipartHttpServletRequest multipart) throws IOException {
 		
-		logger.info("�̹��� ���ε� ó��");
+		logger.info("이미지 업로드 처리");
 		JsonObject json=new JsonObject();
 		PrintWriter printWriter=null;
 		OutputStream out=null;
@@ -48,15 +48,15 @@ public class ManagerFileController {
 						byte[] bytes=file.getBytes();
 						String uploadPath=fileUtil.getFilePath(request, FileUploadUtil.MANAGER_UPLOAD);
 						File uploadFile=new File(uploadPath);
-						logger.info("���� �̸�={}", fileName);
+						logger.info("파일 이름={}", fileName);
 						
-						logger.info("���ε� ��� uploadPath={}", uploadPath);
+						logger.info("업로드 경로 uploadPath={}", uploadPath);
 						if(!uploadFile.exists()) {
 							uploadFile.mkdirs();
 						}
 						
 						fileName=fileUtil.getUniqueFileName(fileName);
-						logger.info("�ٲ� ���� �̸� fileName={}", fileName);
+						logger.info("변경된 파일 이름 fileName={}", fileName);
 						
 						uploadPath=uploadPath+"/"+fileName;
 						out=new FileOutputStream(new File(uploadPath));
@@ -72,9 +72,9 @@ public class ManagerFileController {
 
 						response.setContentType("text/html;charset=UTF-8");
 						String fileUrl=request.getContextPath()+"/resources/manager_images/"+fileName;
-						System.out.println("������ �̹��� �ּ� url - "+fileUrl);
+						System.out.println("미리보기용으로 넘겨줄 url - "+fileUrl);
 						
-						logger.info("������ �̹��� �ּ� url={}", fileUrl);
+						logger.info("이미지 url={}", fileUrl);
 						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);

@@ -30,19 +30,16 @@ public class SearchVO {
     /** 한 블록의 사이즈 */
     private int blockSize; 
     
-    /**  */
+    /** 페이지 시작 레코드 인덱스 */
     private int firstRecordIndex = 1;
     
-    /** �� �ε��� */
+    /** 페이지 끝 레코드 인덱스 */
     private int lastRecordIndex = 1;
     
     /**페이지 별 레코드 갯수 (pageSize) */
     private int recordCountPerPage;
     
-   /**
-     * �˻� ������  �����Ѵ�.
-     * @param bean �˻�����
-     */
+
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;
     	this.searchCondition = bean.getSearchCondition();

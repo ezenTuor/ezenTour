@@ -43,7 +43,7 @@ public class ManagerPackController {
 	
 	@RequestMapping(value="/packWrite.do", method=RequestMethod.GET)
 	public void packWrite_get(Model model) {
-		logger.info("ÆĞÅ°Áö »óÇ° ÀÛ¼º È­¸é º¸¿©ÁÖ±â");
+		logger.info("íŒ¨í‚¤ì§€ ì‘ì„±í™”ë©´ ë³´ì—¬ì£¼ê¸°");
 		
 		List<CountryVO> list=countryService.selectAll();
 		List<ManagerAreaVO> list2=areaService.selectArea();
@@ -54,14 +54,14 @@ public class ManagerPackController {
 	
 	@RequestMapping(value="/packWrite.do", method=RequestMethod.POST)
 	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request) {
-		logger.info("ÆĞÅ°Áö »óÇ° ÀÛ¼º Ã³¸®, ÆÄ¶ó¹ÌÅÍ packVo={}", packVo);
+		logger.info("íŒ¨í‚¤ì§€ ì‘ì„± ì²˜ë¦¬ packVo={}", packVo);
 		
-		//ÆÄÀÏ ¾÷·Îµå Ã³¸®
+		//íŒ¨í‚¤ì§€ ì´ë¦„ ê°€ì ¸ì˜¤ê¸°
 		String paramName="packImages";
 		
 		List<Map<String, Object>> list=fileUtil.fileUpload(request, FileUploadUtil.PD_UPLOAD, paramName);
 		
-		//ÆÄÀÏÀÌ¸§, ÆÄÀÏ»çÀÌÁî ¹­±â
+		//íŒŒì¼ì´ë¦„, ì‚¬ì´ì¦ˆ ë¬¶ê¸°
 		String fileNames="", fileSizes="";
 		for(int i=0; i<list.size(); i++) {
 			Map<String, Object> filemap=list.get(i);
@@ -71,7 +71,7 @@ public class ManagerPackController {
 			
 			System.out.println("ofn="+ofilename+", fn="+filename+", size="+filesize);
 			
-			//Ã¹¹øÂ° ÆÄÀÏÀÌ ¾Æ´Ò¶§ ±¸ºĞÀÚ ³Ö±â
+			//ì²«ë²ˆì§¸ íŒŒì¼ì´ ì•„ë‹Œ ê²½ìš°
 			if(fileNames!=null && !fileNames.isEmpty()) {
 				fileNames+="|";
 				fileSizes+="|";
@@ -79,7 +79,7 @@ public class ManagerPackController {
 			fileNames+=filename;
 			fileSizes+=filesize;
 		}
-		logger.info("ÆÄÀÏ ¹­À½ Ã³¸®, fileNames={}, fileSizes={}", fileNames, fileSizes);
+		logger.info("íŒŒì¼ ë¬¶ê¸° ê²°ê³¼, fileNames={}, fileSizes={}", fileNames, fileSizes);
 		packVo.setImgNames(fileNames);
 		packVo.setImgSizes(fileSizes);
 		
@@ -95,12 +95,12 @@ public class ManagerPackController {
 		}
 		packVo.setKeyword(keyword);
 		
-		logger.info("Ã³¸®ÈÄ packVo={}", packVo);
+		logger.info("ë³€ê²½ëœ íŒŒì¼ packVo={}", packVo);
 		
 		int cnt=managerPackService.insertPack(packVo);
-		logger.info("pack ÀÔ·Â Ã³¸® cnt={}", cnt);
+		logger.info("pack ì…ë ¥ ê²°ê³¼, cnt={}", cnt);
 		
-		//ÆĞÅ°Áö ´ëºĞ·ù ³Ñ¹ö
+
 		//model.addAttribute("packVo", packVo);
 		//model.addAttribute("pack_no", packVo.getPackNo());
 		
@@ -109,33 +109,33 @@ public class ManagerPackController {
 	
 	@RequestMapping(value="/detailWrite.do", method=RequestMethod.GET)
 	public void packDetail(@RequestParam int packNo) {
-		logger.info("µğÅ×ÀÏ ÀÛ¼º È­¸é º¸¿©ÁÖ±â, ÆÄ¶ó¹ÌÅÍ packNo={}", packNo);
+		logger.info("íŒ¨í‚¤ì§€ ìƒì„¸ ì‘ì„±í™”ë©´ ë³´ì—¬ì£¼ê¸°, íŒŒë¼ë¯¸í„° packNo={}", packNo);
 	}
 	
 	@RequestMapping(value="/detailWrite.do", method=RequestMethod.POST)
 	public String packDetailWrite(@ModelAttribute PackDetailVO detailVo) {
-		logger.info("µğÅ×ÀÏ ÀÛ¼º Ã³¸®, ÆÄ¶ó¹ÌÅÍ detailVo={}", detailVo);
+		logger.info("íŒ¨í‚¤ì§€ ìƒì„¸ ì‘ì„±ì²˜ë¦¬ detailVo={}", detailVo);
 		return null;
 	}
 	
 	@RequestMapping("/packList.do")
 	public void packList(Model model) {
-		logger.info("°ü¸®ÀÚ »óÇ° ¸®½ºÆ® ¶ç¿ì±â");
+		logger.info("íŒ¨í‚¤ì§€ ëª©ë¡ ë³´ì—¬ì£¼ê¸°");
 		
 		List<ManagerPackVo> list=managerPackService.selectList();
-		logger.info("°ü¸®ÀÚ »óÇ°(´ëºĞ·ù) list.size={}",list.size());
+		logger.info("íŒ¨í‚¤ì§€ ëª©ë¡ list.size={}",list.size());
 		model.addAttribute("list", list);
 	}
 	
 	@RequestMapping(value="/packEdit.do", method=RequestMethod.GET)
 	public void packEdit(@RequestParam int packNo, Model model) {
-		logger.info("°ü¸®ÀÚ »óÇ° ¼öÁ¤ ¶ç¿ì±â, ÆÄ¶ó¹ÌÅÍ packNo={}", packNo);
+		logger.info("íŒ¨í‚¤ì§€ ìˆ˜ì •í™”ë©´ ë³´ì—¬ì£¼ê¸°, íŒŒë¼ë¯¸í„° packNo={}", packNo);
 		
 		ManagerPackVo packvo=managerPackService.selectPack(packNo);
 		List<CountryVO> list=countryService.selectAll();
 		List<ManagerAreaVO> list2=areaService.selectArea();
 		
-		//Å°¿öµå Ã³¸®
+		//í‚¤ì›Œë“œ ì²˜ë¦¬
 		String str=packvo.getKeyword();
 		String[] keyArr=str.split("\\|");
 		//System.out.println(str);
@@ -146,7 +146,7 @@ public class ManagerPackController {
 			//System.out.println(keyArr[i]);
 		}
 		packvo.setKeyword(str);
-		logger.info("¶ç¿ì±â Àü ¼öÁ¤ ÈÄ packVo={}",packvo);
+		logger.info("ì²˜ë¦¬ëœ packVo={}",packvo);
 		
 		model.addAttribute("countryList", list);
 		model.addAttribute("areaList", list2);
@@ -155,21 +155,21 @@ public class ManagerPackController {
 	
 	@RequestMapping(value="/packEdit.do", method=RequestMethod.POST)
 	public String packEdit(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request, Model model) {
-		logger.info("°ü¸®ÀÚ »óÇ° ¼öÁ¤ Ã³¸®, ÆÄ¶ó¹ÌÅÍ packVo={}", packVo);
+		logger.info("íŒ¨í‚¤ì§€ ìˆ˜ì • ì²˜ë¦¬, íŒŒë¼ë¯¸í„° packVo={}", packVo);
 		
 		String paramName="packImages";
 		
-		//¿©·¯ Ã³¸®¸¦ À§ÇÑ ±âÁ¸ µ¥ÀÌÅÍ ºÒ·¯¿À±â
+		//ìˆ˜ì •í•˜ê¸° ì „ ë¹„êµìš©ìœ¼ë¡œ ê¸°ì¡´ ê°’ ê°€ì ¸ì˜¤ê¸°
 		ManagerPackVo oldVo=managerPackService.selectPack(packVo.getPackNo());
 		
-		//¾÷·ÎµåÀü È®ÀÎ
+		//ë¹„êµìš©
 		MultipartHttpServletRequest multiReq=(MultipartHttpServletRequest)request;
 		List<MultipartFile> olist=multiReq.getFiles(paramName);
 		
-		//ÆÄÀÏÀÌ Á¸ÀçÇÒ¶§ Ã³¸®(±âº» ÆÄÀÏÀÌ ¾ø´Â °æ¿ì´Â ¾ø´Ù.)
+		//ìƒˆë¡œ ì—…ë¡œë“œ í•˜ëŠ” íŒŒì¼ì´ ì¡´ì¬í•˜ëŠ” ê²½ìš°(ê¸°ì¡´ íŒŒì¼ì´ ì—†ëŠ” ê²½ìš°ëŠ” ê³ ë ¤í•˜ì§€ ì•ŠìŒ)
 		if(olist.get(0).getSize()!=0) {
-			logger.info("ÆĞÅ°Áö ¼öÁ¤ - ÆÄÀÏÀÌ Á¸Àç ÇÔ");
-			//±âº» ÆÄÀÏ »èÁ¦
+			logger.info("íŒ¨í‚¤ì§€ í¸ì§‘ - ìƒˆ ì—…ë¡œë“œ íŒŒì¼ ìˆìŒ");
+			//
 			String oldImages=oldVo.getImgNames();
 			String[] oldImgArr=oldImages.split("\\|");
 			
@@ -182,10 +182,10 @@ public class ManagerPackController {
 				}
 			}
 			
-			//»õÆÄÀÏ ¾÷·Îµå
+			//íŒŒì¼ ì—…ë¡œë“œ ì²˜ë¦¬
 			List<Map<String, Object>> list=fileUtil.fileUpload(request, FileUploadUtil.PD_UPLOAD, paramName);
 			
-			//ÆÄÀÏÀÌ¸§, ÆÄÀÏ»çÀÌÁî ¹­±â
+			//íŒŒì¼ ë¬¶ìŒ ì²˜ë¦¬
 			String fileNames="", fileSizes="";
 			for(int i=0; i<list.size(); i++) {
 				Map<String, Object> filemap=list.get(i);
@@ -195,7 +195,7 @@ public class ManagerPackController {
 				
 				//System.out.println("ofn="+ofilename+", fn="+filename+", size="+filesize);
 				
-				//Ã¹¹øÂ° ÆÄÀÏÀÌ ¾Æ´Ò¶§ ±¸ºĞÀÚ ³Ö±â
+				//ì²« íŒŒì¼ì´ ì•„ë‹Œê²½ìš° êµ¬ë¶„ì°¨ ë„£ê¸°
 				if(fileNames!=null && !fileNames.isEmpty()) {
 					fileNames+="|";
 					fileSizes+="|";
@@ -203,17 +203,17 @@ public class ManagerPackController {
 				fileNames+=filename;
 				fileSizes+=filesize;
 			}
-			logger.info("ÆÄÀÏ ¹­À½ Ã³¸®, fileNames={}, fileSizes={}", fileNames, fileSizes);
+			logger.info("íŒŒì¼ ë¬¶ì€ í›„ íŒŒì¼ê°’, fileNames={}, fileSizes={}", fileNames, fileSizes);
 			packVo.setImgNames(fileNames);
 			packVo.setImgSizes(fileSizes);
-		}else{//»õ·Î¿î ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» ¶§ Ã³¸®
-			logger.info("ÆĞÅ°Áö ¼öÁ¤ - ÆÄÀÏÀÌ ¾øÀ½");
+		}else{//ìƒˆë¡œìš´ ì—…ë¡œë“œê°€ ì—†ëŠ” ê²½ìš°
+			logger.info("íŒ¨í‚¤ì§€ í¸ì§‘ - ìƒˆ ì—…ë¡œë“œ íŒŒì¼ ì—†ìŒ");
 			packVo.setImgNames(oldVo.getImgNames());
 			packVo.setImgSizes(oldVo.getImgSizes());
 		}
 		
 		
-		//Å°¿öµå Ã³¸®
+		//í‚¤ì›Œë“œ ì²˜ë¦¬
 		String keyword=packVo.getKeyword();
 		String keyArr[]=keyword.split(",");
 		for(int i=0;i<keyArr.length;i++) {
@@ -225,17 +225,17 @@ public class ManagerPackController {
 		}
 		packVo.setKeyword(keyword);
 		
-		logger.info("Ã³¸®ÈÄ packVo={}", packVo);
+		logger.info("ë³€ê²½ëœ packVo={}", packVo);
 		
 		int cnt=managerPackService.updatePack(packVo);
-		logger.info("pack ÀÔ·Â Ã³¸® cnt={}", cnt);
+		logger.info("pack í¸ì§‘ ì²˜ë¦¬ ê²°ê³¼ cnt={}", cnt);
 		
 		String msg="", url="";
 		if(cnt>0) {
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+			msg="íŒ¨í‚¤ì§€ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			url="/manager/pack/packList.do";
 		}else {
-			msg="½ÇÆĞÇÏ¿´½À´Ï´Ù.";
+			msg="íŒ¨í‚¤ì§€ ìˆ˜ì • ì‹¤íŒ¨!";
 			url="/manager/pack/packList.do";
 		}
 		model.addAttribute("msg", msg);
