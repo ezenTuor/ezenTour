@@ -100,7 +100,7 @@
 	}
 </style>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvWcAdXzxsKLjjdso74DEjMXsHAyqP3tk&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigNPpU6BKFnXsX1Ai-YNTQpVT-z2nlIU" async defer></script>
 <script type="text/javascript">
 	var map, places, infoWindow;
 	var markers=[];
