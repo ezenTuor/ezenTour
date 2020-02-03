@@ -15,6 +15,7 @@ import com.ezen.tour.pack.model.AreaVO;
 import com.ezen.tour.pack.model.MaxMinPriceVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
+import com.ezen.tour.pack.model.PackTwoVO;
 import com.ezen.tour.pack.model.PackVO;
 
 @Controller
@@ -83,7 +84,6 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
-
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
 		
@@ -96,12 +96,13 @@ public class PackageController {
 		
 		//List<String> areaKwList = packDetailService.selKWList(tagNo);
 		String keyword = packDetailService.areaKeyword(tagNo);
-		List<PackVO> packVo = packDetailService.selectPackByKw(keyword);
-		
+		//List<PackVO> packVo = packDetailService.selectPackByKw(keyword);
+		List<PackTwoVO> packTwoVo = packDetailService.selectPackByKw2(keyword);
+
 		logger.info("keyword={}",keyword);
-		
-		model.addAttribute("packVo", packVo);
-		
+		logger.info("packTwoVo={}",packTwoVo);
+		//model.addAttribute("packVo", packVo);
+		model.addAttribute("packTwoVo", packTwoVo);	
 		
 		return "package/packDetailListSelect";
 	}

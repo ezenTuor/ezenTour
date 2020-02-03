@@ -23,14 +23,14 @@
 </style>
 
 <div class="reviewDetail">
-	<p>[패키지 이름]</p>
+	<p>[패키지] ${vo.packName}</p>
 	
 	<br>
 	
-	<p style="float: right">평점 : ★(${vo.score})</p>
-	<p>제목 : ${vo.title}</p>
-	<p style="float: right">작성일 : <fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
-	<p>작성자 : 세션 userid</p>
+	<p style="float: right">★(${vo.score})</p>
+	<p>${vo.title}</p>
+	<p style="float: right"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
+	<p>${vo.userId}</p>
 	<hr>
 	
 	<br>
@@ -45,7 +45,7 @@
 	
 	<hr>
 	<div style="text-align: center">
-		<button onclick="location.href='<c:url value="/review/edit.do?no=${param.no}"/>'">수정하기</button>
+		<button onclick="location.href='<c:url value="/review/edit.do?no=${param.no}&pName=${vo.packName}"/>'">수정하기</button>
 		<button onclick="location.href='<c:url value="/review/delete.do?no=${param.no}"/>'">삭제하기</button>
 		<button onclick="location.href='<c:url value="/review/list.do"/>'">목록으로</button>
 

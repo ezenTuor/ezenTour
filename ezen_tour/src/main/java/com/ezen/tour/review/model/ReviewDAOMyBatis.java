@@ -21,8 +21,8 @@ public class ReviewDAOMyBatis implements ReviewDAO{
 	}
 
 	@Override
-	public List<ReviewVO> selectAll(SearchVO searchVo) {
-		List<ReviewVO> list=sqlSession.selectList(namespace+"selectAll", searchVo);
+	public List<ReviewViewVO> selectAll(SearchVO searchVo) {
+		List<ReviewViewVO> list=sqlSession.selectList(namespace+"selectAll", searchVo);
 		
 		return list;
 	}
@@ -33,7 +33,7 @@ public class ReviewDAOMyBatis implements ReviewDAO{
 	}
 
 	@Override
-	public ReviewVO selectByNo(int no) {
+	public ReviewViewVO selectByNo(int no) {
 		return sqlSession.selectOne(namespace+"selectByNo", no);
 	}
 

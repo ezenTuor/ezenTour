@@ -7,7 +7,6 @@ public class ReviewVO {
 	private int userNo; //회원번호
 	private int historyNo; //내역번호
 	private String title; //글제목
-	//private int pd_number; //분류번호(보류)
 	private String content; //글내용
 	private int score; //별점
 	private Timestamp regdate; //작성일

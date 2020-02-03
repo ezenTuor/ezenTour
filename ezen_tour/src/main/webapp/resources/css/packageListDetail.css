@@ -37,3 +37,10 @@
 	text-decoration: none;
 	
 }
+
+#pack-space {
+	background: blue;
+	height: 300px;
+	width: 70%;
+	margin: 0 auto;
+}

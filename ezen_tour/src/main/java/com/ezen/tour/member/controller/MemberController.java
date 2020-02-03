@@ -56,7 +56,7 @@ public class MemberController {
 		logger.info("chkSave={}", chkSave);
 
 		int result=memberService.loginCheck(user_id, user_pwd);
-		String msg="", url="/login/login.do";
+		String msg="", url="/member/login.do";
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(user_id);
 			

@@ -21,6 +21,12 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
+		$('#title').keydown(function() {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+			};
+		});
+		
 		$("form[name=frmEdit]").submit(function(){
 			var str=CKEDITOR.instances.content.getData();
 			
@@ -57,7 +63,7 @@
 		<input type="hidden" name="historyNo" value="${reviewVo.historyNo}">
    
 		<fieldset>
-			<legend>[패키지 이름]</legend>
+			<legend>[${reviewVo.packName}]</legend>
 			<hr>
 			
 			<br>

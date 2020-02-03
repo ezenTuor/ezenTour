@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.country">
-	<select id="selectAll" resultType="countryVo">
+	<select id="selectall" resultType="countryVo">
 		select * from country
 	</select>
 </mapper>

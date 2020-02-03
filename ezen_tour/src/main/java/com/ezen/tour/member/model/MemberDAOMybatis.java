@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDAOMybatis implements MemberDAO{
 	@Autowired
-	SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
-	String namespace="config.mybatis.mapper.oracle.ezentour.";
+	String namespace="config.mybatis.mapper.oracle.member.";
 	
 	@Override
 	public int insertMember(MemberVO vo) {

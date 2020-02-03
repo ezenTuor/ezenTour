@@ -17,7 +17,7 @@
 		</if>
 	</sql>
 	
-	<select id="selectAll" parameterType="searchVo" resultType="reviewVo">
+	<select id="selectAll" parameterType="searchVo" resultType="reviewViewVo">
 		select *
 		from
 		(
@@ -25,8 +25,8 @@
 		    from
 		    (
 		        select 
-		        	*
-		        from review
+		        *
+		        from review_view
 				<include refid="searchWhere"/>
 				order by review_no desc
 		    )A
@@ -42,8 +42,8 @@
 		<include refid="searchWhere"></include>
 	</select>
 	
-	<select id="selectByNo" parameterType="int" resultType="reviewVo">
-		select * from review where review_no=#{no}
+	<select id="selectByNo" parameterType="int" resultType="reviewViewVo">
+		select * from review_view where review_no=#{no}
 	</select>
 
 	<update id="updateReview" parameterType="reviewVo">

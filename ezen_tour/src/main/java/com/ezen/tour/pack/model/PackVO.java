@@ -17,7 +17,7 @@ public class PackVO {
 	private String detail;
 	private Timestamp regdate;
 	private int areaNo;
-	
+
 	public int getPackNo() {
 		return packNo;
 	}
@@ -96,6 +96,7 @@ public class PackVO {
 	public void setAreaNo(int areaNo) {
 		this.areaNo = areaNo;
 	}
+	
 	@Override
 	public String toString() {
 		return "PackVO [packNo=" + packNo + ", name=" + name + ", imgNames=" + imgNames + ", imgSizes=" + imgSizes

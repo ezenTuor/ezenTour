@@ -76,6 +76,16 @@
 		where regexp_like (keyword, #{keyword})
 	</select>
 	
+	<select id="selectPackByKw2" resultType="packTwoVo" parameterType="areaDetailVo">
+		select p2.*,
+		    (
+		        select max(man)
+		        from pack_detail p1
+		        where p1.pack_no = p2.pack_no
+		    ) manmax
+		from pack p2
+		where regexp_like (keyword, #{keyword})
+	</select>
 	
 </mapper>
 

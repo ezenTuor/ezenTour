@@ -29,5 +29,7 @@ public interface PackDetailDAO {
 
 	String areaKeyword(int tagNo);
 
+	List<PackTwoVO> selectPackByKw2(String keyword);
+
 
 }
