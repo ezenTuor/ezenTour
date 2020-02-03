@@ -11,7 +11,7 @@
 <div id="PackageWishList">
 		<h2>Package WishList</h2>
 		<c:if test="${!empty list }">
-	${pagingInfo.totalRecord }건 검색되었습니다.
+		${pagingInfo.totalRecord }건 검색되었습니다.
 		</c:if>
 
 		<!-- 페이징 처리 관련 form -->

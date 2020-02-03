@@ -30,11 +30,12 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th scope="col">패키지 번호</th>
-					<th scope="col">패키지 상세내역</th>
-					<th scope="col">패키지 출발</th>
-					<th scope="col">패키지 복귀</th>
-					<th scope="col">찜한 날짜</th>
+					<th scope="col">결제 내역 번호</th>
+					<th scope="col">할인 금액</th>
+					<th scope="col">결제 총 금액</th>
+					<th scope="col">결제 상태</th>
+					<th scope="col">결제 방법</th>
+					<th scope="col">결제일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,9 +50,20 @@
 							<td>${list.PAYMENT_NO}</td>
 							<td>${list.DISCOUNT}</td>
 							<td>${list.PRICE}</td>
-							<td>${list.STATE}</td>
+							<c:if test="${list.STATE =='Y'}">
+								<td>${list.STATE }</td>
+							</c:if>
+							<c:if test="${list.STATE == 'N' }">
+								<td>-</td>
+							</c:if>
+							<!-- <td>${list.STATE}</td> -->
 							<td>${list.TYPE}</td>
-							<td>${list.REGDATE}</td>
+							<c:if test="${list.STATE =='Y'}">
+								<td>${list.REGDATE }</td>
+							</c:if>
+							<c:if test="${list.STATE == 'N' }">
+								<td>-</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</c:if>
