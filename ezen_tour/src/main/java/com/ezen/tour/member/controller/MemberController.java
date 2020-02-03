@@ -56,13 +56,17 @@ public class MemberController {
 		logger.info("chkSave={}", chkSave);
 
 		int result=memberService.loginCheck(user_id, user_pwd);
+		int user_no = 0;
 		String msg="", url="/member/login.do";
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(user_id);
 			
+			user_no = vo.getUser_no();
+			
 			HttpSession session=request.getSession();
 			session.setAttribute("user_id", user_id);
 			session.setAttribute("name", vo.getName());
+			session.setAttribute("user_no", user_no);
 						
 			Cookie ck = new Cookie("ck_userid", user_id);
 			ck.setPath("/");
