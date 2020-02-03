@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.manager.packDetail.model.ManagerPackDetailVO;
+
 @Service
 public class ManagerPackServiceImpl implements ManagerPackService{
 	@Autowired
@@ -28,6 +30,16 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 	@Override
 	public int updatePack(ManagerPackVo packVo) {
 		return managerPackDao.updatePack(packVo);
+	}
+
+	@Override
+	public int insertDetail(ManagerPackDetailVO detailVo) {
+		return managerPackDao.insertDetail(detailVo);
+	}
+
+	@Override
+	public ManagerPackDetailVO selectdetail(int packDno) {
+		return managerPackDao.selectDetail(packDno);
 	}
 	
 }

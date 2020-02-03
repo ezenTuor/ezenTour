@@ -26,6 +26,22 @@
 		set name=#{name}, img_names=#{imgNames}, img_sizes=#{imgSizes}, country=#{country}, city=#{city}, keyword=#{keyword}, airport=#{airport}, days=#{days}, days_week=#{daysWeek}, detail=#{detail}, area_no=#{areaNo}
 		where pack_no=#{packNo}
 	</update>
+	
+	
+	<!--이 밑으로는 디테일 부분-->
+	
+	<insert id="insertDetail" parameterType="ManagerPackDetailVO">
+		<selectKey keyProperty="packDno" resultType="int" order="BEFORE">
+			select pack_detail_seq.nextval from dual
+		</selectKey>
+		insert into pack_detail
+		values(#{packDno}, #{packNo}, #{depCode}, to_date(#{koreaDep},'YYYY/MM/DD [HH24:MI]'), to_date(#{localEnt},'YYYY/MM/DD [HH24:MI]'), #{entCode}, to_date(#{localDep},'YYYY/MM/DD [HH24:MI]'), to_date(#{koreaEnt},'YYYY/MM/DD [HH24:MI]'), #{man}, #{child}, #{baby}, #{airline}, #{daysDetail}, #{shopping}, #{details}, #{capecityMin}, #{capecity}, #{capecityCur})
+	</insert>
+	
+	<select id="selectDetail" parameterType="int" resultType="ManagerPAckDetailVO">
+		select * from pack_detail
+		where pack_dno=#{packDno}
+	</select>
 </mapper>
 
 
