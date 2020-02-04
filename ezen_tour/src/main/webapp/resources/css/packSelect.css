@@ -72,3 +72,13 @@
 	text-align: center;
 	width:10%;	
 }
+
+.res-btn-able {
+	border: none;
+	background: yellow;
+	
+}
+
+.res-btn-cant {
+	border: none;
+}

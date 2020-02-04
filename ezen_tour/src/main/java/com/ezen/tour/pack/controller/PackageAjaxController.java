@@ -52,4 +52,19 @@ public class PackageAjaxController {
 		return packDetailList;
 	}
 	
+	
+	@RequestMapping("/paLiDe.do")
+	@ResponseBody
+	public List<PackVO> paLiDe(@RequestParam String keyword){
+		keyword = keyword.replaceAll("-", "|");
+		
+		logger.info("packListDetail 임시 화면 keyword={}", keyword);
+		
+		List<PackVO> paLiDe = packDetailService.selectPackByKw(keyword);
+		logger.info("paLide{}=", paLiDe);
+		
+		return paLiDe;
+		
+	}
+	
 }

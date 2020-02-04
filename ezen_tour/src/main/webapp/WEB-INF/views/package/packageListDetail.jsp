@@ -3,6 +3,37 @@
 <%@include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageListDetail.css"/>
 <!-- 예시:https://www.ybtour.co.kr/product/localMain.yb?menu=PKG&dspSid=AAD0000 -->
+<script>
+	function replaceAll(str, searchStr, replaceStr) {
+		   return str.split(searchStr).join(replaceStr);
+		}
+
+
+	$(function() {
+		$('.li-sel').click(function() {
+			var id = $(this).attr('id');
+			var idSplit = replaceAll(id, "|", "-");
+			console.log(idSplit);
+			$.ajax({
+				type: "get",
+				url : "<c:url value='/paLiDe.do?keyword="+ idSplit +"'/>",
+				dataType: "json",
+				success: function(res) {
+					if(res.length>0){
+						$.each(res, function(idx, item){
+							console.log(item);
+						})
+					}
+				},
+				error: function(xhr, status, error) {
+					
+				}
+			})//ajax
+		}); //대분류클릭
+	})
+	
+</script>
+
 <div id="pack-list-detail">
 
 	<div id="left-menu">
@@ -16,7 +47,7 @@
 
 			<c:if test="${!empty areaDetailList }">
 				<c:forEach var="areaDetailVo" items="${areaDetailList }">
-					<li class="areaDetail-sel"><a href=# id="${areaDetailVo.tagNo}">${areaDetailVo.name}</a></li>
+					<li class="areaDetail-sel"><a href=# id="${areaDetailVo.keyword}" class="li-sel">${areaDetailVo.name}</a></li>
 				</c:forEach>
 			</c:if>
 		</ul>

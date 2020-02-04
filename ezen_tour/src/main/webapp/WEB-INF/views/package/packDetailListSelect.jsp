@@ -23,8 +23,9 @@
 			<c:set var = "string4" value ="${fn:split(string3, '|')}" />
 				<li>
 					<img src="${string4[0]}"/>
-					<div>${item.name}</div>
+					<div><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${item.packNo }">${item.name}</a></div>
 					<div>${item.manmax }원~</div>
+					<div>${item.packNo }</div>
 				</li>
 			</c:forEach>
 		</c:if>

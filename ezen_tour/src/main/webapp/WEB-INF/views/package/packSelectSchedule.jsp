@@ -9,9 +9,9 @@
 
 <script>
   $( function() {
-    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd',minDate:0});
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
   } );
-  
+  //,minDate:0
   function getFormatDate(date){
 	  	var yoil = ['일','월','화','수','목','금','토'];
 	    var year = date.getFullYear();              //yyyy
@@ -52,15 +52,29 @@
 							curdate2.setTime(item.koreaEnt);
 							var korEnt2 = getFormatDate(curdate2);
 							
-					
-							str='<li id="title-tag">'+
-		    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
-		    				'<div class="air">'+item.airline+'</div>'+
-		    				'<div class="during">'+item.daysDetail+'</div>'+
-		    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
-		    				'<div class="price">'+item.man+'</div>'+
-		    				'<div class="res">'+item.shopping+'</div>'+
-		    				'</li>'
+							var capecity = item.capecity;
+							var capecityCur = item.capecityCur;
+											
+							if(capecity > capecityCur){
+								str='<li id="title-tag">'+
+			    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
+			    				'<div class="air">'+item.airline+'</div>'+
+			    				'<div class="during">'+item.daysDetail+'</div>'+
+			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
+			    				'<div class="price">'+item.man+'</div>'+
+			    				'<div class="res"><button value="예약가능" class="res-btn-able">예약가능</button></div>'+
+			    				'</li>'	
+							} else {
+								str='<li id="title-tag">'+
+			    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
+			    				'<div class="air">'+item.airline+'</div>'+
+			    				'<div class="during">'+item.daysDetail+'</div>'+
+			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
+			    				'<div class="price">'+item.man+'</div>'+
+			    				'<div class="res"><button value="예약마감" class="res-btn-cant" disabled>예약마감</button></div>'+
+			    				'</li>'	
+							}
+							
 		    				$("#pack-ex").append(str);
 						})		    			
 		    		}
