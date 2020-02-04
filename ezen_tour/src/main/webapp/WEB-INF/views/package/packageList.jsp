@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packList.css"/>
 
-<%@include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp" flush="true"/>
+
 <!-- 예시: https://www.ybtour.co.kr/product/main.yb?menu=PKG&dspSid=AA00000 -->
 
 

@@ -41,7 +41,8 @@ public class PackageController {
 		int packNumber = packDetailVo.getPackNo();
 		
 		PackVO packVo = packDetailService.selectPack(packNumber);
-		
+
+
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
 		return "package/packageDetail";

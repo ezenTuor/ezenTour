@@ -20,8 +20,17 @@
 				dataType: "json",
 				success: function(res) {
 					if(res.length>0){
+						var str="";
 						$.each(res, function(idx, item){
-							console.log(item);
+							var imageName = item.imgNames.split('|')[0];
+							str = 
+							"<li>"+
+							"<img class='pack-img' src='"+imageName+"'>"+
+							"<div class='pack-name'>"+item.name+"</div>"+
+							"<div class='pack-max'>"+item.manmax+"</div>"+				
+							"</li>"
+							
+							$("#pack-ex").append(str);
 						})
 					}
 				},
@@ -47,12 +56,15 @@
 
 			<c:if test="${!empty areaDetailList }">
 				<c:forEach var="areaDetailVo" items="${areaDetailList }">
-					<li class="areaDetail-sel"><a href=# id="${areaDetailVo.keyword}" class="li-sel">${areaDetailVo.name}</a></li>
+					<li class="areaDetail-sel"><a href="#" id="${areaDetailVo.keyword}" class="li-sel">${areaDetailVo.name}</a></li>
 				</c:forEach>
 			</c:if>
 		</ul>
-		<div id ="pack-space">
 		
+		<div id ="pack-space">
+			<ul id="pack-ex">
+				
+			</ul>
 		</div>
 
 	</div>

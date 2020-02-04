@@ -24,9 +24,20 @@
 		            <li><a href="#">패키지 여행</a>
 		            <!-- First Tier Drop Down -->
 		            <ul>
+		            	<c:if test="${empty areaLi }">
+							<li>페이지 오류입니다</li>
+						</c:if>
+			
+						<c:if test="${!empty areaLi }">
+							<c:forEach var="areaLiVo" items="${areaLi }">
+								<li class="area-sel"><a href="${pageContext.request.contextPath}/package/packageListDetail.do?areaNo=${areaLiVo.areaNo}" id="${areaLiVo.areaNo}" class="li-sel">${areaLiVo.name}</a></li>
+							</c:forEach>
+						</c:if>
+						<!-- 
 		                <li><a href="#">Themes</a></li>
 		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
+		                <li><a href="#">Tutorials</a></li>						
+						 -->
 		            </ul>        
 		            </li>
 		     

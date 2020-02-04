@@ -15,6 +15,7 @@ import com.ezen.tour.pack.model.PackAjaxVO;
 import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackDetailViewVO;
+import com.ezen.tour.pack.model.PackTwoVO;
 import com.ezen.tour.pack.model.PackVO;
 
 @Controller
@@ -55,12 +56,12 @@ public class PackageAjaxController {
 	
 	@RequestMapping("/paLiDe.do")
 	@ResponseBody
-	public List<PackVO> paLiDe(@RequestParam String keyword){
+	public List<PackTwoVO> paLiDe(@RequestParam String keyword){
 		keyword = keyword.replaceAll("-", "|");
 		
 		logger.info("packListDetail 임시 화면 keyword={}", keyword);
 		
-		List<PackVO> paLiDe = packDetailService.selectPackByKw(keyword);
+		List<PackTwoVO> paLiDe = packDetailService.selectPackByKw2(keyword);
 		logger.info("paLide{}=", paLiDe);
 		
 		return paLiDe;
