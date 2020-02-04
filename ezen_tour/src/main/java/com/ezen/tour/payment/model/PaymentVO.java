@@ -3,66 +3,83 @@ package com.ezen.tour.payment.model;
 import java.sql.Timestamp;
 
 public class PaymentVO {
-	private int PAYMENT_NO;
-	private int USER_NO;
-	private int DISCOUNT;
-	private int PRICE;
-	private String STATE;
-	private String TYPE;
-	private Timestamp REGDATE;
-	private String DETAIL;
+	private int paymentNo;
+	private int userNo;
+	private int discount;
+	private int price;
+	private String state; 
+	private String type;
+	private Timestamp regdate; 
+	private String detail;
+	private String impUid;
+	private String merchantUid;
 	
-	public int getPAYMENT_NO() {
-		return PAYMENT_NO;
+	public int getPaymentNo() {
+		return paymentNo;
 	}
-	public void setPAYMENT_NO(int pAYMENT_NO) {
-		PAYMENT_NO = pAYMENT_NO;
+	public void setPaymentNo(int paymentNo) {
+		this.paymentNo = paymentNo;
 	}
-	public int getUSER_NO() {
-		return USER_NO;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUSER_NO(int uSER_NO) {
-		USER_NO = uSER_NO;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	public int getDISCOUNT() {
-		return DISCOUNT;
+	public String getImpUid() {
+		return impUid;
 	}
-	public void setDISCOUNT(int dISCOUNT) {
-		DISCOUNT = dISCOUNT;
+	public void setImpUid(String impUid) {
+		this.impUid = impUid;
 	}
-	public int getPRICE() {
-		return PRICE;
+	public String getMerchantUid() {
+		return merchantUid;
 	}
-	public void setPRICE(int pRICE) {
-		PRICE = pRICE;
+	public void setMerchantUid(String merchantUid) {
+		this.merchantUid = merchantUid;
 	}
-	public String getSTATE() {
-		return STATE;
+	public int getDiscount() {
+		return discount;
 	}
-	public void setSTATE(String sTATE) {
-		STATE = sTATE;
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
-	public String getTYPE() {
-		return TYPE;
+	public int getPrice() {
+		return price;
 	}
-	public void setTYPE(String tYPE) {
-		TYPE = tYPE;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public Timestamp getREGDATE() {
-		return REGDATE;
+	public String getState() {
+		return state;
 	}
-	public void setREGDATE(Timestamp rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setState(String state) {
+		this.state = state;
 	}
-	public String getDETAIL() {
-		return DETAIL;
+	public String getType() {
+		return type;
 	}
-	public void setDETAIL(String dETAIL) {
-		DETAIL = dETAIL;
+	public void setType(String type) {
+		this.type = type;
 	}
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	
 	@Override
 	public String toString() {
-		return "PaymentVO [PAYMENT_NO=" + PAYMENT_NO + ", USER_NO=" + USER_NO + ", DISCOUNT=" + DISCOUNT + ", PRICE="
-				+ PRICE + ", STATE=" + STATE + ", TYPE=" + TYPE + ", REGDATE=" + REGDATE + ", DETAIL=" + DETAIL + "]";
+		return "PaymentVO [paymentNo=" + paymentNo + ", userNo=" + userNo + ", discount=" + discount + ", price="
+				+ price + ", state=" + state + ", type=" + type + ", regdate=" + regdate + ", detail=" + detail
+				+ ", impUid=" + impUid + ", merchantUid=" + merchantUid + "]";
 	}
+	
 }

@@ -10,4 +10,10 @@ public class PaymentDAOMybatis implements PaymentDAO{
 	private SqlSessionTemplate sqlSession;
 	
 	private String namespace = "config.mybatis.mapper.oracle.payment.";
+
+	@Override
+	public int insertPayment(PaymentVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -3,18 +3,20 @@
 <%@include file="../../inc/adminTop.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerFile.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
-<link rel="stylesheet" href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/datetimepicker/jquery.simple-dtpicker.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/datetimepicker/jquery.simple-dtpicker.css">
 <script>
 $(function(){
-	$('.datetimepicker').appendDtpicker({
-		'locale':'ko',
-		'dateFormat': 'yyyy/MM/dd [hh:mm]',
-		'minuteInterval': 5,
-		'closeOnSelected': true,
-		'autodateOnStart': false,
-		'futureOnly': true
+	$('.datetimepicker').each(function(){
+		$(this).appendDtpicker({
+			'locale':'ko',
+			'dateFormat': 'YYYY/MM/DD [hh:mm]',
+			'minuteInterval': 5,
+			'closeOnSelected': true,
+			'autodateOnStart': false,
+			'futureOnly': true,
+			'calendarMouseScroll': false
+		});
 	});
 });
 </script>
@@ -27,15 +29,6 @@ $(function(){
 });
 </script>
 <article class="managerForm">
-	<h2>디테일 테스트중</h2>
-	<form name="frm1" method="post" action="#">
-		<input type="text" class="datetimepicker">
-	</form>
-		<h2>packNo 잘 받는지 테스트</h2>
-	<div>
-		${param.packNo}
-	</div>
-	
 	<h2>패키지 디테일 등록 화면</h2>
 	
 	<div class='progress'>
@@ -46,24 +39,21 @@ $(function(){
 	</div>
 	<h4>2.패키지 소분류 작성</h4>
 	<form name="pdWrite" method="post" enctype="multipart/form-data"
-		action="<c:url value="/manager/pack/detailWrite.do"/>">
+		action="<c:url value="/manager/detail/detailWrite.do"/>">
 		<div>
 			<label for="depCode">출국티켓</label>
 			<div>
-				<label for="depCode">번호</label>
-				번호 : <input type="text" name="depCode">
-				<label for="depCode">번호</label>
-				출발시간 : <input type="text" name="" class="datetimepicker">
-				<label for="depCode">번호</label>
-				도착시간 : <input type="text" name="" class="datetimepicker">
+				번호 : <input type="text" name="depCode" autocomplete="off">
+				출발시간 : <input type="text" name="koreaDep" class="datetimepicker" autocomplete="off">
+				도착시간 : <input type="text" name="localEnt" class="datetimepicker" autocomplete="off">
 			</div>
 		</div>
 		<div>
 			<label for="entCode">입국티겟</label>
 			<div>
-				번호 : <input type="text" name="entCode">
-				출발시간 : <input type="text" name="" class="datetimepicker">
-				도착시간 : <input type="text" name="" class="datetimepicker">
+				번호 : <input type="text" name="entCode" autocomplete="off">
+				출발시간 : <input type="text" name="localDep" class="datetimepicker" autocomplete="off">
+				도착시간 : <input type="text" name="koreaEnt" class="datetimepicker" autocomplete="off">
 			</div>
 		</div>
 		<div>
@@ -100,10 +90,12 @@ $(function(){
 			<div>
 				수용인원 : <input type="text" name="capecity"> 명 <br>
 				최소인원 : <input type="text" name="capecityMin"> 명
+				<input type="text" name="capecityCur" value="0">나중에 히든처리
 			</div>
 		</div>
 		
 		<p class="managerSubmit">
+			<input type="text" name="packNo" value="${param.packNo}">나중에 히든처리(대분류)
 			<input type="button" value="테스트버튼" id="test">
 			<input type="submit" value="전송">
 		</p>

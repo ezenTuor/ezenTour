@@ -40,7 +40,6 @@ public class FileUploadUtil {
 		List<MultipartFile> olist=multiReq.getFiles(paramName);
 		//Map<String, MultipartFile> fileMap=multiReq.getFileMap();
 		
-		
 		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
 		
 		for(MultipartFile tempFile: olist) {

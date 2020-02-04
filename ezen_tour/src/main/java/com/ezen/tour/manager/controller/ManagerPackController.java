@@ -25,7 +25,6 @@ import com.ezen.tour.manager.area.model.AreaService;
 import com.ezen.tour.manager.area.model.ManagerAreaVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
-import com.ezen.tour.pack.model.PackDetailVO;
 
 @Controller
 @RequestMapping("/manager/pack")
@@ -104,18 +103,7 @@ public class ManagerPackController {
 		//model.addAttribute("packVo", packVo);
 		//model.addAttribute("pack_no", packVo.getPackNo());
 		
-		return "redirect:/manager/pack/detailWrite.do?packNo="+packVo.getPackNo();
-	}
-	
-	@RequestMapping(value="/detailWrite.do", method=RequestMethod.GET)
-	public void packDetail(@RequestParam int packNo) {
-		logger.info("패키지 상세 작성화면 보여주기, 파라미터 packNo={}", packNo);
-	}
-	
-	@RequestMapping(value="/detailWrite.do", method=RequestMethod.POST)
-	public String packDetailWrite(@ModelAttribute PackDetailVO detailVo) {
-		logger.info("패키지 상세 작성처리 detailVo={}", detailVo);
-		return null;
+		return "redirect:/manager/detail/detailWrite.do?packNo="+packVo.getPackNo();
 	}
 	
 	@RequestMapping("/packList.do")
@@ -189,7 +177,7 @@ public class ManagerPackController {
 			String fileNames="", fileSizes="";
 			for(int i=0; i<list.size(); i++) {
 				Map<String, Object> filemap=list.get(i);
-				String ofilename=(String)filemap.get("originalFileName");
+				//String ofilename=(String)filemap.get("originalFileName");
 				String filename=(String)filemap.get("fileName");
 				long filesize=(Long)filemap.get("fileSize");
 				

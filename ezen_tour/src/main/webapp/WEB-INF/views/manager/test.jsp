@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../inc/top.jsp" %>
-<script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
-<script type="text/javascript">
-//ckeditor부분
+<%@include file="../inc/adminTop.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/datetimepicker/jquery.simple-dtpicker.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/datetimepicker/jquery.simple-dtpicker.css">
+<script>
 $(function(){
-    CKEDITOR.replace('textarea', {//해당 이름으로 된 textarea에 에디터를 적용
-    	filebrowserUploadUrl: "<c:url value='/managerFile/imageUpload.do'/>",
-    });
+	$('.picker').appendDtpicker({
+		'locale':'ko',
+		'dateFormat': 'YYYY/MM/DD [hh:mm]',
+		'minuteInterval': 5,
+		'closeOnSelected': true
+	});
 });
-
 </script>
+<h2>테스트2</h2>
 	<article>
 		<form action="#" method="post">
-			<textarea rows="3" cols="10" id="textarea"></textarea>
+			<input type="text" class="picker">
 		</form>
 	</article>
-<%@include file="../inc/bottom.jsp" %>
+<%@include file="../inc/adminBottom.jsp" %>

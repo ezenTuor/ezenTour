@@ -31,10 +31,10 @@ ALTER TABLE PACK
 CREATE TABLE PACK_DETAIL (
 	PACK_DNO NUMBER NOT NULL, /* 패키지 소분류 번호 */
 	PACK_NO NUMBER NOT NULL, /* 패키지번호 */
-	DEP_CODE VARCHAR2(10), /* 출발항공코드 */
+	DEP_CODE VARCHAR2(15), /* 출발항공코드 */
 	KOREA_DEP DATE NOT NULL, /* 한국출발날짜 */
 	LOCAL_ENT DATE NOT NULL, /* 현지도착날짜 */
-	ENT_CODE VARCHAR2(10), /* 도착항공코드 */
+	ENT_CODE VARCHAR2(15), /* 도착항공코드 */
 	LOCAL_DEP DATE NOT NULL, /* 현지출발날짜 */
 	KOREA_ENT DATE NOT NULL, /* 한국도착날짜 */
 	MAN NUMBER, /* 성인가격 */
@@ -68,9 +68,7 @@ CREATE TABLE SCHEDULE (
 	DETAIL CLOB, /* 내용 */
 	DAY DATE, /* 날짜 */
 	MEAL VARCHAR2(300), /* 식사 */
-	HOTEL VARCHAR2(300), /* 숙박 */
-	HOTEL_H VARCHAR2(40), /* 경도 */
-	HOTEL_V VARCHAR2(40) /* 위도 */
+	HOTEL VARCHAR2(300) /* 숙박 */
 );
 
 CREATE UNIQUE INDEX PK_SCHEDULE

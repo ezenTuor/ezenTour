@@ -15,63 +15,52 @@
 <script type="text/javascript">
 $(function(){
 	$("#check_module").click(function() {
-		var IMP = window.IMP; // 생략가능
-		IMP.init('imp04239490');
-		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+		var IMP = window.IMP; 
+		IMP.init('imp27153221');
 		IMP.request_pay({
-			pg : 'inicis', // version 1.1.0부터 지원.
-			/*
-			 'kakao':카카오페이,
-			 html5_inicis':이니시스(웹표준결제)
-			 'nice':나이스페이
-			 'jtnet':제이티넷
-			 'uplus':LG유플러스
-			 'danal':다날
-			 'payco':페이코
-			 'syrup':시럽페이
-			 'paypal':페이팔
-			 */
-
+			pg : 'inicis',
 			pay_method : 'card',
-			/*
-			 'samsung':삼성페이,
-			 'card':신용카드,
-			 'trans':실시간계좌이체,
-			 'vbank':가상계좌,
-			 'phone':휴대폰소액결제
-			 */
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			/*
-			 merchant_uid에 경우
-			 https://docs.iamport.kr/implementation/payment
-			 위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
-			 참고하세요.
-			 나중에 포스팅 해볼게요.
-			 */
-			name : '주문명:결제테스트',
-			//결제창에서 보여질 이름
-			amount : 100,
-			//가격
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456',
-			m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-		/*
-		 모바일 결제시,
-		 결제가 끝나고 랜딩되는 URL을 지정
-		 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-		 */
+			name : '결제테스트',
+			amount : 1004,
+			buyer_email : '${memberVo.email1}@${memberVo.email2}',
+			buyer_name : '${memberVo.name}',
+			buyer_tel :'${memberVo.hp1}-${memberVo.hp2}-${memberVo.hp3}',
+			buyer_addr : '${memberVo.address}',
+			buyer_postcode : '${memberVo.zipcode}',
+			
 		}, function(rsp) {
 			console.log(rsp);
 			if (rsp.success) {
+				/* jQuery.ajax({
+			    	url: "<c:url value='/PaymentCheck.do'/>",
+			        method: "POST",
+			        headers: { "Content-Type": "application/json" },
+			        data: {
+			            imp_uid: rsp.imp_uid,
+			            merchant_uid: rsp.merchant_uid,
+						paid_amount: rsp.paid_amount,
+						apply_num: rsp.apply_num
+			  		}
+				}); */
+				
 				var msg = '결제가 완료되었습니다.';
-				msg += '고유ID : ' + rsp.imp_uid;
-				msg += '상점 거래ID : ' + rsp.merchant_uid;
-				msg += '결제 금액 : ' + rsp.paid_amount;
-				msg += '카드 승인번호 : ' + rsp.apply_num;
+				msg += '고유ID : ' + rsp.imp_uid+"<br>";
+				msg += '상점 거래ID : ' + rsp.merchant_uid+"<br>";
+				msg += '결제 금액 : ' + rsp.paid_amount+"<br>";
+				msg += '카드 승인번호 : ' + rsp.apply_num+"<br>";
+				
+				//input 설정 및 submmit
+				
+				$("#test1").val(${memberVo.user_no});
+				$("#test2").val();
+				$("#test3").val(rsp.paid_amount);
+				$("#test4").val();
+				$("#test5").val('card');
+				$("#test6").val();
+				$("#test7").val(rsp.imp_uid);
+				$("#test8").val(rsp.merchant_uid);
+				$("form[name=frmSuccess]").submit();		
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -80,13 +69,25 @@ $(function(){
 		});
 	});
 });
+
 </script>
 </head>
 <body>
 	<form name="frmPayment" method="post" 
 		action="#">
-		<p>아임 서포트 결제 모듈 테스트 해보기</p>
-		<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
+		<p>결제모듈 실행</p>
+		<button id="check_module" type="button">결제 모듈 테스트</button>
+	</form>
+	<form name="frmSuccess" method="post"
+		action="/payment/paymentInsert.do">
+		<input type="text" name="user_no" value="" id="test1">
+		<input type="text" name="discount" value="" id="test2">
+		<input type="text" name="price" value="" id="test3">
+		<input type="text" name="state" value="" id="test4">
+		<input type="text" name="type" value="" id="test5">
+		<input type="text" name="detail" value="" id="test6">
+		<input type="text" name="imp_uid" value="" id="test7">
+		<input type="text" name="merchant_uid" value="" id="test8">
 	</form>
 </body>
 </html>
