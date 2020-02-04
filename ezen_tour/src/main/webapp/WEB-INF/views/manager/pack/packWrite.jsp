@@ -172,7 +172,7 @@ $(function(){
 				</div>	
 			</div>
 			<div>
-				<label for="country">해당국가</label>	
+				<label for="country">해당국가</label>
 				<div>
 					<input type="text" id="country" name="country">
 				</div>
