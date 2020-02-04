@@ -1,25 +1,16 @@
 package com.ezen.tour.manager.controller;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +25,6 @@ import com.ezen.tour.manager.area.model.AreaService;
 import com.ezen.tour.manager.area.model.ManagerAreaVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
-import com.ezen.tour.manager.packDetail.model.ManagerPackDetailVO;
 
 @Controller
 @RequestMapping("/manager/pack")
@@ -113,116 +103,7 @@ public class ManagerPackController {
 		//model.addAttribute("packVo", packVo);
 		//model.addAttribute("pack_no", packVo.getPackNo());
 		
-		return "redirect:/manager/pack/detailWrite.do?packNo="+packVo.getPackNo();
-	}
-	
-	@RequestMapping(value="/detailWrite.do", method=RequestMethod.GET)
-	public void packDetail(@RequestParam int packNo) {
-		logger.info("패키지 상세 작성화면 보여주기, 파라미터 packNo={}", packNo);
-	}
-	
-	@RequestMapping(value="/detailWrite.do", method=RequestMethod.POST)
-	public String packDetailWrite(@ModelAttribute ManagerPackDetailVO detailVo) {
-		//현재 int 부분에 null이 들어오면 오류가 나는중
-		logger.info("패키지 상세 작성처리 detailVo={}", detailVo);
-		
-		//day_detail 처리
-		String start=detailVo.getKoreaDep();
-		String end=detailVo.getKoreaEnt();
-		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd [hh:mm]");
-		int day=0;
-		try {
-			Date sday=sdf.parse(start);
-			Date eday=sdf.parse(end);
-			
-			long gap=eday.getTime()-sday.getTime();
-			gap=gap/(1000*60*60*24);
-			day=(int)Math.ceil(gap);
-			
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		detailVo.setDaysDetail(day+"일");
-		//
-		
-		int cnt=managerPackService.insertDetail(detailVo);
-		logger.info("패키지 상제 작성 처리 결과 cnt={}",cnt);
-		logger.info("처리 후 패키지 디테일, detailVo={}",detailVo);
-		
-		return "redirect:/manager/pack/scheduleWrite.do?detailNo="+detailVo.getPackDno();
-	}
-	
-	@RequestMapping(value="/scheduleWrite.do", method=RequestMethod.GET)
-	public void scheduleWrite(@RequestParam int packDno, Model model) {
-		logger.info("일정 입력화면 보이기, 파라미터 packDno={}",packDno);
-		
-		ManagerPackDetailVO detailVo=managerPackService.selectdetail(packDno);
-		String startStr=detailVo.getKoreaDep();
-		String endStr=detailVo.getKoreaEnt();
-		
-		System.out.println("시작날짜"+startStr);
-		System.out.println("끝날짜"+endStr);
-		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy/MM/dd");
-		List<String> list=new ArrayList<String>();
-		
-		try {
-			Date sDay=sdf.parse(startStr);
-			Date eDay=sdf.parse(endStr);
-			
-			sDay.setHours(0);
-			sDay.setMinutes(0);
-			
-			eDay.setHours(0);
-			eDay.setMinutes(0);
-			
-			long stime=sDay.getTime();
-			long etime=eDay.getTime();
-			
-			int gap=(int)(etime-stime)/(1000*60*60*24);
-			System.out.println("두 날짜사이 간격"+gap);
-			for(int i=0; i<=gap; i++) {
-				String temp=sdf2.format(sDay);
-				list.add(temp);
-				System.out.println("디버깅용 i="+i+", 날짜tmep="+temp);
-				sDay.setTime(sDay.getTime()+(1000*60*60*24));
-			}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("packDno", packDno);
-		model.addAttribute("list", list);
-	}
-	
-	@RequestMapping(value="/scheduleWrite.do", method=RequestMethod.POST)
-	public String scheduleWrite(HttpServletRequest req, ModelMap model, HttpServletResponse response) throws Exception{
-		//일정값 전부 받아오기
-		Map<String, String[]> map=req.getParameterMap();
-		Set<String> keys=map.keySet();
-		Iterator<String> iter=keys.iterator();
-		
-		//일정 정보를 받아서 저장해 둘 List
-		List<ManagerPackDetailVO> list=new ArrayList<ManagerPackDetailVO>();
-		
-		/*방법 1
-		//map - iterator로 처리?
-		while(iter.hasNext()) {
-			String key=iter.next();
-			//System.out.println("키값 - "+key);
-			String[] values=map.get(key);
-			for(int i=0; i<values.length;i++) {
-				//System.out.println("내용값 - "+values[i]);
-			}
-		}
-		*/
-		
-		/*
-			방법2
-			for문 돌려서 배열에서 같은 index로 insert 처리?
-		*/
-		return null;
+		return "redirect:/manager/detail/detailWrite.do?packNo="+packVo.getPackNo();
 	}
 	
 	@RequestMapping("/packList.do")

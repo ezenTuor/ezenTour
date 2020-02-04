@@ -1,6 +1,6 @@
 package com.ezen.tour.manager.packDetail.model;
 
-public class ManagerPackDetailVO {
+public class ManagerDetailVO {
 	private int packDno;
 	private int packNo;
 	private String depCode;

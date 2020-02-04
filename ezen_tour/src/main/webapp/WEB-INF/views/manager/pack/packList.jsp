@@ -36,7 +36,7 @@ $(function(){
 							</a>
 						</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/manager/pack/detailList.do?packNo=${pack.packNo}">
+							<a href="${pageContext.request.contextPath}/manager/detail/detailList.do?packNo=${pack.packNo}">
 								확인하기 버튼
 							</a>
 						</td>

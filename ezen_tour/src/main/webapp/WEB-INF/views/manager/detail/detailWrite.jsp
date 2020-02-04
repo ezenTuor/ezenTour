@@ -39,7 +39,7 @@ $(function(){
 	</div>
 	<h4>2.패키지 소분류 작성</h4>
 	<form name="pdWrite" method="post" enctype="multipart/form-data"
-		action="<c:url value="/manager/pack/detailWrite.do"/>">
+		action="<c:url value="/manager/detail/detailWrite.do"/>">
 		<div>
 			<label for="depCode">출국티켓</label>
 			<div>

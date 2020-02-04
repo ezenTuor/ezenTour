@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ezen.tour.manager.packDetail.model.ManagerPackDetailVO;
+import com.ezen.tour.manager.packDetail.model.ManagerDetailVO;
 
 @Repository
 public class ManagerPackDAOmybatis implements ManagerPackDAO{
@@ -33,15 +33,5 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 	@Override
 	public int updatePack(ManagerPackVo packVo) {
 		return sqlSession.update(namespace+"updatePack", packVo);
-	}
-
-	@Override
-	public int insertDetail(ManagerPackDetailVO detailVo) {
-		return sqlSession.insert(namespace+"insertDetail", detailVo);
-	}
-
-	@Override
-	public ManagerPackDetailVO selectDetail(int packDno) {
-		return sqlSession.selectOne(namespace+"selectDetail", packDno);
 	}
 }
