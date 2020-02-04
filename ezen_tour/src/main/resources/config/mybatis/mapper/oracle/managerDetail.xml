@@ -15,6 +15,11 @@
 		select * from pack_detail
 		where pack_dno=#{packDno}
 	</select>
+	
+	<select id="selectByPackNo" parameterType="int" resultType="managerDetailVo">
+		select * from pack_detail
+		where pack_no=#{packNo}
+	</select>
 </mapper>
 
 

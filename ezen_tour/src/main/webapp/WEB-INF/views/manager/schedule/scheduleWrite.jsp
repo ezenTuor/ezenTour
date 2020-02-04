@@ -21,6 +21,15 @@
 	});
 </script>
 	<article>
+		<h2>패키지 일정 등록 화면</h2>
+	
+		<div class='progress'>
+			<img src="<c:url value='/resources/images/on.png'/>">
+			<img src="<c:url value='/resources/images/on.png'/>">
+			<img src="<c:url value='/resources/images/on.png'/>">
+			<img src="<c:url value='/resources/images/off.png'/>">
+		</div>
+		<h4>3.패키지 일정 작성</h4>
 		<form method="post" action="#" id="frm1">
 			<input type="text" name="packDno" value="${param.packDno}">
 			<c:set var="i" value="0"/>

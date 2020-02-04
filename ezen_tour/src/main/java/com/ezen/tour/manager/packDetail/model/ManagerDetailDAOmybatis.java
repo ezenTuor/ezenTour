@@ -1,5 +1,7 @@
 package com.ezen.tour.manager.packDetail.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,5 +20,10 @@ public class ManagerDetailDAOmybatis implements ManagerDetailDAO{
 	@Override
 	public ManagerDetailVO selectDetail(int packDno) {
 		return sqlSession.selectOne(namespace+"selectDetail", packDno);
+	}
+
+	@Override
+	public List<ManagerDetailVO> selectDetailsByPackNo(int packNo) {
+		return sqlSession.selectList(namespace+"selectByPackNo", packNo);
 	}
 }

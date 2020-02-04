@@ -3,11 +3,13 @@ package com.ezen.tour.manager.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,5 +63,15 @@ public class ManagerPackDetailController {
 		return "redirect:/manager/schedule/scheduleWrite.do?detailNo="+detailVo.getPackDno();
 	}
 	
+	@RequestMapping("/detailList.do")
+	public void detailList(@RequestParam int packNo, Model model) {
+		logger.info("패키지 소분류 목록 보여주기, 파라미터 packNo={}", packNo);
+		
+		List<ManagerDetailVO> list=managerDetailService.selectDetailsByPackNo(packNo);
+		
+		logger.info("패키지 소분류 조회 결과 list.size={}",list.size());
+		
+		model.addAttribute("list", list);
+	}
 	
 }

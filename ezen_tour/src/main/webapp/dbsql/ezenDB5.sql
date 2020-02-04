@@ -7,7 +7,9 @@ CREATE TABLE PAYMENT (
 	STATE CHAR, /* 결제상태 */
 	TYPE VARCHAR2(300), /* 결제방법 */
 	REGDATE DATE, /* 결제일 */
-	DETAIL CLOB /* 결제상세 */
+	DETAIL CLOB, /* 결제상세 */
+	MARCH_UID NUMBER, /* 결제체크번호 */
+	IMP_UID NUMBER /* 결체확인번호 */
 );
 
 CREATE UNIQUE INDEX PK_PAYMENT
