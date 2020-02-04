@@ -56,4 +56,21 @@
 		delete from review
 		where review_no=#{no}
 	</delete>
+	
+	<select id="selectReviewMap" resultType="map" parameterType="int">
+		select * from (
+		    select review_no,
+		        LAG(review_no) over(order by review_no) as prev,
+		        LEAD(review_no) over(order by review_no) as next
+		    from review
+		    )
+		where review_no=#{no}
+		order by review_no desc
+	</select>
+	
+	<select id="minmax" resultType="map">
+		select max(review_no) as MAX, min(review_no) as MIN
+		from review
+	</select>
+	
 </mapper>

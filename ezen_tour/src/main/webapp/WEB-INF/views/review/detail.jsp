@@ -44,14 +44,8 @@
 	<br>
 	
 	<hr>
-	<div style="text-align: center">
-		<button onclick="location.href='<c:url value="/review/edit.do?no=${param.no}&pName=${vo.packName}"/>'">수정하기</button>
-		<button onclick="location.href='<c:url value="/review/delete.do?no=${param.no}"/>'">삭제하기</button>
-		<button onclick="location.href='<c:url value="/review/list.do"/>'">목록으로</button>
-
-		<%-- <a href='<c:url value="/review/edit.do?no=${param.no}"/>'>수정</a> |
-		<a href='<c:url value="/review/delete.do?no=${param.no}"/>'>삭제</a> |
-		<a href='<c:url value="/review/list.do"/>'>목록</a> --%>
+	<div>
+		<c:import url="/review/reviewList.do"/>
 	</div>
 </div>
 

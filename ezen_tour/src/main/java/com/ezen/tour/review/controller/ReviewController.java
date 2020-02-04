@@ -1,6 +1,7 @@
 package com.ezen.tour.review.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -170,5 +171,19 @@ public class ReviewController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/reviewList.do")
+	public void reviewList(@RequestParam(defaultValue = "0") int no, Model model) {
+		logger.info("소 리뷰 목록");
+		
+		Map<String, Object> map=reviewService.minmax();
+		logger.info("map={}", map);
+		
+		Map<String, Object> list=reviewService.selectReviewMap(no);
+		logger.info("소 리뷰 목록, list.size()={}", list.size());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("map", map);
 	}
 }
