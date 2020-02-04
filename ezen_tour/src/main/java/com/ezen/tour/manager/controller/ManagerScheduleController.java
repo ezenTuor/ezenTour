@@ -4,13 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +18,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.tour.manager.packDetail.model.ManagerDetailService;
 import com.ezen.tour.manager.packDetail.model.ManagerDetailVO;
@@ -39,6 +35,7 @@ public class ManagerScheduleController {
 	@Autowired
 	private ManagerScheduleService managerScheduleService;
 	
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value="/scheduleWrite.do", method=RequestMethod.GET)
 	public void scheduleWrite(@RequestParam int packDno, Model model) {
 		logger.info("일정 입력화면 보이기, 파라미터 packDno={}",packDno);
@@ -83,12 +80,12 @@ public class ManagerScheduleController {
 	}
 	
 	@RequestMapping(value="/scheduleWrite.do", method=RequestMethod.POST)
-	@ResponseBody
-	public void scheduleWrite(HttpServletRequest req, ModelMap model, HttpServletResponse response) throws Exception{
+	public String scheduleWrite(HttpServletRequest req, ModelMap model) throws Exception{
+		logger.info("일정 작성 처리");
 		//일정값 전부 받아오기
 		Map<String, String[]> map=req.getParameterMap();
-		Set<String> keys=map.keySet();
-		Iterator<String> iter=keys.iterator();
+		//Set<String> keys=map.keySet();
+		//Iterator<String> iter=keys.iterator();
 		
 		//일정 정보를 받아서 저장해 둘 List
 		List<ManagerScheduleVO> list=new ArrayList<ManagerScheduleVO>();
@@ -115,14 +112,75 @@ public class ManagerScheduleController {
 		}
 		int cnt= managerScheduleService.insertSchedule(list);
 		
-		String msg="";
+		String msg="", url="";
 		if(cnt>0) {
 			msg="일정 등록에 성공하였습니다.";
+			url="/manager/managerMain.do";
 		}else {
 			msg="일정 등록 실패!";
+			url="/manager/managerMain.do";
 		}
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/xml");
-		response.getWriter().write(msg);
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/scheduleEdit.do", method=RequestMethod.GET)
+	public void scheduleEdit(@RequestParam int packDno, Model model) {
+		logger.info("스케줄 편집 화면 보이기, 파라미터 packDno={}", packDno);
+		
+		List<ManagerScheduleVO> list=managerScheduleService.selectByPackDno(packDno);
+		logger.info("스케줄 목록 list.size={}",list.size());
+		
+		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping(value="/scheduleEdit.do", method=RequestMethod.POST)
+	public String scheduleEdit(HttpServletRequest req, ModelMap model) {
+		logger.info("스케줄 편집 처리하기");
+		Map<String, String[]> map=req.getParameterMap();
+		
+		//일정 정보를 받아서 저장해 둘 List
+		List<ManagerScheduleVO> list=new ArrayList<ManagerScheduleVO>();
+		
+		//map - iterator로 처리?
+		String[] scheduleNo=map.get("scheduleNo");
+		String[] detail=map.get("detail");
+		String[] meal=map.get("meal");
+		String[] day=map.get("day");
+		String[] hotel=map.get("hotel");
+		String[] packDno=map.get("packDno");
+		
+		int pack_Dno=Integer.parseInt(packDno[0]);
+		
+		for(int i=0; i<day.length; i++) {
+			ManagerScheduleVO tempvo=new ManagerScheduleVO();
+			tempvo.setScheduleNo(Integer.parseInt(scheduleNo[i]));
+			tempvo.setPackDno(pack_Dno);
+			tempvo.setDetail(detail[i]);
+			tempvo.setMeal(meal[i]);
+			tempvo.setDay(day[i]);
+			tempvo.setHotel(hotel[i]);
+			
+			System.out.println(tempvo);
+			list.add(tempvo);
+		}
+		int cnt= managerScheduleService.updateSchedule(list);
+		
+		String msg="", url="";
+		if(cnt>0) {
+			msg="일정 변경에 성공하였습니다.";
+			url="/manager/managerMain.do";
+		}else {
+			msg="일정 변경 실패!";
+			url="/manager/managerMain.do";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }

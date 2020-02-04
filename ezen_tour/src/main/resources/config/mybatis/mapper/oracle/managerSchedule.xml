@@ -10,6 +10,18 @@
 		insert into schedule
 		values(#{scheduleNo}, #{packDno}, #{detail}, to_date(#{day},'YYYY/MM/DD'), #{meal}, #{hotel})
 	</insert>
+	
+	<select id="selectByPackDno" parameterType="int" resultType="managerScheduleVo">
+		select * from schedule
+		where pack_dno=#{packDno}
+		order by schedule_no
+	</select>
+	
+	<update id="updateSchedule" parameterType="managerScheduleVo">
+		update schedule
+		set detail=#{detail}, meal=#{meal}, hotel=#{hotel}
+		where schedule_no=#{scheduleNo}
+	</update>
 </mapper>
 
 

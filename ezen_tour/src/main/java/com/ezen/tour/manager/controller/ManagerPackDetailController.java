@@ -74,4 +74,14 @@ public class ManagerPackDetailController {
 		model.addAttribute("list", list);
 	}
 	
+	@RequestMapping(value="/detailEdit.do", method = RequestMethod.GET)
+	public void detailEdit(@RequestParam int packDno, Model model) {
+		logger.info("패키지 소분류 수정화면, 파라미터 packDno={}", packDno);
+		
+		ManagerDetailVO detailVo=managerDetailService.selectDetail(packDno);
+		
+		logger.info("패키시 소분류 조회 결고, detailVo={}", detailVo);
+		
+		model.addAttribute("detailVo", detailVo);
+	}
 }

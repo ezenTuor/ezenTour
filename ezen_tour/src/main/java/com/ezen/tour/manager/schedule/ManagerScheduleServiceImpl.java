@@ -18,4 +18,18 @@ public class ManagerScheduleServiceImpl implements ManagerScheduleService{
 		}
 		return cnt;
 	}
+
+	@Override
+	public List<ManagerScheduleVO> selectByPackDno(int packDno) {
+		return managerScheduleDao.selectByPackDno(packDno);
+	}
+
+	@Override
+	public int updateSchedule(List<ManagerScheduleVO> list) {
+		int cnt=1;
+		for(ManagerScheduleVO scheduleVo:list) {
+			cnt*=managerScheduleDao.updateSchedule(scheduleVo);
+		}
+		return cnt;
+	}
 }
