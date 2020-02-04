@@ -16,9 +16,3 @@
 //2020-01-29
 
 대량 뷰 생성 
-hotel, airline 테이블 삭제
-
-//2020-02-03
-
-schedule 테이블
-hotelV, hotelH 컬럼 불필요(삭제 예정)
