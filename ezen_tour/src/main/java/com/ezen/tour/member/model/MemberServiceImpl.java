@@ -17,19 +17,19 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO selectMember(String user_id) {
-		return memberDao.selectMember(user_id);
+	public MemberVO selectMember(String userId) {
+		return memberDao.selectMember(userId);
 	}
 
 	@Override
-	public int loginCheck(String user_id, String user_pwd) {
-		String dbPwd = memberDao.selectPwd(user_id);
+	public int loginCheck(String userId, String userPwd) {
+		String dbPwd = memberDao.selectPwd(userId);
 		
 		int result=0;
 		if(dbPwd==null || dbPwd.isEmpty()) {
 			result=NONE_USERID;  //해당 아이디가 없다
 		}else {
-			if(dbPwd.equals(user_pwd)) {
+			if(dbPwd.equals(userPwd)) {
 				result=LOGIN_OK;  //로그인 성공
 			}else {
 				result=DISAGREE_PWD; //비밀번호 불일치
@@ -39,10 +39,10 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	@Override
-	public int selectDuplicate(String user_id) {
+	public int selectDuplicate(String userId) {
 		int result=0;
 		
-		int count = memberDao.selectDuplicate(user_id);
+		int count = memberDao.selectDuplicate(userId);
 		
 		if(count>0) {
 			result=EXIST_ID; //해당 아이디 이미 존재
@@ -60,13 +60,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int deleteMember(String user_id) {
-		return memberDao.deleteMember(user_id);
+	public int deleteMember(String userId) {
+		return memberDao.deleteMember(userId);
 	}
 
 	@Override
-	public int selectUser_no(String user_id) {
-		return memberDao.selectUser_no(user_id);
+	public int selectUserNo(String userId) {
+		return memberDao.selectUserNo(userId);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int updateUser_Pwd(Map<String, String> map) {
-		return memberDao.updateUser_Pwd(map);
+	public int updateUserPwd(Map<String, String> map) {
+		return memberDao.updateUserPwd(map);
 	}
 }

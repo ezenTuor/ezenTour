@@ -49,10 +49,10 @@
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td>${list.MILEAGE_NO}</td>
-							<td>${list.DETAIL}</td>
-							<td>${list.POINT}</td>
-							<td>${list.REGDATE}</td>
+							<td>${list.mileageNo}</td>
+							<td>${list.detail}</td>
+							<td>${list.point}</td>
+							<td>${list.regdate}</td>
 						</tr>
 					</c:forEach>
 				</c:if>

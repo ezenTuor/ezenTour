@@ -9,7 +9,7 @@
 		(select rownum as RNUM, A.*
 			from
 				(select * from mileage 
-				where user_no=#{user_no}
+				where user_no=#{userNo}
 				)A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -19,7 +19,7 @@
 	</select>
 	<select parameterType="int" resultType="int" id="selectTotalRecord">
 		select count(*) from mileage
-		where user_No=#{user_no}
+		where user_no=#{userNo}
 	</select>
 </mapper>
 

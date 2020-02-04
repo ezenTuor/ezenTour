@@ -4,15 +4,15 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script>
 $(function(){
-	$("#user_pwd").focus();
+	$("#userPwd").focus();
 	$("#wr_submit").click(function(){
-		if($("#user_pwd").val().length<1){
+		if($("#userPwd").val().length<1){
 			alert("비밀번호를 입력하세요");
-			$("#user_pwd").focus();
+			$("#userPwd").focus();
 			event.preventDefault();				
-		}else if($("#user_pwd").val()!=$("#user_pwd2").val()){
+		}else if($("#userPwd").val()!=$("#userPwd2").val()){
 			alert("비밀번호가 일치하지 않습니다!");
-			$("#user_pwd2").focus();
+			$("#userPwd2").focus();
 			event.preventDefault();				
 		}else if(!validate_phone($("#hp2").val()) 
 				|| !validate_phone($("#hp3").val())){
@@ -139,15 +139,15 @@ function Postcode() {
         	</td>
 		</tr>
 		<tr>
-        	<td><label for="user_id">ID </label></td>
-        	<td><input type="text" name="user_id" id="user_id"
-        		value="${sessionScope.user_id }" disabled="disabled">&nbsp;
+        	<td><label for="userId">ID </label></td>
+        	<td><input type="text" name="userId" id="userId"
+        		value="${sessionScope.userId }" disabled="disabled">&nbsp;
         	<input type="button" value="중복확인" id="btnChkId" 
         		title="새창열림"></td>
         </tr>
         <tr>
-        	<td><label for="user_pwd">PassWord</label></td>
-        	<td><input type="Password" name="user_pwd" id="user_pwd"></td>
+        	<td><label for="userPwd">PassWord</label></td>
+        	<td><input type="Password" name="userPwd" id="userPwd"></td>
         </tr>
         <tr>
         	<td><label for="pwd2" style="float: right">P.W Check</label></td>
@@ -159,7 +159,7 @@ function Postcode() {
         	<td><input type="text" id="zipcode" name = "zipcode" placeholder="우편번호">
 			<input type="button" onclick="Postcode()" value="우편번호 찾기"><br>
 			<input type="text" id="address" name="address" placeholder="주소"><br>
-			<input type="text" id="address_detail" name="address_detail" placeholder="상세주소">
+			<input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소">
 			<input type="text" id="extraAddress" placeholder="참고항목"></td>
 		</tr>
 
@@ -193,8 +193,8 @@ function Postcode() {
         			style="visibility:hidden"></td>
 		</tr>
     	<tr>
-        	<td><label for="user_ssr">S.S Number</label></td>
-    		<td><input type="text" name="user_ssr" placeholder="xxxxxx-ooooooo"></td>
+        	<td><label for="userSsr">S.S Number</label></td>
+    		<td><input type="text" name="userSsr" placeholder="xxxxxx-ooooooo"></td>
 		</tr>
     	<tr>
         	<td><label for="gender">Gender</label></td>
@@ -207,7 +207,7 @@ function Postcode() {
     </div>
     <br><hr>
     <input type="hidden" value="C" name="grade">
-    <input type="hidden" value=" " name="del_flag">
+    <input type="hidden" value=" " name="delFlag">
 </fieldset>
 
     <input type ="hidden" name="chkId" id="chkId">

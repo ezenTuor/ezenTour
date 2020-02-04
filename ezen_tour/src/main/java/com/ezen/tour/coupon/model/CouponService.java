@@ -8,7 +8,7 @@ import com.ezen.tour.member.model.MemberVO;
 
 public interface CouponService {
 	List<CouponVO> selectAll(SearchVO searchVo);
-	int selectTotalRecord(int user_no);
+	int selectTotalRecord(int userNo);
 	List<CouponVO> selectAll_N(SearchVO searchVo);
-	int selectTotalRecord_N(int user_no);
+	int selectTotalRecord_N(int userNo);
 }

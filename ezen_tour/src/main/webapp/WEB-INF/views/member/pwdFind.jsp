@@ -14,7 +14,7 @@
 	<div>
   		<form action="<c:url value='/member/pwdFind.do'/>" method="post">
     		<p>
-    			<input type="text" name="user_id" id="user_id" value="${param.user_id}"
+    			<input type="text" name="userId" id="userId" value="${param.userId}"
     			placeholder="ID">
     		</p>
     		<p>

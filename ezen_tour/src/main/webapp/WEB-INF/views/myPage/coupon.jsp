@@ -58,11 +58,11 @@
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td>${list.CUPON_SERIAL}</td>
-							<td>${list.CUPON_DETAIL}</td>
-							<td>${list.CUPON_KIND}</td>
-							<td class="align_right">${list.DISCOUNT}</td>
-							<td>${list.DELDATE}</td>
+							<td>${list.cuponSerial}</td>
+							<td>${list.cuponDetail}</td>
+							<td>${list.cuponKind}</td>
+							<td class="align_right">${list.discount}</td>
+							<td>${list.deldate}</td>
 							<td><a href="#">취소</a></td>
 						</tr>
 					</c:forEach>
@@ -133,11 +133,11 @@
 				<c:if test="${!empty N_list}">
 					<c:forEach var="list" items="${N_list }">
 						<tr>
-							<td>${N_list.CUPON_SERIAL}</td>
-							<td>${N_list.CUPON_DETAIL}</td>
-							<td>${N_list.CUPON_KIND}</td>
-							<td class="align_right">${N_list.DISCOUNT}</td>
-							<td>${N_list.DELDATE}</td>
+							<td>${N_list.cuponSerial}</td>
+							<td>${N_list.cuponDetail}</td>
+							<td>${N_list.cuponKind}</td>
+							<td class="align_right">${N_list.discount}</td>
+							<td>${N_list.deldate}</td>
 							<td><a href="#">취소</a></td>
 						</tr>
 					</c:forEach>

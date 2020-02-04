@@ -23,8 +23,8 @@ public class CouponDAOMybatis implements CouponDAO{
 	}
 
 	@Override
-	public int selectTotalRecord(int user_no) {
-		return sqlSession.selectOne(namespace+"selectTotalRecord",user_no);
+	public int selectTotalRecord(int userNo) {
+		return sqlSession.selectOne(namespace+"selectTotalRecord",userNo);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class CouponDAOMybatis implements CouponDAO{
 	}
 
 	@Override
-	public int selectTotalRecord_N(int user_no) {
-		return sqlSession.selectOne(namespace+"selectTotalRecord_N",user_no);
+	public int selectTotalRecord_N(int userNo) {
+		return sqlSession.selectOne(namespace+"selectTotalRecord_N",userNo);
 	}
 }

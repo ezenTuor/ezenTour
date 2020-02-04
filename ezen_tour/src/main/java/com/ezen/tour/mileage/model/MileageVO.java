@@ -3,44 +3,46 @@ package com.ezen.tour.mileage.model;
 import java.sql.Timestamp;
 
 public class MileageVO {
-	private int MILEAGE_NO;
-	private int USER_NO;
-	private Timestamp REGDATE;
-	private int POINT;
-	private String DETAIL;
-	public int getMILEAGE_NO() {
-		return MILEAGE_NO;
+	private int mileageNo;
+	private int userNo;
+	private Timestamp regdate;
+	private int point;
+	private String detail;
+	
+	public int getMileageNo() {
+		return mileageNo;
 	}
-	public void setMILEAGE_NO(int mILEAGE_NO) {
-		MILEAGE_NO = mILEAGE_NO;
+	public void setMileageNo(int mileageNo) {
+		this.mileageNo = mileageNo;
 	}
-	public int getUSER_NO() {
-		return USER_NO;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUSER_NO(int uSER_NO) {
-		USER_NO = uSER_NO;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	public Timestamp getREGDATE() {
-		return REGDATE;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setREGDATE(Timestamp rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
-	public int getPOINT() {
-		return POINT;
+	public int getPoint() {
+		return point;
 	}
-	public void setPOINT(int pOINT) {
-		POINT = pOINT;
+	public void setPoint(int point) {
+		this.point = point;
 	}
-	public String getDETAIL() {
-		return DETAIL;
+	public String getDetail() {
+		return detail;
 	}
-	public void setDETAIL(String dETAIL) {
-		DETAIL = dETAIL;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 	@Override
 	public String toString() {
-		return "MileageVO [MILEAGE_NO=" + MILEAGE_NO + ", USER_NO=" + USER_NO + ", REGDATE=" + REGDATE + ", POINT="
-				+ POINT + ", DETAIL=" + DETAIL + "]";
+		return "MileageVO [mileageNo=" + mileageNo + ", userNo=" + userNo + ", regdate=" + regdate + ", point=" + point
+				+ ", detail=" + detail + "]";
 	}
+	
 }

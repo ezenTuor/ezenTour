@@ -3,73 +3,75 @@ package com.ezen.tour.wishList.model;
 import java.sql.Timestamp;
 
 public class WishListVO {
-	private int WISH_NO;
-	private int USER_NO;
-	private int PACK_DNO;
-	private int MAN;
-	private int CHILD;
-	private int BABY;
-	private int PRICE;
-	private String DETAIL;
-	private Timestamp WISH_DATE;
-	public int getWISH_NO() {
-		return WISH_NO;
+	private int wishNo;
+	private int userNo;
+	private int packNo;
+	private int man;
+	private int child;
+	private int baby;
+	private int price;
+	private String detail;
+	private Timestamp wishDate;
+	
+	public int getWishNo() {
+		return wishNo;
 	}
-	public void setWISH_NO(int wISH_NO) {
-		WISH_NO = wISH_NO;
+	public void setWishNo(int wishNo) {
+		this.wishNo = wishNo;
 	}
-	public int getUSER_NO() {
-		return USER_NO;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUSER_NO(int uSER_NO) {
-		USER_NO = uSER_NO;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	public int getPACK_DNO() {
-		return PACK_DNO;
+	public int getPackNo() {
+		return packNo;
 	}
-	public void setPACK_DNO(int pACK_DNO) {
-		PACK_DNO = pACK_DNO;
+	public void setPackNo(int packNo) {
+		this.packNo = packNo;
 	}
-	public int getMAN() {
-		return MAN;
+	public int getMan() {
+		return man;
 	}
-	public void setMAN(int mAN) {
-		MAN = mAN;
+	public void setMan(int man) {
+		this.man = man;
 	}
-	public int getCHILD() {
-		return CHILD;
+	public int getChild() {
+		return child;
 	}
-	public void setCHILD(int cHILD) {
-		CHILD = cHILD;
+	public void setChild(int child) {
+		this.child = child;
 	}
-	public int getBABY() {
-		return BABY;
+	public int getBaby() {
+		return baby;
 	}
-	public void setBABY(int bABY) {
-		BABY = bABY;
+	public void setBaby(int baby) {
+		this.baby = baby;
 	}
-	public int getPRICE() {
-		return PRICE;
+	public int getPrice() {
+		return price;
 	}
-	public void setPRICE(int pRICE) {
-		PRICE = pRICE;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getDETAIL() {
-		return DETAIL;
+	public String getDetail() {
+		return detail;
 	}
-	public void setDETAIL(String dETAIL) {
-		DETAIL = dETAIL;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
-	public Timestamp getWISH_DATE() {
-		return WISH_DATE;
+	public Timestamp getWishDate() {
+		return wishDate;
 	}
-	public void setWISH_DATE(Timestamp wISH_DATE) {
-		WISH_DATE = wISH_DATE;
+	public void setWishDate(Timestamp wishDate) {
+		this.wishDate = wishDate;
 	}
 	@Override
 	public String toString() {
-		return "WishListVO [WISH_NO=" + WISH_NO + ", USER_NO=" + USER_NO + ", PACK_DNO=" + PACK_DNO + ", MAN=" + MAN
-				+ ", CHILD=" + CHILD + ", BABY=" + BABY + ", PRICE=" + PRICE + ", DETAIL=" + DETAIL + ", WISH_DATE="
-				+ WISH_DATE + "]";
+		return "WishListVO [wishNo=" + wishNo + ", userNo=" + userNo + ", packNo=" + packNo + ", man=" + man
+				+ ", child=" + child + ", baby=" + baby + ", price=" + price + ", detail=" + detail + ", wishDate="
+				+ wishDate + "]";
 	}
+	
 }

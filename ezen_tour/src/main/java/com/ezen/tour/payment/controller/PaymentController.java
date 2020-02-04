@@ -31,8 +31,8 @@ public class PaymentController {
 	public void payment(Model model, MemberVO vo,HttpServletRequest request) {
 		logger.info("결제화면 보여주기");
 		HttpSession session=request.getSession();
-		String userId=(String)session.getAttribute("user_id");
-		String userNo=(String)session.getAttribute("user_no");
+		String userId=(String)session.getAttribute("userId");
+		String userNo=(String)session.getAttribute("userNo");
 		//테스트용
 		userId="hong";
 		userNo="1";

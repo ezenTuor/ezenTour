@@ -4,15 +4,15 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#user_pwd").focus();
+		$("#userPwd").focus();
 		
 		$(".simpleForm form[name=frmOut]").submit(function(){			
-			if($("#user_pwd").val().length<1){
-				$("#user_pwd").next().show();
-				$("#user_pwd").focus();
+			if($("#userPwd").val().length<1){
+				$("#userPwd").next().show();
+				$("#userPwd").focus();
 				event.preventDefault();
 			}else{
-				$("#user_pwd").next().hide();
+				$("#userPwd").next().hide();
 				
 				if(!confirm("회원탈퇴하시겠습니까?")){
 					event.preventDefault();
@@ -30,7 +30,7 @@
 					
 			<div>
 				<label for="pwd" >비밀번호</label>
-				<input type="password" name="user_pwd" id="user_pwd">
+				<input type="password" name="userPwd" id="userPwd">
 				<span class="error">비밀번호를 입력하세요</span>
 			</div>
 			<div class="align_center">

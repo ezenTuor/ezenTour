@@ -10,19 +10,19 @@
 		insert into member(user_no,user_id,user_pwd,name,zipcode,
 			address,address_detail,hp1,hp2,hp3,email1,email2,grade,user_ssr,gender
 			,regdate)
-		values(#{user_no},#{user_id},#{user_pwd},#{name},#{zipcode},
-			#{address},#{address_detail},#{hp1},#{hp2},#{hp3},#{email1},#{email2},
-			#{grade},#{user_ssr},#{gender},sysdate)
+		values(#{userNo},#{userId},#{userPwd},#{name},#{zipcode},
+			#{address},#{addressDetail},#{hp1},#{hp2},#{hp3},#{email1},#{email2},
+			#{grade},#{userSsr},#{gender},sysdate)
 	</insert>
 
 	<select id="selectMember" parameterType="string" resultType="memberVo">
 		select * from member
-		where user_id=#{user_id} and deldate is null
+		where user_id=#{userId} and deldate is null
 	</select>
 	
 	<select id="selectPwd" parameterType="string" resultType="string">
 		select user_pwd from member 
-		where user_id=#{user_id} and deldate is null
+		where user_id=#{userId} and deldate is null
 	</select>
 	<select id="selectDup" parameterType="string" resultType="int">
 		select count(*) from member
@@ -31,18 +31,18 @@
 	<update id="memberUpdate" parameterType="memberVo">
 		update member
 		set zipcode = #{zipcode}, address = #{address}, 
-		address_detail = #{address_detail}, hp1 = #{hp1}, hp2 = #{hp2}, 
+		address_detail = #{addressDetail}, hp1 = #{hp1}, hp2 = #{hp2}, 
 		hp3 = #{hp3}, email1 = #{email1}, email2 = #{email2}
-		where user_id=#{user_id}
+		where user_id=#{userId}
 	</update>
 	<update id="deleteMember" parameterType="string">
 		update member
 		set del_flag = 1, deldate = sysdate
-		where user_id= #{user_id}
+		where user_id= #{userId}
 	</update>
 	<select id="selectUser_no" parameterType="string" resultType="int">
 		select user_no from member
-		where user_id=#{user_id}
+		where user_id=#{userId}
 	</select>
 	<select id="FindUserIdByEmail" parameterType="map" resultType="string">
 		select user_id from member
@@ -50,11 +50,11 @@
 	</select>
 	<select id="FindPwd" parameterType="map" resultType="string">
 		select user_pwd from member
-		where user_id=#{user_id} and email1=#{email1} and email2=#{email2}
+		where user_id=#{userId} and email1=#{email1} and email2=#{email2}
 	</select>
 	<update id="updateUser_Pwd" parameterType="map">
 		update member
-		set user_pwd = #{user_pwd}
-		where user_id = #{user_id}
+		set user_pwd = #{userPwd}
+		where user_id = #{userId}
 	</update>
 </mapper>

@@ -16,9 +16,9 @@ $(function(){
 	});
 	
 	$("#btnChkId").click(function(){
-		var user_id=$("#user_id").val();
+		var user_id=$("#userId").val();
 		
-		window.open(j_ctxPath+"/member/idCheck.do?user_id="+user_id,"chkId",
+		window.open(j_ctxPath+"/member/idCheck.do?userId="+userId,"chkId",
 	"width=450,height=200,left=0,top=0,location=yes,resizable=yes");
 	});
 });
@@ -68,7 +68,7 @@ function Postcode() {
 
             document.getElementById('zipcode').value = data.zonecode;
             document.getElementById("address").value = addr;
-            document.getElementById("address_detail").focus();
+            document.getElementById("addressDetail").focus();
         }
     }).open();
 }
@@ -140,14 +140,14 @@ function Postcode() {
         	</td>
 		</tr>
 		<tr>
-        	<td><label for="user_id">회원ID </label></td>
-        	<td><input type="text" name="user_id" id="user_id">&nbsp;
+        	<td><label for="userId">회원ID </label></td>
+        	<td><input type="text" name="userId" id="userId">&nbsp;
         	<input type="button" value="중복확인" id="btnChkId" 
         		title="새창열림"></td>
         </tr>
         <tr>
-        	<td><label for="user_pwd">비밀번호  </label></td>
-        	<td><input type="Password" name="user_pwd" id="user_pwd"></td>
+        	<td><label for="userPwd">비밀번호  </label></td>
+        	<td><input type="Password" name="userPwd" id="userPwd"></td>
         </tr>
         <tr>
         	<td><label for="pwd2">비밀번호 확인  </label></td>
@@ -159,7 +159,7 @@ function Postcode() {
         	<td><input type="text" id="zipcode" name = "zipcode" placeholder="우편번호">
 			<input type="button" onclick="Postcode()" value="우편번호 찾기"><br>
 			<input type="text" id="address" name="address" placeholder="주소"><br>
-			<input type="text" id="address_detail" name="address_detail" placeholder="상세주소">
+			<input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소">
 			<input type="text" id="extraAddress" placeholder="참고항목"></td>
 		</tr>
 
@@ -194,7 +194,7 @@ function Postcode() {
 		</tr>
     	<tr>
         	<td><label for="user_ssr">주민등록 번호  </label></td>
-    		<td><input type="text" name="user_ssr" placeholder="xxxxxx-ooooooo"></td>
+    		<td><input type="text" name="userSsr" placeholder="xxxxxx-ooooooo"></td>
 		</tr>
     	<tr>
         	<td><label for="gender">성별  </label></td>
@@ -207,7 +207,7 @@ function Postcode() {
     </div>
     <br><hr>
     <input type="hidden" value="C" name="grade">
-    <input type="hidden" value=" " name="del_flag">
+    <input type="hidden" value=" " name="delFlag">
 </fieldset>
 
     <input type ="hidden" name="chkId" id="chkId">

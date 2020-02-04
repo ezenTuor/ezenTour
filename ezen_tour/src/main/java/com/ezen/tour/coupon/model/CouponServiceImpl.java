@@ -20,8 +20,8 @@ public class CouponServiceImpl implements CouponService{
 	}
 
 	@Override
-	public int selectTotalRecord(int user_no) {
-		return couponDao.selectTotalRecord(user_no);
+	public int selectTotalRecord(int userNo) {
+		return couponDao.selectTotalRecord(userNo);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class CouponServiceImpl implements CouponService{
 	}
 
 	@Override
-	public int selectTotalRecord_N(int user_no) {
-		return couponDao.selectTotalRecord_N(user_no);
+	public int selectTotalRecord_N(int userNo) {
+		return couponDao.selectTotalRecord_N(userNo);
 	}
 }

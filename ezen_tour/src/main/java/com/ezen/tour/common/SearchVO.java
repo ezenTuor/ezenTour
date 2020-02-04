@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SearchVO {
 	
-	private int user_no = 0;
-	public int getUser_no() {
-		return user_no;
+	private int userNo = 0;
+	public int getUserNo() {
+		return userNo;
 	}
 
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	/** 검색 조건 */

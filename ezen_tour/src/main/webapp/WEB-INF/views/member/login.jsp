@@ -105,15 +105,15 @@ var j_ctxPath="/tour";
 	<fieldset>
 		<h1>EZEN TOUR</h1>
 		<div align="center" style="margin-top: 80px;">
-			<label for="user_id" class="label">아이디</label><br>
-			<input type="text" name="user_id" id="user_id" 
+			<label for="userId" class="label">아이디</label><br>
+			<input type="text" name="userId" id="userId" 
 				class="infobox" style="width: 300px; height: 35px;
 				margin-top: 5px;">
 			<span class="error">아이디를 입력하세요</span>
 		</div>			
 		<div align="center">
-			<label for="user_pwd" class="label">비밀번호</label><br>
-			<input type="password" name="user_pwd" id="user_pwd"
+			<label for="userPwd" class="label">비밀번호</label><br>
+			<input type="password" name="userPwd" id="userPwd"
 				class="infobox" style="width: 300px; height: 35px;
 				margin-top: 5px;">
 			<span class="error">비밀번호를 입력하세요</span>

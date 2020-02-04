@@ -13,13 +13,13 @@ public interface MemberService {
 	int NONE_USERID=3;
 	
 	int insertMember(MemberVO vo);
-	MemberVO selectMember(String user_id);
-	public int loginCheck(String user_id, String user_pwd);
-	int selectDuplicate(String  user_id);
+	MemberVO selectMember(String userId);
+	public int loginCheck(String userId, String userPwd);
+	int selectDuplicate(String  userId);
 	int memberUpdate(MemberVO vo);
-	int deleteMember(String user_id);
-	int selectUser_no(String user_id);
+	int deleteMember(String userId);
+	int selectUserNo(String userId);
 	String FindUserIdByEmail(Map<String, String> map);
 	String FindPwd(Map<String, String> map);
-	int updateUser_Pwd(Map<String, String> map);
+	int updateUserPwd(Map<String, String> map);
 }

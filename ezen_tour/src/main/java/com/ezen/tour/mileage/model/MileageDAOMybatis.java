@@ -20,7 +20,7 @@ public class MileageDAOMybatis implements MileageDAO{
 	}
 
 	@Override
-	public int selectTotalRecord(int user_no) {
-		return sqlSession.selectOne(namespace+"selectTotalRecord",user_no);
+	public int selectTotalRecord(int userNo) {
+		return sqlSession.selectOne(namespace+"selectTotalRecord",userNo);
 	}
 }

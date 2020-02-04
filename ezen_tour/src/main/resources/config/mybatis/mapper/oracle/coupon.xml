@@ -14,7 +14,7 @@
 				 a.DISCOUNT, a.DELDATE
 		        from coupon c join cupon_admin a
 		        on c.CUPON_SERIAL = a.CUPON_SERIAL
-				where c.USER_NO = #{user_no} and c.USEDATE is null and c.DEL_FLAG is null
+				where c.USER_NO = #{userNo} and c.USEDATE is null and c.DEL_FLAG is null
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -27,7 +27,7 @@
 		select count(*) 
 		from coupon c join cupon_admin a
 		on c.CUPON_SERIAL = a.CUPON_SERIAL
-		where c.USER_NO = #{user_no} and c.USEDATE is null and c.DEL_FLAG is null
+		where c.USER_NO = #{userNo} and c.USEDATE is null and c.DEL_FLAG is null
 	</select>
 	<select id="selectAll_N" parameterType="searchVo" resultType="couponVo">
 		select *
@@ -40,7 +40,7 @@
 				 a.DISCOUNT, a.DELDATE
 		        from coupon c join cupon_admin a
 		        on c.CUPON_SERIAL = a.CUPON_SERIAL
-				where c.USER_NO = #{user_no} and c.DEL_FLAG ='N'
+				where c.USER_NO = #{userNo} and c.DEL_FLAG ='N'
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -53,7 +53,7 @@
 		select count(*) 
 		from coupon c join cupon_admin a
 		on c.CUPON_SERIAL = a.CUPON_SERIAL
-		where c.USER_NO = #{user_no} and c.DEL_FLAG ='N'
+		where c.USER_NO = #{userNo} and c.DEL_FLAG ='N'
 	</select>
 </mapper>
 

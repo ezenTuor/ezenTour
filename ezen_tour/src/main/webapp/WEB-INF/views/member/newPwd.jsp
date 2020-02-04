@@ -11,10 +11,10 @@
 <script type="text/javascript">
 	$(function () {
 		$("#submit").click(function () {
-			if($("#new_Pwd").val() != $("#new_Pwd_sec").val()){
+			if($("#newPwd").val() != $("#newPwdSec").val()){
 				alert("입력된 비밀번호가 일치하지 않습니다.");
 				event.preventDefault();
-				$("#new_Pwd_sec").focus();
+				$("#newPwdSec").focus();
 			}
 		});
 	});
@@ -23,9 +23,9 @@
 <body>
 	<form action="/member/newPwd.do" method="post">
 		<label>새 비밀번호</label>
-		<input type="text" id="new_Pwd" name="new_Pwd">
+		<input type="text" id="newPwd" name="newPwd">
 		<label>비밀번호 확인</label>
-		<input type="text" id="new_Pwd_sec" name="new_Pwd_sec">
+		<input type="text" id="newPwdSec" name="newPwdSec">
 		<input type="submit" id="submit" value="변경">
 	</form>
 </body>

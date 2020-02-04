@@ -17,7 +17,7 @@ public class MileageServiceImpl implements MileageService{
 	}
 
 	@Override
-	public int selectTotalRecord(int user_no) {
-		return mileageDao.selectTotalRecord(user_no);
+	public int selectTotalRecord(int userNo) {
+		return mileageDao.selectTotalRecord(userNo);
 	}
 }

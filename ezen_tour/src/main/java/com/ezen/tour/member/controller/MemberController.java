@@ -46,29 +46,29 @@ public class MemberController {
 		return "member/login";
 	}
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public String login_post(@RequestParam String user_id,
-			@RequestParam String user_pwd, 
+	public String login_post(@RequestParam String userId,
+			@RequestParam String userPwd, 
 			@RequestParam(required = false) String chkSave,
 			Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		logger.info("로그인 처리, 파라미터 userid={}, pwd={}", user_id, user_pwd);
+		logger.info("로그인 처리, 파라미터 userid={}, pwd={}", userId, userPwd);
 		logger.info("chkSave={}", chkSave);
 
-		int result=memberService.loginCheck(user_id, user_pwd);
-		int user_no = 0;
+		int result=memberService.loginCheck(userId, userPwd);
+		int userNo = 0;
 		String msg="", url="/member/login.do";
 		if(result==MemberService.LOGIN_OK) {
-			MemberVO vo = memberService.selectMember(user_id);
+			MemberVO vo = memberService.selectMember(userId);
 			
-			user_no = vo.getUser_no();
+			userNo = vo.getUserNo();
 			
 			HttpSession session=request.getSession();
-			session.setAttribute("user_id", user_id);
+			session.setAttribute("userId", userId);
 			session.setAttribute("name", vo.getName());
-			session.setAttribute("user_no", user_no);
+			session.setAttribute("userNo", userNo);
 						
-			Cookie ck = new Cookie("ck_userid", user_id);
+			Cookie ck = new Cookie("ck_userid", userId);
 			ck.setPath("/");
 			if(chkSave!=null) {
 				ck.setMaxAge(1000*24*60*60);
@@ -96,7 +96,7 @@ public class MemberController {
 	
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
-		session.removeAttribute("user_id");
+		session.removeAttribute("userId");
 		session.removeAttribute("name");
 		
 		return "redirect:/index.do";
@@ -160,14 +160,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/idCheck.do")
-	public String checkUserid(@RequestParam String user_id,
+	public String checkUserid(@RequestParam String userId,
 			Model model) {
-		logger.info("아이디 중복확인, 파라미터 user_id={}", user_id);
+		logger.info("아이디 중복확인, 파라미터 userId={}", userId);
 		
 		int result=0;
 		
-		if(user_id!=null && !user_id.isEmpty()) {
-			result=memberService.selectDuplicate(user_id);
+		if(userId!=null && !userId.isEmpty()) {
+			result=memberService.selectDuplicate(userId);
 			logger.info("아이디 중복확인 결과, result={}", result);
 		}
 		
@@ -179,10 +179,10 @@ public class MemberController {
 	}
 	@RequestMapping(value="/memberEdit.do", method = RequestMethod.GET)
 	public String memberEdit_get(HttpSession session, Model model) {
-		String user_id=(String) session.getAttribute("user_id");		
-		logger.info("회원수정 화면 보여주기, 파라미터 user_id={}", user_id);
+		String userId=(String) session.getAttribute("userId");		
+		logger.info("회원수정 화면 보여주기, 파라미터 userId={}", userId);
 		
-		MemberVO vo=memberService.selectMember(user_id);
+		MemberVO vo=memberService.selectMember(userId);
 		logger.info("회원정보 조회 결과, vo={}", vo);
 		
 		model.addAttribute("vo", vo);
@@ -194,8 +194,8 @@ public class MemberController {
 	public String memberEdit_post(@ModelAttribute MemberVO vo,
 			@RequestParam(required = false) String email3,
 			HttpSession session, Model model) {
-		String user_id=(String) session.getAttribute("user_id");
-		vo.setUser_id(user_id);
+		String userId=(String) session.getAttribute("userId");
+		vo.setUserId(userId);
 		logger.info("회원수정처리, 파라미터 vo={}, email3={}", vo, email3);
 				
 		String hp1=vo.getHp1();
@@ -226,7 +226,7 @@ public class MemberController {
 		vo.setEmail1(email1);
 		vo.setEmail2(email2);
 		
-		int result=memberService.loginCheck(user_id, vo.getUser_pwd());
+		int result=memberService.loginCheck(userId, vo.getUserPwd());
 		
 		String msg="", url="/member/memberEdit.do";
 		if(result==MemberService.LOGIN_OK) {
@@ -256,22 +256,22 @@ public class MemberController {
 	public String memberOut_post(@RequestParam String pwd,
 			HttpSession session, Model model,
 			HttpServletResponse response) {
-		String user_id=(String) session.getAttribute("user_id");		
-		logger.info("회원탈퇴, 파라미터 user_id={}, pwd={}", user_id, pwd);
+		String userId=(String) session.getAttribute("userId");		
+		logger.info("회원탈퇴, 파라미터 userId={}, pwd={}", userId, pwd);
 		
-		int result=memberService.loginCheck(user_id, pwd);
+		int result=memberService.loginCheck(userId, pwd);
 		logger.info("비밀번호 체크 결과, result={}", result);
 		
 		String msg="", url="/member/memberOut.do";
 		if(result==MemberService.LOGIN_OK) {
-			int cnt=memberService.deleteMember(user_id);
+			int cnt=memberService.deleteMember(userId);
 			if(cnt>0) {
 				msg="회원탈퇴 처리되었습니다.";
 				url="/index.do";
 				
 				session.invalidate();
 				
-				Cookie ck = new Cookie("ck_userid", user_id);
+				Cookie ck = new Cookie("ck_userid", userId);
 				ck.setPath("/");
 				ck.setMaxAge(0);
 				response.addCookie(ck);
@@ -324,12 +324,12 @@ public class MemberController {
 		map.put("email2", email2);
 		
 		
-		String user_id = "";
-		user_id=memberService.FindUserIdByEmail(map);
-		logger.info("아이디 찾기 결과, user_id={}", user_id);
+		String userId = "";
+		userId=memberService.FindUserIdByEmail(map);
+		logger.info("아이디 찾기 결과, userId={}", userId);
 		
 		String subject="아이디 찾기에 대한 답변입니다.";
-		String content="회원님의 아이디는 ["+user_id+"] 입니다.";
+		String content="회원님의 아이디는 ["+userId+"] 입니다.";
 		String receiver=email1+"@"+email2;
 		String sender=email1+"@"+email2;
 				
@@ -342,8 +342,8 @@ public class MemberController {
 		}
 		
 		String msg="", url="/member/idFind.do";
-		if(user_id!=null && !user_id.isEmpty()) {
-			msg="회원님의 아이디는 ["+user_id+"] 입니다.";
+		if(userId!=null && !userId.isEmpty()) {
+			msg="회원님의 아이디는 ["+userId+"] 입니다.";
 		}else {
 			msg="등록된 아이디가 없습니다.";
 		}
@@ -354,17 +354,17 @@ public class MemberController {
 		return "common/message";
 	}
 	@RequestMapping(value = "/pwdFind.do", method = RequestMethod.GET)
-	public void findUser_Pwd_get() {
+	public void finduserPwd_get() {
 		logger.info("비밀번호 찾기 화면 띄우기");
 	}
 	
 	@RequestMapping(value = "/pwdFind.do", method = RequestMethod.POST)
-	public String findUser_Pwd(@ModelAttribute MemberVO vo, 
+	public String finduserPwd(@ModelAttribute MemberVO vo, 
 			@RequestParam(required = false) String email3,
 			Model model,
 			HttpSession session, HttpServletRequest request) {
 		logger.info("비밀번호 찾기 처리, 파라미터 vo={}, email3={}", vo, email3);
-		String user_id = vo.getUser_id();
+		String userId = vo.getUserId();
 		String email1=vo.getEmail1();
 		String email2=vo.getEmail2();
 		if(email1==null || email1.isEmpty()) {
@@ -385,7 +385,7 @@ public class MemberController {
 		map.put("email2", email2);
 		
 		String result = memberService.FindUserIdByEmail(map);
-		int cnt = memberService.selectDuplicate(user_id);
+		int cnt = memberService.selectDuplicate(userId);
 		
 		String msg = "", url ="";
 		if(result == null || result.isEmpty() || cnt==0) {
@@ -401,7 +401,7 @@ public class MemberController {
 			String receiver=email1+"@"+email2;
 			String sender=email1+"@"+email2;
 			
-			session.setAttribute("user_id_newPwd", user_id);
+			session.setAttribute("userId_newPwd", userId);
 			session.setAttribute("sb", sb);
 			session.setMaxInactiveInterval(3*60);
 			
@@ -441,23 +441,23 @@ public class MemberController {
 		return "common/message";
 	}
 	@RequestMapping("/newPwd.do")
-	public String newPwd(@RequestParam String new_Pwd, HttpSession session,
+	public String newPwd(@RequestParam String newPwd, HttpSession session,
 			Model model) {
 		logger.info("비밀번호 변경 처리");
-		String user_id_newPwd = (String)session.getAttribute("user_id_newPwd");
+		String userIdNewPwd = (String)session.getAttribute("userId_newPwd");
 		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("user_id_newPwd", user_id_newPwd);
-		map.put("new_Pwd", new_Pwd);
+		map.put("userIdNewPwd", userIdNewPwd);
+		map.put("newPwd", newPwd);
 		
-		int cnt = memberService.updateUser_Pwd(map);
+		int cnt = memberService.updateUserPwd(map);
 		String msg = "", url = "/login.do";
 		if(cnt>0) {
 			msg = "비밀번호가 변경되었습니다.";
 		}else {
 			msg = "비밀번호 변경을 실패하였습니다.";
 		}
-		session.removeAttribute("user_id_newPwd");
+		session.removeAttribute("userId_newPwd");
 		
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);

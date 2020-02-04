@@ -3,66 +3,68 @@ package com.ezen.tour.coupon.model;
 import java.sql.Timestamp;
 
 public class CouponVO {
-	private int CUPON_NO;
-	private int CUPON_SERIAL;
-	private int USER_NO;
-	private String USE_FLAG;
-	private Timestamp REGDATE;
-	private Timestamp DELDATE;
-	private Timestamp USEDATE;
-	private String DEL_FLAG;
-	public int getCUPON_NO() {
-		return CUPON_NO;
+	private int cuponNo;
+	private int cuponSerial;
+	private int userNo;
+	private String useFlag;
+	private Timestamp regdate;
+	private Timestamp deldate;
+	private Timestamp usedate;
+	private String delFlag;
+	
+	public int getCuponNo() {
+		return cuponNo;
 	}
-	public void setCUPON_NO(int cUPON_NO) {
-		CUPON_NO = cUPON_NO;
+	public void setCuponNo(int cuponNo) {
+		this.cuponNo = cuponNo;
 	}
-	public int getCUPON_SERIAL() {
-		return CUPON_SERIAL;
+	public int getCuponSerial() {
+		return cuponSerial;
 	}
-	public void setCUPON_SERIAL(int cUPON_SERIAL) {
-		CUPON_SERIAL = cUPON_SERIAL;
+	public void setCuponSerial(int cuponSerial) {
+		this.cuponSerial = cuponSerial;
 	}
-	public int getUSER_NO() {
-		return USER_NO;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setUSER_NO(int uSER_NO) {
-		USER_NO = uSER_NO;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	public String getUSE_FLAG() {
-		return USE_FLAG;
+	public String getUseFlag() {
+		return useFlag;
 	}
-	public void setUSE_FLAG(String uSE_FLAG) {
-		USE_FLAG = uSE_FLAG;
+	public void setUseFlag(String useFlag) {
+		this.useFlag = useFlag;
 	}
-	public Timestamp getREGDATE() {
-		return REGDATE;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setREGDATE(Timestamp rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
-	public Timestamp getDELDATE() {
-		return DELDATE;
+	public Timestamp getDeldate() {
+		return deldate;
 	}
-	public void setDELDATE(Timestamp dELDATE) {
-		DELDATE = dELDATE;
+	public void setDeldate(Timestamp deldate) {
+		this.deldate = deldate;
 	}
-	public Timestamp getUSEDATE() {
-		return USEDATE;
+	public Timestamp getUsedate() {
+		return usedate;
 	}
-	public void setUSEDATE(Timestamp uSEDATE) {
-		USEDATE = uSEDATE;
+	public void setUsedate(Timestamp usedate) {
+		this.usedate = usedate;
 	}
-	public String getDEL_FLAG() {
-		return DEL_FLAG;
+	public String getDelFlag() {
+		return delFlag;
 	}
-	public void setDEL_FLAG(String dEL_FLAG) {
-		DEL_FLAG = dEL_FLAG;
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
 	}
 	@Override
 	public String toString() {
-		return "CouponVO [CUPON_NO=" + CUPON_NO + ", CUPON_SERIAL=" + CUPON_SERIAL + ", USER_NO=" + USER_NO
-				+ ", USE_FLAG=" + USE_FLAG + ", REGDATE=" + REGDATE + ", DELDATE=" + DELDATE + ", USEDATE=" + USEDATE
-				+ ", DEL_FLAG=" + DEL_FLAG + "]";
+		return "CouponVO [cuponNo=" + cuponNo + ", cuponSerial=" + cuponSerial + ", userNo=" + userNo + ", useFlag="
+				+ useFlag + ", regdate=" + regdate + ", deldate=" + deldate + ", usedate=" + usedate + ", delFlag="
+				+ delFlag + "]";
 	}
+	
 }

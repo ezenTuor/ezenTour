@@ -9,20 +9,20 @@
 <!-- jquery -->
 <script type="text/javascript">
 	$(function(){
-		$("#user_id").focus();
+		$("#userId").focus();
 		
 		$("form[name=frm]").submit(function(){
-			if($("#user_id").val().length<1){
+			if($("#userId").val().length<1){
 				$(".error").show();
-				$("#user_id").focus();
+				$("#userId").focus();
 				event.preventDefault();
 			}
 		});
 		
 		$("#btUse").click(function(){
-			$(opener.document).find("#user_id").val("${param.userid}");
+			$(opener.document).find("#userId").val("${param.userid}");
 			$(opener.document).find("#chkId").val("Y");
-			$(opener.document).find("#user_id")
+			$(opener.document).find("#userId")
 				.attr("readonly","readonly");
 			
 			self.close();
@@ -35,8 +35,8 @@
 <h1>아이디 중복검사</h1>
 	<form name="frm" method="post" 
 		action="<c:url value='/member/idCheck.do'/>">
-		<label for="user_id">아이디</label>
-		<input type="text" name="user_id" id="user_id"
+		<label for="userId">아이디</label>
+		<input type="text" name="userId" id="userId"
 			value="${param.userid}">
 		<input type="submit" value="아이디 확인">
 		<span class="error">아이디를 입력하세요</span>

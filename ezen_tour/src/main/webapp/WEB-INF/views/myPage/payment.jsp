@@ -47,21 +47,21 @@
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td>${list.PAYMENT_NO}</td>
-							<td>${list.DISCOUNT}</td>
-							<td>${list.PRICE}</td>
-							<c:if test="${list.STATE =='Y'}">
-								<td>${list.STATE }</td>
+							<td>${list.patmentNo}</td>
+							<td>${list.discount}</td>
+							<td>${list.price}</td>
+							<c:if test="${list.state =='Y'}">
+								<td>${list.state}</td>
 							</c:if>
-							<c:if test="${list.STATE == 'N' }">
+							<c:if test="${list.state == 'N' }">
 								<td>-</td>
 							</c:if>
 							<!-- <td>${list.STATE}</td> -->
-							<td>${list.TYPE}</td>
-							<c:if test="${list.STATE =='Y'}">
-								<td>${list.REGDATE }</td>
+							<td>${list.type}</td>
+							<c:if test="${list.state =='Y'}">
+								<td>${list.regdate }</td>
 							</c:if>
-							<c:if test="${list.STATE == 'N' }">
+							<c:if test="${list.state == 'N' }">
 								<td>-</td>
 							</c:if>
 						</tr>

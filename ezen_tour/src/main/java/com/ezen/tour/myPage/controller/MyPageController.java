@@ -43,8 +43,8 @@ public class MyPageController {
 	@RequestMapping("/coupon.do")
 	public String couponList(@ModelAttribute SearchVO searchVo
 		,HttpSession session, Model model) {
-		String user_id=(String) session.getAttribute("user_id");
-		int user_no = memberService.selectUser_no(user_id);
+		String userId=(String) session.getAttribute("userId");
+		int userNo = memberService.selectUserNo(userId);
 		//int user_no = 1;
 		//1
 		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
@@ -58,7 +58,7 @@ public class MyPageController {
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
 		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUser_no(user_no);
+		searchVo.setUserNo(userNo);
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
 		//2
@@ -66,7 +66,7 @@ public class MyPageController {
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
-		int totalRecord=couponService.selectTotalRecord(user_no);
+		int totalRecord=couponService.selectTotalRecord(userNo);
 		logger.info("totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);
@@ -84,7 +84,7 @@ public class MyPageController {
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
 		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(N_pagingInfo.getFirstRecordIndex());
-		searchVo.setUser_no(user_no);
+		searchVo.setUserNo(userNo);
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 				
 		//2
@@ -92,7 +92,7 @@ public class MyPageController {
 		logger.info("글목록 결과, list.size={}", N_list.size());
 				
 		//[3] 레코드 개수 조회후 셋팅
-		int N_totalRecord=couponService.selectTotalRecord_N(user_no);
+		int N_totalRecord=couponService.selectTotalRecord_N(userNo);
 		logger.info("totalRecord={}", N_totalRecord);
 				
 		N_pagingInfo.setTotalRecord(N_totalRecord);
@@ -105,8 +105,8 @@ public class MyPageController {
 	@RequestMapping("/mileage.do")
 	public String mileageList(@ModelAttribute SearchVO searchVo
 		,HttpSession session, Model model) {
-		String user_id=(String) session.getAttribute("user_id");
-		int user_no = memberService.selectUser_no(user_id);
+		String userId=(String) session.getAttribute("userId");
+		int userNo = memberService.selectUserNo(userId);
 		//1
 		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
 				
@@ -119,7 +119,7 @@ public class MyPageController {
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
 		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUser_no(user_no);
+		searchVo.setUserNo(userNo);
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
 		//2
@@ -127,7 +127,7 @@ public class MyPageController {
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
-		int totalRecord=mileageService.selectTotalRecord(user_no);
+		int totalRecord=mileageService.selectTotalRecord(userNo);
 		logger.info("totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);
@@ -142,10 +142,10 @@ public class MyPageController {
 	public String wishListSelect(HttpSession session, Model model,
 			SearchVO searchVo) {
 		logger.info("위시리스트 띄우기 처리");
-		String str_user_no = (String)session.getAttribute("user_no");
-		int user_no = Integer.parseInt(str_user_no);
+		String str_userNo = (String)session.getAttribute("userNo");
+		int userNo = Integer.parseInt(str_userNo);
 		
-		searchVo.setUser_no(user_no);
+		searchVo.setUserNo(userNo);
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
 		PaginationInfo pagingInfo=new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
@@ -155,7 +155,7 @@ public class MyPageController {
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
 		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUser_no(user_no);
+		searchVo.setUserNo(userNo);
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
 		//2
@@ -163,7 +163,7 @@ public class MyPageController {
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
-		int totalRecord=mileageService.selectTotalRecord(user_no);
+		int totalRecord=mileageService.selectTotalRecord(userNo);
 		logger.info("totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);

@@ -20,18 +20,18 @@ public class MemberDAOMybatis implements MemberDAO{
 	}
 
 	@Override
-	public MemberVO selectMember(String user_id) {
-		return sqlSession.selectOne(namespace+"selectMember",user_id);
+	public MemberVO selectMember(String userId) {
+		return sqlSession.selectOne(namespace+"selectMember",userId);
 	}
 
 	@Override
-	public String selectPwd(String user_id) {
-		return sqlSession.selectOne(namespace+"selectPwd",user_id);
+	public String selectPwd(String userId) {
+		return sqlSession.selectOne(namespace+"selectPwd",userId);
 	}
 
 	@Override
-	public int selectDuplicate(String user_id) {
-		return sqlSession.selectOne(namespace+"selectDup",user_id);
+	public int selectDuplicate(String userId) {
+		return sqlSession.selectOne(namespace+"selectDup",userId);
 	}
 
 	@Override
@@ -40,13 +40,13 @@ public class MemberDAOMybatis implements MemberDAO{
 	}
 
 	@Override
-	public int deleteMember(String user_id) {
-		return sqlSession.update(namespace+"deleteMember",user_id);
+	public int deleteMember(String userId) {
+		return sqlSession.update(namespace+"deleteMember",userId);
 	}
 
 	@Override
-	public int selectUser_no(String user_id) {
-		return sqlSession.selectOne(namespace+"selectUser_no",user_id);
+	public int selectUserNo(String userId) {
+		return sqlSession.selectOne(namespace+"selectUser_no",userId);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class MemberDAOMybatis implements MemberDAO{
 	}
 
 	@Override
-	public int updateUser_Pwd(Map<String, String> map) {
+	public int updateUserPwd(Map<String, String> map) {
 		return sqlSession.update(namespace+"updateUser_Pwd",map);
 	}
 }

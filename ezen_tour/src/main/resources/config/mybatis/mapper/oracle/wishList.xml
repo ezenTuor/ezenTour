@@ -11,7 +11,7 @@
 		    from
 		    (
 		       select * from wishList
-		       where user_no = #{user_no}
+		       where user_no = #{userNo}
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -23,6 +23,6 @@
 		resultType="int">
 		select count(*) 
 		from wishList
-		where user_no = #{user_no}
+		where user_no = #{userNo}
 	</select>
 </mapper>

@@ -3,9 +3,9 @@ package com.ezen.tour.member.model;
 import java.sql.Timestamp;
 
 public class MemberVO {
-	private int user_no;
-	private String user_id;
-	private String user_pwd;
+	private int userNo;
+	private String userId;
+	private String userPwd;
 	private String name;
 	private int zipcode;
 	private String address;
@@ -16,60 +16,29 @@ public class MemberVO {
 	private String email1;
 	private String email2;
 	private String grade;
-	private String user_ssr;
+	private String userSsr;
 	private String gender;
 	private Timestamp regdate;
-	private String del_flag;
+	private String delFlag;
 	private Timestamp deldate;
-	public String getHp1() {
-		return hp1;
-	}
-	public void setHp1(String hp1) {
-		this.hp1 = hp1;
-	}
-	public String getHp2() {
-		return hp2;
-	}
-	public void setHp2(String hp2) {
-		this.hp2 = hp2;
-	}
-	public String getHp3() {
-		return hp3;
-	}
-	public void setHp3(String hp3) {
-		this.hp3 = hp3;
-	}
-	public String getEmail1() {
-		return email1;
-	}
-	public void setEmail1(String email1) {
-		this.email1 = email1;
-	}
 	
-	public String getEmail2() {
-		return email2;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setEmail2(String email2) {
-		this.email2 = email2;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-	
-	public int getUser_no() {
-		return user_no;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getUserPwd() {
+		return userPwd;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	public String getUser_pwd() {
-		return user_pwd;
-	}
-	public void setUser_pwd(String user_pwd) {
-		this.user_pwd = user_pwd;
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 	public String getName() {
 		return name;
@@ -95,17 +64,47 @@ public class MemberVO {
 	public void setAddress_detail(String address_detail) {
 		this.address_detail = address_detail;
 	}
+	public String getHp1() {
+		return hp1;
+	}
+	public void setHp1(String hp1) {
+		this.hp1 = hp1;
+	}
+	public String getHp2() {
+		return hp2;
+	}
+	public void setHp2(String hp2) {
+		this.hp2 = hp2;
+	}
+	public String getHp3() {
+		return hp3;
+	}
+	public void setHp3(String hp3) {
+		this.hp3 = hp3;
+	}
+	public String getEmail1() {
+		return email1;
+	}
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
 	public String getGrade() {
 		return grade;
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public String getUser_ssr() {
-		return user_ssr;
+	public String getUserSsr() {
+		return userSsr;
 	}
-	public void setUser_ssr(String user_ssr) {
-		this.user_ssr = user_ssr;
+	public void setUserSsr(String userSsr) {
+		this.userSsr = userSsr;
 	}
 	public String getGender() {
 		return gender;
@@ -119,11 +118,11 @@ public class MemberVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	public String getDel_flag() {
-		return del_flag;
+	public String getDelFlag() {
+		return delFlag;
 	}
-	public void setDel_flag(String del_flag) {
-		this.del_flag = del_flag;
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
 	}
 	public Timestamp getDeldate() {
 		return deldate;
@@ -133,10 +132,10 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [user_no=" + user_no + ", user_id=" + user_id + ", user_pwd=" + user_pwd + ", name=" + name
+		return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", name=" + name
 				+ ", zipcode=" + zipcode + ", address=" + address + ", address_detail=" + address_detail + ", hp1="
 				+ hp1 + ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade="
-				+ grade + ", user_ssr=" + user_ssr + ", gender=" + gender + ", regdate=" + regdate + ", del_flag="
-				+ del_flag + ", deldate=" + deldate + "]";
+				+ grade + ", userSsr=" + userSsr + ", gender=" + gender + ", regdate=" + regdate + ", delFlag="
+				+ delFlag + ", deldate=" + deldate + "]";
 	}
 }
