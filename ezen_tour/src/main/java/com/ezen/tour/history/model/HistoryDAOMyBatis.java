@@ -15,7 +15,7 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	private String namespace="config.mybatis.mapper.oracle.history.";
 
 	@Override
-	public List<HistoryVO> selectAll() {
+	public List<HistoryViewVO> selectAll() {
 		return sqlSession.selectList(namespace+"selectAll");
 	}
 

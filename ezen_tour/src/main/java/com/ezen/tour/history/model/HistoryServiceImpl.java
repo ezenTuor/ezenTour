@@ -12,7 +12,7 @@ public class HistoryServiceImpl implements HistoryService{
 	private HistoryDAO historyDao;
 
 	@Override
-	public List<HistoryVO> selectAll() {
+	public List<HistoryViewVO> selectAll() {
 		return historyDao.selectAll();
 	}
 
