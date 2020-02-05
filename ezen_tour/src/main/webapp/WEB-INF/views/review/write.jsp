@@ -27,7 +27,8 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
-		if(${param.review=="Y"}){
+		var review="${param.review}";
+		if(review=='Y'){
 			alert("이미 리뷰가 작성된 패키지입니다.");
 			location.href="<c:url value='/history/historyList.do'/>";
 		}
@@ -72,8 +73,9 @@
 		<input type="hidden" name="userNo" value="${param.userNo}">
 		<input type="hidden" name="historyNo" value="${param.historyNo}">
 		<input type="text" name="ntoy" value="${param.review}">
+		<input type="text" name="name" value="${param.name }">
 		<fieldset>
-			<legend>[패키지 이름]</legend>
+			<legend>[패키지명]</legend>
 			
 			<br>
 			

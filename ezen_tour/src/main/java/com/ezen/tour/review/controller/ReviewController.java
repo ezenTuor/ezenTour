@@ -38,14 +38,6 @@ public class ReviewController {
 	@RequestMapping(value="/write.do", method=RequestMethod.GET)
 	public void write_get(@ModelAttribute HistoryVO historyVo, Model model) {
 		logger.info("리뷰 작성 화면 보여주기, 파라미터 historyVo={}", historyVo);
-		
-		logger.info("review={}", historyVo.getReview());
-		
-		if(historyVo.getReview()=="Y") {
-			System.out.println("안녕");
-		}else {
-			System.out.println("아아");
-		}
 	}
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)

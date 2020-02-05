@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezen.tour.history.model.HistoryService;
-import com.ezen.tour.history.model.HistoryVO;
+import com.ezen.tour.history.model.HistoryViewVO;
 
 @Controller
 @RequestMapping("/history")
@@ -24,7 +24,7 @@ public class HistoryController {
 	public void list_get(Model model) {
 		logger.info("이용내역 화면 출력");
 		
-		List<HistoryVO> list=historyService.selectAll();
+		List<HistoryViewVO> list=historyService.selectAll();
 		logger.info("이용내역 조회 결과, list.size()={}", list.size());
 		
 		model.addAttribute("list", list);
