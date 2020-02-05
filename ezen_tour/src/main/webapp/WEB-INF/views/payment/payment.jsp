@@ -75,19 +75,21 @@ $(function(){
 <body>
 	<form name="frmPayment" method="post" 
 		action="#">
-		<p>결제모듈 실행</p>
+		<p>결제하기</p>
 		<button id="check_module" type="button">결제 모듈 테스트</button>
 	</form>
 	<form name="frmSuccess" method="post"
 		action="<c:url value='/payment/paymentInsert.do'/>">
+		<input type="text" name="paymentNo" value="0">
 		<input type="text" name="userNo" value="" id="test1">
-		<input type="text" name="discount" value="" id="test2">
+		<input type="text" name="discount" value="0" id="test2">
 		<input type="text" name="price" value="" id="test3">
 		<input type="text" name="state" value="" id="test4">
 		<input type="text" name="type" value="" id="test5">
 		<input type="text" name="detail" value="" id="test6">
 		<input type="text" name="impUid" value="" id="test7">
 		<input type="text" name="merchantUid" value="" id="test8">
+		
 	</form>
 </body>
 </html>

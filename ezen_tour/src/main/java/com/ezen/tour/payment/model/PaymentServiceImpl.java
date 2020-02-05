@@ -1,5 +1,7 @@
 package com.ezen.tour.payment.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,11 @@ public class PaymentServiceImpl implements PaymentService{
 		int cnt=paymentDao.insertPayment(vo);
 		return cnt;
 	}
+
+	/*
+	@Override
+	public List<PaymentVO> selectAll() {
+		return paymentDao.selectAll();
+	}
+	*/
 }
