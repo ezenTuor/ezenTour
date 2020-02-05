@@ -35,7 +35,7 @@ td {
     border-bottom: 1px solid #e8e8e8;
 }
 </style>
-<article>
+<article class="managerTable">
 	<table>
 		<thead>
 			<tr>

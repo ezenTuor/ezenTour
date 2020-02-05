@@ -56,13 +56,8 @@ public class MemberController {
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(userId);
 			
-<<<<<<< HEAD
-			user_no = vo.getUser_no();
-			//디버깅중
-			System.out.println("유저 넘버"+user_no);
-=======
+
 			userNo = vo.getUserNo();
->>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("userId", userId);
