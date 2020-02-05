@@ -1,6 +1,9 @@
 package com.ezen.tour.review.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ezen.tour.common.PaginationInfo;
 import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.common.Utility;
+import com.ezen.tour.history.model.HistoryService;
+import com.ezen.tour.history.model.HistoryVO;
 import com.ezen.tour.review.model.ReviewService;
 import com.ezen.tour.review.model.ReviewVO;
 import com.ezen.tour.review.model.ReviewViewVO;
@@ -27,20 +32,30 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private HistoryService historyService;
+	
 	@RequestMapping(value="/write.do", method=RequestMethod.GET)
-	public void write_get() {
-		logger.info("리뷰 작성 화면 보여주기");
+	public void write_get(@ModelAttribute HistoryVO historyVo, Model model) {
+		logger.info("리뷰 작성 화면 보여주기, 파라미터 historyVo={}", historyVo);
 		
-		//requestparam으로 userno, historyno값 받아서 model에 담아 넘기기 
+		logger.info("review={}", historyVo.getReview());
+		
+		if(historyVo.getReview()=="Y") {
+			System.out.println("안녕");
+		}else {
+			System.out.println("아아");
+		}
 	}
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)
-	public String write_post(@ModelAttribute ReviewVO reviewVo, Model model) {
-		//review_no, user_no, history_no=?
+	public String write_post(@ModelAttribute ReviewVO reviewVo, Model model, @ModelAttribute HistoryVO historyVo) {
 		logger.info("리뷰 작성하기, 파라미터 reviewVo={}", reviewVo);
 		
 		int cnt=reviewService.insertReview(reviewVo);
-		logger.info("작성 결과={}", cnt);
+		if(cnt>0) cnt=historyService.reviewUpdate(historyVo);
+		
+		logger.info("작성 결과={}, ", cnt);
 		
 		String msg="", url="";
 		
@@ -170,5 +185,19 @@ public class ReviewController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/reviewMove.do")
+	public void reviewList(@RequestParam(defaultValue = "0") int no, Model model, HttpSession session) {
+		logger.info("소 리뷰 목록");
+		
+		Map<String, Object> map=reviewService.minmax();
+		logger.info("min&max값={}", map);
+		
+		Map<String, Object> list=reviewService.selectReviewMap(no);
+		logger.info("prev&next값={}", list);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("map", map);
 	}
 }

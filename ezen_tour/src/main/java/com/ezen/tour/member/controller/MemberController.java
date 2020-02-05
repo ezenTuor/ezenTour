@@ -1,10 +1,7 @@
 ﻿package com.ezen.tour.member.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
@@ -17,14 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.common.Utility;
-import com.ezen.tour.member.controller.EmailSender;
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 
@@ -61,7 +56,13 @@ public class MemberController {
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(userId);
 			
+<<<<<<< HEAD
+			user_no = vo.getUser_no();
+			//디버깅중
+			System.out.println("유저 넘버"+user_no);
+=======
 			userNo = vo.getUserNo();
+>>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour.git
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("userId", userId);

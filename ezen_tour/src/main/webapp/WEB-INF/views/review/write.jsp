@@ -27,6 +27,11 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
+		if(${param.review=="Y"}){
+			alert("이미 리뷰가 작성된 패키지입니다.");
+			location.href="<c:url value='/history/historyList.do'/>";
+		}
+		
 		$('#title').keydown(function() {
 			if (event.keyCode === 13) {
 				event.preventDefault();
@@ -64,9 +69,9 @@
 
 <div class="reviewWrite">
 	<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
-		<!-- 합칠 때, value수정 -->
-		<input type="hidden" name="userNo" value="1">
-		<input type="hidden" name="historyNo" value="1">
+		<input type="hidden" name="userNo" value="${param.userNo}">
+		<input type="hidden" name="historyNo" value="${param.historyNo}">
+		<input type="text" name="ntoy" value="${param.review}">
 		<fieldset>
 			<legend>[패키지 이름]</legend>
 			
@@ -100,7 +105,7 @@
 			<br>
 			
 			<div>
-				<input type="submit" value="작성하기" onclick="message()"/>
+				<input type="submit" value="작성하기"/>
 				<input type="button" value="목록으로" onclick="location.href='<c:url value='/review/list.do'/>'"/>
 			</div>
 		</fieldset>

@@ -124,7 +124,7 @@
 		</tbody>
 		<tr style="border-top:1px solid gray">
 			<td colspan="5" style="text-align: right">
-				<a href='<c:url value="#"/>' style="color:green">☞이용내역 확인하고 리뷰 작성하기</a>
+				<a href='<c:url value="/review/write.do"/>' style="color:green">☞이용내역 확인하고 리뷰 작성하기</a>
 			</td>
 		</tr>
 	</table>

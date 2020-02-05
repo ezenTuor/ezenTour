@@ -1,6 +1,7 @@
 package com.ezen.tour.review.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int deleteReview(int no) {
 		return reviewDao.deleteReview(no);
+	}
+
+	@Override
+	public Map<String, Object> minmax() {
+		return reviewDao.minmax();
+	}
+	
+	@Override
+	public Map<String, Object> selectReviewMap(int no) {
+		return reviewDao.selectReviewMap(no);
 	}
 	
 }
