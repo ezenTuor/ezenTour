@@ -4,11 +4,11 @@ CREATE TABLE SUPPORT (
 	USER_NO NUMBER NOT NULL, /* 회원번호 */
 	TITLE VARCHAR2(300), /* 글제목 */
 	CONTENT CLOB, /* 글내용 */
-	REGDATE DATE, /* 작성일 */
+	REGDATE DATE DEFAULT SYSDATE, /* 작성일 */
 	GROUP_NO NUMBER, /* 그룹번호 */
-	STEP NUMBER, /* 단계 */
-	SORT NUMBER, /* 정렬번호 */
-	AS_FLAG CHAR /* 마감플래그 */
+	STEP NUMBER DEFAULT 0, /* 단계 */
+	SORT NUMBER DEFAULT 0, /* 정렬번호 */
+	AS_FLAG CHAR DEFAULT 'N' /* 마감플래그 */
 );
 
 CREATE UNIQUE INDEX PK_SUPPORT

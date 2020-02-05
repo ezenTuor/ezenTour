@@ -12,11 +12,11 @@ CREATE TABLE MEMBER (
 	HP3 VARCHAR2(4), /* 전화번호3 */
 	EMAIL1 VARCHAR2(30), /* 이메일1 */
 	EMAIL2 VARCHAR2(30), /* 이메일2 */
-	GRADE CHAR NOT NULL, /* 회원등급 */
+	GRADE CHAR DEFAULT 'C', /* 회원등급 */
 	USER_SSR VARCHAR2(15), /* 주민번호 */
 	GENDER CHAR NOT NULL, /* 성별 */
 	REGDATE DATE NOT NULL, /* 가입일자 */
-	DEL_FLAG CHAR, /* 탈퇴여부 */
+	DEL_FLAG CHAR DEFAULT 'N', /* 탈퇴여부 */
 	DELDATE DATE, /* 탈퇴일자 */
 	MILEAGE NUMBER DEFAULT 0 /* 마일리지 */
 );

@@ -6,7 +6,7 @@ CREATE TABLE PAYMENT (
 	PRICE NUMBER NOT NULL, /* 최종금액 */
 	STATE CHAR, /* 결제상태 */
 	TYPE VARCHAR2(300), /* 결제방법 */
-	REGDATE DATE, /* 결제일 */
+	REGDATE DATE DEFAULT SYSDATE, /* 결제일 */
 	DETAIL CLOB, /* 결제상세 */
 	MARCH_UID VARCHAR2(50), /* 결제체크번호 */
 	IMP_UID VARCHAR2(50) /* 결체확인번호 */

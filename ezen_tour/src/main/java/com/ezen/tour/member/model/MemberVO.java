@@ -9,7 +9,7 @@ public class MemberVO {
 	private String name;
 	private int zipcode;
 	private String address;
-	private String address_detail;
+	private String addressDetail;
 	private String hp1;
 	private String hp2;
 	private String hp3;
@@ -21,7 +21,6 @@ public class MemberVO {
 	private Timestamp regdate;
 	private String delFlag;
 	private Timestamp deldate;
-	
 	public int getUserNo() {
 		return userNo;
 	}
@@ -58,11 +57,11 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAddress_detail() {
-		return address_detail;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
-	public void setAddress_detail(String address_detail) {
-		this.address_detail = address_detail;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 	public String getHp1() {
 		return hp1;
@@ -133,9 +132,9 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", name=" + name
-				+ ", zipcode=" + zipcode + ", address=" + address + ", address_detail=" + address_detail + ", hp1="
-				+ hp1 + ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade="
-				+ grade + ", userSsr=" + userSsr + ", gender=" + gender + ", regdate=" + regdate + ", delFlag="
-				+ delFlag + ", deldate=" + deldate + "]";
+				+ ", zipcode=" + zipcode + ", address=" + address + ", addressDetail=" + addressDetail + ", hp1=" + hp1
+				+ ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade=" + grade
+				+ ", userSsr=" + userSsr + ", gender=" + gender + ", regdate=" + regdate + ", delFlag=" + delFlag
+				+ ", deldate=" + deldate + "]";
 	}
 }

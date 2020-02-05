@@ -49,7 +49,7 @@ CREATE TABLE COUPON (
 	CUPON_SERIAL NUMBER NOT NULL, /* 쿠폰번호 */
 	USER_NO NUMBER NOT NULL, /* 회원번호 */
 	USE_FLAG CHAR, /* 사용여부 */
-	REGDATE DATE, /* 발급날짜 */
+	REGDATE DATE DEFAULT SYSDATE, /* 발급날짜 */
 	DELDATE DATE, /* 만료날짜 */
 	USEDATE DATE, /* 사용날짜 */
 	DEL_FLAG CHAR /* 만료플래그 */
