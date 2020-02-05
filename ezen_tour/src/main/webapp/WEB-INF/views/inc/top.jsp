@@ -57,9 +57,17 @@
 		                <li><a href="#">내가받은 쿠폰</a></li>
 		                <li><a href="#">마일리지</a></li>
 		                <li><a href="#">Wish List</a></li>
+		                <li><a href="<c:url value='/history/historyList.do'/>">이용내역</a></li>
 		                <li><a href="<c:url value='/member/login.do'/>">로그인 (임시)</a></li>
 		            </ul>        
 		            </li>
+		            
+		            
+		            <li><a href="#">리뷰게시판</a>
+		            <ul>
+		                <li><a href="<c:url value='/review/list.do'/>">게시판 목록</a></li>
+		                <li><a href="<c:url value='/history/historyList.do'/>">이용내역</a></li>
+		            </ul> 
 		            
 		            <li><a href="#">고객센터</a></li>
 		        </ul>

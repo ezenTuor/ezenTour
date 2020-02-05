@@ -12,8 +12,31 @@ $(function(){
 	});
 });
 </script>
+<style>
+article {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+thead {
+    border-bottom: 2px solid #5abdf7;
+}
+th {
+    padding-bottom: 5px;
+}
+
+td {
+    padding-top: 5px;
+    border-bottom: 1px solid #e8e8e8;
+}
+</style>
 <article>
-	<table border=1>
+	<table>
 		<thead>
 			<tr>
 				<th>번호</th>

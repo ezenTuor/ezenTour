@@ -1,6 +1,7 @@
 package com.ezen.tour.review.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,16 @@ public class ReviewDAOMyBatis implements ReviewDAO{
 	@Override
 	public int deleteReview(int no) {
 		return sqlSession.delete(namespace+"deleteReview", no);
+	}
+
+	@Override
+	public Map<String, Object> minmax() {
+		return sqlSession.selectOne(namespace+"minmax");
+	}
+	
+	@Override
+	public Map<String, Object> selectReviewMap(int no) {
+		return sqlSession.selectOne(namespace+"selectReviewMap", no);
 	}
 	
 }

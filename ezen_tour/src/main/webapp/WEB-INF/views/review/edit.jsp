@@ -117,7 +117,6 @@
 			<div style="text-align: center">
 				<input type="submit" value="수정하기"/>
 				<input type="Button" value="목록으로" onclick="location.href='<c:url value='/review/list.do'/>'"/>         
-				<%-- <a href="<c:url value='/review/list.do'/>">☞리뷰 목록으로</a> --%>
 			</div>
 		</fieldset>
 	</form>
