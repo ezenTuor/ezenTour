@@ -17,6 +17,33 @@ article.managerTable {
     background: #ecf0f7;
     padding: 10px;
 }
+table {
+    text-align: center;
+    width: 90%;
+    border-top: 3px solid #5a90f3;
+}
+
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+thead {
+    border-bottom: 1px solid #8eb0fd;
+}
+
+img.editbutton {
+    height: 40px;
+}
+
+td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+tbody {
+    border-bottom: 2px solid #5a90f3;
+}
 </style>
 <article class="managerTable">
 	<h2>패키지 목록</h2>
