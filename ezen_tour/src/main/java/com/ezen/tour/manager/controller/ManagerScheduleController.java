@@ -183,4 +183,14 @@ public class ManagerScheduleController {
 		
 		return "common/message";
 	}
+	
+	@RequestMapping("/scheduleList.do")
+	public void scheduleList(@RequestParam int packDno, Model model) {
+		logger.info("일정 목록 보여주기, 파라미터 packDno={}", packDno);
+		
+		List<ManagerScheduleVO> list=managerScheduleService.selectByPackDno(packDno);
+		logger.info("스케줄 목록 list.size={}",list.size());
+		
+		model.addAttribute("list", list);
+	}
 }
