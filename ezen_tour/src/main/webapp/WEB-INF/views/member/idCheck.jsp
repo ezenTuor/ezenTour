@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- jquery -->
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#userId").focus();
@@ -20,7 +21,7 @@
 		});
 		
 		$("#btUse").click(function(){
-			$(opener.document).find("#userId").val("${param.userid}");
+			$(opener.document).find("#userId").val("${param.userId}");
 			$(opener.document).find("#chkId").val("Y");
 			$(opener.document).find("#userId")
 				.attr("readonly","readonly");
@@ -37,7 +38,7 @@
 		action="<c:url value='/member/idCheck.do'/>">
 		<label for="userId">아이디</label>
 		<input type="text" name="userId" id="userId"
-			value="${param.userid}">
+			value="${param.userId}">
 		<input type="submit" value="아이디 확인">
 		<span class="error">아이디를 입력하세요</span>
 		
