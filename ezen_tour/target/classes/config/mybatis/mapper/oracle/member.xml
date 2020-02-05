@@ -26,7 +26,7 @@
 	</select>
 	<select id="selectDup" parameterType="string" resultType="int">
 		select count(*) from member
-		where user_id=#{user_id}
+		where user_id=#{userId}
 	</select>
 	<update id="memberUpdate" parameterType="memberVo">
 		update member

@@ -160,8 +160,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/idCheck.do")
-	public String checkUserid(@RequestParam String userId,
-			Model model) {
+	public String checkUserid(@RequestParam String userId, Model model) {
 		logger.info("아이디 중복확인, 파라미터 userId={}", userId);
 		
 		int result=0;

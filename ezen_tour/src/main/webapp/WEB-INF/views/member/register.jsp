@@ -16,7 +16,7 @@ $(function(){
 	});
 	
 	$("#btnChkId").click(function(){
-		var user_id=$("#userId").val();
+		var userId=$("#userId").val();
 		
 		window.open(j_ctxPath+"/member/idCheck.do?userId="+userId,"chkId",
 	"width=450,height=200,left=0,top=0,location=yes,resizable=yes");
