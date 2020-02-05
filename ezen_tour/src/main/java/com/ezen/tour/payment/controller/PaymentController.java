@@ -36,6 +36,7 @@ public class PaymentController {
 		HttpSession session=request.getSession();
 		String userId=(String)session.getAttribute("userId");
 		String userNo=(String)session.getAttribute("userNo");
+		
 		//테스트용
 		userId="hong";
 		userNo="1";
@@ -46,12 +47,14 @@ public class PaymentController {
 	}
 	
 	@RequestMapping("/paymentInsert.do")
-	public void insert(@ModelAttribute PaymentVO vo) {
+	public String insert(@ModelAttribute PaymentVO vo) {
 		logger.info("결제db 입력 파라미터 vo={}", vo);
 		
 		int cnt=paymentService.insertPayment(vo);
 	
 		logger.info("결제 db 입력 결과 cnt={}", cnt);
+		
+		return "index";
 	}
 	
 }
