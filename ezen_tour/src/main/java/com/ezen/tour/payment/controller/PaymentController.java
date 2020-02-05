@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.payment.model.PaymentService;
+import com.ezen.tour.payment.model.PaymentVO;
 
 @Controller
 @RequestMapping("/payment")
@@ -38,9 +41,17 @@ public class PaymentController {
 		userNo="1";
 		
 		vo=memberService.selectMember(userId);
-		model.addAttribute("memeberVo", vo);
-		
+		System.out.println(vo);
+		model.addAttribute("memberVo", vo);
 	}
 	
+	@RequestMapping("/paymentInsert.do")
+	public void insert(@ModelAttribute PaymentVO vo) {
+		logger.info("결제db 입력 파라미터 vo={}", vo);
+		
+		int cnt=paymentService.insertPayment(vo);
+	
+		logger.info("결제 db 입력 결과 cnt={}", cnt);
+	}
 	
 }
