@@ -4,10 +4,10 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.payment">
 	<insert id="insertPayment" parameterType="paymentVo">
-		<selectKey keyProperty="payment_no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="paymentNo" resultType="int" order="BEFORE">
 			select payment_seq.nextval from dual
 		</selectKey>
 		insert into payment(payment_no, user_no, discount, price, state, type, detail)
-		values(#{payment_no}, #{user_no}, #{discount}, #{price}, #{state}, #{type}, #{detail})
+		values(#{paymentNo}, #{userNo}, #{discount}, #{price}, #{state}, #{type}, #{detail})
 	</insert>
 </mapper>

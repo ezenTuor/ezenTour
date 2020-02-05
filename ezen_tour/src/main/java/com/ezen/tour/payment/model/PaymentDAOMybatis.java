@@ -13,7 +13,7 @@ public class PaymentDAOMybatis implements PaymentDAO{
 
 	@Override
 	public int insertPayment(PaymentVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int cnt=sqlSession.insert(namespace+"insertPayment", vo);
+		return cnt;
 	}
 }

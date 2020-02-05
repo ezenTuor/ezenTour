@@ -15,7 +15,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#check_module").click(function() {
-		var IMP = window.IMP; 
+		var IMP = window.IMP;
 		IMP.init('imp27153221');
 		IMP.request_pay({
 			pg : 'inicis',
@@ -24,7 +24,7 @@ $(function(){
 			name : '결제테스트',
 			amount : 1004,
 			buyer_email : '${memberVo.email1}@${memberVo.email2}',
-			buyer_name : '${memberVo.name}',
+			buyer_name : "${memberVo.name}",
 			buyer_tel :'${memberVo.hp1}-${memberVo.hp2}-${memberVo.hp3}',
 			buyer_addr : '${memberVo.address}',
 			buyer_postcode : '${memberVo.zipcode}',
@@ -52,7 +52,7 @@ $(function(){
 				
 				//input 설정 및 submmit
 				
-				$("#test1").val(${memberVo.user_no});
+				$("#test1").val(${memberVo.userNo});
 				$("#test2").val();
 				$("#test3").val(rsp.paid_amount);
 				$("#test4").val();
@@ -79,15 +79,15 @@ $(function(){
 		<button id="check_module" type="button">결제 모듈 테스트</button>
 	</form>
 	<form name="frmSuccess" method="post"
-		action="/payment/paymentInsert.do">
-		<input type="text" name="user_no" value="" id="test1">
+		action="<c:url value='/payment/paymentInsert.do'/>">
+		<input type="text" name="userNo" value="" id="test1">
 		<input type="text" name="discount" value="" id="test2">
 		<input type="text" name="price" value="" id="test3">
 		<input type="text" name="state" value="" id="test4">
 		<input type="text" name="type" value="" id="test5">
 		<input type="text" name="detail" value="" id="test6">
-		<input type="text" name="imp_uid" value="" id="test7">
-		<input type="text" name="merchant_uid" value="" id="test8">
+		<input type="text" name="impUid" value="" id="test7">
+		<input type="text" name="merchantUid" value="" id="test8">
 	</form>
 </body>
 </html>
