@@ -62,9 +62,12 @@
 		            </ul>        
 		            </li>
 		            
-		            <li>
-		            	<a href="<c:url value='/review/list.do'/>">리뷰 게시판</a>
-		            </li>
+		            
+		            <li><a href="#">리뷰게시판</a>
+		            <ul>
+		                <li><a href="<c:url value='/review/list.do'/>">게시판 목록</a></li>
+		                <li><a href="<c:url value='/history/historyList.do'/>">이용내역</a></li>
+		            </ul> 
 		            
 		            <li><a href="#">고객센터</a></li>
 		        </ul>
