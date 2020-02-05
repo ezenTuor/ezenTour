@@ -389,10 +389,10 @@ public class MemberController {
 		String msg = "", url ="";
 		if(result == null || result.isEmpty() || cnt==0) {
 			msg = "입력하신 정보가 정확하지 않습니다.";
-			url = "/pwdFind.do";
+			url = "/member/pwdFind.do";
 		}else {
 			msg = "이메일 확인되었습니다. 인증번호가 전송되었습니다.";
-			url = "/certified.do";
+			url = "/member/certified.do";
 			
 			String sb = Utility.randomNum();
 			String subject="비밀번호 찾기에 대한 답변입니다.";
@@ -400,7 +400,7 @@ public class MemberController {
 			String receiver=email1+"@"+email2;
 			String sender=email1+"@"+email2;
 			
-			session.setAttribute("userId_newPwd", userId);
+			session.setAttribute("userIdNewPwd", userId);
 			session.setAttribute("sb", sb);
 			session.setMaxInactiveInterval(3*60);
 			
@@ -418,20 +418,26 @@ public class MemberController {
 		
 		return "common/message";
 	}
-	@RequestMapping("/certify.do")
-	public String certify(@RequestParam String cer_num, HttpSession session,
+	@RequestMapping("/certified.do")
+	public String certify(@RequestParam(required = false) String cerNum, HttpSession session,
 			Model model) {
 		logger.info("인증번호 처리");
 		
 		String sb = (String)session.getAttribute("sb");
+		System.out.println("세션에 있는 인증번호 - "+sb);
+		System.out.println("입력한 인증번호 - "+cerNum);
 		
 		String msg = "", url = "";
-		if(sb==cer_num) {
-			msg = "인증되었습니다.";
-			url = "/newPwd.do";
+		if(cerNum!=null && !cerNum.isEmpty()) {
+			if(sb.equals(cerNum)) {
+				msg = "인증되었습니다.";
+				url = "/member/newPwd.do";
+			}else {
+				msg = "인증에 실패하였습니다.";
+				url = "/member/certified.do";
+			}
 		}else {
-			msg = "인증에 실패하였습니다.";
-			url = "/certified.do";
+			return "member/certified";
 		}
 		
 		model.addAttribute("msg",msg);
@@ -439,24 +445,29 @@ public class MemberController {
 		
 		return "common/message";
 	}
-	@RequestMapping("/newPwd.do")
+	@RequestMapping(value="/newPwd.do", method=RequestMethod.GET)
+	public void newPwd() {
+		logger.info("비밀번호 재설정 화면 보여주기");
+	}
+	
+	@RequestMapping(value="/newPwd.do", method=RequestMethod.POST)
 	public String newPwd(@RequestParam String newPwd, HttpSession session,
 			Model model) {
 		logger.info("비밀번호 변경 처리");
-		String userIdNewPwd = (String)session.getAttribute("userId_newPwd");
+		String userIdNewPwd = (String)session.getAttribute("userIdNewPwd");
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("userIdNewPwd", userIdNewPwd);
-		map.put("newPwd", newPwd);
+		MemberVO vo=new MemberVO();
+		vo.setUserId(userIdNewPwd);
+		vo.setUserPwd(newPwd);
 		
-		int cnt = memberService.updateUserPwd(map);
-		String msg = "", url = "/login.do";
+		int cnt = memberService.updateUserPwd(vo);
+		String msg = "", url = "/member/login.do";
 		if(cnt>0) {
 			msg = "비밀번호가 변경되었습니다.";
 		}else {
 			msg = "비밀번호 변경을 실패하였습니다.";
 		}
-		session.removeAttribute("userId_newPwd");
+		session.removeAttribute("userIdNewPwd");
 		
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);

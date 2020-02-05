@@ -21,7 +21,7 @@
 </script>
 </head>
 <body>
-	<form action="/member/newPwd.do" method="post">
+	<form action="<c:url value='/member/newPwd.do'/>" method="post">
 		<label>새 비밀번호</label>
 		<input type="text" id="newPwd" name="newPwd">
 		<label>비밀번호 확인</label>

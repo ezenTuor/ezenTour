@@ -52,7 +52,7 @@
 		select user_pwd from member
 		where user_id=#{userId} and email1=#{email1} and email2=#{email2}
 	</select>
-	<update id="updateUser_Pwd" parameterType="map">
+	<update id="updateUser_Pwd" parameterType="memberVo">
 		update member
 		set user_pwd = #{userPwd}
 		where user_id = #{userId}

@@ -80,7 +80,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int updateUserPwd(Map<String, String> map) {
-		return memberDao.updateUserPwd(map);
+	public int updateUserPwd(MemberVO vo) {
+		return memberDao.updateUserPwd(vo);
 	}
 }

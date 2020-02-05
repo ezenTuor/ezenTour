@@ -8,28 +8,29 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function() {
-		$.ajax({
-			url:"<c:url value='/pwdFind.do'/>",
-			data:"#cerNum.val()=${param.sb}",
-			success:function(res){
-				location.href('<c:url value="/member/certify.do"/>')
-			},
-			error:function(xhr,status,error){
-				alert("error : "+status+","+ error);
-			}
+		$("#check").click(function(){
+			$.ajax({
+				url:"<c:url value='/member/certified.do'/>",
+				data:"#cerNum.val()=${param.sb}",
+				success:function(res){
+					location.href='<c:url value="/member/certified.do"/>';
+				},
+				error:function(xhr,status,error){
+					alert("error : "+status+","+ error);
+				}
+			});
 		});
 	});
-</script>
+</script> -->
 </head>
 <body>
-	<form> 
+	<form name="frm" method="post" action="<c:url value='/member/certified.do'/>" > 
 		<div>
 			<label >인증번호</label>
-			<input type="text" name="cerNum" id="cerNum" placeholder="인증번호"
-			value="${param.sb}">
-			<input type="button" id="인증하기">
+			<input type="text" name="cerNum" id="cerNum" placeholder="인증번호">
+			<input type="submit" value="인증하기" id="check">
 		</div>
 	</form>
 </body>

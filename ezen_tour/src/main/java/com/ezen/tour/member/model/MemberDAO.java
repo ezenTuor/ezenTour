@@ -12,5 +12,5 @@ public interface MemberDAO {
 	int selectUserNo(String userId);
 	String FindUserIdByEmail(Map<String, String> map);
 	String FindPwd(Map<String, String> map);
-	int updateUserPwd(Map<String, String> map);
+	int updateUserPwd(MemberVO vo);
 }
