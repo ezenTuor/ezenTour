@@ -4,6 +4,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SearchVO {
+	private int userNo;
+	
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
 
 	/** 검색 조건 */
 	private String searchCondition = "";
