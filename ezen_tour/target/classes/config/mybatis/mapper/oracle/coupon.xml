@@ -21,6 +21,9 @@
 		<![CDATA[
 		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
 		]]>
+		
+		
+		
 	</select>
 	<select id="selectTotalRecord" parameterType="int" 
 		resultType="int">

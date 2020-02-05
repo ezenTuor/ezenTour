@@ -1,9 +1,8 @@
 create or replace view coupon_view
 as
-select a.CUPON_DETAIL, a.CUPON_KIND, a.DISCOUNT
+select a.CUPON_DETAIL, a.CUPON_KIND, a.DISCOUNT, c.*
 from coupon c join cupon_admin a
-on c.CUPON_SERIAL = a.CUPON_SERIAL
-where c.USER_NO = 111 and c.USEDATE is null and c.DEL_FLAG is null;
+on c.CUPON_SERIAL = a.CUPON_SERIAL;
 
 
 create or replace view pack_detail_view
@@ -57,3 +56,7 @@ left join pack_detail pd
 on d.pack_dno=pd.pack_dno
 left join pack pa
 on pd.pack_no=pa.pack_no;
+
+
+select * from area;
+select * from area_detail;
