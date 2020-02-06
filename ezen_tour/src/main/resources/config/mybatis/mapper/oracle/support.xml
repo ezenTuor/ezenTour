@@ -15,8 +15,8 @@
 		    select rownum as RNUM, A.*
 		    from
 		    (
-		        select supportNo,userNo,title,content,regdate,
-		        		groupNo,step,sort,asFlag
+		        select support_no,user_no,title,content,regdate,
+		        		group_no,step,sort,asFlag
 		        from support
 				<include refid="searchWhere"></include>
 		    )A
@@ -38,7 +38,7 @@
 		insert into support(support_no,user_no,title,content)
 		values(#{supportNo},#{userNo},#{title},#{content})
 	</insert>
-	<select id="selectSupportByNo" parameterType="int" resultType="supportNo">
+	<select id="selectSupportByNo" parameterType="int" resultType="supportVo">
 		select * from support where support_no=#{supportNo}
 	</select>
 </mapper>

@@ -2,7 +2,7 @@ package com.ezen.tour.couponView.model;
 
 import java.sql.Timestamp;
 
-public class CouponViewVO {
+public class CouponViewVO{
 	private String cuponDetail;
 	private String cuponKind;
 	private int discount;
@@ -14,6 +14,7 @@ public class CouponViewVO {
 	private Timestamp deldate;
 	private Timestamp usedate;
 	private String delFlag;
+	
 	public String getCuponDetail() {
 		return cuponDetail;
 	}

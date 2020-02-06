@@ -16,8 +16,6 @@ $(function(){
     	filebrowserUploadUrl : "<c:url value='/managerFile/imageUpload.do'/>",
     	extraPlugins : 'uploadimage'
     });
-});
-$(document).ready(function(){
 	$("form[name=frmWrite]").submit(function(){
 		if($("#title").val()==''){
 			alert("제목을 입력하세요");

@@ -32,7 +32,8 @@ import com.ezen.tour.common.Utility;
 public class MyPageController {
 	private static final Logger logger
 		=LoggerFactory.getLogger(MyPageController.class);
-	
+	@Autowired
+	private CouponService couponService;
 	@Autowired
 	private CouponViewService couponViewService;
 	@Autowired
