@@ -12,7 +12,6 @@ public interface ReviewDAO {
 	public ReviewViewVO selectByNo(int no);
 	public int updateReview(ReviewVO reviewVo);
 	public int deleteReview(int no);
-	public Map<String, Object> minmax();
 	public Map<String, Object> selectReviewMap(int no);
 	
 }

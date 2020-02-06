@@ -15,13 +15,18 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	private String namespace="config.mybatis.mapper.oracle.history.";
 
 	@Override
-	public List<HistoryViewVO> selectAll() {
-		return sqlSession.selectList(namespace+"selectAll");
+	public List<HistoryViewVO> selectAll(int userNo) {
+		return sqlSession.selectList(namespace+"selectAll", userNo);
 	}
 
 	@Override
-	public int reviewUpdate(HistoryVO historyVo) {
-		return sqlSession.update(namespace+"reviewUpdate", historyVo);
+	public int reviewUpdate(int historyNo) {
+		return sqlSession.update(namespace+"reviewUpdate", historyNo);
+	}
+
+	@Override
+	public List<HistoryViewVO> choosePack() {
+		return sqlSession.selectList(namespace+"choosePack");
 	}
 	
 }
