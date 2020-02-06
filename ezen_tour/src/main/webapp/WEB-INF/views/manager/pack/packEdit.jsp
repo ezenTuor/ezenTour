@@ -93,38 +93,43 @@ $(function(){
 </script>
 <script type="text/javascript">
 $(function(){
-	function areaChange(){
-		//alert($("#areaNo").val());
-		var val=$("#areaNo").find("option:selected").val();
-		var name=$("#areaNo").find("option:selected").text();
-		//alert("값 변화 확인, 값="+val+", 이름="+name);
-		
-		$.ajax({
-			url:"<c:url value='/manager/area.do'/>",
-			data:{"no":val},
-			dataType:"json",
-			type:"post",
-			success:function(res){
-				//[{"tagNo":1,"areaNo":1,"name":"서유럽","keyword":"서유럽|영국|프랑스|이태리"},{"tagNo":2,"areaNo":1,"name":"동유럽/발칸","keyword":"동유럽|발칸|프라하|비엔나|크로아티아|체코|헝가리"}
-				if(res.length>0){
-					$("#extends").html("예시 키워드<br>");
-					var str="";
-					$.each(res, function(idx, item){
-						str+=item.tagNo+". "+item.name+"  ";
-					})
-					$("#extends").append(str);
-				}
-			},error:function(xhr, status, error){
-				alert("error : "+status+", "+error);
-			}
-		})
-	}
-	
-	areaChange();
+	area();
 	$("#areaNo").change(function(){
-		areaChange();
+		area();
 	});
 });
+
+function area(){
+	alert($("#areaNo").val());
+	var val=$("#areaNo").find("option:selected").val();
+	var name=$("#areaNo").find("option:selected").text();
+	//alert("값 변화 확인, 값="+val+", 이름="+name);
+	
+	$.ajax({
+		url:"<c:url value='/manager/area.do'/>",
+		data:{"no":val},
+		dataType:"json",
+		type:"post",
+		success:function(res){
+			//[{"tagNo":1,"areaNo":1,"name":"서유럽","keyword":"서유럽|영국|프랑스|이태리"},{"tagNo":2,"areaNo":1,"name":"동유럽/발칸","keyword":"동유럽|발칸|프라하|비엔나|크로아티아|체코|헝가리"}
+			if(res.length>0){
+				$("#extends").html("");
+				$("#extends").html("예시 키워드<br>");
+				var str="";
+				$.each(res, function(idx, item){
+					str+=item.tagNo+". "+item.name+"  ";
+				})
+				$("#extends").append(str);
+			}else{
+				$("#extends").html("해당 값이 아직 없습니다.");
+			}
+		},error:function(xhr, status, error){
+			alert("error : "+status+", "+error);
+		}
+	})
+}
+
+
 </script>
 <script type="text/javascript">
 $(function(){

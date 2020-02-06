@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SearchVO {
+	private int userNo;
 	
-	private int userNo = 0;
 	public int getUserNo() {
 		return userNo;
 	}

@@ -13,29 +13,40 @@ $(function(){
 });
 </script>
 <style>
-article {
-    text-align: center;
+article.managerTable {
+    background: #ecf0f7;
+    padding: 10px;
 }
-
 table {
     text-align: center;
     width: 90%;
-    margin: 0 auto;
+    border-top: 3px solid #5a90f3;
+}
+
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 thead {
-    border-bottom: 2px solid #5abdf7;
+    border-bottom: 1px solid #8eb0fd;
 }
-th {
-    padding-bottom: 5px;
+
+img.editbutton {
+    height: 40px;
 }
 
 td {
     padding-top: 5px;
-    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 5px;
+}
+
+tbody {
+    border-bottom: 2px solid #5a90f3;
 }
 </style>
 <article class="managerTable">
+	<h2>패키지 목록</h2>
 	<table>
 		<thead>
 			<tr>

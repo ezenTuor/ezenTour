@@ -2,7 +2,9 @@ package com.ezen.tour.coupon.model;
 
 import java.sql.Timestamp;
 
-public class CouponVO {
+import com.ezen.tour.common.SearchVO;
+
+public class CouponVO{
 	private int cuponNo;
 	private int cuponSerial;
 	private int userNo;

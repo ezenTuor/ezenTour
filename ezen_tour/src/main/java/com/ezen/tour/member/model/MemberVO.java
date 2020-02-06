@@ -2,7 +2,7 @@ package com.ezen.tour.member.model;
 
 import java.sql.Timestamp;
 
-public class MemberVO {
+public class MemberVO{
 	private int userNo;
 	private String userId;
 	private String userPwd;
