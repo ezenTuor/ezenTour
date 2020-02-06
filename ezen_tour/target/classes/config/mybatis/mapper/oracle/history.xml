@@ -3,13 +3,31 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.history">
-	<select id="selectAll" resultType="historyViewVo">
+	<select id="selectAll" resultType="historyViewVo" parameterType="int">
 		select * from history_view
+		where user_no=#{userNo}
+		order by history_no desc
 	</select>
 	
-	<update id="reviewUpdate" parameterType="historyVo">
+	<update id="reviewUpdate" parameterType="int">
 		update history
 		set review='Y'
 		where history_no=#{historyNo}
 	</update>
+	
+	<select id="choosePack" resultType="historyViewVo">
+		select * from history_view
+		where review='N'
+		and korea_ent between (sysdate-7) and sysdate
+		order by history_no desc
+	</select>
+	
+	<!-- 테스트용
+	<select id="choosePack" resultType="historyViewVo">
+		select * from history_view
+		where review='N'
+		and korea_ent between (to_date('2020-01-22')-7) and to_date('2020-01-22')
+		order by history_no desc
+	</select> -->
+	
 </mapper>

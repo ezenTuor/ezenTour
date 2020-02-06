@@ -56,7 +56,6 @@ public class MemberController {
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(userId);
 			
-			
 			userNo = vo.getUserNo();
 			
 			HttpSession session=request.getSession();
@@ -457,7 +456,7 @@ public class MemberController {
 		vo.setUserPwd(newPwd);
 		
 		int cnt = memberService.updateUserPwd(vo);
-		String msg = "", url = "/member/login.do";
+		String msg = "", url = "/member/closePwd.do";
 		if(cnt>0) {
 			msg = "비밀번호가 변경되었습니다.";
 		}else {

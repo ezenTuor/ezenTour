@@ -47,7 +47,7 @@
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td>${list.patmentNo}</td>
+							<td>${list.paymentNo}</td>
 							<td>${list.discount}</td>
 							<td>${list.price}</td>
 							<c:if test="${list.state =='Y'}">

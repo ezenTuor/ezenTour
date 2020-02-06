@@ -12,13 +12,18 @@ public class HistoryServiceImpl implements HistoryService{
 	private HistoryDAO historyDao;
 
 	@Override
-	public List<HistoryViewVO> selectAll() {
-		return historyDao.selectAll();
+	public List<HistoryViewVO> selectAll(int userNo) {
+		return historyDao.selectAll(userNo);
 	}
 
 	@Override
-	public int reviewUpdate(HistoryVO historyVo) {
-		return historyDao.reviewUpdate(historyVo);
+	public int reviewUpdate(int historyNo) {
+		return historyDao.reviewUpdate(historyNo);
+	}
+
+	@Override
+	public List<HistoryViewVO> choosePack() {
+		return historyDao.choosePack();
 	}
 	
 }

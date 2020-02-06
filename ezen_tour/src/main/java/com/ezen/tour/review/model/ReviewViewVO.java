@@ -2,7 +2,7 @@ package com.ezen.tour.review.model;
 
 import java.sql.Timestamp;
 
-//review_view 입니당~
+//review_view VO입니당~
 public class ReviewViewVO {
 	private int reviewNo;
 	private int userNo;

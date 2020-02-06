@@ -19,7 +19,7 @@ import com.ezen.tour.common.PaginationInfo;
 import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.common.Utility;
 import com.ezen.tour.history.model.HistoryService;
-import com.ezen.tour.history.model.HistoryVO;
+import com.ezen.tour.history.model.HistoryViewVO;
 import com.ezen.tour.review.model.ReviewService;
 import com.ezen.tour.review.model.ReviewVO;
 import com.ezen.tour.review.model.ReviewViewVO;
@@ -36,16 +36,40 @@ public class ReviewController {
 	private HistoryService historyService;
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.GET)
-	public void write_get(@ModelAttribute HistoryVO historyVo, Model model) {
-		logger.info("리뷰 작성 화면 보여주기, 파라미터 historyVo={}", historyVo);
+	public String write_get(@ModelAttribute HistoryViewVO vo, Model model, HttpSession session) {
+		String userId=(String)session.getAttribute("userId");
+		logger.info("리뷰 작성 화면 보여주기, 파라미터 vo={}", vo);
+		logger.info("로그인 된 아이디 userId={}", userId);
+		
+		if(userId==null || userId.isEmpty()) {
+			model.addAttribute("msg", "로그인 후 작성 가능합니다.");
+			model.addAttribute("url", "/member/login.do");
+			
+			return "common/message";
+		}
+		
+		List<HistoryViewVO> list=historyService.choosePack();
+		logger.info("범위 내 패키지 수={}", list.size());
+		
+		model.addAttribute("list", list);
+		
+		if(list.size()==0) {
+			model.addAttribute("msg", "리뷰를 작성할 수 있는 패키지가 없습니다.");
+			model.addAttribute("url", "/history/historyList.do");
+			
+			return "common/message";
+		}
+
+		return "review/write";
 	}
+
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)
-	public String write_post(@ModelAttribute ReviewVO reviewVo, Model model, @ModelAttribute HistoryVO historyVo) {
+	public String write_post(@ModelAttribute ReviewVO reviewVo, Model model) {
 		logger.info("리뷰 작성하기, 파라미터 reviewVo={}", reviewVo);
 		
 		int cnt=reviewService.insertReview(reviewVo);
-		if(cnt>0) cnt=historyService.reviewUpdate(historyVo);
+		if(cnt>0) cnt=historyService.reviewUpdate(reviewVo.getHistoryNo());
 		
 		logger.info("작성 결과={}, ", cnt);
 		
@@ -139,10 +163,16 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/edit.do", method =RequestMethod.GET)
-	public String edit_get(@RequestParam(defaultValue = "0") int no, Model model) {
-		logger.info("리뷰 수정 번호, no={}", no);
+	public String edit_get(@RequestParam(defaultValue = "0") int no, Model model, HttpSession session) {
+		String userId=(String)session.getAttribute("userId");
+		logger.info("리뷰 수정 번호, no={}, 로그인 된 아이디={}", no, userId);
 		
-		if(no==0) {
+		if(userId==null || userId.isEmpty()) {
+			model.addAttribute("msg", "로그인 후 작성 가능합니다.");
+			model.addAttribute("url", "/member/login.do");
+			
+			return "common/message";
+		}else if(no==0) {
 			model.addAttribute("msg", "잘못된 경로");
 			model.addAttribute("url", "/review/list.do");
 			
@@ -180,16 +210,12 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("/reviewMove.do")
-	public void reviewList(@RequestParam(defaultValue = "0") int no, Model model, HttpSession session) {
-		logger.info("소 리뷰 목록");
-		
-		Map<String, Object> map=reviewService.minmax();
-		logger.info("min&max값={}", map);
+	public void reviewList(@RequestParam(defaultValue = "0") int no, Model model) {
+		logger.info("소 리뷰 목록, 파라미터={}", no);
 		
 		Map<String, Object> list=reviewService.selectReviewMap(no);
 		logger.info("prev&next값={}", list);
 		
 		model.addAttribute("list", list);
-		model.addAttribute("map", map);
 	}
 }

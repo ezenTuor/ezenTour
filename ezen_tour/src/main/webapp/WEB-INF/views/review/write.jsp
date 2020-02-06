@@ -27,12 +27,6 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
-		var review="${param.review}";
-		if(review=='Y'){
-			alert("이미 리뷰가 작성된 패키지입니다.");
-			location.href="<c:url value='/history/historyList.do'/>";
-		}
-		
 		$('#title').keydown(function() {
 			if (event.keyCode === 13) {
 				event.preventDefault();
@@ -47,11 +41,15 @@
 			var newText3=newText2.replace(/\n/g,"");
 			var newText4=newText3.replace(/\s/g,"");
 			
-			if($("#title").val().length<1){
+			if($('#pn option:selected').val()=='etc'){
+				alert("패키지를 선택해주세요");
+				event.preventDefault();
+				$("#pn").focus();
+			}else if($("#title").val().length<1){
 				alert("제목을 입력해주세요");
 				event.preventDefault();
 				$("#title").focus();
-			}else if($('select option:selected').val()==0){
+			}else if($('#score option:selected').val()==0){
 				alert("해당 패키지의 평점을 선택해주세요");
 				event.preventDefault();
 				$("#rating").focus();
@@ -70,12 +68,24 @@
 
 <div class="reviewWrite">
 	<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
-		<input type="hidden" name="userNo" value="${param.userNo}">
-		<input type="hidden" name="historyNo" value="${param.historyNo}">
+		<input type="text" name="userNo" value="${param.userNo}">
+		<input type="text" name="historyNo" value="${param.historyNo}">
 		<input type="text" name="ntoy" value="${param.review}">
-		<input type="text" name="name" value="${param.name }">
+		<input type="text" name="name" value="${param.name}">
 		<fieldset>
-			<legend>[패키지명]</legend>
+		
+			<legend id="pn">[
+				<select id="packs">
+					<option value="etc">리뷰 작성할 패키지를 선택하세요.</option>
+					<c:forEach var="vo" items="${list}">
+						<option value="${vo.name}"
+							<c:if test="${param.name==vo.name}">
+								selected="selected"
+							</c:if>
+						>${vo.name}</option>
+					</c:forEach>
+				</select>
+			]</legend>
 			
 			<br>
 			
@@ -89,7 +99,7 @@
 			<div>
 				<label for="score">평점 : </label>
 				<select id="score" name="score">
-					<option>선택하세요</option>
+					<option value="0">선택하세요</option>
 					<option value="1">☆</option>
 					<option value="2">☆☆</option>
 					<option value="3">☆☆☆</option>

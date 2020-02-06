@@ -1,8 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
-<article>
-	<table border=1>
+<style>
+article.managerTable {
+    background: #ecf0f7;
+    padding: 10px;
+}
+table {
+    text-align: center;
+    width: 90%;
+    border-top: 3px solid #5a90f3;
+}
+
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+thead {
+    border-bottom: 1px solid #8eb0fd;
+}
+
+img.editbutton {
+    height: 40px;
+}
+
+td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+tbody {
+    border-bottom: 2px solid #5a90f3;
+}
+</style>
+<article class="managerTable">
+	<h2>패키지 일정</h2>
+	<table>
 		<thead>
 			<tr>
 				<th>소분류번호</th>

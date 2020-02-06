@@ -2,6 +2,7 @@ package com.ezen.tour.history.model;
 
 import java.sql.Timestamp;
 
+//history_view VO입니당~
 public class HistoryViewVO {
 	private int historyNo;
 	private int userNo;
@@ -12,7 +13,6 @@ public class HistoryViewVO {
 	private Timestamp koreaDep;
 	private Timestamp koreaEnt;
 	private String name;
-	
 	
 	public int getHistoryNo() {
 		return historyNo;
