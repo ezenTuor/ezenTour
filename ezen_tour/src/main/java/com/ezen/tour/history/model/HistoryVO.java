@@ -1,5 +1,7 @@
 package com.ezen.tour.history.model;
 
+import java.sql.Timestamp;
+
 public class HistoryVO {
 	private int historyNo;
 	private int userNo;
@@ -7,6 +9,7 @@ public class HistoryVO {
 	private int packDno;
 	private int price;
 	private String review;
+	private Timestamp regdate;
 	
 	
 	public int getHistoryNo() {
@@ -45,11 +48,17 @@ public class HistoryVO {
 	public void setReview(String review) {
 		this.review = review;
 	}
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "HistoryVO [historyNo=" + historyNo + ", userNo=" + userNo + ", state=" + state + ", packDno=" + packDno
-				+ ", price=" + price + ", review=" + review + "]";
+				+ ", price=" + price + ", review=" + review + ", regdate=" + regdate + "]";
 	}
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.common.HistorySearchVO;
+
 @Service
 public class HistoryServiceImpl implements HistoryService{
 
@@ -12,8 +14,8 @@ public class HistoryServiceImpl implements HistoryService{
 	private HistoryDAO historyDao;
 
 	@Override
-	public List<HistoryViewVO> selectAll(int userNo) {
-		return historyDao.selectAll(userNo);
+	public List<HistoryViewVO> selectHistory(int userNo) {
+		return historyDao.selectHistory(userNo);
 	}
 
 	@Override
@@ -24,6 +26,16 @@ public class HistoryServiceImpl implements HistoryService{
 	@Override
 	public List<HistoryViewVO> choosePack() {
 		return historyDao.choosePack();
+	}
+
+	@Override
+	public List<HistoryViewVO> selectMtoM(HistorySearchVO vo) {
+		return historyDao.selectMtoM(vo);
+	}
+
+	@Override
+	public List<HistoryViewVO> selectAll(int userNo) {
+		return historyDao.selectAll(userNo);
 	}
 	
 }
