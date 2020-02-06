@@ -68,9 +68,4 @@
 		order by review_no desc
 	</select>
 	
-	<select id="minmax" resultType="map">
-		select max(review_no) as MAX, min(review_no) as MIN
-		from review
-	</select>
-	
 </mapper>

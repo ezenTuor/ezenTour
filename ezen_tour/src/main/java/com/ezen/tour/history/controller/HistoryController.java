@@ -2,6 +2,8 @@ package com.ezen.tour.history.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,25 @@ public class HistoryController {
 	private HistoryService historyService;
 	
 	@RequestMapping("/historyList.do")
-	public void list_get(Model model) {
-		logger.info("이용내역 화면 출력");
+	public String historyList(HttpSession session, Model model) {
+		String userId=(String)session.getAttribute("userId");
+		logger.info("이용내역 화면, 로그인 된 아이디={}", userId);
 		
-		List<HistoryViewVO> list=historyService.selectAll();
+		if(userId==null || userId.isEmpty()) {
+			model.addAttribute("msg", "로그인 후 작성 가능합니다.");
+			model.addAttribute("url", "/member/login.do");
+			
+			return "common/message";
+		}
+		
+		int userNo=(Integer)session.getAttribute("userNo");
+	
+		List<HistoryViewVO> list=historyService.selectAll(userNo);
 		logger.info("이용내역 조회 결과, list.size()={}", list.size());
 		
 		model.addAttribute("list", list);
+	
+		return "history/historyList";
 	}
+	
 }

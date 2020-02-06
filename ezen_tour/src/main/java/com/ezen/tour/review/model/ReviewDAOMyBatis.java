@@ -47,11 +47,6 @@ public class ReviewDAOMyBatis implements ReviewDAO{
 	public int deleteReview(int no) {
 		return sqlSession.delete(namespace+"deleteReview", no);
 	}
-
-	@Override
-	public Map<String, Object> minmax() {
-		return sqlSession.selectOne(namespace+"minmax");
-	}
 	
 	@Override
 	public Map<String, Object> selectReviewMap(int no) {

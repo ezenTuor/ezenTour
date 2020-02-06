@@ -42,11 +42,6 @@ public class ReviewServiceImpl implements ReviewService{
 	public int deleteReview(int no) {
 		return reviewDao.deleteReview(no);
 	}
-
-	@Override
-	public Map<String, Object> minmax() {
-		return reviewDao.minmax();
-	}
 	
 	@Override
 	public Map<String, Object> selectReviewMap(int no) {

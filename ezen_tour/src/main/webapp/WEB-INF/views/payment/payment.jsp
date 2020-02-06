@@ -32,15 +32,14 @@ $(function(){
 		}, function(rsp) {
 			console.log(rsp);
 			if (rsp.success) {
-				/* jQuery.ajax({
+				/* $.ajax({
 			    	url: "<c:url value='/PaymentCheck.do'/>",
 			        method: "POST",
 			        headers: { "Content-Type": "application/json" },
 			        data: {
 			            imp_uid: rsp.imp_uid,
 			            merchant_uid: rsp.merchant_uid,
-						paid_amount: rsp.paid_amount,
-						apply_num: rsp.apply_num
+						
 			  		}
 				}); */
 				
@@ -58,8 +57,8 @@ $(function(){
 				$("#test4").val();
 				$("#test5").val('card');
 				$("#test6").val();
-				$("#test7").val(rsp.imp_uid);
-				$("#test8").val(rsp.merchant_uid);
+				$("#test7").val(rsp.merchant_uid);
+				$("#test8").val(rsp.imp_uid);
 				$("form[name=frmSuccess]").submit();		
 			} else {
 				var msg = '결제에 실패하였습니다.';
@@ -87,8 +86,8 @@ $(function(){
 		<input type="text" name="state" value="" id="test4">
 		<input type="text" name="type" value="" id="test5">
 		<input type="text" name="detail" value="" id="test6">
-		<input type="text" name="impUid" value="" id="test7">
-		<input type="text" name="merchantUid" value="" id="test8">
+		<input type="text" name="merchUid" value="" id="test7">
+		<input type="text" name="impUid" value="" id="test8">
 		
 	</form>
 </body>

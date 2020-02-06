@@ -86,7 +86,6 @@
 				</td>
 			</tr>
 			<tr style="height: 40px; border-bottom: 3px solid red">
-				<!-- 검색 부분을 변형해서 정렬조건으로 변경 -->
 				<th scope="col">번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">평점</th>
@@ -124,7 +123,7 @@
 		</tbody>
 		<tr style="border-top:1px solid gray">
 			<td colspan="5" style="text-align: right">
-				<a href='<c:url value="/review/write.do"/>' style="color:green">☞이용내역 확인하고 리뷰 작성하기</a>
+				<a href='<c:url value="/review/write.do"/>' style="color:green">☞리뷰 작성하기</a>
 			</td>
 		</tr>
 	</table>

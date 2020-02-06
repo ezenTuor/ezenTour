@@ -8,12 +8,9 @@
 </style>
 
 <div>
-<c:set var="max" value="${map['MAX']}"/>
-<c:set var="min" value="${map['MIN']}"/>
-
-<c:set var="prev" value="${list['PREV']}"/>
-<c:set var="next" value="${list['NEXT']}"/>
-<c:set var="id" value="<%=id %>"/>
+	<c:set var="prev" value="${list['PREV']}"/>
+	<c:set var="next" value="${list['NEXT']}"/>
+	<c:set var="id" value="<%=id %>"/>
 
 	<table style="width: 80%; margin: auto">
 		<tbody>

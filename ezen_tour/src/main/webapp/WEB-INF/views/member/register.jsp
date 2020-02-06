@@ -74,6 +74,13 @@ function Postcode() {
 }
 </script>
 <style>
+	fieldset{
+		margin-top: 200px;
+		box-shadow: 5px 10px 5px rgba(0,0,0,2), 6px 11px 5px rgba(0,0,0,-2);
+	}
+	fieldset div{
+		margin-top: 20px;
+	}
 	article{
 		height: 650px;
 	}
@@ -104,25 +111,29 @@ function Postcode() {
 	}
 	
 	input[type=text], input[type=Password]{
-		border-radius: .2em;
 		font-size: 0.8em;
+		border-radius: .4em;
 	}
 	
-	legend{
-		font-size : 1.9em;
-		height: 50px;
-		margin-left: 53px;
+	h1{
 		font-family: 'nanum gothic',맑은 고딕, 한컴돋움, 돋움;
 	}
 	.center{
 		margin-left: 365.335px
 	}
 	label {
-		margin: 7px;
+		margin: 8px;
+		font-weight: bold;
 	}
 	input {
 		margin: 7px;
 	}
+	html{
+		background-image: url("<c:url value='/resources/images/tour4.jpg'/>");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	
 </style>
 </head>
 <body>
@@ -131,7 +142,8 @@ function Postcode() {
 <form name="frm1" method="post" 
 	action="<c:url value='/member/memberWrite.do'/>">
 <fieldset>
-	<legend>회원 가입</legend>
+	<h1 style="text-align: center; font-size: 40px;
+		margin: 20px;">Sign Up</h1>
 	<hr>
 	<table>       
         <tr>
@@ -197,15 +209,20 @@ function Postcode() {
     		<td><input type="text" name="userSsr" placeholder="xxxxxx-ooooooo"></td>
 		</tr>
     	<tr>
-        	<td><label for="gender">성별  </label></td>
-    		<td><input type="radio" name="gender" value="M">남
-    			<input type="radio" name="gender" value="F">여</td>
+        	<td><label for="gender" style="color: white;">성별  </label></td>
+    		<td><input type="radio" name="gender" id="gender" value="M" style="color: white;">남
+    			<input type="radio" name="gender" id="gender" value="F" style="color: white;">여</td>
     	</tr>
     </table>
-    <div class="center">
-    	<input type="submit" id="wr_submit" value="회원가입">
+    <hr>
+    <div style="text-align: center;">
+    	<input type="submit" id="submit" name = "submit" value="회원가입"
+    	style="width: 400px; height: 50px; background-color: #3f40b5; 
+    		border: none; font-weight: bold; border-radius: .6em;"
+    		onmouseover="this.style.backgroundColor='#3f40b5db'"
+    		onmouseout="this.style.backgroundColor='#3f40b5'">
     </div>
-    <br><hr>
+    <br>
     <input type="hidden" value="C" name="grade">
     <input type="hidden" value=" " name="delFlag">
 </fieldset>
