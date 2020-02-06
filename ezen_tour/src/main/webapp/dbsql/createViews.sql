@@ -34,12 +34,13 @@ from wishlist w left join pack_detail_view p
 on w.pack_dno=p.pack_dno;
 
 
+/*
 create or replace view payment_detail_view
 as
 select p.*, d.name
 from payment_detail p left join pack_detail_view d
 on p.pack_dno= d.pack_dno;
-
+*/
 
 create or replace view chart_view
 as
@@ -56,7 +57,3 @@ left join pack_detail pd
 on d.pack_dno=pd.pack_dno
 left join pack pa
 on pd.pack_no=pa.pack_no;
-
-
-select * from area;
-select * from area_detail;

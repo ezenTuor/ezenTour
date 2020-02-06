@@ -3,7 +3,7 @@ drop table HOTEL cascade constraints;
 drop table HOTEL_DETAIL cascade constraints;
 drop table AIRLINE cascade constraints;
 drop table CHART cascade constraints;
-
+drop table PAYMENT_DETAIL cascade constraints;
 
 ----------------ezenDB1-----------------
 
@@ -32,7 +32,6 @@ drop table SUPPORT cascade constraints;
 ----------------ezenDB5-----------------
 
 drop table PAYMENT cascade constraints;
-drop table PAYMENT_DETAIL cascade constraints;
 drop table WISHLIST cascade constraints;
 
 ----------------ezenDB6-----------------
