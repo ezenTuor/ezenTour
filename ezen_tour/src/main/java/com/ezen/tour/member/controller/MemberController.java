@@ -56,7 +56,6 @@ public class MemberController {
 		if(result==MemberService.LOGIN_OK) {
 			MemberVO vo = memberService.selectMember(userId);
 			
-			
 			userNo = vo.getUserNo();
 			
 			HttpSession session=request.getSession();

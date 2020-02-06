@@ -11,9 +11,15 @@ public class PaymentVO {
 	private String type;
 	private Timestamp regdate; 
 	private String detail;
+	private String merchUid;
 	private String impUid;
-	private String merchantUid;
 	
+	public String getMerchUid() {
+		return merchUid;
+	}
+	public void setMerchUid(String merchUid) {
+		this.merchUid = merchUid;
+	}
 	public int getPaymentNo() {
 		return paymentNo;
 	}
@@ -32,12 +38,7 @@ public class PaymentVO {
 	public void setImpUid(String impUid) {
 		this.impUid = impUid;
 	}
-	public String getMerchantUid() {
-		return merchantUid;
-	}
-	public void setMerchantUid(String merchantUid) {
-		this.merchantUid = merchantUid;
-	}
+	
 	public int getDiscount() {
 		return discount;
 	}
@@ -79,7 +80,7 @@ public class PaymentVO {
 	public String toString() {
 		return "PaymentVO [paymentNo=" + paymentNo + ", userNo=" + userNo + ", discount=" + discount + ", price="
 				+ price + ", state=" + state + ", type=" + type + ", regdate=" + regdate + ", detail=" + detail
-				+ ", impUid=" + impUid + ", merchantUid=" + merchantUid + "]";
+				+ ", impUid=" + impUid + ", merchUid=" + merchUid + "]";
 	}
 	
 }

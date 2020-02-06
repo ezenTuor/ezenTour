@@ -35,11 +35,12 @@ public class PaymentController {
 		logger.info("결제화면 보여주기");
 		HttpSession session=request.getSession();
 		String userId=(String)session.getAttribute("userId");
-		String userNo=(String)session.getAttribute("userNo");
+		//int userNo=(Integer)session.getAttribute("userNo");
 		
 		//테스트용
-		userId="hong";
-		userNo="1";
+		/*
+		 * userId="hong"; userNo="1";
+		 */
 		
 		vo=memberService.selectMember(userId);
 		System.out.println(vo);

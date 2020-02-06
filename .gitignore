@@ -12,6 +12,3 @@ pom.properties
 
 #java class file
 *.class
-
-#eclipe option
-MANIFEST.MF
