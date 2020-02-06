@@ -3,18 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.coupon">
-	<select id="selectAll" parameterType="searchVo" resultType="couponVo">
+	<select id="selectAll" parameterType="memberVo" resultType="couponViewVo">
 		select *
 		from
 		(
 		    select rownum as RNUM, A.*
 		    from
 		    (
-		       select a.CUPON_SERIAL, a.CUPON_DETAIL, a.CUPON_KIND,
-				 a.DISCOUNT, a.DELDATE
-		        from coupon c join cupon_admin a
-		        on c.CUPON_SERIAL = a.CUPON_SERIAL
-				where c.USER_NO = #{userNo} and c.USEDATE is null and c.DEL_FLAG is null
+		       	select * from coupon_view
+				where user_no = #{userNo} and usedate is null and del_flag is null
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -27,23 +24,18 @@
 	</select>
 	<select id="selectTotalRecord" parameterType="int" 
 		resultType="int">
-		select count(*) 
-		from coupon c join cupon_admin a
-		on c.CUPON_SERIAL = a.CUPON_SERIAL
-		where c.USER_NO = #{userNo} and c.USEDATE is null and c.DEL_FLAG is null
+		select count(*) from coupon_view
+		where user_no = #{userNo} and usedate is null and del_flag is null
 	</select>
-	<select id="selectAll_N" parameterType="searchVo" resultType="couponVo">
+	<select id="selectAll_N" parameterType="memberVo" resultType="couponViewVo">
 		select *
 		from
 		(
 		    select rownum as RNUM, A.*
 		    from
 		    (
-		       select a.CUPON_SERIAL, a.CUPON_DETAIL, a.CUPON_KIND,
-				 a.DISCOUNT, a.DELDATE
-		        from coupon c join cupon_admin a
-		        on c.CUPON_SERIAL = a.CUPON_SERIAL
-				where c.USER_NO = #{userNo} and c.DEL_FLAG ='N'
+		        select * from coupon_view
+				where user_no = #{userNo} and del_flag ='N'
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -53,10 +45,8 @@
 	</select>
 	<select id="selectTotalRecord_N" parameterType="int" 
 		resultType="int">
-		select count(*) 
-		from coupon c join cupon_admin a
-		on c.CUPON_SERIAL = a.CUPON_SERIAL
-		where c.USER_NO = #{userNo} and c.DEL_FLAG ='N'
+		select count(*) from coupon_view
+		where c.user_no = #{userNo} and c.del_flag ='N'
 	</select>
 </mapper>
 

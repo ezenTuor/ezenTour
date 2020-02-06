@@ -22,9 +22,9 @@
 		<table class="box2" summary="내가 찜한 패키지">
 			<caption>Package List</caption>
 			<colgroup>
-				<col style="width: 10%" />
+				<col style="width: 5%" />
 				<col style="width: 45%" />
-				<col style="width: 15%" />
+				<col style="width: 20%" />
 				<col style="width: 15%" />
 				<col style="width: 15%" />
 			</colgroup>
@@ -32,8 +32,8 @@
 				<tr>
 					<th scope="col">패키지 번호</th>
 					<th scope="col">패키지 상세내역</th>
-					<th scope="col">패키지 출발</th>
-					<th scope="col">패키지 복귀</th>
+					<th scope="col">연령대별 인원수</th>
+					<th scope="col">총 가격</th>
 					<th scope="col">찜한 날짜</th>
 				</tr>
 			</thead>
@@ -46,11 +46,13 @@
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td>${list.WISH_NO}</td>
-							<td>${list.DETAIL}</td>
-							<td>${list.START_DATE}</td>
-							<td>${list.END_DATE}</td>
-							<td>${list.WISH_DATE}</td>
+							<td>${list.wishNo}</td>
+							<td>${list.detail}</td>
+							<td>성인 : ${list.man}<br>
+								아동 : ${list.child}<br>
+								유아 : ${list.baby}</td>
+							<td>${list.price}</td>
+							<td>${list.wishDate}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
