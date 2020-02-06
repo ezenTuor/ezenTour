@@ -29,4 +29,5 @@
 		and korea_ent between (to_date('2020-01-22')-7) and to_date('2020-01-22')
 		order by history_no desc
 	</select> -->
+	
 </mapper>

@@ -23,10 +23,9 @@ public class HistoryController {
 	private HistoryService historyService;
 	
 	@RequestMapping("/historyList.do")
-	public String list_get(Model model, HttpSession session) {
+	public String historyList(HttpSession session, Model model) {
 		String userId=(String)session.getAttribute("userId");
-		int userNo=(Integer)session.getAttribute("userNo");
-		logger.info("이용내역 화면, 접속된 아이디={}, 회원번호={}", userId, userNo);
+		logger.info("이용내역 화면, 로그인 된 아이디={}", userId);
 		
 		if(userId==null || userId.isEmpty()) {
 			model.addAttribute("msg", "로그인 후 작성 가능합니다.");
@@ -35,11 +34,13 @@ public class HistoryController {
 			return "common/message";
 		}
 		
+		int userNo=(Integer)session.getAttribute("userNo");
+	
 		List<HistoryViewVO> list=historyService.selectAll(userNo);
 		logger.info("이용내역 조회 결과, list.size()={}", list.size());
 		
 		model.addAttribute("list", list);
-		
+	
 		return "history/historyList";
 	}
 	
