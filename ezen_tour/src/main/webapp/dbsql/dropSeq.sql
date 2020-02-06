@@ -7,7 +7,7 @@ drop sequence AIRLINE_seq;
 
 drop sequence CHART_seq;
 
-
+drop sequence PAYMENT_DETAIL_seq;
 
 ----------------ezenDB1-----------------
 
@@ -47,8 +47,6 @@ drop sequence SUPPORT_seq;
 
 
 drop sequence PAYMENT_seq;
-
-drop sequence PAYMENT_DETAIL_seq;
 
 drop sequence WISHLIST_seq;
 

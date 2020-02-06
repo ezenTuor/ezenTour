@@ -13,7 +13,6 @@ public class HistoryViewVO {
 	private Timestamp koreaEnt;
 	private String name;
 	
-	
 	public int getHistoryNo() {
 		return historyNo;
 	}
