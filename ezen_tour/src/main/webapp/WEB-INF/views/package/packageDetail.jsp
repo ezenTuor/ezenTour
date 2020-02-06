@@ -279,29 +279,68 @@
 			</div>
 
 		</div>
-
+		
+		
 
 		<div id="travel-credit">
 			<div><span>출발</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaDep }" /></span></div>
 			<div><span>도착</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaEnt }" /></span></div>
 			<div><span>항공</span><span>${packDetailVo.airline }</span></div>
-			<button>출발일 변경</button>
+			<a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${packDetailVo.packNo }">출발일 변경</a>
 			<br>
+			
 			<hr>
 			<div>가격</div>
 			<div><span>성인</span><span>${packDetailVo.man }</span></div>
 			<div><span>아동</span><span>${packDetailVo.child }</span></div>
 			<div><span>유아</span><span>${packDetailVo.baby }</span></div>
 			
-			<div><span>남은좌석</span><span>${packDetailVo.capecityCur }석</span></div>
+			<div><span>남은좌석</span><span class="left">${packDetailVo.capecityCur }</span>석</div>
+			
+			
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$(".ck-btn").on("click", function() {
+						var sit = $(".left").text();
+						var adt = $(".adult option:selected").val();
+						var chd = $(".child option:selected").val();
+						var bab = $(".baby option:selected").val();
+						var total = adt+chd+bab;
+						
+						if(total>sit){
+							event.preventDefault();
+							alert("예약 가능한 인원 수를 넘어섰습니다.");
+						}
+					})
+				})
+			
+			</script>
+			
 			
 			<form>
 			성인
-				<select>
-					<c:forEach var="i" begin="1" end="${packDetailVo.capecityCur }" step="1">
+				<select class="adult">
+					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
+				
+				
+			아동
+				<select class="child">
+					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+				</select>
+				
+			유아
+				<select class="baby">
+					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+				</select>
+				
+				<input type="button" value="결제" class="ck-btn">
 			</form>
 		</div>
 	

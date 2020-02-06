@@ -107,6 +107,11 @@ values(pack_detail_seq.nextval, 1, '21321', TO_DATE('2020/01/14 17:30:00','yyyy/
 insert into pack_detail
 values(pack_detail_seq.nextval, 1, '213ka1', TO_DATE('2020/01/18 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/19 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21829' , TO_DATE('2020/01/24 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/25 11:30:00','yyyy/mm/dd hh24:mi:ss'), 350000, 230000, 800000, '김포공항', '6일', 'Y', '내용 상세', 25, 40, 16);
 
+
+insert into pack_detail
+values(pack_detail_seq.nextval, 1, '213ka1', TO_DATE('2020/02/18 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/02/19 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21829' , TO_DATE('2020/02/24 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/02/25 11:30:00','yyyy/mm/dd hh24:mi:ss'), 350000, 230000, 800000, '에어서울', '3박4일', 'Y', '내용 상세','행선지','날짜','N', 25, 40, 40);
+
+
 insert into pack_detail
 values(pack_detail_seq.nextval, 2, '434kka', TO_DATE('2020/01/29 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/30 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21829' , TO_DATE('2020/02/03 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/02/04 11:30:00','yyyy/mm/dd hh24:mi:ss'), 740000, 450000, 800000, '김포공항', '2박3일', 'Y', '내용 상세', 25, 30, 12);
 
@@ -122,3 +127,16 @@ select * from pack_detail_view
 	
 			AND korea_dep <= TO_DATE('20200114')+1	
 			and pack_no=1;
+
+
+CREATE TABLE WISHLIST (
+	WISH_NO NUMBER NOT NULL, /* 찜번호 */
+	USER_NO NUMBER, /* 회원번호 */
+	PACK_DNO NUMBER NOT NULL, /* 패키지 소분류 번호 */
+	MAN NUMBER, /* 성인 */
+	CHILD NUMBER, /* 아동 */
+	BABY NUMBER, /* 유아 */
+	PRICE NUMBER, /* 총가격 */
+	DETAIL CLOB, /* 찜상세 */
+	WISH_DATE DATE DEFAULT SYSDATE/* 찜날짜 */
+);
