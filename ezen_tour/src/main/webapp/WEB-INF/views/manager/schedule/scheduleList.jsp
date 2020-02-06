@@ -2,47 +2,70 @@
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
 <style>
-article.mangerSchedule {
+article.managerSchedule {
     padding: 10px;
     background: #ecf0f7;
 }
+.managerSchedule>h2{
+	margin-left: 20%;
+}
 .schedule {
-    float: left;
-    width: 40%;
+    width: 90%;
     border: 3px solid #8aadfb;
-    margin: 10px;
+    margin: 30px auto;
     padding: 10px;
     background: white;
+    position: relative;
+}
+.managerSchedule>div{
+	width: 800px;
+    margin: 30px auto;
+}
+.day{
+	padding:3px;
+	position: absolute;
+    top: -25px;
+    background: white;
+    border: 2px solid #8aadfb;
+}
+.day>span{
+	margin-left:30px;
 }
 </style>
-	<article class="mangerSchedule">
+	<article class="managerSchedule">
 		<h2>패키지 일정</h2>
-			<c:set var="i" value="1"/>
-			<c:forEach var="vo" items="${list}">
-				<div class="schedule">
+		<div>
+		<c:set var="i" value="1"/>
+		<c:forEach var="vo" items="${list}">
+			<div class="schedule">
+				
+				<div class="day">
 					<label>${i}일차</label>
-					<div>
-						<label>일정번호</label>
-						<span>${vo.scheduleNo}</span>
-					</div>
-					<div>
-						<label>내용</label>
-						<span>${vo.detail}</span>
-					</div>
-					<div>
-						<label>day</label>
-						<span>${vo.day}</span>
-					</div>
-					<div>
-						<label>식사</label>
-						<span>${vo.meal}</span>
-					</div>
-					<div>
-						<label>숙박</label>
-						<span>${vo.hotel}</span>
-					</div>
+					<span>
+						${fn:substring(vo.day,0,10)}
+					</span>
 				</div>
-				<c:set var="i" value="${i+1}"/>
-			</c:forEach>
+				
+				<%-- <div>
+					<label>일정번호</label>
+					<span>${vo.scheduleNo}</span>
+				</div> --%>
+				<div>
+					${vo.detail}
+				</div>
+				<hr>
+				<div>
+					<label>식사</label>
+					<span>${vo.meal}</span>
+				</div>
+				<hr>
+				<div>
+					<label>숙박</label>
+					<span>${vo.hotel}</span>
+				</div>
+			</div>
+			<c:set var="i" value="${i+1}"/>
+		</c:forEach>
+		</div>
 	</article>
 <%@include file="../../inc/adminBottom.jsp"%>
