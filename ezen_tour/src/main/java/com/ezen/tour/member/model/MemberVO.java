@@ -2,7 +2,9 @@ package com.ezen.tour.member.model;
 
 import java.sql.Timestamp;
 
-public class MemberVO{
+import com.ezen.tour.common.SearchVO;
+
+public class MemberVO extends SearchVO{
 	private int userNo;
 	private String userId;
 	private String userPwd;

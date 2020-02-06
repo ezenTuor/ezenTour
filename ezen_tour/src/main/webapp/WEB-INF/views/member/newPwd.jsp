@@ -23,7 +23,7 @@
 <body>
 	<form action="<c:url value='/member/newPwd.do'/>" method="post">
 		<label>새 비밀번호</label>
-		<input type="text" id="newPwd" name="newPwd">
+		<input type="text" id="newPwd" name="newPwd"><br>
 		<label>비밀번호 확인</label>
 		<input type="text" id="newPwdSec" name="newPwdSec">
 		<input type="submit" id="submit" value="변경">
