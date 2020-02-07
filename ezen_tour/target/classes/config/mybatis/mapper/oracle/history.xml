@@ -32,9 +32,10 @@
 		where history_no=#{historyNo}
 	</update>
 	
-	<select id="choosePack" resultType="historyViewVo">
+	<select id="choosePack" resultType="historyViewVo" parameterType="int">
 		select * from history_view
 		where review='N'
+		and history_no=#{historyNo}
 		and korea_ent between (sysdate-7) and sysdate
 		order by history_no desc
 	</select>

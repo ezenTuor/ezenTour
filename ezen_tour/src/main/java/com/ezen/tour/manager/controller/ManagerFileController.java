@@ -64,11 +64,18 @@ public class ManagerFileController {
 						out=new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 						
-
+						String tempupload=request.getServletContext().getRealPath("/resources/manager_images/");
+						System.out.println("임시경로 : "+tempupload);
+						tempupload=tempupload+"/"+fileName;
+						out=new FileOutputStream(new File(tempupload));
+						out.write(bytes);
+						
+						/*
 						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/manager_images";
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
+						*/
 						
 						printWriter = response.getWriter();
 
@@ -130,10 +137,17 @@ public class ManagerFileController {
 						out.write(bytes);
 						
 
+						String tempupload=request.getServletContext().getRealPath("/resources/user_images/");
+						System.out.println("임시경로 : "+tempupload);
+						tempupload=tempupload+"/"+fileName;
+						out=new FileOutputStream(new File(tempupload));
+						out.write(bytes);
+						/*
 						String tempupload="D:/lecture/workspace_list/finalP_ws/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ezen_tour/resources/user_images";
 						tempupload=tempupload+"/"+fileName;
 						out=new FileOutputStream(new File(tempupload));
 						out.write(bytes);
+						*/
 						
 						printWriter = response.getWriter();
 
