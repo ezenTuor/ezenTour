@@ -7,7 +7,7 @@ CREATE TABLE PAYMENT (
 	TYPE VARCHAR2(300), /* 결제방법 */
 	REGDATE DATE DEFAULT SYSDATE, /* 결제일 */
 	DETAIL CLOB, /* 결제상세 */
-	MARCH_UID VARCHAR2(50), /* 결제체크번호 */
+	MERCH_UID VARCHAR2(50), /* 결제체크번호 */
 	IMP_UID VARCHAR2(50) /* 결체확인번호 */
 );
 
