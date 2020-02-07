@@ -79,7 +79,7 @@ $(document).ready(function() {
 	
 	<div style="width:70%; margin:auto; text-align:left; height:35px">
 		<span>
-			※여행 종료일로부터 7일 이후, 리뷰 작성이 불가합니다.&nbsp;
+			※리뷰는 패키지 종료일 기준, 7일 이내 작성 가능합니다! &nbsp;
 			<button onclick="location.href='<c:url value='/history/historyAll.do'/>'">전체 조회하기</button>
 		</span>
 		
@@ -129,7 +129,6 @@ $(document).ready(function() {
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 						<td>
-							<%-- <c:if test="${vo.koreaEnt}"></c:if> --%>
 							<c:if test="${review=='N'}">
 								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>">
 									작성하기

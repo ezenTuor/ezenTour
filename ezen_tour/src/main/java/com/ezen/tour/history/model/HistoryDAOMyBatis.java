@@ -27,8 +27,8 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	}
 
 	@Override
-	public List<HistoryViewVO> choosePack(int historyNo) {
-		return sqlSession.selectList(namespace+"choosePack", historyNo);
+	public List<HistoryViewVO> historyChoosePack(int historyNo) {
+		return sqlSession.selectList(namespace+"historyChoosePack", historyNo);
 	}
 
 	@Override
@@ -39,6 +39,11 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	@Override
 	public List<HistoryViewVO> selectAll(int userNo) {
 		return sqlSession.selectList(namespace+"selectAll", userNo);
+	}
+
+	@Override
+	public List<HistoryViewVO> reviewChoosePack() {
+		return sqlSession.selectList(namespace+"reviewChoosePack");
 	}
 	
 }
