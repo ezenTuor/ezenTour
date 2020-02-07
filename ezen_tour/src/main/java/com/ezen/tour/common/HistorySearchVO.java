@@ -5,9 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class HistorySearchVO {
 	private int userNo;
-	private String startDate="";
-	private String endDate="";
-	
+	public String startDate="";
+	public String endDate="";
 	
 	public int getUserNo() {
 		return userNo;

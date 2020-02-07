@@ -15,7 +15,7 @@
 	<select id="selectMtoM" resultType="historyViewVo" parameterType="historySearchVo">
 		select * from history_view
 		where user_no=#{userNo}
-		<![CDATA[ and regdate>to_date(${startDate}) and regdate<to_date(${endDate})+1 ]]>
+		<![CDATA[ and regdate>=to_date('${startDate}') and regdate<to_date('${endDate}')+1 ]]>
 		order by history_no desc
 	</select>
 	
