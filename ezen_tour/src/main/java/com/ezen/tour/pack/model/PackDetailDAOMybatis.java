@@ -11,6 +11,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.wishList.model.WishListVO;
+
 @Repository
 public class PackDetailDAOMybatis implements PackDetailDAO {
 	
@@ -82,6 +84,12 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	@Override
 	public String areaKeyword(int tagNo) {
 		return sqlSession.selectOne(namespace+"areaKeyword", tagNo);
+	}
+	
+	@Override
+	public int insertWish(WishListVO vo) {
+		int cnt = sqlSession.insert(namespace+"insertWish", vo);
+		return cnt;
 	}
 
 }
