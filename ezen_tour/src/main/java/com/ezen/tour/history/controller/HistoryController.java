@@ -36,11 +36,23 @@ public class HistoryController {
 		
 		int userNo=(Integer)session.getAttribute("userNo");
 	
-		List<HistoryViewVO> list=historyService.selectAll(userNo);
+		List<HistoryViewVO> list=historyService.selectHistory(userNo);
 		logger.info("이용내역 조회 결과, list.size()={}", list.size());
 		
 		model.addAttribute("list", list);
 	
+		return "history/historyList";
+	}
+	
+	@RequestMapping("/historyAll.do")
+	public String historyAll(HttpSession session, Model model) {
+		int userNo=(Integer)session.getAttribute("userNo");
+		logger.info("이용내역 전체조회, 유저 번호={}", userNo);
+		
+		List<HistoryViewVO> list=historyService.selectAll(userNo);
+		
+		model.addAttribute("list", list);
+		
 		return "history/historyList";
 	}
 	
