@@ -72,6 +72,7 @@ $(document).ready(function() {
 
 <div style="background-color:#fff7f2">
 	<p style="width:70%; margin:auto; text-align: left">
+		<br>
 		[이용내역 조회]
 	</p>
 	
@@ -95,6 +96,7 @@ $(document).ready(function() {
 	</div>
 	
 	<c:if test="${empty list}">
+		<br><br>
 		<p>이용내역이 없습니다.</p>
 	</c:if>
 	
