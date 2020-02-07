@@ -13,8 +13,9 @@
 <script type="text/javascript">
 //ckeditor부분
 $(function(){
-    CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
-    	filebrowserUploadUrl : "<c:url value='/managerFile/imageUpload.do'/>",
+    CKEDITOR.replace('content', {//해당 이름으로 된 textarea에 에디터를 적용
+    	filebrowserUploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+    	uploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
     	extraPlugins : 'uploadimage'
     });
 	$("form[name=frmWrite]").submit(function(){
@@ -53,10 +54,6 @@ $(function(){
         	<label for="content">내용</label>        
  			<textarea id="content" name="content" rows="12" cols="40"></textarea>
         </div>
-        <div>
-            <label for="upfile">첨부파일</label>
-            <input type="file" id="upfile" name="upfile" />(최대 2M)
-        </div>        
         <div class="center">
             <input type = "submit" value="등록"/>
             <input type = "Button" value="글목록" 

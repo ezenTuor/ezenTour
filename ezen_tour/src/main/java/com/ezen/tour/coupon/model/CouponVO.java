@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import com.ezen.tour.common.SearchVO;
 
-public class CouponVO{
+public class CouponVO extends SearchVO{
 	private int cuponNo;
 	private int cuponSerial;
 	private int userNo;
