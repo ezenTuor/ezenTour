@@ -92,7 +92,7 @@
 			select wishlist_seq.nextval from dual
 		</selectKey>
 		insert into wishlist(wish_no, user_no, pack_dno, man, child, baby, price, detail)
-		values(#{wishNo}, 1, 1, 1, 0,0, 300000, 'ddd')
+		values(#{wishNo}, #{userNo}, #{packDno}, 1, 0,0, 300000, 'ddd')
 	</insert>
 	
 </mapper>
