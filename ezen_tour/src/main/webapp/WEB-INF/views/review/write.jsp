@@ -61,7 +61,9 @@
 		});
 		
 		CKEDITOR.replace('content', {
-			filebrowserUploadUrl:"<c:url value='/managerFile/imageUpload.do'/>"
+			filebrowserUploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+	    	uploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+	    	extraPlugins : 'uploadimage'
 		});
 	});
 </script>

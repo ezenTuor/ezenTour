@@ -129,8 +129,9 @@ $(document).ready(function() {
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 						<td>
+							<%-- <c:if test="${vo.koreaEnt}"></c:if> --%>
 							<c:if test="${review=='N'}">
-								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&userNo=${vo.userNo}&review=${vo.review}&name=${vo.name}'/>">
+								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>">
 									작성하기
 								</a>
 							</c:if>

@@ -24,8 +24,8 @@ public class HistoryServiceImpl implements HistoryService{
 	}
 
 	@Override
-	public List<HistoryViewVO> choosePack() {
-		return historyDao.choosePack();
+	public List<HistoryViewVO> choosePack(int historyNo) {
+		return historyDao.choosePack(historyNo);
 	}
 
 	@Override
