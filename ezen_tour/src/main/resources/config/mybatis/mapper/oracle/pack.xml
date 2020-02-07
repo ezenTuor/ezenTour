@@ -87,6 +87,14 @@
 		where regexp_like (keyword, #{keyword})
 	</select>
 	
+	<insert id="insertWish">
+		<selectKey	keyProperty="wish_no" resultType="int" order="BEFORE">
+			select wishlist_seq.nextval from dual
+		</selectKey>
+		insert into wishlist(wish_no, user_no, pack_dno, man, child, baby, price, detail)
+		values(#{wishNo}, 1, 1, 1, 0,0, 300000, 'ddd')
+	</insert>
+	
 </mapper>
 
 
