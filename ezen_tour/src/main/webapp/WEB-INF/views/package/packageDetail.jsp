@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="../inc/top.jsp" %>
+<c:import url="/inc/top.do"></c:import>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
 
 
@@ -291,35 +291,52 @@
 			
 			<hr>
 			<div>가격</div>
-			<div><span>성인</span><span>${packDetailVo.man }</span></div>
-			<div><span>아동</span><span>${packDetailVo.child }</span></div>
-			<div><span>유아</span><span>${packDetailVo.baby }</span></div>
+			<div><span>성인</span><span class="man-price">${packDetailVo.man }</span></div>
+			<div><span>아동</span><span class="child-price">${packDetailVo.child }</span></div>
+			<div><span>유아</span><span class="baby-price">${packDetailVo.baby }</span></div>
 			
 			<div><span>남은좌석</span><span class="left">${packDetailVo.capecityCur }</span>석</div>
 			
 			
 			<script type="text/javascript">
+			
 				$(document).ready(function () {
+					
+					$("select").on("change", function() {
+						var manprice = $(".man-price").text();
+						var childprice = $(".child-price").text();
+						var babyprice = $(".baby-price").text();
+						var adt = $(".adult option:selected").val();
+						var chd = $(".child option:selected").val();
+						var bab = $(".baby option:selected").val();
+						var totalPrice = manprice*adt + childprice*chd + babyprice*bab;
+						$('.total-p').val(totalPrice);
+					})
+					
 					$(".ck-btn").on("click", function() {
 						var sit = $(".left").text();
 						var adt = $(".adult option:selected").val();
 						var chd = $(".child option:selected").val();
 						var bab = $(".baby option:selected").val();
-						var total = adt+chd+bab;
-						
+						var total = adt*1+chd*1+bab*1;
 						if(total>sit){
 							event.preventDefault();
 							alert("예약 가능한 인원 수를 넘어섰습니다.");
 						}
+					})
+					
+					$("form[name=intoCart]").submit(function() {
+						alert("!")
 					})
 				})
 			
 			</script>
 			
 			
-			<form>
+			<form name="intoCart" method="post"
+				action="<c:url value='/package/packageDetail.do?packDno=${packDetailVo.packDno }'/>">
 			성인
-				<select class="adult">
+				<select class="adult" name="man">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
@@ -327,20 +344,23 @@
 				
 				
 			아동
-				<select class="child">
+				<select class="child" name="child">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
 				
 			유아
-				<select class="baby">
+				<select class="baby" name="baby">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
-				
-				<input type="button" value="결제" class="ck-btn">
+				<input type="text" value="${packDetailVo.packDno }" name="packDno">
+				<input type="text" value="1" name="userNo">
+				<input type="text" class="total-p" name="price">
+				<input type="text" name="detail" value="별거없음..">
+				<input type="submit" value="장바구니 담기" class="ck-btn">
 			</form>
 		</div>
 	

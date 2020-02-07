@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class WishListVO {
 	private int wishNo;
 	private int userNo;
-	private int packDno;
+	private int packDno; 
 	private int man;
 	private int child;
 	private int baby;

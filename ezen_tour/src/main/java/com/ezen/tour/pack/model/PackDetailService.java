@@ -3,6 +3,8 @@ package com.ezen.tour.pack.model;
 
 import java.util.List;
 
+import com.ezen.tour.wishList.model.WishListVO;
+
 public interface PackDetailService {
 	List<PackDetailVO> selectPackDetailList(int packNo);
 	PackDetailVO selectPackDetail(int packDno);
@@ -17,4 +19,5 @@ public interface PackDetailService {
 	List<PackVO> selectPackByKw(String keyword);
 	String areaKeyword(int tagNo);
 	List<PackTwoVO> selectPackByKw2(String keyword);
+	int insertWish(WishListVO vo);
 }

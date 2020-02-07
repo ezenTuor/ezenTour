@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.wishList.model.WishListVO;
+
 @Service
 public class PackDetailServiceImpl implements PackDetailService {
 
@@ -78,7 +80,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public List<PackTwoVO> selectPackByKw2(String keyword) {
 		return packDetailDao.selectPackByKw2(keyword);
 	}
-
+	
+	@Override
+	public int insertWish(WishListVO vo) {
+		return packDetailDao.insertWish(vo);
+	}
 	
 	
 }

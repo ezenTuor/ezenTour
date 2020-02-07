@@ -2,11 +2,14 @@ package com.ezen.tour.pack.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +21,7 @@ import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackTwoVO;
 import com.ezen.tour.pack.model.PackVO;
+import com.ezen.tour.wishList.model.WishListVO;
 
 @Controller
 @RequestMapping("/package")
@@ -46,14 +50,21 @@ public class PackageController {
 
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
-		return "package/packageDetail_get";
+		return "package/packageDetail";
 	}
 	
 	
 	@RequestMapping(value="/packageDetail.do", method=RequestMethod.POST)
-	public String packDetail_post() {
-		logger.info("");
-		return "package/packageDetail_post";
+	public String packDetail_post(@ModelAttribute WishListVO wishListVo, HttpServletRequest request, Model model) {
+		logger.info("카트로 넘기기 vo={}", wishListVo);
+		int cnt = packDetailService.insertWish(wishListVo);
+		if(cnt>0) {
+			logger.info("카트 등록 성공");
+		} else {
+			logger.info("카트 등록 실패");
+		}
+		
+		return "package/packageDetail";
 	}
 	
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../inc/top.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/inc/top.do"></c:import>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageListDetail.css"/>
 <!-- 예시:https://www.ybtour.co.kr/product/localMain.yb?menu=PKG&dspSid=AAD0000 -->
 <script>
@@ -22,7 +23,7 @@
 					if(res.length>0){
 						var str="";
 						$.each(res, function(idx, item){
-							var imageName = item.imgNames.split('|')[0];
+							var imageName =+ item.imgNames.split('|')[0];
 							str = 
 							"<li>"+
 							"<img class='pack-img' src='"+imageName+"'>"+
