@@ -11,6 +11,7 @@ $(function(){
 	
     CKEDITOR.replace('detail', {//해당 이름으로 된 textarea에 에디터를 적용
     	filebrowserUploadUrl : "<c:url value='/managerFile/imageUpload.do'/>",
+    	uploadUrl : "<c:url value='/managerFile/imageUpload.do'/>",
     	extraPlugins : 'uploadimage'
     });
 });
