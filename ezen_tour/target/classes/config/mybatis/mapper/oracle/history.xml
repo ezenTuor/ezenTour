@@ -15,7 +15,7 @@
 	<select id="selectMtoM" resultType="historyViewVo" parameterType="historySearchVo">
 		select * from history_view
 		where user_no=#{userNo}
-		<![CDATA[ and regdate>to_date(${startDate}) and regdate<to_date(${endDate})+1 ]]>
+		<![CDATA[ and regdate>=to_date('${startDate}') and regdate<to_date('${endDate}')+1 ]]>
 		order by history_no desc
 	</select>
 	
@@ -32,7 +32,15 @@
 		where history_no=#{historyNo}
 	</update>
 	
-	<select id="choosePack" resultType="historyViewVo">
+	<select id="historyChoosePack" resultType="historyViewVo" parameterType="int">
+		select * from history_view
+		where review='N'
+		and history_no=#{historyNo}
+		and korea_ent between (sysdate-7) and sysdate
+		order by history_no desc
+	</select>
+	
+	<select id="reviewChoosePack" resultType="historyViewVo">
 		select * from history_view
 		where review='N'
 		and korea_ent between (sysdate-7) and sysdate

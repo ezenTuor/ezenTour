@@ -9,4 +9,6 @@ public interface SupportService {
 	int selectTotalRecord(MemberVO vo);
 	int insertSupport(SupportVO vo);
 	SupportVO selectSupportByNo (int supportNo);
+	int editSupport(SupportVO vo);
+	SupportVO selectByNo(int supportNo);
 }

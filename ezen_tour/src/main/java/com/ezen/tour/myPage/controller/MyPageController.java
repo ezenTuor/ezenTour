@@ -145,8 +145,7 @@ public class MyPageController {
 	public String wishListSelect(HttpSession session, Model model,
 			SearchVO searchVo) {
 		logger.info("위시리스트 띄우기 처리");
-		String str_userNo = (String)session.getAttribute("userNo");
-		int userNo = Integer.parseInt(str_userNo);
+		int userNo = (Integer)session.getAttribute("userNo");
 		
 		searchVo.setUserNo(userNo);
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다

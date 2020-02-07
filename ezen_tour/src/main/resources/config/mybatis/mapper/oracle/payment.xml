@@ -7,8 +7,8 @@
 		<selectKey keyProperty="paymentNo" resultType="int" order="BEFORE">
 			select payment_seq.nextval from dual
 		</selectKey>
-		insert into payment(payment_no, user_no, discount, price, state, type, detail)
-		values(#{paymentNo}, #{userNo}, #{discount}, #{price}, #{state}, #{type}, #{detail})
+		insert into payment(payment_no, user_no, discount, price, type, detail, merch_uid, imp_uid)
+		values(#{paymentNo}, #{userNo}, #{discount}, #{price}, #{type}, #{detail}, #{merchUid}, #{impUid})
 	</insert>
 	
 	<!-- <select id="selectAll">

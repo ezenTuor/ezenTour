@@ -34,4 +34,14 @@ public class SupportDAOMybatis implements SupportDAO{
 	public SupportVO selectSupportByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectSupportByNo",supportNo);
 	}
+
+	@Override
+	public int editSupport(SupportVO vo) {
+		return sqlSession.update(namespace+"editSupport",vo);
+	}
+
+	@Override
+	public SupportVO selectByNo(int supportNo) {
+		return sqlSession.selectOne(namespace+"selectByNo",supportNo);
+	}
 }

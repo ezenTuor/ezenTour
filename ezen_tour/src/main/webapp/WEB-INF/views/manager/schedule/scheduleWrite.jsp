@@ -90,27 +90,7 @@ $(function(){
 			</div>
 			<c:set var="i" value="${i+1}"/>
 		</c:forEach>
-		<input type="submit" value="확인">
-		
-		<div>
-			<label for="depCode">출국티켓</label>
-			<div>
-				번호 : <input type="text" name="depCode" autocomplete="off">
-				출발시간 : <input type="text" name="koreaDep" class="datetimepicker" autocomplete="off">
-				도착시간 : <input type="text" name="localEnt" class="datetimepicker" autocomplete="off">
-			</div>
-		</div>
-		<div>
-			<label for="entCode">입국티겟</label>
-			<div>
-				번호 : <input type="text" name="entCode" autocomplete="off">
-				출발시간 : <input type="text" name="localDep" class="datetimepicker" autocomplete="off">
-				도착시간 : <input type="text" name="koreaEnt" class="datetimepicker" autocomplete="off">
-			</div>
-		</div>
-		
 		<p class="managerSubmit">
-			<input type="text" name="packNo" value="${param.packNo}">나중에 히든처리(대분류)
 			<input type="button" value="테스트버튼" id="test">
 			<input type="submit" value="전송">
 		</p>

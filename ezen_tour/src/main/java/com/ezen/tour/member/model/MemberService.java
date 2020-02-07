@@ -22,4 +22,5 @@ public interface MemberService {
 	String FindUserIdByEmail(Map<String, String> map);
 	String FindPwd(Map<String, String> map);
 	int updateUserPwd(MemberVO vo);
+	String findUserIdByUserNo(int userNo);
 }

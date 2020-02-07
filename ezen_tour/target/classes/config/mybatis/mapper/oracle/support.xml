@@ -41,4 +41,12 @@
 	<select id="selectSupportByNo" parameterType="int" resultType="supportVo">
 		select * from support where support_no=#{supportNo}
 	</select>
+	<update id="editSupport" parameterType="supportVo">
+		update support
+		set title=#{title}, content=#{content}
+	</update>
+	<select id="selectByNo" parameterType="int" resultType="supportVo">
+		select * from support
+		where support_no = #{supportNo}
+	</select>
 </mapper>

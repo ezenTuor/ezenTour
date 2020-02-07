@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.wishListView">
+	<!-- <select id="selectWishList" parameterType="searchVo" resultType="wishListVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		       select * from wishList
+		       where user_no = #{userNo}
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	<select id="selectTotalRecord" parameterType="int" 
+		resultType="int">
+		select count(*) 
+		from wishList
+		where user_no = #{userNo}
+	</select> -->
+	<select id="selectWishListView" parameterType="int" resultType="wishListViewVo">
+		select * from wishList_view
+		where user_no=#{userNo}
+	</select>
+</mapper>

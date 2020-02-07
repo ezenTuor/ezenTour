@@ -14,7 +14,11 @@ on d.pack_no= p.pack_no;
 
 create or replace view history_view
 as
-select h.*, p.korea_dep, p.korea_ent, p.name
+select h.*, p.korea_dep, p.korea_ent, p.name,
+    CASE
+        when p.korea_ent>=(sysdate)-7 and p.korea_ent<sysdate+1
+        then 'Y' else 'N'
+        END AS CHECK_DATE
 from history h left join pack_detail_view p
 on h.pack_dno=p.pack_dno;
 

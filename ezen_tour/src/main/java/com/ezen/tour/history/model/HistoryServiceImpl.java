@@ -9,7 +9,7 @@ import com.ezen.tour.common.HistorySearchVO;
 
 @Service
 public class HistoryServiceImpl implements HistoryService{
-
+	
 	@Autowired
 	private HistoryDAO historyDao;
 
@@ -24,8 +24,8 @@ public class HistoryServiceImpl implements HistoryService{
 	}
 
 	@Override
-	public List<HistoryViewVO> choosePack() {
-		return historyDao.choosePack();
+	public List<HistoryViewVO> historyChoosePack(int historyNo) {
+		return historyDao.historyChoosePack(historyNo);
 	}
 
 	@Override
@@ -36,6 +36,11 @@ public class HistoryServiceImpl implements HistoryService{
 	@Override
 	public List<HistoryViewVO> selectAll(int userNo) {
 		return historyDao.selectAll(userNo);
+	}
+
+	@Override
+	public List<HistoryViewVO> reviewChoosePack() {
+		return historyDao.reviewChoosePack();
 	}
 	
 }

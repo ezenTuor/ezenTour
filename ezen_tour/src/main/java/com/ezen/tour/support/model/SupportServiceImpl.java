@@ -31,4 +31,14 @@ public class SupportServiceImpl implements SupportService{
 	public SupportVO selectSupportByNo(int supportNo) {
 		return supportDao.selectSupportByNo(supportNo);
 	}
+
+	@Override
+	public int editSupport(SupportVO vo) {
+		return supportDao.editSupport(vo);
+	}
+
+	@Override
+	public SupportVO selectByNo(int supportNo) {
+		return supportDao.selectByNo(supportNo);
+	}
 }

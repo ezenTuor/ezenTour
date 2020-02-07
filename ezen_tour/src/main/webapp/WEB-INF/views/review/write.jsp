@@ -27,6 +27,10 @@
 <script type="text/javascript" src="<c:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#packs").change(function(){
+			var temp=$(this).val();
+			$("#historyNo").val(temp);
+		});
 		$('#title').keydown(function() {
 			if (event.keyCode === 13) {
 				event.preventDefault();
@@ -41,7 +45,7 @@
 			var newText3=newText2.replace(/\n/g,"");
 			var newText4=newText3.replace(/\s/g,"");
 			
-			if($('#pn option:selected').val()=='etc'){
+			if($('#pn option:selected').val()=='0'){
 				alert("패키지를 선택해주세요");
 				event.preventDefault();
 				$("#pn").focus();
@@ -61,24 +65,26 @@
 		});
 		
 		CKEDITOR.replace('content', {
-			filebrowserUploadUrl:"<c:url value='/managerFile/imageUpload.do'/>"
+			filebrowserUploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+	    	uploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+	    	extraPlugins : 'uploadimage'
 		});
 	});
 </script>
 
 <div class="reviewWrite">
 	<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
-		<input type="text" name="userNo" value="${param.userNo}">
-		<input type="text" name="historyNo" value="${param.historyNo}">
-		<input type="text" name="ntoy" value="${param.review}">
-		<input type="text" name="name" value="${param.name}">
+		<input type="hidden" name="userNo" value="${userNo}">
+		<input type="hidden" name="historyNo" id="historyNo" value="${historyNo}">
+		<input type="hidden" name="ntoy" value="${param.review}">
+		<input type="hidden" name="name" value="${param.name}">
 		<fieldset>
 		
 			<legend id="pn">[
 				<select id="packs">
-					<option value="etc">리뷰 작성할 패키지를 선택하세요.</option>
+					<option value="0">리뷰 작성할 패키지를 선택하세요.</option>
 					<c:forEach var="vo" items="${list}">
-						<option value="${vo.name}"
+						<option value="${vo.historyNo}"
 							<c:if test="${param.name==vo.name}">
 								selected="selected"
 							</c:if>

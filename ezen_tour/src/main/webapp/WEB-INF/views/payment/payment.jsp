@@ -17,12 +17,20 @@ $(function(){
 	$("#check_module").click(function() {
 		var IMP = window.IMP;
 		IMP.init('imp27153221');
+		var title="";
+		var totalPrice=0;
+		var details="";
+
+ 		title='${title}';
+		totalPrice=${totalPrice};
+		details="${details}";
+		
 		IMP.request_pay({
 			pg : 'inicis',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '결제테스트',
-			amount : 1004,
+			name : 'title',
+			amount : totalPrice,
 			buyer_email : '${memberVo.email1}@${memberVo.email2}',
 			buyer_name : "${memberVo.name}",
 			buyer_tel :'${memberVo.hp1}-${memberVo.hp2}-${memberVo.hp3}',
@@ -56,7 +64,7 @@ $(function(){
 				$("#test3").val(rsp.paid_amount);
 				$("#test4").val();
 				$("#test5").val('card');
-				$("#test6").val();
+				$("#test6").val(details);
 				$("#test7").val(rsp.merchant_uid);
 				$("#test8").val(rsp.imp_uid);
 				$("form[name=frmSuccess]").submit();		

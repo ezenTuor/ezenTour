@@ -35,10 +35,20 @@ public class ReviewController {
 	@Autowired
 	private HistoryService historyService;
 	
+	/*
 	@RequestMapping(value="/write.do", method=RequestMethod.GET)
-	public String write_get(@ModelAttribute HistoryViewVO vo, Model model, HttpSession session) {
+	public String test() {
+		logger.info("에디터 테스트");
+		return "review/write";
+	}
+	*/
+
+	@RequestMapping(value="/write.do", method=RequestMethod.GET)
+	public String write_get(@RequestParam(defaultValue = "0") int historyNo, @RequestParam(required = false) String name,
+			HttpSession session, Model model) {
 		String userId=(String)session.getAttribute("userId");
-		logger.info("리뷰 작성 화면 보여주기, 파라미터 vo={}", vo);
+		
+		logger.info("리뷰 작성 화면 보여주기, 이용내역 번호={}", historyNo);
 		logger.info("로그인 된 아이디 userId={}", userId);
 		
 		if(userId==null || userId.isEmpty()) {
@@ -48,9 +58,14 @@ public class ReviewController {
 			return "common/message";
 		}
 		
-		List<HistoryViewVO> list=historyService.choosePack();
-		logger.info("범위 내 패키지 수={}", list.size());
-		
+		List<HistoryViewVO> list=null;
+		if(historyNo>0) {
+			list=historyService.historyChoosePack(historyNo);
+			logger.info("범위 내 패키지 수={}", list.size());
+		}else {
+			list=historyService.reviewChoosePack();
+			logger.info("범위 내 패키지 수={}", list.size());
+		}
 		model.addAttribute("list", list);
 		
 		if(list.size()==0) {
@@ -59,10 +74,12 @@ public class ReviewController {
 			
 			return "common/message";
 		}
-
+		
+		int userNo=(Integer)session.getAttribute("userNo");
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("historyNo", historyNo);
 		return "review/write";
 	}
-
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)
 	public String write_post(@ModelAttribute ReviewVO reviewVo, Model model) {
