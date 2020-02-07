@@ -1,6 +1,12 @@
 package com.ezen.tour.support.controller;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ezen.tour.common.PaginationInfo;
 import com.ezen.tour.common.Utility;
 import com.ezen.tour.member.controller.MemberController;
+import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.support.model.SupportService;
 import com.ezen.tour.support.model.SupportVO;
@@ -26,6 +33,8 @@ public class SupportController {
 	=LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	private SupportService supportService;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping("/support.do")
 	public String allSelect(@ModelAttribute MemberVO vo, Model model) {
@@ -93,10 +102,52 @@ public class SupportController {
 		
 		SupportVO supportVo=supportService.selectSupportByNo(supportNo);
 		logger.info("상세보기 결과, vo={}", supportVo);
+		Map<String, Object> map = new HashMap<String, Object>();
+		String userId = memberService.findUserIdByUserNo(supportVo.getUserNo());
+
+		map.put("title", supportVo.getTitle());
+		map.put("userId", userId);
+		map.put("regdate", supportVo.getRegdate());
+		map.put("content", supportVo.getContent());
 		
-		
-		model.addAttribute("vo", supportVo);
-		
+		model.addAttribute("map",map);
 		return "support/supportDetail";
-	} 
+	}
+	@RequestMapping(value="/supportEdit.do", method =RequestMethod.GET)
+	public String edit_get(@RequestParam(defaultValue = "0") int no,
+			Model model) {
+		logger.info("수정화면 파라미터 no={}", no);		
+		if(no==0) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/support/support.do");
+			
+			return "common/message";
+		}
+		
+		SupportVO supportVo =supportService.selectByNo(no);
+		logger.info("수정화면 결과, supportVo={}", supportVo);
+		
+		model.addAttribute("supportVo", supportVo);
+		
+		return "reBoard/edit";
+	}
+	
+	@RequestMapping(value="/supportEdit.do", method = RequestMethod.POST)
+	public String edit_post(@ModelAttribute SupportVO supportVo, Model model){
+		logger.info("글 수정 처리, 파라미터 vo={}");
+		
+		String msg="", url="/support/supportEdit.do?no="+supportVo.getSupportNo();
+		
+		int cnt=supportService.editSupport(supportVo);
+		if(cnt>0) {
+			msg="글 수정되었습니다.";
+			url="/support/supportDetail.do?no="+supportVo.getSupportNo();
+		}else {
+			msg="글 수정 실패!";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
 }

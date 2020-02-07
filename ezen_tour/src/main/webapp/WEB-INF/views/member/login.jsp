@@ -127,7 +127,7 @@ var j_ctxPath="/tour";
 		<div id="find" align="center">
 			<a id="FindId" href="#" style="color: white" class="search">Find ID</a>
 			<a id="FindPwd" href="#" style="color: white" class="search">Find PassWord</a>
-			<a id="Register" href="#" style="color: white;" class="Register">Sign Up</a>
+			<a id="Register" href='<c:url value = "/member/register.do"/>' style="color: white;" class="Register">Sign Up</a>
 		</div>
 	</fieldset>
 	</div>
