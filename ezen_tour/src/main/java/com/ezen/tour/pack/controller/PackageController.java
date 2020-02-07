@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.pack.model.AreaDetailVO;
@@ -27,8 +28,8 @@ public class PackageController {
 	@Autowired
 	private PackDetailService packDetailService;
 	
-	@RequestMapping("/packageDetail.do")
-	public String packageDetail(@RequestParam(defaultValue = "0") int packDno, Model model) {
+	@RequestMapping(value="/packageDetail.do", method=RequestMethod.GET)
+	public String packageDetail_get(@RequestParam(defaultValue = "0") int packDno, Model model) {
 		logger.info("packDetail, packDno={}", packDno);
 		
 		if(packDno==0) {
@@ -45,8 +46,16 @@ public class PackageController {
 
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
-		return "package/packageDetail";
+		return "package/packageDetail_get";
 	}
+	
+	
+	@RequestMapping(value="/packageDetail.do", method=RequestMethod.POST)
+	public String packDetail_post() {
+		logger.info("");
+		return "package/packageDetail_post";
+	}
+	
 	
 	@RequestMapping("/packageList.do")
 	public String packageList(Model model) {

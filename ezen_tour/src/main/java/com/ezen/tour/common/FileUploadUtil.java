@@ -27,6 +27,7 @@ public class FileUploadUtil {
 	public static final int FILE_UPLOAD=1;
 	public static final int MANAGER_UPLOAD=2;
 	public static final int PD_UPLOAD=3;
+	public static final int USER_UPLOAD=4;
 	
 	
 	@Resource(name = "fileUpProperties")
@@ -90,6 +91,8 @@ public class FileUploadUtil {
 				path=props.getProperty("imageFile.upload.path.test");
 			}else if(uploadPathType==PD_UPLOAD) {
 				path=props.getProperty("pdImageFile.upload.path.test");
+			}else if(uploadPathType==USER_UPLOAD) {
+				path=props.getProperty("userFile.upload.path.test");
 			}
 		}else {
 			String upDir="";
@@ -99,6 +102,8 @@ public class FileUploadUtil {
 				upDir=props.getProperty("imageFile.upload.path");
 			}else if(uploadPathType==PD_UPLOAD) {
 				path=props.getProperty("pdImageFile.upload.path");
+			}else if(uploadPathType==USER_UPLOAD) {
+				path=props.getProperty("userFile.upload.path");
 			}
 			
 			path

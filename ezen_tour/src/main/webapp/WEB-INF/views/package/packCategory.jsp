@@ -6,6 +6,7 @@
 
 	<form>
 		<input type="text" placeholder="검색어를 입력하세요">
+		<input type="button" value="검색">
 	</form>
 
 </div>

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class WishListVO {
 	private int wishNo;
 	private int userNo;
-	private int packNo;
+	private int packDno;
 	private int man;
 	private int child;
 	private int baby;
@@ -25,11 +25,11 @@ public class WishListVO {
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-	public int getPackNo() {
-		return packNo;
+	public int getPackDno() {
+		return packDno;
 	}
-	public void setPackNo(int packNo) {
-		this.packNo = packNo;
+	public void setPackDno(int packDno) {
+		this.packDno = packDno;
 	}
 	public int getMan() {
 		return man;
@@ -69,7 +69,7 @@ public class WishListVO {
 	}
 	@Override
 	public String toString() {
-		return "WishListVO [wishNo=" + wishNo + ", userNo=" + userNo + ", packNo=" + packNo + ", man=" + man
+		return "WishListVO [wishNo=" + wishNo + ", userNo=" + userNo + ", packNo=" + packDno + ", man=" + man
 				+ ", child=" + child + ", baby=" + baby + ", price=" + price + ", detail=" + detail + ", wishDate="
 				+ wishDate + "]";
 	}
