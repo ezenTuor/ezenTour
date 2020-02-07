@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageListDetail.css"/>
 
-<ul id="pack-cate">
+<div id="pack-cate">
 
-</ul>
+	<form>
+		<input type="text" placeholder="검색어를 입력하세요">
+		<input type="button" value="검색">
+	</form>
+
+</div>

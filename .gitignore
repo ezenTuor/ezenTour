@@ -12,3 +12,6 @@ pom.properties
 
 #java class file
 *.class
+
+#database
+database.properties

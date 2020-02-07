@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.common.HistorySearchVO;
+
 @Repository
 public class HistoryDAOMyBatis implements HistoryDAO{
 
@@ -15,8 +17,8 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	private String namespace="config.mybatis.mapper.oracle.history.";
 
 	@Override
-	public List<HistoryViewVO> selectAll(int userNo) {
-		return sqlSession.selectList(namespace+"selectAll", userNo);
+	public List<HistoryViewVO> selectHistory(int userNo) {
+		return sqlSession.selectList(namespace+"selectHistory", userNo);
 	}
 
 	@Override
@@ -27,6 +29,16 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	@Override
 	public List<HistoryViewVO> choosePack() {
 		return sqlSession.selectList(namespace+"choosePack");
+	}
+
+	@Override
+	public List<HistoryViewVO> selectMtoM(HistorySearchVO vo) {
+		return sqlSession.selectList(namespace+"selectMtoM", vo);
+	}
+
+	@Override
+	public List<HistoryViewVO> selectAll(int userNo) {
+		return sqlSession.selectList(namespace+"selectAll", userNo);
 	}
 	
 }

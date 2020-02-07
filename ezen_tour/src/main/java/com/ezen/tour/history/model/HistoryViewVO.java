@@ -9,10 +9,12 @@ public class HistoryViewVO {
 	private String state;
 	private int packDno;
 	private int price;
+	private Timestamp regdate;
 	private String review;
 	private Timestamp koreaDep;
 	private Timestamp koreaEnt;
 	private String name;
+	
 	
 	public int getHistoryNo() {
 		return historyNo;
@@ -44,6 +46,12 @@ public class HistoryViewVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
 	public String getReview() {
 		return review;
 	}
@@ -73,7 +81,7 @@ public class HistoryViewVO {
 	@Override
 	public String toString() {
 		return "HistoryViewVO [historyNo=" + historyNo + ", userNo=" + userNo + ", state=" + state + ", packDno="
-				+ packDno + ", price=" + price + ", review=" + review + ", koreaDep=" + koreaDep + ", koreaEnt="
-				+ koreaEnt + ", name=" + name + "]";
+				+ packDno + ", price=" + price + ", regdate=" + regdate + ", review=" + review + ", koreaDep="
+				+ koreaDep + ", koreaEnt=" + koreaEnt + ", name=" + name + "]";
 	}
 }
