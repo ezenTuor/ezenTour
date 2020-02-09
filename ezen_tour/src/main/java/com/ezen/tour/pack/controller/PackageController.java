@@ -139,4 +139,16 @@ public class PackageController {
 		return "package/packDetailListSelect";
 	}
 	
+	@RequestMapping(value="/packCategory.do", method=RequestMethod.GET)
+	public String packCategory_get(Model model) {
+		
+		return "package/packCategory";
+	}
+	
+	@RequestMapping(value="/packCategory.do", method=RequestMethod.POST)
+	public String packCategory_post(@ModelAttribute PackTwoVO packTwoVo, HttpServletRequest request, Model model) {
+		logger.info("got keyword={}", packTwoVo);
+		return "package/packCategory";
+	}
+	
 }

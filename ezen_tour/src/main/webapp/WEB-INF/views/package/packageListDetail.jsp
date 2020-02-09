@@ -26,6 +26,7 @@
 							var imageName =+ item.imgNames.split('|')[0];
 							str = 
 							"<li>"+
+							"<a href='packSelectSchedule.do?packNo="+item.packNo+"'>"+
 							"<img class='pack-img' src='"+imageName+"'>"+
 							"<div class='pack-name'>"+item.name+"</div>"+
 							"<div class='pack-max'>"+item.manmax+"</div>"+				

@@ -96,5 +96,6 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	public List<String> selDate(int packNo) {
 		return sqlSession.selectList(namespace+"selDate", packNo);
 	}
+	
 
 }

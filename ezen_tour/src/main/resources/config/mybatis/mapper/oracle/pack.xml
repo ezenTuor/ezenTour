@@ -87,6 +87,7 @@
 		where regexp_like (keyword, #{keyword})
 	</select>
 	
+	
 	<insert id="insertWish" parameterType="wishListVo">
 		<selectKey	keyProperty="wishNo" resultType="int" order="BEFORE">
 			select wishlist_seq.nextval from dual
