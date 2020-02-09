@@ -1,5 +1,7 @@
 package com.ezen.tour.pack.controller;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -105,8 +107,17 @@ public class PackageController {
 		MaxMinPriceVO maxMin = packDetailService.selectMinMaxPrice(packNo);
 		logger.info("when minPrice is={}", maxMin);
 		
+		List<String> dateList = packDetailService.selDate(packNo);
+		List<String> cutDate = new ArrayList<String>();
+		for(int i=0; i<dateList.size(); i++) {
+			String date = dateList.get(i).substring(0, 10);
+			cutDate.add(date);	
+		}
+		logger.info("all Lists={}",cutDate);
+		
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("maxMin",maxMin);
+		model.addAttribute("cutDate", cutDate);
 		
 		return "package/packSelectSchedule";
 	}

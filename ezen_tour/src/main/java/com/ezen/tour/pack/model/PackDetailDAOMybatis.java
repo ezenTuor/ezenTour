@@ -91,5 +91,10 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		int cnt = sqlSession.insert(namespace+"insertWish", vo);
 		return cnt;
 	}
+	
+	@Override
+	public List<String> selDate(int packNo) {
+		return sqlSession.selectList(namespace+"selDate", packNo);
+	}
 
 }

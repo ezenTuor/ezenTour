@@ -85,6 +85,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public int insertWish(WishListVO vo) {
 		return packDetailDao.insertWish(vo);
 	}
+
+	@Override
+	public List<String> selDate(int packNo) {
+		return packDetailDao.selDate(packNo);
+	}
 	
 	
 }

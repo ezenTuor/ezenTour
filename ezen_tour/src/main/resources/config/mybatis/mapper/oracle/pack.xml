@@ -95,6 +95,11 @@
 		values(#{wishNo}, #{userNo}, #{packDno}, #{man}, #{child},#{baby}, #{price}, #{detail})
 	</insert>
 	
+	
+	<select id="selDate" parameterType="int" resultType="String">
+		select korea_dep from pack_detail
+		where pack_no=#{packNo}
+	</select>
 </mapper>
 
 

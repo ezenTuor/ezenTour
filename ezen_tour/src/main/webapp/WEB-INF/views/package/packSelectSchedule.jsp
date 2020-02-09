@@ -26,6 +26,9 @@
 	    return  year + '.' + month + '.' + day+'('+yoil[yo]+") "+time+":"+min;
 	}
 
+  $(function() { 
+		
+  });
 	    
 	$(function() {
 		$(document).on("change", ".dateVal", function() { 
@@ -90,6 +93,39 @@
 	
 	
   $( function() {
+	  
+	  	var availableDates = $(".availDate").text().replace("[", "").replace("]", "").replace(/ /gi, "");
+		console.log(availableDates);
+		
+		var strArray = availableDates.split(",");
+		console.log(strArray);
+		
+
+		function available(date) {
+			var thismonth = date.getMonth()+1;
+			var thisday = date.getDate();
+			
+			if(thismonth<10){
+				thismonth = "0"+thismonth;
+			}
+
+			if(thisday<10){
+				thisday = "0"+thisday;
+			}
+
+		    ymd = date.getFullYear() + "-" + thismonth + "-" + thisday;
+
+
+		    if ($.inArray(ymd, strArray) >= 0) {
+		        return [true,"",""];
+		    } else {
+		        return [false,"",""];
+		    }
+		    
+
+		}
+		
+	  
     $( "#datepicker" ).datepicker({ 
     	dateFormat: 'yy-mm-dd',
     	prevText: '이전 달',
@@ -102,6 +138,7 @@
         showMonthAfterYear: true,
         yearSuffix: '년',
         minDate: 0,
+        beforeShowDay: available
         });  
   } );
   
@@ -155,8 +192,10 @@
 		 -->	
 			
 
+	<div class="availDate" style="display:none">${cutDate}</div>
 	
 	</div>
+	
 
 </div>
 
