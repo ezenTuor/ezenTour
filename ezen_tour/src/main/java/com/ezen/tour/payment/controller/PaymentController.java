@@ -21,8 +21,6 @@ import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.payment.model.PaymentService;
 import com.ezen.tour.payment.model.PaymentVO;
-import com.ezen.tour.wishList.model.WishListService;
-import com.ezen.tour.wishList.model.WishListVO;
 import com.ezen.tour.wishListView.model.WishListViewService;
 import com.ezen.tour.wishListView.model.WishListViewVO;
 
@@ -40,9 +38,6 @@ public class PaymentController {
 	
 	@Autowired
 	private WishListViewService wishListViewService;
-	
-	@Autowired
-	private WishListService wishListService;
 	
 	@Autowired
 	private HistoryService historyService;
@@ -65,19 +60,18 @@ public class PaymentController {
 			String temp=sArr[i];
 			int no=Integer.parseInt(temp);
 			
-			WishListViewVO vo=(WishListViewVO) wishListViewService.selectWishListView(no);
+			WishListViewVO vo=wishListViewService.selectWish(no);
 			list.add(vo);
 		}
 		
 		String title="";
 		int totalPrice=0;
 		String details="";
-		int index=0;
+		
 		for(WishListViewVO viewVo : list) {
-			details+="이름-"+viewVo.getName()+" 성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+" 상세번호-"+viewVo.getPackDno();
+			details+="이름-"+viewVo.getName()+" 성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+" 상세번호-"+viewVo.getPackDno()+"      ";
 			totalPrice+=viewVo.getPrice();
 			title+=viewVo.getName()+" ";
-			index++;
 		}
 		System.out.println(details);
 		System.out.println(totalPrice);
@@ -108,13 +102,13 @@ public class PaymentController {
 			String temp=sArr[i];
 			int no=Integer.parseInt(temp);
 
-			WishListVO wishVo=wishListService.selectWish(no);
+			WishListViewVO wishVo=wishListViewService.selectWish(no);
 
 			HistoryVO hisVo=new HistoryVO();
 			hisVo.setUserNo(userNo);
 			hisVo.setPackDno(wishVo.getPackDno());
 			hisVo.setPaymentNo(vo.getPaymentNo());
-			hisVo.setPrice(vo.getPrice());
+			hisVo.setPrice(wishVo.getPrice());
 
 			int cnt2=historyService.insertHistory(hisVo);
 			logger.info("이용내역 db 입력 결과 i={}, cnt2={}", i, cnt2);

@@ -16,5 +16,9 @@ public class WishListViewServiceImpl implements WishListViewService{
 		return wishListViewDao.selectWishListView(userNo);
 	}
 
-	
+	@Override
+	public WishListViewVO selectWish(int wishNo) {
+		return wishListViewDao.selectWish(wishNo);
+	}
+
 }

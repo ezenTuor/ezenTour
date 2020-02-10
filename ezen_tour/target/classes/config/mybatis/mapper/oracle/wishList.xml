@@ -26,8 +26,5 @@
 		where user_no = #{userNo}
 	</select>
 	
-	<select id="selectOne" parameterType="int" resultType="wishListVo">
-		select * from WishList
-		where wish_no=#{wishNo}
-	</select>
+	
 </mapper>

@@ -16,9 +16,4 @@ public class WishListServiceImpl implements WishListService{
 	public List<WishListVO> selectWishList(SearchVO searchVo) {
 		return wishListDao.selectWishList(searchVo);
 	}
-
-	@Override
-	public WishListVO selectWish(int wishNo) {
-		return wishListDao.selectWish(wishNo);
-	}
 }

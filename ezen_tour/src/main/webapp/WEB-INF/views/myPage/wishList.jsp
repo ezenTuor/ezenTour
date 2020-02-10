@@ -22,10 +22,8 @@ $(function(){
 				nums+=temp;
 			}
 		});
-		alert(nums);
-		
 		$("#wishNums").val(nums);
-		//$("form[name=frm]").submit();
+		$("form[name=insert]").submit();
 	});
 });
 </script>
@@ -109,8 +107,8 @@ $(function(){
 				</a>
 			</c:if>
 		</div>
-		<form action="<c:url value='/payment/payment.do'/>" name="frm" method="post">
-			<input type="button" value="결제하기" id="submit">
+		<form action="<c:url value='/payment/payment.do'/>" name="insert" method="post">
+			<button id="submit">결제하기</button>
 			<input type="text" id="wishNums" name="nums">나중에 히든처리
 		</form>
 	</div>

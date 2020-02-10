@@ -29,4 +29,9 @@
 		select * from wishList_view
 		where wish_no=#{wishNo}
 	</select>
+	
+	<select id="selectWish" parameterType="int" resultType="wishListViewVo">
+		select * from wishlist_view
+		where wish_no=#{wishNo}
+	</select>
 </mapper>
