@@ -62,7 +62,7 @@
 			    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
 			    				'<div class="air">'+item.airline+'</div>'+
 			    				'<div class="during">'+item.daysDetail+'</div>'+
-			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
+			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'" class="nameCss">'+item.name+'</a></div>'+
 			    				'<div class="price">'+item.man+'</div>'+
 			    				'<div class="res"><button value="예약가능" class="res-btn-able">예약가능</button></div>'+
 			    				'</li>'	
@@ -71,7 +71,7 @@
 			    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
 			    				'<div class="air">'+item.airline+'</div>'+
 			    				'<div class="during">'+item.daysDetail+'</div>'+
-			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'">'+item.name+'</a></div>'+
+			    				'<div class="packname"><a href="${pageContext.request.contextPath}/package/packageDetail.do?packDno='+item.packDno+'" class="nameCss">'+item.name+'</a></div>'+
 			    				'<div class="price">'+item.man+'</div>'+
 			    				'<div class="res"><button value="예약마감" class="res-btn-cant" disabled>예약마감</button></div>'+
 			    				'</li>'	
@@ -150,21 +150,28 @@
 <!-- 예시:https://www.ybtour.co.kr/product/localList.yb?menu=PKG&dspSid=AADC000&goodsCd=CIP1106 -->
 
 	<div id="left-menu">
-		<%@include file="packCategory.jsp" %>
+		<div style="margin-bottom:15px; font-weight: 600; text-align: center">여행지를 검색해보세요!</div>
+		<c:import url="/package/packCategory.do"></c:import>
 	</div>
+	
+	<div id="mid-line">  </div>
 	
 	<div id="right-menu">
 
 		<div class="cal-container">		 
 			<div id="datepicker" class="dateVal"></div>
+			<div style="background: #8A8AE2; height: 300px; width: 2px;"></div>
+			<div id="dateDetail">
+				<div style="font-size: 30px; font-weight: 600;">${packVo.name}</div>
+				<h4 style="display: none">${packVo.packNo}</h4>
+				<div><span style="font-weight: 600">${maxMin.minPrice}원</span> ~ <span style="font-weight: 600">${maxMin.maxPrice}원</span></div>
+				<div><span style="font-weight: 600">주요 방문 도시 |</span>   <span>${packVo.city }</span></div>	
+				<div><span>${packVo.detail }</span></div>			
+			</div>
+	
 		</div>
 
 		<!-- 이하 본문 -->
-		<h3>${packVo.name}</h3>
-		<h4 style="display: none">${packVo.packNo}</h4>
-		<div><span>${maxMin.minPrice}원</span>~<span>${maxMin.maxPrice}원</span></div>
-		<div><span>주요 방문 도시 |</span>   <span>${packVo.city }</span></div>
-	
 		<ul>
 			<li id="title-tag">
 				<div class="dep">출발/도착 일시</div>

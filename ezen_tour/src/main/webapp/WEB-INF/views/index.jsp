@@ -147,8 +147,8 @@ input:checked + .slide-container .nav label { display: block; }
 }
 
 #text-box {
-	margin: 20px 0 10px 0;
-	font-size: 30px;
+	margin: 20px 0 15px 0;
+	font-size: 40px;
 	font-family: sans-serif;
 	font-weight: 700;
 	color: #003CA1;

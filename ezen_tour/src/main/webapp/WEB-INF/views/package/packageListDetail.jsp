@@ -24,10 +24,10 @@
 					if(res.length>0){
 						var str="";
 						$.each(res, function(idx, item){
-							var imageName =+ item.imgNames.split('|')[0];
+							var imageName = item.imgNames.split('|')[0];
 							str = 
 							"<li>"+
-							"<a href='packSelectSchedule.do?packNo="+item.packNo+"'>"+
+							"<a href='packSelectSchedule.do?packNo="+item.packNo+"' class='de-li-pack'>"+
 							"<img class='pack-img' src='"+imageName+"'>"+
 							"<div class='pack-name'>"+item.name+"</div>"+
 							"<div class='pack-max'>"+item.manmax+"</div>"+				
@@ -49,6 +49,8 @@
 <div id="pack-list-detail">
 
 	<div id="left-menu">
+		<div style="margin-bottom:15px; font-weight: 600; text-align: center">여행지를 검색해보세요!</div>
+		<c:import url="/package/packCategory.do"></c:import>
 	</div>
 	
 	<div id="right-menu">

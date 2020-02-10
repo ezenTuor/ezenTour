@@ -1,35 +1,48 @@
 @charset "UTF-8";
 
 #packSel-body {
-	background: lightblue;
-	width: 1300px;
+	/*background: lightblue;*/
 	margin: 0 auto;
 	display: flex;
-	justify-content: space-between;
+	margin-bottom: 30px;
 }
 
 #left-menu {
+	margin-left: 30px;
 	width:20%;
-	background: purple;
+	/*background: purple;*/
+}
+
+#mid-line {
+	display: block;
+    width:2px;
+    background-color:#003CA1;
+    top:0;
+    bottom:0;
+    margin: 0px 20px 0px 20px;
+    border-radius: 20px;
+    
 }
 
 #right-menu {
-	width: 78%;
-	background: yellow;
+	width: 75%;
+	/*background: yellow;*/
 }
 
 #title-tag {
-	background: lightgray;
+	/*background: lightgray;*/
 	height: 50px;
 	width:100%;
 	display: flex;
 	align-items: center;
 	margin-top: 25px;
+	border: 1px solid #8A8AE2;
+	padding: 9px 0 9px 0;
 	
 }
 
 #title-tag div {
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 }
 
 .contents-tag{
@@ -41,6 +54,11 @@
 	
 }
 
+.cal-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 
 .dep {
@@ -82,3 +100,33 @@
 .res-btn-cant {
 	border: none;
 }
+
+.nameCss{
+	color: black;
+	text-decoration: none;
+}
+
+
+.ui-datepicker, .ui-datepicker-title{
+	background: white;
+}
+
+.ui-datepicker .ui-datepicker-header{
+	background: white;
+}
+
+
+.dateVal {
+	margin-right: 80px;	
+}
+
+#dateDetail {
+	margin-left: 80px;
+	width:400px;
+	text-align: left;
+}
+
+#dateDetail div {
+	margin-bottom: 20px;
+}
+
