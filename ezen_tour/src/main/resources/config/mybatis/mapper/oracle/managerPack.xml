@@ -11,11 +11,6 @@
 		values(#{packNo}, #{name}, #{imgNames}, #{imgSizes}, #{country}, #{city}, #{keyword}, #{airport}, #{days}, #{daysWeek}, #{detail}, sysdate)
 	</insert>
 	
-	<select id="selectList" resultType="managerPackVo">
-		select * from pack
-		order by pack_no desc
-	</select>
-	
 	<select id="selectPack" parameterType="int" resultType="managerPackVo">
 		select * from pack
 		where pack_no=#{packNo}
@@ -26,6 +21,33 @@
 		set name=#{name}, img_names=#{imgNames}, img_sizes=#{imgSizes}, country=#{country}, city=#{city}, keyword=#{keyword}, airport=#{airport}, days=#{days}, days_week=#{daysWeek}, detail=#{detail}, area_no=#{areaNo}
 		where pack_no=#{packNo}
 	</update>
+	
+	<sql id="searchWhere">
+		<if test="searchKeyword!=null and searchKeyword!=''">
+			where ${searchCondition} like '%'||#{searchKeyword}||'%'
+		</if>
+	</sql>
+	<select id="selectViewList" parameterType="searchVo" resultType="managerPackViewVo">
+		select *
+		from(
+		    select rownum as RNUM, p.*
+		    from(
+		        select * from pack_view
+		        <include refid="searchWhere"/>
+		        order by pack_no desc
+		        )p
+		    )
+		where RNUM > #{firstRecordIndex}
+		<![CDATA[
+		and RNUM <= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectTotal" parameterType="searchVo" resultType="int">
+		select count(*) from pack_view
+		<include refid="searchWhere"/>
+		order by pack_no desc
+	</select>
 </mapper>
 
 

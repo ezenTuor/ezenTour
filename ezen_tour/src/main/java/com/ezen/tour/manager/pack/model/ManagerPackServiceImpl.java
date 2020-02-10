@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.manager.packDetail.model.ManagerDetailVO;
 
 @Service
@@ -17,10 +18,6 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 		return managerPackDao.insertPack(packVo);
 	}
 
-	@Override
-	public List<ManagerPackVo> selectList() {
-		return managerPackDao.selectList();
-	}
 
 	@Override
 	public ManagerPackVo selectPack(int packNo) {
@@ -30,5 +27,15 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 	@Override
 	public int updatePack(ManagerPackVo packVo) {
 		return managerPackDao.updatePack(packVo);
+	}
+
+	@Override
+	public List<ManagerPackViewVO> selectList(SearchVO searchVo) {
+		return managerPackDao.selectList(searchVo);
+	}
+
+	@Override
+	public int selectTotal(SearchVO searchVo) {
+		return managerPackDao.selectTotal(searchVo);
 	}
 }
