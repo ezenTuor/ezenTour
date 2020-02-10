@@ -206,9 +206,8 @@ input:checked + .slide-container .nav label { display: block; }
     </div>
 </div>
 
+<c:import url="/package/packCategory.do"></c:import>
 
-<h2>여기는 인덱스입니다.</h2>
-<h2>후에 작업합니다. 조금만 기다려주세요!!!</h2>
 
 </article>
 

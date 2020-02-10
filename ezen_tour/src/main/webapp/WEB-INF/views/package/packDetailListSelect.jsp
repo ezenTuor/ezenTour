@@ -14,11 +14,32 @@
 <div id="packListSel">
 
 	<ul>
+	<!-- 
+	
 		<c:if test="${empty packTwoVo }">
 			<span>페이지 오류입니다.</span>
 		</c:if>
 		<c:if test="${!empty packTwoVo }">
 			<c:forEach var="item" items="${packTwoVo}">
+			<c:set var="string3" value="${item.imgNames}"></c:set>
+			<c:set var = "string4" value ="${fn:split(string3, '|')}" />
+				<li>
+					<img src="${string4[0]}"/>
+					<div><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${item.packNo }">${item.name}</a></div>
+					<div>${item.manmax }원~</div>
+					<div>${item.packNo }</div>
+				</li>
+			</c:forEach>
+		</c:if>
+	</ul>
+	 -->
+	
+	<ul>
+		<c:if test="${empty packList }">
+			<span>페이지 오류입니다.</span>
+		</c:if>
+		<c:if test="${!empty packList }">
+			<c:forEach var="item" items="${packList}">
 			<c:set var="string3" value="${item.imgNames}"></c:set>
 			<c:set var = "string4" value ="${fn:split(string3, '|')}" />
 				<li>

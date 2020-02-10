@@ -58,12 +58,12 @@ public class PackageController {
 	
 	@RequestMapping(value="/packageDetail.do", method=RequestMethod.POST)
 	public String packDetail_post(@ModelAttribute WishListVO wishListVo, HttpServletRequest request, Model model) {
-		logger.info("ƒ´∆Æ∑Œ ≥—±‚±‚ vo={}", wishListVo);
+		logger.info("Ïπ¥Ìä∏Î°ú ÎÑòÍ∏∞Í∏∞ vo={}", wishListVo);
 		int cnt = packDetailService.insertWish(wishListVo);
 		if(cnt>0) {
-			logger.info("ƒ´∆Æ µÓ∑œ º∫∞¯");
+			logger.info("Ïπ¥Ìä∏ Îì±Î°ù ÏÑ±Í≥µ");
 		} else {
-			logger.info("ƒ´∆Æ µÓ∑œ Ω«∆–");
+			logger.info("Ïπ¥Ìä∏ Îì±Î°ù Ïã§Ìå®");
 		}
 		
 		return "package/packageDetail";
@@ -122,6 +122,7 @@ public class PackageController {
 		return "package/packSelectSchedule";
 	}
 	
+	/*
 	@RequestMapping("/packDetailListSelect.do")
 	public String packDetailListSelect(@RequestParam(defaultValue = "1") int tagNo, Model model) {
 		logger.info("This is packDetailListSelect, tagNo={}", tagNo);
@@ -138,6 +139,14 @@ public class PackageController {
 		
 		return "package/packDetailListSelect";
 	}
+	*/
+	
+	/*
+	@RequestMapping("/packDetailListSelect.do")
+	public String packDetailListSelect(@RequestParam(defaultValue = "") Pack) {
+		
+	}
+	*/
 	
 	@RequestMapping(value="/packCategory.do", method=RequestMethod.GET)
 	public String packCategory_get(Model model) {
@@ -147,8 +156,11 @@ public class PackageController {
 	
 	@RequestMapping(value="/packCategory.do", method=RequestMethod.POST)
 	public String packCategory_post(@ModelAttribute PackTwoVO packTwoVo, HttpServletRequest request, Model model) {
-		logger.info("got keyword={}", packTwoVo);
-		return "package/packCategory";
+		
+		List<PackTwoVO>packList =  packDetailService.selectPackByKw2(packTwoVo.getKeyword());
+		model.addAttribute("packList", packList);
+		logger.info("got packList={}", packList);
+		return "package/packDetailListSelect";
 	}
 	
 }
