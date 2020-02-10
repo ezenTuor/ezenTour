@@ -71,13 +71,14 @@ $(document).ready(function() {
 </script>
 
 <div style="background-color:#fff7f2">
-	<p style="width:70%; margin:auto; text-align: left">
+	<p style="width:65%; margin:auto; text-align: left">
+		<br>
 		[이용내역 조회]
 	</p>
 	
 	<br>
 	
-	<div style="width:70%; margin:auto; text-align:left; height:35px">
+	<div style="width:65%; margin:auto; text-align:left; height:35px">
 		<span>
 			※리뷰는 패키지 종료일 기준, 7일 이내 작성 가능합니다! &nbsp;
 			<button onclick="location.href='<c:url value='/history/historyAll.do'/>'">전체 조회하기</button>
@@ -95,19 +96,27 @@ $(document).ready(function() {
 	</div>
 	
 	<c:if test="${empty list}">
+		<br><br>
 		<p>이용내역이 없습니다.</p>
 	</c:if>
 	
 	<c:if test="${!empty list}">
-		<table style="text-align:center; margin:auto; width:70%; border:1px solid lightgray; background:#ffffff">
-			<thead style="background:lightgray; margin-bottom:10px">
-				<tr style="height:40px">
-					<th>구매번호</th>
-					<th>패키지 이름</th>
-					<th>구매가격</th>
-					<th>결제 상태</th>
-					<th>결제일</th>
-					<th>리뷰 작성 여부</th>
+		<table style="text-align:center; margin:auto; width:65%; border:1px solid lightgray; background:#ffffff">
+			<colgroup>
+				<col style="width:15%;" />
+				<col style="width:40%;" />
+				<col style="width:15%;" />
+				<col style="width:15%;" />
+				<col style="width:15%;" />
+			</colgroup>
+			
+			<thead style="background:#AAAAAA; margin-bottom:10px">
+				<tr style="height:45px">
+					<th scope="col">구매번호</th>
+					<th scope="col">패키지 이름</th>
+					<th scope="col">구매가격</th>
+					<th scope="col">결제일</th>
+					<th scope="col">리뷰 작성 여부</th>
 				</tr>
 			</thead>
 			
@@ -117,25 +126,24 @@ $(document).ready(function() {
 					<tr style="height:45px">
 						<td>${vo.historyNo}</td>
 						<td>
-							<a href="<c:url value='#'/>">
+							<a href="<c:url value='#'/>" style="color:#330099; font-weight:bold;">
 								${vo.name}
 							</a>
 						</td>
 						<td>
 							<fmt:formatNumber value="${vo.price}" pattern="#,###"/>원
 						</td>
-						<td>${vo.state}</td>
 						<td>
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
-						<td>
+						<td style="font-weight:bold">
 							<c:if test="${review=='N'}">
-								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>">
+								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>" style="color:red">
 									작성하기
 								</a>
 							</c:if>
 							<c:if test="${review=='Y'}">
-								완료
+								<span style="color:#BBBBBB; text-decoration:line-through;">완료</span>
 							</c:if>
 						</td>
 					</tr>
