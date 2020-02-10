@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public class PackageController {
 	private PackDetailService packDetailService;
 	
 	@RequestMapping(value="/packageDetail.do", method=RequestMethod.GET)
-	public String packageDetail_get(@RequestParam(defaultValue = "0") int packDno, Model model) {
+	public String packageDetail_get(@RequestParam(defaultValue = "0") int packDno, Model model, HttpServletRequest request) {
 		logger.info("packDetail, packDno={}", packDno);
 		
 		if(packDno==0) {
@@ -48,10 +49,14 @@ public class PackageController {
 		int packNumber = packDetailVo.getPackNo();
 		
 		PackVO packVo = packDetailService.selectPack(packNumber);
+		
+		HttpSession session = request.getSession();
+		String userNo = (String) session.getAttribute("");
 
 
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
+		model.addAttribute("userNo", userNo);
 		return "package/packageDetail";
 	}
 	
@@ -140,13 +145,7 @@ public class PackageController {
 		return "package/packDetailListSelect";
 	}
 	*/
-	
-	/*
-	@RequestMapping("/packDetailListSelect.do")
-	public String packDetailListSelect(@RequestParam(defaultValue = "") Pack) {
-		
-	}
-	*/
+
 	
 	@RequestMapping(value="/packCategory.do", method=RequestMethod.GET)
 	public String packCategory_get(Model model) {

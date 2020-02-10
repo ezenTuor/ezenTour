@@ -41,10 +41,6 @@ public class PaymentController {
 		HttpSession session=request.getSession();
 		String userId=(String)session.getAttribute("userId");
 		
-		//테스트용
-		/*
-		 * userId="hong"; userNo="1";
-		 */
 		
 		MemberVO memberVo=memberService.selectMember(userId);
 		

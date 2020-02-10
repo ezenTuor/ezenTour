@@ -62,221 +62,8 @@
 				<li><a href="#">참고사항</a></li>
 			</ul>
 			<div class="container">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Praesent luctus urna sit amet sollicitudin venenatis. Aenean odio
-					tortor, varius vitae molestie eu, ultricies vel lacus. Nam viverra
-					fermentum dapibus. Nulla at semper diam. Phasellus sit amet
-					hendrerit sapien, non semper felis. Morbi augue leo, mattis nec leo
-					sed, malesuada porta dui. Maecenas pretium eros quis lorem luctus
-					gravida.</p>
-
-				<p>Sed gravida quam odio, euismod accumsan mauris ornare quis.
-					Duis sed condimentum justo. Phasellus ac dui eget velit bibendum
-					viverra. Aenean porttitor commodo diam, quis interdum mi sagittis
-					lobortis. Donec id ipsum dignissim, pharetra nunc sit amet,
-					porttitor elit. Donec iaculis elit et enim interdum, ac laoreet
-					lorem consequat. Sed eu elit ut quam pellentesque cursus. Integer
-					sed condimentum est. Integer tempor placerat bibendum. Sed ut
-					semper arcu, at porttitor nibh. Fusce vulputate pharetra tellus a
-					laoreet. Cras imperdiet enim sed turpis adipiscing placerat.
-					Vestibulum ut rhoncus mauris. In egestas ullamcorper dolor vitae
-					suscipit. Curabitur non orci rutrum, iaculis ligula quis,
-					sollicitudin neque. Aliquam dapibus dignissim tincidunt.</p>
-
-				<p>Suspendisse at urna mauris. Vivamus eu lectus et quam viverra
-					accumsan quis nec ligula. Aliquam sed mi sit amet arcu convallis
-					bibendum id eu lorem. Sed pretium eget nibh egestas consectetur.
-					Sed adipiscing, libero sed molestie laoreet, arcu tortor elementum
-					ligula, nec commodo ipsum augue ut tellus. Morbi nibh mauris,
-					facilisis vel bibendum vehicula, dignissim in tortor. Suspendisse
-					augue urna, vestibulum at orci nec, scelerisque cursus mi. Proin
-					congue eget justo et mattis.</p>
-
-				<p>Suspendisse suscipit in lectus at aliquet. Integer non sem
-					enim. Vestibulum aliquam imperdiet laoreet. In malesuada sodales
-					augue, ut aliquam elit tempus id. Suspendisse sed hendrerit nibh.
-					Curabitur molestie in libero nec vulputate. Cras ut scelerisque
-					lacus, vitae cursus dui. Fusce ultricies lectus tincidunt, congue
-					elit interdum, pellentesque nunc.</p>
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-
-				<p>Donec quis diam dapibus, accumsan ipsum vitae, porta turpis.
-					Pellentesque vel ligula suscipit, scelerisque justo sit amet,
-					vestibulum enim. Morbi eget sapien blandit, mattis enim sed,
-					tincidunt eros. Nullam urna lectus, pretium id ultrices non,
-					convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id
-					sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus
-					pellentesque, enim feugiat tempus venenatis, arcu quam molestie
-					eros, quis bibendum nulla metus vitae nisi. Integer at lectus at
-					metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo
-					ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit
-					amet, ornare at risus. Proin a lacus id felis aliquet fringilla.</p>
-			</div>
+				${packDetailVo.details }
+			</div>	
 
 		</div>
 		
@@ -322,11 +109,14 @@
 						if(total>sit){
 							event.preventDefault();
 							alert("예약 가능한 인원 수를 넘어섰습니다.");
+						} else if((adt+chd+bab)==0){
+							event.preventDefault();
+							alert("1명 이상을 선택해주세요!");
 						}
 					})
 					
 					$("form[name=intoCart]").submit(function() {
-						alert("!")
+						alert("찜 목록에 추가되었습니다.")
 					})
 				})
 			
@@ -356,10 +146,10 @@
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
-				<input type="text" value="${packDetailVo.packDno }" name="packDno">
-				<input type="text" value="1" name="userNo">
-				<input type="text" class="total-p" name="price">
-				<input type="text" name="detail" value="별거없음..">
+				<input type="text" value="${packDetailVo.packDno }" name="packDno" style="display:none">
+				<input type="text" class="total-p" name="price" value="0">
+				<input type="text" name="detail" value="별거없음.." style="display:none">
+				<input type="text" name="userNo" value="${userNo} " style="display:none">
 				<input type="submit" value="장바구니 담기" class="ck-btn">
 			</form>
 		</div>

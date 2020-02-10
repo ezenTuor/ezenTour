@@ -15,7 +15,7 @@
 <script type="text/javascript" src=<c:url value="/resources/js/jquery-3.4.1.min.js"/>></script>
 </head>
 <body>
-	<h1 ><a href="${pageContext.request.contextPath}/index.do" style="text-align: center; color:black">EZEN TOUR</a></h1>
+	<h1 ><a href="${pageContext.request.contextPath}/index.do" style="text-align: center; color:black"><img src="${pageContext.request.contextPath}/resources/images/mainLogo.png" class="logo"></a></h1>
 	<section id="header-part">
 		<div id="container">
 		    <nav>
