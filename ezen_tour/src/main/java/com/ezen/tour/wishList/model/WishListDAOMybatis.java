@@ -19,4 +19,9 @@ public class WishListDAOMybatis implements WishListDAO{
 	public List<WishListVO> selectWishList(SearchVO searchVo) {
 		return sqlSession.selectList(namespace+"selectWishList",searchVo);
 	}
+
+	@Override
+	public WishListVO selectWish(int wishNo) {
+		return sqlSession.selectOne(namespace+"selectOne", wishNo);
+	}
 }

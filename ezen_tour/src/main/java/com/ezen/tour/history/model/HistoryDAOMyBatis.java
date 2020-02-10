@@ -45,5 +45,10 @@ public class HistoryDAOMyBatis implements HistoryDAO{
 	public List<HistoryViewVO> reviewChoosePack() {
 		return sqlSession.selectList(namespace+"reviewChoosePack");
 	}
+
+	@Override
+	public int insertHistory(HistoryVO vo) {
+		return sqlSession.insert(namespace+"insertHistory", vo);
+	}
 	
 }

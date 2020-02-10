@@ -55,4 +55,11 @@
 		order by history_no desc
 	</select> -->
 	
+	<insert id="insertHistory" parameterType="historyVo">
+		<selectKey keyProperty="historyNo" resultType="int" order="BEFORE">
+			select history_seq.nextval from dual
+		</selectKey>
+		insert into history(history_no, user_no, pack_dno, price, payment_no)
+		values(#{historyNo}, #{userNo}, #{packDno}, #{price}, #{paymentNo})
+	</insert>
 </mapper>
