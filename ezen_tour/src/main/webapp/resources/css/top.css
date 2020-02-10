@@ -123,3 +123,8 @@ li > a:only-child:after { content: ''; }
 	font-size: 7px;
 	word-break: break-all;
 }
+
+#packCate li a{
+	font-size: 15px;
+	text-align: center;
+}

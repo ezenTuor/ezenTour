@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +56,14 @@ public class HomeController {
 	
 	
 	@RequestMapping("/inc/top.do")
-	public void top(Model model) {
+	public void top(Model model, HttpServletRequest request) {
 		List<AreaVO> areaLi = packDetailService.areaSelect();
 		
+		HttpSession session = request.getSession();
+		String userNo = (String) session.getAttribute("");
+		
 		model.addAttribute("areaLi", areaLi);
+		model.addAttribute("userNo", userNo);
 		
 		logger.info("top");
 		

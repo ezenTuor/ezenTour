@@ -16,14 +16,32 @@
 </head>
 <body>
 	<h1 ><a href="${pageContext.request.contextPath}/index.do" style="text-align: center; color:black"><img src="${pageContext.request.contextPath}/resources/images/mainLogo.png" class="logo"></a></h1>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#pack-title").mouseenter(function() {
+				$("#packCate").css("display", "flex");
+			});
+			$("#pack-title").mouseleave(function() {
+				$("#packCate").css("display", "none");
+			})
+			$("#packCate").mouseenter(function() {
+				$("#packCate").css("display", "flex");
+			})
+			
+			$("#packCate").mouseleave(function() {
+				$("#packCate").css("display", "none");
+			})
+		});
+	</script>
+	
 	<section id="header-part">
 		<div id="container">
 		    <nav>
 		        <ul>
-		            <li><a href="#">EZEN MAIN</a></li>
-		            <li><a href="#">패키지 여행</a>
+		            <li><a href="#" style="visibility: hidden">EZEN</a></li>
+		            <li id="pack-title"><a href="#">패키지 여행</a>
 		            <!-- First Tier Drop Down -->
-		            <ul>
+		            <ul id="packCate">
 		            	<c:if test="${empty areaLi }">
 							<li>페이지 오류입니다</li>
 						</c:if>
@@ -33,11 +51,6 @@
 								<li class="area-sel"><a href="${pageContext.request.contextPath}/package/packageListDetail.do?areaNo=${areaLiVo.areaNo}" id="${areaLiVo.areaNo}" class="li-sel">${areaLiVo.name}</a></li>
 							</c:forEach>
 						</c:if>
-						<!-- 
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>						
-						 -->
 		            </ul>        
 		            </li>
 		     
@@ -58,10 +71,8 @@
 		                <li><a href="<c:url value='/myPage/mileage.do'/>">마일리지</a></li>
 		                <li><a href="<c:url value='/myPage/payment.do'/>">결제 내역</a></li>
 		                <li><a href="<c:url value='/myPage/wishList.do'/>">Wish List</a></li>
-		                <li><a href="<c:url value='/member/login.do'/>">로그인 (임시)</a></li>
 		            </ul>        
-		            </li>
-		            
+		            </li>		            
 		            
 		            <li><a href="#">리뷰게시판</a>
 		            <ul>
@@ -70,6 +81,16 @@
 		            </ul> 
 		            
 		            <li><a href="#">고객센터</a></li>
+		            
+		            <li style="float:right; margin-right: 40px">
+		               <c:if test="${!empty userNo }">
+		                <a href="<c:url value='/member/login.do'/>">로그아웃</a>
+		               </c:if>
+		               <c:if test="${empty userNo }">
+			            <a href="<c:url value='/member/login.do'/>">로그인 (임시)</a>		                	
+		               </c:if>
+		            </li>
+		            
 		        </ul>
 		    </nav>
 		</div>
