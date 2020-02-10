@@ -16,8 +16,9 @@
 			var idSplit = replaceAll(id, "|", "-");
 			console.log(idSplit);
 			$.ajax({
-				type: "get",
-				url : "<c:url value='/paLiDe.do?keyword="+ idSplit +"'/>",
+				type: "post",
+				url : "<c:url value='/paLiDe.do'/>",
+				data:{keyword:idSplit},
 				dataType: "json",
 				success: function(res) {
 					if(res.length>0){
