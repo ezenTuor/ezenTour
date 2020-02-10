@@ -37,7 +37,7 @@ public class PaymentController {
 	
 	@RequestMapping("/payment.do")
 	public void payment(Model model, HttpServletRequest request) {
-		logger.info("결제화면 보여주기");
+		logger.info("결제화면 보여주기 처리");
 		HttpSession session=request.getSession();
 		String userId=(String)session.getAttribute("userId");
 		
