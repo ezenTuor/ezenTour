@@ -1,6 +1,5 @@
 package com.ezen.tour.payment.controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
@@ -59,7 +56,7 @@ public class PaymentController {
 		String details="";
 		int index=0;
 		for(WishListViewVO viewVo : list) {
-			details+=" 이름-"+viewVo.getName()+"  성인-"+viewVo.getMan()+"  아동-"+viewVo.getChild()+"  유아-"+viewVo.getBaby()+"  상세번호-"+viewVo.getPackDno();
+			details+="이름-"+viewVo.getName()+" 성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+" 상세번호-"+viewVo.getPackDno();
 			totalPrice+=viewVo.getPrice();
 			title+=viewVo.getName()+" ";
 			index++;
