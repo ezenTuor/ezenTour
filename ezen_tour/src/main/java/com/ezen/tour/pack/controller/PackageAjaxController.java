@@ -1,6 +1,5 @@
 package com.ezen.tour.pack.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.tour.pack.model.PackAjaxVO;
 import com.ezen.tour.pack.model.PackDetailService;
-import com.ezen.tour.pack.model.PackDetailVO;
 import com.ezen.tour.pack.model.PackDetailViewVO;
 import com.ezen.tour.pack.model.PackTwoVO;
 import com.ezen.tour.pack.model.PackVO;
@@ -30,10 +28,10 @@ public class PackageAjaxController {
 	@RequestMapping("/areaPack.do")
 	@ResponseBody
 	public List<PackVO> areaPack(@RequestParam int areaNo){
-		logger.info("ø°¿Ã¡ßΩ∫ »≠∏È ¿”Ω√={}", areaNo);
+		logger.info("ÏßÄÏó≠Í∞í Î∂àÎü¨Ïò§Í∏∞, ÌååÎùºÎØ∏ÌÑ∞ areaNo={}", areaNo);
 		
 		List<PackVO> packMenu = packDetailService.packSelAreaNo(areaNo);
-		logger.info("∏ÆΩ∫∆Æ ±Ê¿Ã={}", packMenu.size());
+		logger.info("Í≤∞Í≥º, packMenu.size={}", packMenu.size());
 		
 		return packMenu;
 	}
@@ -41,8 +39,8 @@ public class PackageAjaxController {
 	@RequestMapping("/dateSelect.do")
 	@ResponseBody
 	public List<PackDetailViewVO> packDateSelect(@RequestParam String koreaDep, @RequestParam int packNo){
-		logger.info("ø°¿Ã¡ßΩ∫ »≠∏È ¿”Ω√1={}", koreaDep);
-		logger.info("ø°¿Ã¡ßΩ∫ »≠∏È ¿”Ω√2={}", packNo);
+		logger.info("ÏûÖÎ†•Í∞í1 koreaDep={}", koreaDep);
+		logger.info("ÏûÖÎ†•Í∞í2 packNo={}", packNo);
 		PackAjaxVO pjaxVo = new PackAjaxVO();
 		pjaxVo.setKoreaDep(koreaDep);
 		pjaxVo.setPackNo(packNo);
@@ -57,12 +55,13 @@ public class PackageAjaxController {
 	@RequestMapping("/paLiDe.do")
 	@ResponseBody
 	public List<PackTwoVO> paLiDe(@RequestParam String keyword){
+		
 		keyword = keyword.replaceAll("-", "|");
 		
-		logger.info("packListDetail ¿”Ω√ »≠∏È keyword={}", keyword);
+		logger.info("packListDetail, ÌååÎùºÎØ∏ÌÑ∞ keyword={}", keyword);
 		
 		List<PackTwoVO> paLiDe = packDetailService.selectPackByKw2(keyword);
-		logger.info("paLide{}=", paLiDe);
+		logger.info("paLide={}", paLiDe);
 		
 		return paLiDe;
 		
