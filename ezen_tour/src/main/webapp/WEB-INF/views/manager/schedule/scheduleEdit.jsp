@@ -6,7 +6,7 @@
 <script type="text/javascript">
 $(function(){
 	var listSize=${fn:length(list)};
-	alert(listSize);
+	//alert(listSize);
 	
 	$("textarea").each(function(){
 		var id= $(this).attr('id');

@@ -19,11 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ezen.tour.common.FileUploadUtil;
+import com.ezen.tour.common.PaginationInfo;
+import com.ezen.tour.common.SearchVO;
+import com.ezen.tour.common.Utility;
 import com.ezen.tour.country.model.CountryService;
 import com.ezen.tour.country.model.CountryVO;
 import com.ezen.tour.manager.area.model.AreaService;
 import com.ezen.tour.manager.area.model.ManagerAreaVO;
 import com.ezen.tour.manager.pack.model.ManagerPackService;
+import com.ezen.tour.manager.pack.model.ManagerPackViewVO;
 import com.ezen.tour.manager.pack.model.ManagerPackVo;
 
 @Controller
@@ -107,14 +111,49 @@ public class ManagerPackController {
 	}
 	
 	@RequestMapping("/packList.do")
-	public void packList(Model model) {
-		logger.info("패키지 목록 보여주기");
+	public void packList(@ModelAttribute SearchVO searchVo, Model model) {
+		logger.info("패키지 목록 보여주기, 파라미터 searchVo={}", searchVo);
 		
-		List<ManagerPackVo> list=managerPackService.selectList();
+		PaginationInfo pagingInfo=new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		
+		/*
+		//1
+		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
+		
+		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
+		PaginationInfo pagingInfo=new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
+		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		
+		//2
+		List<ReBoardVO> list=reBoardService.selectAll(searchVo);
+		logger.info("글목록 결과, list.size={}", list.size());
+		
+		//[3] 레코드 개수 조회후 셋팅
+		int totalRecord=reBoardService.selectTotalRecord(searchVo);
+		logger.info("totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		//3
+		model.addAttribute("list", list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		*/
+		
+		List<ManagerPackViewVO> list=managerPackService.selectList3();
 		logger.info("패키지 목록 list.size={}",list.size());
 		model.addAttribute("list", list);
 	}
-	
+
 	@RequestMapping(value="/packEdit.do", method=RequestMethod.GET)
 	public void packEdit(@RequestParam int packNo, Model model) {
 		logger.info("패키지 수정화면 보여주기, 파라미터 packNo={}", packNo);

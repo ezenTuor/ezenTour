@@ -114,3 +114,5 @@ values(pack_detail_seq.nextval, 1, '213ka1', TO_DATE('2020/02/18 17:30:00','yyyy
 
 insert into pack_detail
 values(pack_detail_seq.nextval, 2, '434kka', TO_DATE('2020/01/29 17:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/01/30 13:15:00','yyyy/mm/dd hh24:mi:ss'), '21829' , TO_DATE('2020/02/03 15:30:00','yyyy/mm/dd hh24:mi:ss'), TO_DATE('2020/02/04 11:30:00','yyyy/mm/dd hh24:mi:ss'), 740000, 450000, 800000, '김포공항', '2박3일', 'Y', '내용 상세', 25, 30, 12);
+
+commit;

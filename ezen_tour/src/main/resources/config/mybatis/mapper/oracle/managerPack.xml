@@ -26,6 +26,27 @@
 		set name=#{name}, img_names=#{imgNames}, img_sizes=#{imgSizes}, country=#{country}, city=#{city}, keyword=#{keyword}, airport=#{airport}, days=#{days}, days_week=#{daysWeek}, detail=#{detail}, area_no=#{areaNo}
 		where pack_no=#{packNo}
 	</update>
+	
+	<sql id="searchWhere">
+		<if test="searchKeyword!=null and searchKeyword!=''">
+			where ${searchCondition} like '%'||#{searchKeyword}||'%'
+		</if>
+	</sql>
+	<select id="selectViewList" parameterType="searchVo" resultType="managerPackViewVo">
+		select *
+		from(
+		    select rownum as RNUM, p.*
+		    from(
+		        select * from pack
+		        <include refid="searchWhere"/>
+		        order by pack_no desc
+		        )p
+		    )
+		where RNUM > #{firstRecordIndex}
+		<![CDATA[
+		and RNUM <= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
 </mapper>
 
 

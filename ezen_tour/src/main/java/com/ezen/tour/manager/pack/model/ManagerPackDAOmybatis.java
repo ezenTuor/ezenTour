@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.manager.packDetail.model.ManagerDetailVO;
 
 @Repository
@@ -34,4 +35,17 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 	public int updatePack(ManagerPackVo packVo) {
 		return sqlSession.update(namespace+"updatePack", packVo);
 	}
+
+	@Override
+	public List<ManagerPackViewVO> selectList2(SearchVO searchVo) {
+		return sqlSession.selectList(namespace+"selectViewList", searchVo);
+	}
+
+	@Override
+	public List<ManagerPackViewVO> selectList3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }
