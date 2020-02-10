@@ -1,7 +1,6 @@
 package com.ezen.tour.wishListView.model;
 
 import java.sql.Timestamp;
-import java.util.Map;
 
 public class WishListViewVO {
 	private int wishNo;
