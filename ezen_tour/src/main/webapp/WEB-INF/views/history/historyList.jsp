@@ -147,7 +147,7 @@ $(document).ready(function() {
 <div class="history">
 	<p class="historyHead">
 		<br>
-		<a href="#" onClick="history.go(0)">[ 이용내역 조회 ]</a>
+		<a href="<c:url value='/history/historyList.do'/>">[ 이용내역 조회 ]</a>
 	</p>
 	
 	<br>

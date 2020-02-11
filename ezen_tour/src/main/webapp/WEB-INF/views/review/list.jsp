@@ -8,6 +8,10 @@
 		
 		document.frmPage.submit();
 	}
+	
+	function fc(){
+		$("#box").focus();
+	}
 </script>
 
 <style type="text/css">
@@ -58,8 +62,17 @@
 	.count {
 		color: #666666;
 	}
+	.count span {
+		color: black;
+		text-decoration: underline;
+	}
 	.count p, .write {
 		text-align: right;
+	}
+	#els {
+		color: red;
+		text-decoration: none;
+		cursor: pointer;
 	}
 	
 	.reviewListHead {
@@ -103,7 +116,7 @@
 	}
 	.write a {
 		color: #FF6600;
-		text-shadow: 6px 5px 3px lightgray;
+		text-shadow: 6px 5px 6px gray;
 	}
 	
 	.pagingNo span {
@@ -174,10 +187,10 @@
 		
 		<div class="count">
 			<c:if test="${empty param.searchKeyword}">
-				<p>총 리뷰 ${pagingInfo.totalRecord}개</p>
+				<p>총 리뷰 <span>${pagingInfo.totalRecord}</span>개</p>
 			</c:if>
 			<c:if test="${!empty param.searchKeyword}">
-				<p>'${param.searchKeyword}', ${pagingInfo.totalRecord}건 검색되었습니다.</p>
+				<p>'<a onClick="fc()" id="els">${param.searchKeyword}</a>', &nbsp;<span>${pagingInfo.totalRecord}</span>건 검색되었습니다.</p>
 			</c:if>
 		</div>
 	
@@ -199,7 +212,7 @@
 					<th scope="col">작성일</th>
 				</tr>
 			</thead>
-	
+			
 			<tbody>
 				<c:if test="${empty list}">
 					<tr class="null">
@@ -276,7 +289,7 @@
 				>내용</option>
 			</select>
 			
-			<input type="text" name="searchKeyword" title="검색어 입력" value="${param.searchKeyword}">
+			<input type="text" name="searchKeyword" title="검색어 입력" id="box" value="${param.searchKeyword}">
 			<input class="btn" type="submit" value="검색">
 		</form>
 	</div>
