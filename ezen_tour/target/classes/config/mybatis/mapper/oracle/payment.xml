@@ -11,7 +11,24 @@
 		values(#{paymentNo}, #{userNo}, #{discount}, #{price}, #{type}, #{detail}, #{merchUid}, #{impUid})
 	</insert>
 	
-	<!-- <select id="selectAll">
-		select * from payment
-	</select> -->
+	<select id="selectAll" parameterType="memberVo" resultType="paymentVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		       select * from payment
+		       where user_no = #{userNo}
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectByNo" parameterType="int" resultType="paymentVo">
+		select * from payment where payment_no = #{paymentNo}
+	</select>
 </mapper>

@@ -15,10 +15,9 @@
 		    select rownum as RNUM, A.*
 		    from
 		    (
-		        select support_no,user_no,title,content,regdate,
-		        		group_no,step,sort,asFlag
-		        from support
+		        select * from support
 				<include refid="searchWhere"></include>
+				and sort=0
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -33,7 +32,7 @@
 	</select>
 	<insert id="insertSupport" parameterType="supportVo">
 		<selectKey	keyProperty="supportNo" resultType="int" order="BEFORE">
-			select supprot_seq.nextval from dual
+			select support_seq.nextval from dual
 		</selectKey>
 		insert into support(support_no,user_no,title,content)
 		values(#{supportNo},#{userNo},#{title},#{content})
@@ -48,5 +47,18 @@
 	<select id="selectByNo" parameterType="int" resultType="supportVo">
 		select * from support
 		where support_no = #{supportNo}
+	</select>
+	<insert id="supportReply" parameterType="supportVo">
+		<selectKey resultType="int" keyProperty="supportNo" order="BEFORE">
+			select reboard_seq.nextval from dual
+		</selectKey>
+		insert into support(support_no, title, content, 
+			groupno, step, sortno)
+		values(#{supportNo}, #{title},#{content}, 
+			#{groupNo}, #{step}+1, #{sortNo}+1)		
+	</insert>
+	<select id="selectReply" parameterType="int" resultType="supportVo">
+		select * from support
+		where group_no=#{} and sort=1
 	</select>
 </mapper>

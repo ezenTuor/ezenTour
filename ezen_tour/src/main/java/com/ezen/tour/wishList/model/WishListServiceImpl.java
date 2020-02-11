@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.tour.common.SearchVO;
+import com.ezen.tour.member.model.MemberVO;
 
 @Service
 public class WishListServiceImpl implements WishListService{
@@ -13,8 +14,8 @@ public class WishListServiceImpl implements WishListService{
 	private WishListDAO wishListDao;
 
 	@Override
-	public List<WishListVO> selectWishList(SearchVO searchVo) {
-		return wishListDao.selectWishList(searchVo);
+	public List<WishListVO> selectWishList(MemberVO memberVo) {
+		return wishListDao.selectWishList(memberVo);
 	}
 
 	@Override

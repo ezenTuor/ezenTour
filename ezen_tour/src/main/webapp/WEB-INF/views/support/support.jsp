@@ -22,18 +22,72 @@
 	
 </script>
 <style type="text/css">
-	body{
-		padding:5px;
-		margin:5px;
-	 }	
+	#divList{
+		width: 1064px;
+		margin: auto;
+	}
+	#divList{
+		height: 300px;
+	}
+	table{
+		border-top: 1px solid gray;
+		border-bottom: 1px solid gray;
+		margin: auto;
+		width: 1064px;
+	}
+	table th{
+		background-color: #ddd;
+		border-right: 1px solid #ccc;
+   		border-bottom: 1px solid #ccc;
+    	border-top: 1px solid #fff;
+    	border-left: 1px solid #fff;
+	}
+	table td{
+		vertical-align: top;
+    	border-right: 1px solid #ccc;
+    	border-bottom: 1px solid #ccc;
+    	font-size: 13px;
+    	color: #424242;
+    	line-height: 18px;
+	}
+	#divList ul li{
+		float: left;
+		width: 530px;
+		border-top: 1px solid gray;
+		border-left: 1px solid gray;
+		border-right: 1px solid gray;
+		text-align: center;
+		height: 55px;
+		background-color: #ddd;
+	}
+	
+	#divList ul li{
+		border-top: 1px solid black;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		background-color: white;
+	}
+	tr th{
+    	text-align: center;
+    	background-color: #f2f2f2;
+    	font-size: 13px;
+    	font-weight: 600;
+    	border-right: 1px solid #e4e4e4;
+    	border-bottom: 1px solid #e4e4e4;
+	}
 </style>	
 </head>	
 <body>
+<div class="divList">
+<h2 style="color: black; float: left; font-weight: bold;">건의사항</h2>
+<br>
+<br>
 <c:if test="${!empty param.searchKeyword }">
 	<p>검색어 : ${param.searchKeyword}, 
 		${pagingInfo.totalRecord }건 검색되었습니다.</p>	
 </c:if>
-
+<br>
+<br>
 <!-- 페이징 처리 관련 form -->
 <form action="<c:url value='/support/support.do'/>" 
 	name="frmPage" method="post">
@@ -44,28 +98,26 @@
 	<input type="hidden" name="currentPage" >
 </form>
 
-<div class="divList">
+
 <table>
 	<colgroup>
 		<col style="width:10%;" />
 		<col style="width:50%;" />
-		<col style="width:15%;" />
-		<col style="width:15%;" />
-		<col style="width:10%;" />		
+		<col style="width:20%;" />
+		<col style="width:20%;" />
 	</colgroup>
 	<thead>
 	  <tr>
 	    <th scope="col">번호</th>
 	    <th scope="col">제목</th>
-	    <th scope="col">작성자</th>
 	    <th scope="col">작성일</th>
-	    <th scope="col">조회수</th>
+	    <th scope="col">답변상태</th>
 	  </tr>
 	</thead> 
 	<tbody>
 		<c:if test="${empty list }">
 			<tr class="align_center">
-				<td colspan="5">검색된 건의사항이 존재하지 않습니다.</td>
+				<td colspan="4" style="text-align: center;">검색된 건의사항이 존재하지 않습니다.</td>
 			</tr>
 		</c:if>  
 		<c:if test="${!empty list }">
@@ -73,15 +125,8 @@
 				<tr  style="text-align:center">
 					<td>${vo.no}</td>
 					<td style="text-align:left">
-							<c:if test="${vo.step>0 }">
-								<c:forEach var="k" begin="1" end="${vo.step }">
-									&nbsp;
-								</c:forEach>
-								<img src="<c:url value='/resources/images/re.gif'/>" 
-									alt="re이미지">
-							</c:if>
 							<a href
-							="<c:url value='/supprot/supportDetail.do?no=${vo.no}'/>">
+							="<c:url value='/support/supportDetail.do?no=${vo.no}'/>">
 								<c:if test="${fn:length(vo.title)>30}">
 									${fn:substring(vo.title, 0,30)}...
 								</c:if>
@@ -90,11 +135,17 @@
 								</c:if>													
 							</a>
 						</td>
-					<td>${vo.name}</td>
 					<td><fmt:formatDate value="${vo.regdate }" 
 						pattern="yyyy-MM-dd"/>
 					</td>
-					<td>${vo.readcount}</td>		
+					<td>
+						<c:if test="${vo.asFlag=='N'}">
+							답변중
+						</c:if>
+						<c:if test="${vo.asFlag=='Y'}">
+							답변 완료
+						</c:if>
+					</td>	
 				</tr>
 			  <!--반복처리 끝  -->
 	  		</c:forEach>

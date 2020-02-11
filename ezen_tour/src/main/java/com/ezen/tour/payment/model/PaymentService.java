@@ -6,5 +6,6 @@ import com.ezen.tour.payment.model.PaymentVO;
 
 public interface PaymentService {
 	public int insertPayment(PaymentVO vo);
-	/*List<PaymentVO> selectAll();*/
+	List<PaymentVO> selectAll(int userNo);
+	PaymentVO selectByNo(int paymentNo);
 }

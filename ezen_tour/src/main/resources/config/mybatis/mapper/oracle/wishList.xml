@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.wishList">
-	<select id="selectWishList" parameterType="searchVo" resultType="wishListVo">
+	<select id="selectWishList" parameterType="memberVo" resultType="wishListVo">
 		select *
 		from
 		(

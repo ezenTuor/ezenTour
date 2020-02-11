@@ -19,10 +19,13 @@ public class PaymentServiceImpl implements PaymentService{
 		return cnt;
 	}
 
-	/*
 	@Override
-	public List<PaymentVO> selectAll() {
-		return paymentDao.selectAll();
+	public List<PaymentVO> selectAll(int userNo) {
+		return paymentDao.selectAll(userNo);
 	}
-	*/
+
+	@Override
+	public PaymentVO selectByNo(int paymentNo) {
+		return paymentDao.selectByNo(paymentNo);
+	}
 }

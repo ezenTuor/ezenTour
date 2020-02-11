@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 //ckeditor부분

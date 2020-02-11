@@ -11,4 +11,6 @@ public interface SupportDAO {
 	SupportVO selectSupportByNo (int supportNo);
 	int editSupport(SupportVO vo);
 	SupportVO selectByNo(int supportNo);
+	int supportReply(SupportVO vo);
+	SupportVO selectReply(int groupNo);
 }

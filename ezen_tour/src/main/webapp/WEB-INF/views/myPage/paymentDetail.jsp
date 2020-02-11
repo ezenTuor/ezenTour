@@ -8,10 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="divForm">
-		<div class="firstDiv">
-			<span class="sp1">제목</span> <span>${map['title']}</span>
-		</div>
+<div class="divForm">
 		<div>
 			<span class="sp1">작성자</span> <span>${map['userId']}</span>
 		</div>
@@ -20,17 +17,12 @@
 		</div>
 		
 		<div class="lastDiv">	
-			<p class="content">${map['content']}</p>
+			<p class="content">${map['detail']}</p>
 		</div>
-	</div>
-	<div>
-		
-	</div>
-	<div class="center">
-		<a href='#'>글 수정하기</a>
-       	<a href='#'>글 삭제하기</a>
-       	<a href='#'>답변달기</a>
-       	<a href='<c:url value="/support/support.do"/>'>목록</a>			
+		<div class="center">
+        	<a href='<c:url value="/myPage/payment.do"/>'>목록</a>			
+		</div>
 	</div>
 </body>
 </html>
+<%@ include file="../inc/bottom.jsp" %>

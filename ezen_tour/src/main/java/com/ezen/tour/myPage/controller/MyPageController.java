@@ -1,5 +1,6 @@
 package com.ezen.tour.myPage.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.coupon.model.CouponService;
@@ -22,6 +24,8 @@ import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.mileage.model.MileageService;
 import com.ezen.tour.mileage.model.MileageVO;
+import com.ezen.tour.payment.model.PaymentService;
+import com.ezen.tour.payment.model.PaymentVO;
 import com.ezen.tour.wishList.model.WishListService;
 import com.ezen.tour.wishList.model.WishListVO;
 import com.ezen.tour.common.PaginationInfo;
@@ -42,6 +46,8 @@ public class MyPageController {
 	private MileageService mileageService;
 	@Autowired
 	private WishListService wishListService;
+	@Autowired
+	private PaymentService paymentService;
 	
 	@RequestMapping("/coupon.do")
 	public String couponList(@ModelAttribute MemberVO memberVo
@@ -106,27 +112,27 @@ public class MyPageController {
 		return "myPage/coupon";
 	}
 	@RequestMapping("/mileage.do")
-	public String mileageList(@ModelAttribute SearchVO searchVo
+	public String mileageList(@ModelAttribute MemberVO memberVo
 		,HttpSession session, Model model) {
 		String userId=(String) session.getAttribute("userId");
 		int userNo = memberService.selectUserNo(userId);
 		//1
-		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
+		logger.info("글 목록, 파라미터 searchVo={}",memberVo);
 				
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
 		PaginationInfo pagingInfo=new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
 		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		pagingInfo.setCurrentPage(memberVo.getCurrentPage());
 		
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
-		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUserNo(userNo);
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		memberVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		memberVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		memberVo.setUserNo(userNo);
+		logger.info("값 셋팅 후 searchVo={}", memberVo);
 		
 		//2
-		List<MileageVO> list=mileageService.selectAll(searchVo);
+		List<MileageVO> list=mileageService.selectAll(memberVo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
@@ -143,25 +149,25 @@ public class MyPageController {
 	}
 	@RequestMapping("/wishList.do")
 	public String wishListSelect(HttpSession session, Model model,
-			SearchVO searchVo) {
+			MemberVO memberVo) {
 		logger.info("위시리스트 띄우기 처리");
 		int userNo = (Integer)session.getAttribute("userNo");
 		
-		searchVo.setUserNo(userNo);
+		memberVo.setUserNo(userNo);
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
 		PaginationInfo pagingInfo=new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
 		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		pagingInfo.setCurrentPage(memberVo.getCurrentPage());
 				
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
-		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUserNo(userNo);
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		memberVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		memberVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		memberVo.setUserNo(userNo);
+		logger.info("값 셋팅 후 searchVo={}", memberVo);
 		
 		//2
-		List<WishListVO> list = wishListService.selectWishList(searchVo);
+		List<WishListVO> list = wishListService.selectWishList(memberVo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
@@ -175,5 +181,66 @@ public class MyPageController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "myPage/wishList";
+	}
+	@RequestMapping("/payment")
+	public String paymentSelect(HttpSession session, Model model,
+			MemberVO memberVo) {
+		logger.info("결제내역 띄우기 처리");
+		int userNo = (Integer)session.getAttribute("userNo");
+
+		memberVo.setUserNo(userNo);
+		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
+		PaginationInfo pagingInfo=new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		pagingInfo.setCurrentPage(memberVo.getCurrentPage());
+
+		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
+		memberVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		memberVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		memberVo.setUserNo(userNo);
+		logger.info("값 셋팅 후 searchVo={}", memberVo);
+
+		//2
+		List<PaymentVO> list = paymentService.selectAll(userNo);
+		logger.info("글목록 결과, list.size={}", list.size());
+		
+		//[3] 레코드 개수 조회후 셋팅
+		int totalRecord=mileageService.selectTotalRecord(userNo);
+		logger.info("totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+			
+		//3
+		model.addAttribute("list", list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "myPage/payment";
+	}
+	@RequestMapping("/paymentDetail")
+	public String paymentDetail(int paymentNo) {
+		return "redirect:/myPage/paymentDetail.do?no="+paymentNo;		
+	}
+	
+	@RequestMapping("/detail.do")
+	public String detail(@RequestParam(defaultValue = "0") int paymentNo,
+			Model model) {
+		logger.info("상세보기 파라미터, no={}", paymentNo);
+		if(paymentNo==0) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/mypage/payment.do");
+			
+			return "common/message";
+		}
+		PaymentVO paymentVo = new PaymentVO();
+		Map<String, Object> map = new HashMap<String, Object>();
+		String userId = memberService.findUserIdByUserNo(paymentNo);
+
+		map.put("userId", userId);
+		map.put("regdate", paymentVo.getRegdate());
+		map.put("content", paymentVo.getDetail());
+		
+		model.addAttribute("map",map);
+		return "myPage/detail";
 	}
 }

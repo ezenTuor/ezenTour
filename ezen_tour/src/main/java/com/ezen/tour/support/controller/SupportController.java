@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -104,7 +105,7 @@ public class SupportController {
 		logger.info("상세보기 결과, vo={}", supportVo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		String userId = memberService.findUserIdByUserNo(supportVo.getUserNo());
-
+		
 		map.put("title", supportVo.getTitle());
 		map.put("userId", userId);
 		map.put("regdate", supportVo.getRegdate());
@@ -149,5 +150,47 @@ public class SupportController {
 		model.addAttribute("url",url);
 		
 		return "common/message";
+	}
+	@RequestMapping(value="/supportReply.do", method = RequestMethod.GET)
+	public String reply_get(@RequestParam(defaultValue = "0") int supportNo,
+			ModelMap model) {
+		//1
+		logger.info("답변하기 화면, 파라미터 no={}", supportNo);
+		if(supportNo==0) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/support/support.do");
+			
+			return "common/message";
+		}
+		
+		//2
+		SupportVO vo=supportService.selectByNo(supportNo);
+		logger.info("답변하기 화면 결과 vo={}",vo);
+		
+		//3
+		model.addAttribute("vo", vo);
+		
+		return "support/supportReply";
+	}
+	
+	@RequestMapping(value="/reply.do", method=RequestMethod.POST)
+	public String reply_post(@ModelAttribute SupportVO vo,
+			ModelMap model) {
+		//1
+		logger.info("답변하기 파라미터, vo={}", vo);
+		
+		//2
+		int cnt=supportService.supportReply(vo);
+		logger.info("답변하기 결과, cnt={}", cnt);
+		
+		//3
+		if(cnt>0) {
+			return "redirect:/support/support.do";
+		}else {
+			model.addAttribute("msg", "답변하기 실패!");
+			model.addAttribute("url", "/support/supportReply.do?no="+vo.getSupportNo());
+			
+			return "common/message";
+		}
 	}
 }

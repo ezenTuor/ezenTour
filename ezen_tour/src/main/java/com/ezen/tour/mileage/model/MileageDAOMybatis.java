@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.tour.common.SearchVO;
+import com.ezen.tour.member.model.MemberVO;
 
 @Repository
 public class MileageDAOMybatis implements MileageDAO{
@@ -15,8 +16,8 @@ public class MileageDAOMybatis implements MileageDAO{
 	
 	private String namespace="config.mybatis.mapper.oracle.mileage.";
 	@Override
-	public List<MileageVO> selectAll(SearchVO searchVo) {
-		return sqlSession.selectList(namespace+"selectAll",searchVo);
+	public List<MileageVO> selectAll(MemberVO memberVo) {
+		return sqlSession.selectList(namespace+"selectAll",memberVo);
 	}
 
 	@Override
