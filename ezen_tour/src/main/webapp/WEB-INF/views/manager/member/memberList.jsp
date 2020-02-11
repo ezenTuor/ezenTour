@@ -9,15 +9,15 @@ function pageFunc(curPage){
 }
 </script>
 <article class="managerTable">
-	<h2>패키지 목록</h2>
+	<h2>회원 목록</h2>
 	
 	<c:if test="${!empty searchVo.searchKeyword }">
 	<p>검색어 : ${searchVo.searchKeyword}, 
-		${pagingInfo.totalRecord }건 검색되었습니다.</p>	
+		${pagingInfo.totalRecord }명이 검색되었습니다.</p>	
 	</c:if>
 	
 	<!-- 페이징 처리 관련 form -->
-	<form action="<c:url value='/manager/pack/packList.do'/>" name="frmPage" method="post">
+	<form action="<c:url value='/manager/member/memberList.do'/>" name="frmPage" method="post">
 		<input type="hidden" name="searchCondition" 
 			value="${searchVo.searchCondition}">
 		<input type="hidden" name="searchKeyword" 
@@ -27,36 +27,26 @@ function pageFunc(curPage){
 	<table>
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>타이틀</th>
-				<th>지역분류</th>
-				<th>검색 키워드</th>
-				<th>작성일</th>
+				<th>회원번호</th>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>회원등급</th>
+				<th>성별</th>
+				<th>가입일</th>
+				<th>탈퇴여부</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:if test="${!empty list}">
-				<c:forEach var="pack" items="${list}">
+				<c:forEach var="memberVo" items="${list}">
 					<tr>
-						<td>${pack.packNo}</td>
-						<td>
-							<a href="<c:url value='/manager/pack/packDetail.do?packNo=${pack.packNo}'/>">
-								${pack.name}
-							</a>
-						</td>
-						<td>${pack.areaName}</td>
-						<td>${pack.keyword}</td>
-						<td>${pack.regdate}</td>
-						<%-- <td>
-							<a href="${pageContext.request.contextPath}/manager/pack/packEdit.do?packNo=${pack.packNo}">
-								<input type="button" value="수정">
-							</a>
-						</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/manager/detail/detailList.do?packNo=${pack.packNo}">
-								<input type="button" value="확인">
-							</a>
-						</td> --%>
+						<td>${memberVo.userNo}</td>
+						<td>${memberVo.userId}</td>
+						<td>${memberVo.name}</td>
+						<td>${memberVo.grade}</td>
+						<td>${memberVo.gender}</td>
+						<td>${memberVo.regdate}</td>
+						<td>${memberVo.delFlag}</td>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -92,24 +82,18 @@ function pageFunc(curPage){
 	</div>
 	<br>
 	<div>
-		<form action="<c:url value='/manager/pack/packList.do'/>" method="post">
+		<form action="<c:url value='/manager/member/memberList.do'/>" method="post">
 			<select name="searchCondition">
 				<option value="name"
 				<c:if test="${searchVo.searchCondition=='name'}">selected="selected"</c:if>
-				>타이틀</option>
-				<option value="area_name"
-				<c:if test="${searchVo.searchCondition=='area_name'}">selected="selected"</c:if>
-				>지역</option>
-				<option value="keyword"
-				<c:if test="${searchVo.searchCondition=='keyword'}">selected="selected"</c:if>
-				>키워드</option>
+				>이름</option>
+				<option value="user_id"
+				<c:if test="${searchVo.searchCondition=='user_id'}">selected="selected"</c:if>
+				>아이디</option>
 			</select>
 			<input type="text" name="searchKeyword" value="${searchVo.searchKeyword}">
 			<input type="submit" id="search" value="검색">
 		</form>
-		<a href="<c:url value='/manager/pack/packWrite.do'/>">
-			<input type="button" value="작성하기">
-		</a>
 	</div>
 </article>
-<%@include file="../../inc/adminBottom.jsp" %>
+<%@include file="../../inc/adminBottom.jsp"%>

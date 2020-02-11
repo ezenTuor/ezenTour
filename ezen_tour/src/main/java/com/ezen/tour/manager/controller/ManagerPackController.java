@@ -58,7 +58,6 @@ public class ManagerPackController {
 	@RequestMapping(value="/packWrite.do", method=RequestMethod.POST)
 	public String packWrite_post(@ModelAttribute ManagerPackVo packVo, HttpServletRequest request) {
 		logger.info("패키지 작성 처리 packVo={}", packVo);
-		
 		//패키지 이름 가져오기
 		String paramName="packImages";
 		

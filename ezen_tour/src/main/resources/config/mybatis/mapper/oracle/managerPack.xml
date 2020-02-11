@@ -46,7 +46,6 @@
 	<select id="selectTotal" parameterType="searchVo" resultType="int">
 		select count(*) from pack_view
 		<include refid="searchWhere"/>
-		order by pack_no desc
 	</select>
 </mapper>
 

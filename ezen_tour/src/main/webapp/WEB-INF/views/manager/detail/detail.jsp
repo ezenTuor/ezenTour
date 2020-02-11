@@ -49,7 +49,7 @@
 		<div>${detailViewVo.details }</div>
 	</div>
 	<div>
-		<label>인원 [현재인원/최대인원 (최소인원)]</label>
+		<label>인원 [예약가능/최대인원 (최소인원)]</label>
 		<div>${detailViewVo.capecityCur}/${detailViewVo.capecity } (${detailViewVo.capecityMin })</div>
 	</div>
 	<p>
