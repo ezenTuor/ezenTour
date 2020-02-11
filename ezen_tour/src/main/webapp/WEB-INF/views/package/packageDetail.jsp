@@ -6,6 +6,17 @@
 <c:import url="/inc/top.do"></c:import>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
 
+<script>
+
+	$(document).ready(function() {
+		var aaa = $("#regdate").text();
+		console.log(aaa);
+		var curdate = new Date(aaa);
+		var realDate = curdate.getTime();
+		console.log(realDate)
+		$("#itemCode").text(realDate);
+	})
+</script>
 
 
 <div id="pack-detail">
@@ -14,7 +25,8 @@
 	<div id="fir-line"></div>
 	
 	<div id="pack-semi-detail">
-		<div>상품번호   |  00000ABC</div> 
+		<div style="display: flex">상품번호   |   <div id="itemCode"></div></div> 
+		<div id="regdate" style="display:none">${packVo.regdate }</div>
 		<div><span>고객리뷰   |  00/00</span><a href=#>여행후기</a></div>
 	
 	</div>
@@ -26,6 +38,8 @@
 	</c:forEach>
 
  -->
+ 
+ <!-- ${pageContext.request.contextPath}/resources/images/mainLogo.png 이걸로 바꾸기 -->
 	<!-- 캐러셀 start -->
 	<div class="carousel">
 		<div class="carousel-inner">
