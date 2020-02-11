@@ -2,25 +2,27 @@
 <%@ include file="../inc/top.jsp" %>
 
 <style type="text/css">
-	.reviewWrite {
+	.write {
 		-ms-user-select: none;
 		-moz-user-select: -moz-none;
 		-webkit-user-select: none;
 		-khtml-user-select: none;
-		user-select:none;
-		text-align: center;
+		user-select: none;
 	}
 
 	#title {
 		border: 0px solid;
 		border-bottom: 1px solid gray;
-		text-align: center;
 		font-size: 25px;
 	}
 
 	.contentEditor {
 		margin: auto;
 		width: 65%;
+	}
+	
+	.write, #title {
+		text-align: center;
 	}
 </style>
 
@@ -45,10 +47,10 @@
 			var newText3=newText2.replace(/\n/g,"");
 			var newText4=newText3.replace(/\s/g,"");
 			
-			if($('#pn option:selected').val()=='0'){
+			if($('#packName option:selected').val()=='0'){
 				alert("패키지를 선택해주세요");
 				event.preventDefault();
-				$("#pn").focus();
+				$("#packName").focus();
 			}else if($("#title").val().length<1){
 				alert("제목을 입력해주세요");
 				event.preventDefault();
@@ -72,64 +74,67 @@
 	});
 </script>
 
-<div class="reviewWrite">
-	<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
-		<input type="hidden" name="userNo" value="${userNo}">
-		<input type="hidden" name="historyNo" id="historyNo" value="${historyNo}">
-		<input type="hidden" name="ntoy" value="${param.review}">
-		<input type="hidden" name="name" value="${param.name}">
-		<fieldset>
-		
-			<legend id="pn">[
-				<select id="packs">
-					<option value="0">리뷰 작성할 패키지를 선택하세요.</option>
-					<c:forEach var="vo" items="${list}">
-						<option value="${vo.historyNo}"
-							<c:if test="${param.name==vo.name}">
-								selected="selected"
-							</c:if>
-						>${vo.name}</option>
-					</c:forEach>
-				</select>
-			]</legend>
+<div>
+	<div class="write">
+		<form name="frmWrite" method="post" action="<c:url value='/review/write.do'/>">
+			<input type="hidden" name="userNo" value="${userNo}">
+			<input type="hidden" name="historyNo" id="historyNo" value="${historyNo}">
+			<input type="hidden" name="ntoy" value="${param.review}">
+			<input type="hidden" name="name" value="${param.name}">
+			<fieldset>
 			
-			<br>
-			
-			<div>
-				<label for="title">제목 : </label>
-				<input type="text" id="title" name="title"/>
-			</div>
-			
-			<br>
-			
-			<div>
-				<label for="score">평점 : </label>
-				<select id="score" name="score">
-					<option value="0">선택하세요</option>
-					<option value="1">☆</option>
-					<option value="2">☆☆</option>
-					<option value="3">☆☆☆</option>
-					<option value="4">☆☆☆☆</option>
-					<option value="5">☆☆☆☆☆</option>
-				</select>
-			</div>
-			
-			<br>
-			
-			<div class="contentEditor">
-				<textarea id="content" name="content" rows="12" cols="40"></textarea>
-			</div>
-			
-			<br>
-			
-			<div>
-				<input type="submit" value="작성하기"/>
-				<input type="button" value="목록으로" onclick="location.href='<c:url value='/review/list.do'/>'"/>
-			</div>
-		</fieldset>
-	</form>
-</div>
+				<legend id="packName">[ 
+					<select id="packs">
+						<option value="0">패키지를 선택하세요</option>
+						<c:forEach var="vo" items="${list}">
+							<option value="${vo.historyNo}"
+								<c:if test="${param.name==vo.name}">
+									selected="selected"
+								</c:if>
+							>${vo.name}</option>
+						</c:forEach>
+					</select>
+				 ]</legend>
+				
+				<br>
+				
+				<div>
+					<label for="title">제목 : </label>
+					<input type="text" id="title" name="title"/>
+				</div>
+				
+				<br>
+				
+				<div>
+					<label for="score">평점 : </label>
+					<select id="score" name="score">
+						<option value="0">선택하세요</option>
+						<option value="1">☆</option>
+						<option value="2">☆☆</option>
+						<option value="3">☆☆☆</option>
+						<option value="4">☆☆☆☆</option>
+						<option value="5">☆☆☆☆☆</option>
+					</select>
+				</div>
+				
+				<br>
+				
+				<div class="contentEditor">
+					<textarea id="content" name="content" rows="12" cols="40"></textarea>
+				</div>
+				
+				<br>
+				
+				<div>
+					<input type="submit" value="작성하기"/>
+					<input type="button" value="목록으로" onClick="location.href='<c:url value='/review/list.do'/>'"/>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	
+	<br>
 
-<br>
+</div>
 
 <%@ include file="../inc/bottom.jsp" %>

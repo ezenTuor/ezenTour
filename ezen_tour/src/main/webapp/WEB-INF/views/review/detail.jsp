@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp"%>
+<% String userId=(String)session.getAttribute("userId"); %>
 
 <style type="text/css">
-	.reviewDetail {
+	.detail {
 		-ms-user-select: none;
 		-moz-user-select: -moz-none;
 		-webkit-user-select: none;
@@ -11,26 +12,53 @@
 		width: 60%;
 		margin: auto;
 	}
+	
+	.packName, .score, .title {
+		font-weight: bold;
+	}
 
 	a {
-	 	color: black;
 		text-decoration: none;
 	}
 
 	p {
 		text-align: left;
 	}
+	
+	.score {
+		color: red;
+	}
+	.score span, a {
+		color: black;
+	}
+	
+	.title {
+		color: #000099;
+		float: left;
+	}
+	
+	.score {
+		text-align: right;
+	}
+	
+	.date {
+		float: right;
+	}
+	
+	.writer span, .score span {
+		font-size: medium;
+	}
 </style>
 
-<div class="reviewDetail">
-	<p>[패키지] ${vo.packName}</p>
+<div class="detail">
+	<p class="packName">[패키지] ${vo.packName}</p>
 	
 	<br>
 	
-	<p style="float: right">★(${vo.score})</p>
-	<p>${vo.title}</p>
-	<p style="float: right"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
-	<p>${vo.userId}</p>
+	<p class="title">${vo.title}</p>
+	<p class="score">★<span>(${vo.score})</span></p>
+	<p class="date"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
+	<p class="writer">${vo.userId}<c:if test="${userId==vo.userId}"><span>(나)</span></c:if></p>
 	<hr>
 	
 	<br>
@@ -47,8 +75,9 @@
 	<div>
 		<c:import url="/review/reviewMove.do"/>
 	</div>
-</div>
+	
+	<br>
 
-<br>
+</div>
 
 <%@ include file="../inc/bottom.jsp"%>
