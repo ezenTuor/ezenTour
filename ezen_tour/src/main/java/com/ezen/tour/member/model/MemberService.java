@@ -3,6 +3,8 @@ package com.ezen.tour.member.model;
 import java.util.List;
 import java.util.Map;
 
+import com.ezen.tour.common.SearchVO;
+
 public interface MemberService {
 	
 	public static final int EXIST_ID=1;  //아이디가 이미 존재하는 경우
@@ -23,4 +25,7 @@ public interface MemberService {
 	String FindPwd(Map<String, String> map);
 	int updateUserPwd(MemberVO vo);
 	String findUserIdByUserNo(int userNo);
+	
+	List<MemberVO> selectAll(SearchVO searchVo);
+	int selectTotal(SearchVO searchVo);
 }

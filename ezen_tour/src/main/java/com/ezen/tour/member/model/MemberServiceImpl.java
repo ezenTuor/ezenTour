@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.common.SearchVO;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 	@Autowired
@@ -87,5 +89,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String findUserIdByUserNo(int userNo) {
 		return memberDao.findUserIdByUserNo(userNo);
+	}
+
+	@Override
+	public List<MemberVO> selectAll(SearchVO searchVo) {
+		return memberDao.selectAll(searchVo);
+	}
+
+	@Override
+	public int selectTotal(SearchVO searchVo) {
+		return memberDao.selectTotal(searchVo);
 	}
 }

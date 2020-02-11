@@ -66,9 +66,12 @@ public class ManagerPackDetailController {
 		detailVo.setDaysDetail(day+"일");
 		//
 		
+		//예약가능 인원수 처리
+		detailVo.setCapecityCur(detailVo.getCapecity());
+		logger.info("처리 후 패키지 디테일, detailVo={}",detailVo);
+		
 		int cnt=managerDetailService.insertDetail(detailVo);
 		logger.info("패키지 상제 작성 처리 결과 cnt={}",cnt);
-		logger.info("처리 후 패키지 디테일, detailVo={}",detailVo);
 		
 		return "redirect:/manager/schedule/scheduleWrite.do?packDno="+detailVo.getPackDno();
 	}
