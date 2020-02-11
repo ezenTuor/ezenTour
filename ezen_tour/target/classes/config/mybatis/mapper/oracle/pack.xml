@@ -101,6 +101,12 @@
 		select korea_dep from pack_detail
 		where pack_no=#{packNo}
 	</select>
+	
+	<update id="updateCapaCur" parameterType="packDetailVo">
+		update pack_detail
+		set capecity_cur=#{capecityCur}
+		where pack_dno=#{packDno}
+	</update>
 </mapper>
 
 

@@ -22,11 +22,6 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 	}
 
 	@Override
-	public List<ManagerPackVo> selectList() {
-		return sqlSession.selectList(namespace+"selectList");
-	}
-
-	@Override
 	public ManagerPackVo selectPack(int packNo) {
 		return sqlSession.selectOne(namespace+"selectPack", packNo);
 	}
@@ -37,15 +32,12 @@ public class ManagerPackDAOmybatis implements ManagerPackDAO{
 	}
 
 	@Override
-	public List<ManagerPackViewVO> selectList2(SearchVO searchVo) {
+	public List<ManagerPackViewVO> selectList(SearchVO searchVo) {
 		return sqlSession.selectList(namespace+"selectViewList", searchVo);
 	}
 
 	@Override
-	public List<ManagerPackViewVO> selectList3() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+	public int selectTotal(SearchVO searchVo) {
+		return sqlSession.selectOne(namespace+"selectTotal", searchVo);
+	}	
 }

@@ -14,7 +14,7 @@ public class ManagerPackViewVO {
 	private String detail;
 	private String regdate;
 	private int areaNo;
-	private int areaName;
+	private String areaName;
 	
 	public int getPackNo() {
 		return packNo;
@@ -94,10 +94,10 @@ public class ManagerPackViewVO {
 	public void setAreaNo(int areaNo) {
 		this.areaNo = areaNo;
 	}
-	public int getAreaName() {
+	public String getAreaName() {
 		return areaName;
 	}
-	public void setAreaName(int areaName) {
+	public void setAreaName(String areaName) {
 		this.areaName = areaName;
 	}
 	@Override

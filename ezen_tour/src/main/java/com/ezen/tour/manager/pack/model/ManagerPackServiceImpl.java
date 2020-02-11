@@ -18,10 +18,6 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 		return managerPackDao.insertPack(packVo);
 	}
 
-	@Override
-	public List<ManagerPackVo> selectList() {
-		return managerPackDao.selectList();
-	}
 
 	@Override
 	public ManagerPackVo selectPack(int packNo) {
@@ -34,12 +30,12 @@ public class ManagerPackServiceImpl implements ManagerPackService{
 	}
 
 	@Override
-	public List<ManagerPackViewVO> selectList2(SearchVO searchVo) {
-		return managerPackDao.selectList2(searchVo);
+	public List<ManagerPackViewVO> selectList(SearchVO searchVo) {
+		return managerPackDao.selectList(searchVo);
 	}
 
 	@Override
-	public List<ManagerPackViewVO> selectList3() {
-		return managerPackDao.selectList3();
+	public int selectTotal(SearchVO searchVo) {
+		return managerPackDao.selectTotal(searchVo);
 	}
 }

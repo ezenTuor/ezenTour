@@ -90,6 +90,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public List<String> selDate(int packNo) {
 		return packDetailDao.selDate(packNo);
 	}
+
+	@Override
+	public int updateCapaCur(PackDetailVO packDetailVo) {
+		return packDetailDao.updateCapaCur(packDetailVo);
+	}
 	
 	
 }

@@ -115,42 +115,25 @@ public class ManagerPackController {
 		logger.info("패키지 목록 보여주기, 파라미터 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo=new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		
-		/*
-		//1
-		logger.info("글 목록, 파라미터 searchVo={}",searchVo);
-		
-		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
-		PaginationInfo pagingInfo=new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		
-		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
-		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		searchVo.setRecordCountPerPage(pagingInfo.getRecordCountPerPage());
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		logger.info("값 세팅 후 searchVo={}", searchVo);
 		
-		//2
-		List<ReBoardVO> list=reBoardService.selectAll(searchVo);
-		logger.info("글목록 결과, list.size={}", list.size());
+		List<ManagerPackViewVO> list=managerPackService.selectList(searchVo);
+		logger.info("패키지 목록 list.size={}",list.size());
 		
-		//[3] 레코드 개수 조회후 셋팅
-		int totalRecord=reBoardService.selectTotalRecord(searchVo);
+		int totalRecord=managerPackService.selectTotal(searchVo);
 		logger.info("totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);
 		
-		//3
-		model.addAttribute("list", list);
 		model.addAttribute("pagingInfo", pagingInfo);
-		*/
-		
-		List<ManagerPackViewVO> list=managerPackService.selectList3();
-		logger.info("패키지 목록 list.size={}",list.size());
+		model.addAttribute("searchVo", searchVo);
 		model.addAttribute("list", list);
 	}
 

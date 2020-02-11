@@ -6,6 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(){
+		var nums="";
+		
+		$(".option").each(function(){
+			var temp=$(this).find("input[type=text]").val();
+			
+			if($(this).find("input[type=checkbox]").is(":checked")){
+				if(nums!=""){
+					nums+="|";
+				}
+				nums+=temp;
+			}
+		});
+		$("#wishNums").val(nums);
+		$("form[name=insert]").submit();
+	});
+});
+</script>
 </head>
 <body>
 <div id="PackageWishList">
@@ -35,6 +56,7 @@
 					<th scope="col">연령대별 인원수</th>
 					<th scope="col">총 가격</th>
 					<th scope="col">찜한 날짜</th>
+					<th scope="col">구매 여부</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,7 +67,7 @@
 				</c:if>
 				<c:if test="${!empty list}">
 					<c:forEach var="list" items="${list }">
-						<tr>
+						<tr class="option">
 							<td>${list.wishNo}</td>
 							<td>${list.detail}</td>
 							<td>성인 : ${list.man}<br>
@@ -53,6 +75,10 @@
 								유아 : ${list.baby}</td>
 							<td>${list.price}</td>
 							<td>${list.wishDate}</td>
+							<td>
+								<input type="checkbox" >
+								<input type="text" value="${list.wishNo}">나중에 히든처리
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -81,6 +107,10 @@
 				</a>
 			</c:if>
 		</div>
+		<form action="<c:url value='/payment/payment.do'/>" name="insert" method="post">
+			<button id="submit">결제하기</button>
+			<input type="text" id="wishNums" name="nums">나중에 히든처리
+		</form>
 	</div>
 </body>
 </html>
