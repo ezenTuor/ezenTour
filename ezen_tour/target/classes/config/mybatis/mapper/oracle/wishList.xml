@@ -26,5 +26,7 @@
 		where user_no = #{userNo}
 	</select>
 	
-	
+	<delete id="deleteWish" parameterType="int">
+		delete from wishList where wish_no = #{wishNo}
+	</delete>
 </mapper>

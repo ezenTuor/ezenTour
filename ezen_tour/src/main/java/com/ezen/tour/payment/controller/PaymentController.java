@@ -21,6 +21,7 @@ import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.payment.model.PaymentService;
 import com.ezen.tour.payment.model.PaymentVO;
+import com.ezen.tour.wishList.model.WishListService;
 import com.ezen.tour.wishListView.model.WishListViewService;
 import com.ezen.tour.wishListView.model.WishListViewVO;
 
@@ -41,6 +42,9 @@ public class PaymentController {
 	
 	@Autowired
 	private HistoryService historyService;
+	
+	@Autowired
+	private WishListService wishListService;
 	
 	@RequestMapping("/payment.do")
 	public void payment(@RequestParam String nums, Model model, HttpServletRequest request) {	//번호가져오기
@@ -69,7 +73,7 @@ public class PaymentController {
 		String details="";
 		
 		for(WishListViewVO viewVo : list) {
-			details+="이름-"+viewVo.getName()+" 성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+" 상세번호-"+viewVo.getPackDno()+"      ";
+			details+="<p>이름-"+viewVo.getName()+" 상세번호-"+viewVo.getPackDno()+"</p><p>성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+"</p>";
 			totalPrice+=viewVo.getPrice();
 			title+=viewVo.getName()+" ";
 		}
@@ -112,10 +116,18 @@ public class PaymentController {
 
 			int cnt2=historyService.insertHistory(hisVo);
 			logger.info("이용내역 db 입력 결과 i={}, cnt2={}", i, cnt2);
+			
+			int cnt3=wishListService.deleteWish(no);
+			logger.info("찜목록 삭제 결과 cnt={}", cnt3);
 		}
 		
 		
 		return "index";
+	}
+	
+	@RequestMapping("/payment2.do")
+	public void payment2() {
+		logger.info("테스트");
 	}
 	
 }
