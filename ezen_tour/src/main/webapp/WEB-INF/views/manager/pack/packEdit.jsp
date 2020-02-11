@@ -86,7 +86,7 @@ $(function(){
 				}
 			}
 		});
-		alert(str);
+		//alert(str);
 		$("#daysWeek").val(str);
 	});
 });
@@ -100,7 +100,7 @@ $(function(){
 });
 
 function area(){
-	alert($("#areaNo").val());
+	//alert($("#areaNo").val());
 	var val=$("#areaNo").find("option:selected").val();
 	var name=$("#areaNo").find("option:selected").text();
 	//alert("값 변화 확인, 값="+val+", 이름="+name);
@@ -260,6 +260,9 @@ $(function(){
 			<p class="managerSubmit">
 				<input type="button" value="테스트버튼" id="test">
 				<input type="submit" value="전송">
+				<a href="<c:url value='/manager/pack/packDetail.do?packNo=${packVo.packNo}'/>">
+					<input type="button" value="취소">
+				</a>
 			</p>
 		</form>
 	</article>

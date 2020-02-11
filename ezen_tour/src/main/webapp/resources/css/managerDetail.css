@@ -1,0 +1,29 @@
+@charset "UTF-8";
+article.managerDetail {
+    background: #ecf0f7;
+    padding: 20px;
+}
+
+.managerDetail>div {
+    border: 2px solid lightgray;
+    margin: 10px;
+    background: white;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+}
+
+.managerDetail>div>label {
+    float: left;
+    border-right: 2px solid lightgray;
+    padding: 10px;
+    display: inline-block;
+    width: 10%;
+    background: lightgray;
+}
+
+.managerDetail>div>div {
+    float: left;
+    display: inline-block;
+    padding: 10px;
+}

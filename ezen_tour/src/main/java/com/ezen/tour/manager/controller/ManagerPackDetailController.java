@@ -1,5 +1,6 @@
 package com.ezen.tour.manager.controller;
 
+import java.io.Writer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,8 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.common.PaginationInfo;
+import com.ezen.tour.common.Utility;
+import com.ezen.tour.manager.pack.model.ManagerPackService;
+import com.ezen.tour.manager.pack.model.ManagerPackViewVO;
+import com.ezen.tour.manager.pack.model.ManagerPackVo;
 import com.ezen.tour.manager.packDetail.model.ManagerDetailService;
 import com.ezen.tour.manager.packDetail.model.ManagerDetailVO;
+import com.ezen.tour.manager.packDetail.model.ManagerDetailViewVO;
 
 @Controller
 @RequestMapping("/manager/detail")
@@ -25,6 +32,9 @@ public class ManagerPackDetailController {
 	
 	@Autowired
 	private ManagerDetailService managerDetailService;
+	
+	@Autowired
+	private ManagerPackService managerPackService;
 	
 	@RequestMapping(value="/detailWrite.do", method=RequestMethod.GET)
 	public void packDetail(@RequestParam int packNo) {
@@ -60,18 +70,21 @@ public class ManagerPackDetailController {
 		logger.info("패키지 상제 작성 처리 결과 cnt={}",cnt);
 		logger.info("처리 후 패키지 디테일, detailVo={}",detailVo);
 		
-		return "redirect:/manager/schedule/scheduleWrite.do?detailNo="+detailVo.getPackDno();
+		return "redirect:/manager/schedule/scheduleWrite.do?packDno="+detailVo.getPackDno();
 	}
 	
 	@RequestMapping("/detailList.do")
 	public void detailList(@RequestParam int packNo, Model model) {
 		logger.info("패키지 소분류 목록 보여주기, 파라미터 packNo={}", packNo);
 		
+		ManagerPackVo packVo=managerPackService.selectPack(packNo);
+		
 		List<ManagerDetailVO> list=managerDetailService.selectDetailsByPackNo(packNo);
 		
-		logger.info("패키지 소분류 조회 결과 list.size={}",list.size());
+		logger.info("패키지 소분류 조회 결과 packVo={}, list.size={}", packVo, list.size());
 		
 		model.addAttribute("list", list);
+		model.addAttribute("packVo", packVo);
 	}
 	
 	@RequestMapping(value="/detailEdit.do", method = RequestMethod.GET)
@@ -83,5 +96,16 @@ public class ManagerPackDetailController {
 		logger.info("패키시 소분류 조회 결고, detailVo={}", detailVo);
 		
 		model.addAttribute("detailVo", detailVo);
+	}
+	
+	@RequestMapping("/detail.do")
+	public void detailShow(@RequestParam int packDno, Model model) {
+		logger.info("패키지 소분류 디테일화면, 파라미터 packDno={}", packDno);
+		
+		ManagerDetailViewVO detailViewVo=managerDetailService.selectDetailView(packDno);
+		
+		logger.info("패키시 소분류 뷰 조회 결과, detailViewVo={}", detailViewVo);
+		
+		model.addAttribute("detailViewVo", detailViewVo);
 	}
 }

@@ -20,6 +20,11 @@
 		select * from pack_detail
 		where pack_no=#{packNo}
 	</select>
+	
+	<select id="selectDetailView" parameterType="int" resultType="managerDetailViewVo">
+		select * from pack_detail_view
+		where pack_dno=#{packDno}
+	</select>
 </mapper>
 
 
