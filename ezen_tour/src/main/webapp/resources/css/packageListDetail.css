@@ -7,7 +7,7 @@
 }
 
 #left-menu {
-	width:18%;
+	margin-left: 30px;
 	/*background: purple;*/
 	padding: 15px;
 	display: flex;
@@ -44,7 +44,7 @@
 
 .areaDetail-sel {
 	align-items: center;
-	width: 170px;
+	width: 158px;
 	border: 1px solid gray;
 	text-align: center;
 	font-weight:600;
@@ -63,7 +63,7 @@
 }
 
 #pack-space {
-	background: blue;
+	/*background: blue;*/
 	min-height: 300px;
 	width: 70%;
 	margin: 0 auto;
@@ -157,4 +157,38 @@
 
 .tabset {
   max-width: 65em;
+}
+
+
+/* ajax list css */
+
+.pack-lii{
+	display: flex;
+	margin-bottom : 30px;
+}
+
+.info-box {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 23px;
+}
+
+#pack-ex{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pack-img {
+	width: 200px;
+	margin-right: 40px;	
+}
+
+.info-box, .pack-max {
+	color: black;
+	font-decoration:none;
+	font-weight: 600;
+
 }
