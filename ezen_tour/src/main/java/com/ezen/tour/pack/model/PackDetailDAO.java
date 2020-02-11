@@ -36,5 +36,7 @@ public interface PackDetailDAO {
 
 	List<String> selDate(int packNo);
 
+	int updateCapaCur(PackDetailVO packDetailVo);
+
 
 }
