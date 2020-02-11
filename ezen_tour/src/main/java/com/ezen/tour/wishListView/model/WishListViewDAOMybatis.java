@@ -18,4 +18,9 @@ public class WishListViewDAOMybatis implements WishListViewDAO{
 		return sqlSession.selectList(namespace+"selectWishListView", userNo);
 	}
 
+	@Override
+	public WishListViewVO selectWish(int wishNo) {
+		return sqlSession.selectOne(namespace+"selectWish", wishNo);
+	}
+
 }

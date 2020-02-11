@@ -42,5 +42,10 @@ public class HistoryServiceImpl implements HistoryService{
 	public List<HistoryViewVO> reviewChoosePack() {
 		return historyDao.reviewChoosePack();
 	}
+
+	@Override
+	public int insertHistory(HistoryVO vo) {
+		return historyDao.insertHistory(vo);
+	}
 	
 }

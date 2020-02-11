@@ -65,8 +65,26 @@ public class PackageController {
 	public String packDetail_post(@ModelAttribute WishListVO wishListVo, HttpServletRequest request, Model model) {
 		logger.info("카트로 넘기기 vo={}", wishListVo);
 		int cnt = packDetailService.insertWish(wishListVo);
+		int outNum = wishListVo.getBaby()+wishListVo.getChild()+wishListVo.getMan();
+		int packDnoNo=wishListVo.getPackDno();
+		PackDetailVO detailVo = packDetailService.selectPackDetail(packDnoNo);
+		int lastTimeLeft = detailVo.getCapecityCur(); //이전 남은 인원
+		
+		int nowLeft = lastTimeLeft-outNum; //남은 인원
+		
+		PackDetailVO packDetailVo = new PackDetailVO();//update에 쓸vo
+		packDetailVo.setCapecityCur(nowLeft);
+		packDetailVo.setPackDno(packDnoNo);
+		
 		if(cnt>0) {
+			int updateCnt = packDetailService.updateCapaCur(packDetailVo);
 			logger.info("카트 등록 성공");
+			if(updateCnt>0) {
+				logger.info("업데이트 성공");
+			} else {
+				logger.info("업데이트 실패");
+			}
+			
 		} else {
 			logger.info("카트 등록 실패");
 		}

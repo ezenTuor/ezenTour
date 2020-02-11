@@ -11,5 +11,6 @@ public interface HistoryDAO {
 	public List<HistoryViewVO> selectMtoM(HistorySearchVO vo);
 	public List<HistoryViewVO> selectAll(int userNo);
 	public List<HistoryViewVO> reviewChoosePack();
+	public int insertHistory(HistoryVO vo);
 	
 }

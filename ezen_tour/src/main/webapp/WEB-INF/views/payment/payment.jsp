@@ -67,7 +67,8 @@ $(function(){
 				$("#test6").val(details);
 				$("#test7").val(rsp.merchant_uid);
 				$("#test8").val(rsp.imp_uid);
-				$("form[name=frmSuccess]").submit();		
+				$("form[name=frmSuccess]").submit();
+				
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -83,7 +84,7 @@ $(function(){
 	<form name="frmPayment" method="post" 
 		action="#">
 		<p>결제하기</p>
-		<button id="check_module" type="button">결제 모듈 테스트</button>
+		<button id="check_module" type="button">결제하기</button>
 	</form>
 	<form name="frmSuccess" method="post"
 		action="<c:url value='/payment/paymentInsert.do'/>">
@@ -96,7 +97,7 @@ $(function(){
 		<input type="text" name="detail" value="" id="test6">
 		<input type="text" name="merchUid" value="" id="test7">
 		<input type="text" name="impUid" value="" id="test8">
-		
+		<input type="text" name="nums" value="${nums}">
 	</form>
 </body>
 </html>

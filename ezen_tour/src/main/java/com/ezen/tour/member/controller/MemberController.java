@@ -93,6 +93,7 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("userId");
 		session.removeAttribute("name");
+		session.removeAttribute("userNo");
 		
 		return "redirect:/index.do";
 	}

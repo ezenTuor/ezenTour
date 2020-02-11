@@ -9,19 +9,95 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
 <script type="text/javascript">
-	$( function() {
-    	$( "#tabs" ).tabs();
-  	});
+$(document).ready(function(){
+	
+	$('ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('ul li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+
+})
 </script>
+<style type="text/css">
+	#tabs{
+		width: 1064px;
+		margin: auto;
+	}
+	#tabs{
+		height: 1064px;
+	}
+	table{
+		border-top: 1px solid gray;
+		border-bottom: 1px solid gray;
+		margin: auto;
+		width: 1064px;
+	}
+	table th{
+		background-color: #ddd;
+		border-right: 1px solid #ccc;
+   		border-bottom: 1px solid #ccc;
+    	border-top: 1px solid #fff;
+    	border-left: 1px solid #fff;
+	}
+	table td{
+		vertical-align: top;
+    	border-right: 1px solid #ccc;
+    	border-bottom: 1px solid #ccc;
+	}
+	#tabs ul li{
+		float: left;
+		width: 530px;
+		border-top: 1px solid gray;
+		border-left: 1px solid gray;
+		border-right: 1px solid gray;
+		text-align: center;
+		height: 55px;
+		background-color: #ddd;
+	}
+	
+	.tab-content{
+			display: none;
+	}
+
+	.tab-content.current{
+			display: inherit;
+	}
+	#tabs ul li.current{
+		border-top: 1px solid black;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		background-color: white;
+	}
+	tr th{
+    	text-align: center;
+    	background-color: #f2f2f2;
+    	font-size: 13px;
+    	font-weight: 600;
+    	border-right: 1px solid #e4e4e4;
+    	border-bottom: 1px solid #e4e4e4;
+}
+	}
+</style>
 </head>
 <body>
 <div id="tabs">
+<h2 style="color: black; float: left; font-weight: bold;">내가받은 쿠폰</h2>
+	<br>
+	<br>
 	<ul>
-		<li><a href="#useful">사용 가능한 쿠폰</a></li>
-		<li><a href="#n_useful">사용 불가 쿠폰</a></li>
+		<li class="tab-link current" data-tab="useful">사용 가능한 쿠폰</li>
+		<li class="tab-link" data-tab="n_useful">사용 불가 쿠폰</li>
 	</ul>
-	<div id="useful">
-		<h2>내가받은 쿠폰</h2>
+	<br>
+	<div id="useful" class="tab-content current">
+		
+		<br>
+		<br>
 		<c:if test="${!empty list }">
 	${pagingInfo.totalRecord }건 검색되었습니다.
 		</c:if>
@@ -29,16 +105,16 @@
 		<!-- 페이징 처리 관련 form -->
 		<form action="<c:url value='/myPage/coupon.do'/>" name="frmPage"
 			method="post">
-			<input type="text" name="currentPage">
+			<input type="hidden" name="currentPage">
 		</form>
 		<table class="box2" summary="사용 가능한 쿠폰">
-			<caption>수령한 쿠폰 목록</caption>
+			<caption>쿠폰 목록</caption>
 			<colgroup>
-				<col style="width: 9%" />
-				<col style="width: 50%" />
 				<col style="width: 11%" />
-				<col style="width: 15%" />
-				<col style="width: 15%" />
+				<col style="width: 48%" />
+				<col style="width: 11%" />
+				<col style="width: 17%" />
+				<col style="width: 13%" />
 			</colgroup>
 			<thead>
 				<tr>
@@ -52,7 +128,7 @@
 			<tbody>
 				<c:if test="${empty list}">
 					<tr class="align_center">
-						<td colspan="5">사용 가능한 쿠폰이 없습니다.</td>
+						<td colspan="5" style="text-align: center;">사용 가능한 쿠폰이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${!empty list}">
@@ -95,8 +171,8 @@
 	</div>
 
 
-	<div id="n_useful">
-		<h2>만기된 쿠폰</h2>
+	<div id="n_useful" class="tab-content">		<br>
+		<br>
 		<c:if test="${!empty N_list }">
 	${N_pagingInfo.totalRecord }건 검색되었습니다.
 		</c:if>
@@ -104,16 +180,16 @@
 		<!-- 페이징 처리 관련 form -->
 		<form action="<c:url value='/myPage/coupon.do'/>" name="frmPage"
 			method="post">
-			<input type="text" name="currentPage">
+			<input type="hidden" name="currentPage">
 		</form>
 		<table class="box2" summary="사용 불가능한 쿠폰">
 			<caption>만기된 쿠폰 목록</caption>
 			<colgroup>
-				<col style="width: 9%" />
-				<col style="width: 50%" />
 				<col style="width: 11%" />
-				<col style="width: 15%" />
-				<col style="width: 15%" />
+				<col style="width: 48%" />
+				<col style="width: 11%" />
+				<col style="width: 17%" />
+				<col style="width: 13%" />
 			</colgroup>
 			<thead>
 				<tr>
@@ -127,7 +203,7 @@
 			<tbody>
 				<c:if test="${empty N_list}">
 					<tr class="align_center">
-						<td colspan="5">만기된 쿠폰이 없습니다.</td>
+						<td colspan="5" style="text-align: center;">만기된 쿠폰이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${!empty N_list}">

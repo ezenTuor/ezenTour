@@ -5,13 +5,16 @@
 }
 
 #left-menu {
-	width:20%;
-	background: purple;
+	width:18%;
+	/*background: purple;*/
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
 }
 
 #right-menu {
 	width: 78%;
-	background: yellow;
+	/*background: yellow;*/
 }
 
 #areaDetail-nav {
@@ -43,4 +46,8 @@
 	height: 300px;
 	width: 70%;
 	margin: 0 auto;
+}
+
+.de-li-pack {
+	display: flex;
 }

@@ -10,8 +10,14 @@ public class HistoryVO {
 	private int price;
 	private String review;
 	private Timestamp regdate;
+	private int paymentNo;
 	
-	
+	public int getPaymentNo() {
+		return paymentNo;
+	}
+	public void setPaymentNo(int paymentNo) {
+		this.paymentNo = paymentNo;
+	}
 	public int getHistoryNo() {
 		return historyNo;
 	}
@@ -54,11 +60,10 @@ public class HistoryVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "HistoryVO [historyNo=" + historyNo + ", userNo=" + userNo + ", state=" + state + ", packDno=" + packDno
-				+ ", price=" + price + ", review=" + review + ", regdate=" + regdate + "]";
+				+ ", price=" + price + ", review=" + review + ", regdate=" + regdate + ", paymentNo=" + paymentNo + "]";
 	}
+	
 }
