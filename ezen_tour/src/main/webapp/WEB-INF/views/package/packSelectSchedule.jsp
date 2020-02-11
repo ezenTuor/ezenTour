@@ -57,7 +57,7 @@
 							var capecity = item.capecity;
 							var capecityCur = item.capecityCur;
 											
-							if(capecity > capecityCur){
+							if(capecityCur > 0){
 								str='<li id="title-tag">'+
 			    				'<div class="dep"><div>'+korDep1+'</div><div>'+korEnt2+'</div></div>'+
 			    				'<div class="air">'+item.airline+'</div>'+
@@ -178,7 +178,7 @@
 				<div class="air">항공</div>
 				<div class="during">기간</div>
 				<div class="packname">상품명</div>
-				<div class="price">기타</div>
+				<div class="price">가격</div>
 				<div class="res">예약상태</div>
 			</li>
 		</ul>
