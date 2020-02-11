@@ -253,4 +253,15 @@ public class ManagerPackController {
 		
 		return "common/message";
 	}
+	
+	@RequestMapping("/packDetail.do")
+	public void packDetail(@RequestParam int packNo, Model model) {
+		logger.info("패키지 대분류 상세 보여주기, 파라미터 packNo={}", packNo);
+		
+		ManagerPackVo packVo=managerPackService.selectPack(packNo);
+		int areaNo=packVo.getAreaNo();
+		String areaName=areaService.selectByAreaNo(areaNo);
+		model.addAttribute("packVo", packVo);
+		model.addAttribute("areaName", areaName);
+	}
 }

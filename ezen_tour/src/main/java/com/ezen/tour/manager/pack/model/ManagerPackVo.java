@@ -2,7 +2,7 @@ package com.ezen.tour.manager.pack.model;
 
 import java.sql.Timestamp;
 
-public class ManagerPackVo {
+public class ManagerPackVo{
 	private int packNo;
 	private String name;
 	private String imgNames;
@@ -102,5 +102,6 @@ public class ManagerPackVo {
 				+ ", days=" + days + ", daysWeek=" + daysWeek + ", detail=" + detail + ", regdate=" + regdate
 				+ ", areaNo=" + areaNo + "]";
 	}
+	
 	
 }

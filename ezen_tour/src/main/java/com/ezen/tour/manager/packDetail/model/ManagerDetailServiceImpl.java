@@ -24,4 +24,10 @@ public class ManagerDetailServiceImpl implements ManagerDetailService{
 	public List<ManagerDetailVO> selectDetailsByPackNo(int packNo) {
 		return managerDetailDao.selectDetailsByPackNo(packNo);
 	}
+
+	@Override
+	public ManagerDetailViewVO selectDetailView(int packDno) {
+		return managerDetailDao.selectDetailView(packDno);
+	}
+
 }

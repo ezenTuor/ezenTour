@@ -46,18 +46,19 @@ on w.pack_dno=p.pack_dno;
 
 create or replace view chart_view
 as
-select h.price, m.gender
-    , pa.area_no, to_char(h.regdate, 'yyyy') as YEAR, to_char(h.regdate, 'MM') as MONTH
+select p.price, m.gender
+    , pa.area_no, to_char(p.regdate, 'yyyy') as YEAR, to_char(p.regdate, 'MM') as MONTH
     , trunc(to_char(sysdate,'yyyy')
             -(substr(m.user_ssr,1,2) + case when substr(m.user_ssr,8,1) in (1,2) then 1900
                                        else 2000 end)+1 ,-1) as AGERANGE
-from history h left join member m
-on h.user_no=m.user_no
+from payment p left join member m
+on p.user_no=m.user_no
+left join history h
+on p.PAYMENT_NO=h.PAYMENT_NO
 left join pack_detail pd
 on h.pack_dno=pd.pack_dno
 left join pack pa
 on pd.pack_no=pa.pack_no;
-
 
 
 create or replace view pack_view

@@ -26,4 +26,9 @@ public class ManagerDetailDAOmybatis implements ManagerDetailDAO{
 	public List<ManagerDetailVO> selectDetailsByPackNo(int packNo) {
 		return sqlSession.selectList(namespace+"selectByPackNo", packNo);
 	}
+
+	@Override
+	public ManagerDetailViewVO selectDetailView(int packDno) {
+		return sqlSession.selectOne(namespace+"selectDetailView", packDno);
+	}
 }

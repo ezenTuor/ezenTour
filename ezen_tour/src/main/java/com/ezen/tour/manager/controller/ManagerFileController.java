@@ -42,6 +42,8 @@ public class ManagerFileController {
 		PrintWriter printWriter=null;
 		OutputStream out=null;
 		MultipartFile file=multipart.getFile("upload");
+		//response.setCharacterEncoding("UTF-8");
+		//response.setContentType("application/json;charset=UTF-8");
 		if(file!=null) {
 			if(file.getSize()>0 && StringUtils.isNotBlank(file.getName())) {
 				if(file.getContentType().toLowerCase().startsWith("image/")) {
