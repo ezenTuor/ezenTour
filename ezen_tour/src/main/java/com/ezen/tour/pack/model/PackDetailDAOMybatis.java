@@ -24,12 +24,12 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	@Override
 	public List<PackDetailVO> selectPackDetailList(int packNo){
 		return sqlSession.selectList(namespace+"selectPackDetailList", packNo);
-	} //ÀÌ°Ç µðÅ×ÀÏ ¸®½ºÆ®¿¡ ÀÌ¿ë
+	} //ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ì¿ï¿½
 	
 	@Override
 	public PackDetailVO selectPackDetail(int packDno) {
 		return sqlSession.selectOne(namespace+"selectPackDetail", packDno);
-	} //µðÅ×ÀÏ Á¤º¸
+	} //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 	@Override
 	public PackVO selectPack(int packNo) {
@@ -44,7 +44,7 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	@Override
 	public List<AreaVO> areaSelect() {
 		return sqlSession.selectList(namespace+"areaSelect");
-	} //´ëºÐ·ù ³×ºñ¿ë
+	} //ï¿½ï¿½Ð·ï¿½ ï¿½×ºï¿½ï¿½
 	
 	@Override
 	public List<PackVO> packSelAreaNo(int areaNo) {
@@ -97,5 +97,10 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		return sqlSession.selectList(namespace+"selDate", packNo);
 	}
 	
+	@Override
+	public int updateCapaCur(PackDetailVO packDetailVo) {
+		int cnt = sqlSession.update(namespace+"updateCapaCur", packDetailVo);
+		return cnt;
+	}
 
 }

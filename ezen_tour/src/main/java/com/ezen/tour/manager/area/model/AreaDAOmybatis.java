@@ -16,4 +16,9 @@ public class AreaDAOmybatis implements AreaDAO{
 	public List<ManagerAreaVO> selectArea() {
 		return sqlSession.selectList(namespace+"selectArea");
 	}
+
+	@Override
+	public String selectByAreaNo(int areaNo) {
+		return sqlSession.selectOne(namespace+"selectByAreaNo", areaNo);
+	}
 }

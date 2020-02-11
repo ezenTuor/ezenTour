@@ -1,48 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
-<style>
-article.managerTable {
-    background: #ecf0f7;
-    padding: 10px;
-}
-table {
-    text-align: center;
-    width: 90%;
-    border-top: 3px solid #5a90f3;
-}
-
-th {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-thead {
-    border-bottom: 1px solid #8eb0fd;
-}
-
-img.editbutton {
-    height: 40px;
-}
-
-td {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-tbody {
-    border-bottom: 2px solid #5a90f3;
-}
-input[type=button]{
-	padding: 3px 10px 3px 10px;
-	background-color: #9ab6ea;
-    border-radius: 7px;
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerList.css">
 <script type="text/javascript">
 function pageFunc(curPage){
 	document.frmPage.currentPage.value=curPage;
@@ -80,7 +39,11 @@ function pageFunc(curPage){
 				<c:forEach var="pack" items="${list}">
 					<tr>
 						<td>${pack.packNo}</td>
-						<td>${pack.name}</td>
+						<td>
+							<a href="<c:url value='/manager/pack/packDetail.do?packNo=${pack.packNo}'/>">
+								${pack.name}
+							</a>
+						</td>
 						<td>${pack.areaName}</td>
 						<td>${pack.keyword}</td>
 						<td>${pack.regdate}</td>

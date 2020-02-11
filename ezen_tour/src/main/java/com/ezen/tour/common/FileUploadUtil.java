@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.PatternSyntaxException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -126,8 +127,20 @@ public class FileUploadUtil {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		String time=sdf.format(d);
 		
-		//String fileName=fName+time+ext;
-		String fileName=time+ext;
+		String fileName="";
+		try {
+			if(fName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+				// 한글이 포함된 문자열
+				fileName="temp"+time+ext;
+			} else {
+				// 한글이 포함되지 않은 문자열
+				fileName=fName+time+ext;
+			}
+		} catch (PatternSyntaxException e) {
+			// 정규식에 오류가 있는 경우에 대한 처리
+			System.err.println("An Exception Occured");
+			e.printStackTrace();
+		}
 		logger.info("수정된 파일 이름 fileName={}", fileName);
 		
 		return fileName;

@@ -6,9 +6,83 @@
 <% int userNo=(Integer)session.getAttribute("userNo"); %>
 
 <style type="text/css">
+	.history {
+		-ms-user-select: none;
+		-moz-user-select: -moz-none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
+		background-color: #fff7f2;
+	}
+
 	a {
 		text-decoration: none;
 		color: black;
+	}
+	
+	.historyHead, .historyBody {
+		text-align: left;
+	}
+	
+	.historyHead, .historyBody, .historyList {
+		width: 65%;
+		margin: auto;
+	}
+	
+	.historyHead a {
+		font-size: 1.2em;
+	}
+	
+	.historyBody {
+		height: 35px;
+	}
+	
+	.historyBody span {
+		font-size: large;
+	}
+	
+	.historySearch {
+		text-align: right;
+		float: right;
+	}
+	.historyList {
+		border: 1px solid lightgray;
+		background: #fff;
+	}
+	
+	.historyList, input[type=text] {
+		text-align: center;
+	}
+	
+	thead {
+		background: #cccccc;
+		margin-bottom: 10px;
+		border: 1px solid lightgray;
+	}
+	thead tr, tbody tr {
+		height: 45px;
+	}
+	thead th {
+		border: 1px solid white;
+	}
+	tbody td {
+		border-right: 1px solid lightgray;
+	}
+	
+	.writeChange, .packName a {
+		font-weight: bold;
+	}
+	
+	.packName a {
+		color: #330099;
+	}
+	
+	.writeChange a, .historyBody span {
+		color: red;
+	}
+	.writeChange span {
+		color: #BBBBBB;
+		text-decoration: line-through;
 	}
 </style>
 
@@ -70,27 +144,24 @@ $(document).ready(function() {
 });
 </script>
 
-<div style="background-color:#fff7f2">
-	<p style="width:65%; margin:auto; text-align: left">
+<div class="history">
+	<p class="historyHead">
 		<br>
-		[이용내역 조회]
+		<a href="<c:url value='/history/historyList.do'/>">[ 이용내역 조회 ]</a>
 	</p>
 	
 	<br>
 	
-	<div style="width:65%; margin:auto; text-align:left; height:35px">
+	<div class="historyBody">
 		<span>
 			※리뷰는 패키지 종료일 기준, 7일 이내 작성 가능합니다! &nbsp;
-			<button onclick="location.href='<c:url value='/history/historyAll.do'/>'">전체 조회하기</button>
+			<button onClick="location.href='<c:url value='/history/historyAll.do'/>'">전체 조회</button>
 		</span>
 		
-		<form name="historySearch" method="post" action="<c:url value='/history/historyMtM.do'/>"
-			style="text-align: right; float:right">
-			<input type="text" id="startDate" name="startDate" value="${param.startDate}" readOnly
-				size="15px" style="text-align: center">
+		<form class="historySearch" name="historySearch" method="post" action="<c:url value='/history/historyMtM.do'/>">
+			<input type="text" id="startDate" name="startDate" value="${param.startDate}" size="15px" readOnly>
 			~
-			<input type="text" id="endDate" name="endDate" value="${param.endDate}" readOnly
-				size="15px" style="text-align: center">
+			<input type="text" id="endDate" name="endDate" value="${param.endDate}" size="15px" readOnly>
 			<input type="submit" value="조회하기">
 		</form>
 	</div>
@@ -101,7 +172,7 @@ $(document).ready(function() {
 	</c:if>
 	
 	<c:if test="${!empty list}">
-		<table style="text-align:center; margin:auto; width:65%; border:1px solid lightgray; background:#ffffff">
+		<table class="historyList">
 			<colgroup>
 				<col style="width:15%;" />
 				<col style="width:40%;" />
@@ -110,8 +181,8 @@ $(document).ready(function() {
 				<col style="width:15%;" />
 			</colgroup>
 			
-			<thead style="background:#AAAAAA; margin-bottom:10px">
-				<tr style="height:45px">
+			<thead>
+				<tr>
 					<th scope="col">구매번호</th>
 					<th scope="col">패키지 이름</th>
 					<th scope="col">구매가격</th>
@@ -123,12 +194,10 @@ $(document).ready(function() {
 			<tbody>
 				<c:forEach var="vo" items="${list}">
 				<c:set var="review" value="${vo.review}"/>
-					<tr style="height:45px">
+					<tr>
 						<td>${vo.historyNo}</td>
-						<td>
-							<a href="<c:url value='#'/>" style="color:#330099; font-weight:bold;">
-								${vo.name}
-							</a>
+						<td class="packName">
+							<a href="<c:url value='#'/>">${vo.name}</a>
 						</td>
 						<td>
 							<fmt:formatNumber value="${vo.price}" pattern="#,###"/>원
@@ -136,14 +205,14 @@ $(document).ready(function() {
 						<td>
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
-						<td style="font-weight:bold">
+						<td class="writeChange">
 							<c:if test="${review=='N'}">
-								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>" style="color:red">
+								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>">
 									작성하기
 								</a>
 							</c:if>
 							<c:if test="${review=='Y'}">
-								<span style="color:#BBBBBB; text-decoration:line-through;">완료</span>
+								<span>완료</span>
 							</c:if>
 						</td>
 					</tr>

@@ -235,6 +235,9 @@ $(function(){
 			<p class="managerSubmit">
 				<input type="button" value="테스트버튼" id="test">
 				<input type="submit" value="전송">
+				<a href="<c:url value='/manager/pack/packList.do'/>">
+					<input type="button" value="취소">
+				</a>
 			</p>
 		</form>
 	</article>

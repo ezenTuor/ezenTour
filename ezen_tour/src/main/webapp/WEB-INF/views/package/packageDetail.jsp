@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/inc/top.do"></c:import>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
@@ -8,7 +9,7 @@
 
 
 <div id="pack-detail">
-	<div>${packVo.name }</div>
+	<div style="font-size: 40px;font-weight: 600; padding: 20px 0px 20px 10px;">${packVo.name }</div>
 	
 	<div id="fir-line"></div>
 	
@@ -18,9 +19,25 @@
 	
 	</div>
 	
+<!-- 
+	<c:set var="string3" value="${packVo.imgNames}"></c:set>
+	<c:forEach items="${fn:split(string3, '|') }" var="item">
+	    ${item}<br/>
+	</c:forEach>
+
+ -->
 	<!-- 캐러셀 start -->
 	<div class="carousel">
 		<div class="carousel-inner">
+			<c:set var="string3" value="${packVo.imgNames}"></c:set>
+			<c:forEach items="${fn:split(string3, '|') }" var="item" varStatus="status">
+			    <input class="carousel-open" type="radio" id="carousel-${status.count }"
+					name="carousel" aria-hidden="true" hidden="" checked="checked">
+				<div class="carousel-item">
+					<img src="${item}">
+			</div>
+			</c:forEach>
+			<!-- 
 			<input class="carousel-open" type="radio" id="carousel-1"
 				name="carousel" aria-hidden="true" hidden="" checked="checked">
 			<div class="carousel-item">
@@ -36,6 +53,7 @@
 			<div class="carousel-item">
 				<img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
 			</div>
+			 -->
 			<label for="carousel-3" class="carousel-control prev control-1">‹</label>
 			<label for="carousel-2" class="carousel-control next control-1">›</label>
 			<label for="carousel-1" class="carousel-control prev control-2">‹</label>

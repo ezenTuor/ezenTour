@@ -14,4 +14,9 @@ public class AreaServiceImpl implements AreaService{
 	public List<ManagerAreaVO> selectArea() {
 		return areaDao.selectArea();
 	}
+
+	@Override
+	public String selectByAreaNo(int areaNo) {
+		return areaDao.selectByAreaNo(areaNo);
+	}
 }

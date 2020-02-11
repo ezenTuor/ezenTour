@@ -2,19 +2,29 @@
 <%@ include file="../inc/top.jsp" %>
 
 <style type="text/css">
-	.no-drag {
+	.edit {
 		-ms-user-select: none;
 		-moz-user-select: -moz-none;
 		-webkit-user-select: none;
 		-khtml-user-select: none;
-		user-select:none;
+		user-select: none;
+		width: 65%;
+		margin: auto;
+	}
+	
+	legend {
+		font-weight: bold;
+		color: #330099;
 	}
 	
 	#title {
 		border: 0px solid;
 		border-bottom: 1px solid gray;
-		text-align: center;
 		font-size: 25px;
+	}
+	
+	.title, .score, .center, #title {
+		text-align: center;
 	}
 </style>
 
@@ -56,26 +66,26 @@
 	});
 </script>
 
-<div style="width: 65%; margin: auto">
+<div class="edit">
 	<form name="frmEdit" method="post" action="<c:url value='/review/edit.do'/>">
 		<input type="hidden" name="reviewNo" value="${reviewVo.reviewNo}">
 		<input type="hidden" name="userNo" value="${reviewVo.userNo}">
 		<input type="hidden" name="historyNo" value="${reviewVo.historyNo}">
    
 		<fieldset>
-			<legend>[${reviewVo.packName}]</legend>
+			<legend>[ ${reviewVo.packName} ]</legend>
 			<hr>
 			
-			<br>
+			<br><br>
 			
-			<div style="text-align: center">
+			<div class="title">
 				<label for="title">제목 : </label>
 				<input type="text" id="title" name="title" value="${reviewVo.title}"/>
 			</div>
 			
 			<br>
 			
-			<div style="text-align: center">
+			<div class="score">
 				<label for="score">만족도</label>
 				<select id="score" name="score">
 					<option value="1"
@@ -114,14 +124,15 @@
 			
 			<br>
 			
-			<div style="text-align: center">
+			<div class="center">
 				<input type="submit" value="수정하기"/>
-				<input type="Button" value="목록으로" onclick="location.href='<c:url value='/review/list.do'/>'"/>         
+				<input type="button" value="목록으로" onClick="location.href='<c:url value='/review/list.do'/>'"/>         
 			</div>
 		</fieldset>
 	</form>
+	
+	<br>
+	
 </div>
-
-<br>
 
 <%@ include file="../inc/bottom.jsp" %>

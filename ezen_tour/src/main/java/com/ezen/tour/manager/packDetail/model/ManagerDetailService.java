@@ -6,4 +6,5 @@ public interface ManagerDetailService {
 	int insertDetail(ManagerDetailVO detailVo);
 	ManagerDetailVO selectDetail(int packDno);
 	List<ManagerDetailVO> selectDetailsByPackNo(int packNo);
+	ManagerDetailViewVO selectDetailView(int packDno);
 }

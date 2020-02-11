@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface AreaService {
 	List<ManagerAreaVO> selectArea();
+	String selectByAreaNo(int areaNo);
 }

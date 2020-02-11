@@ -4,7 +4,29 @@
 <% String id=(String)session.getAttribute("userId"); %>
 
 <style type="text/css">
-
+	.move {
+		width: 80%;
+		margin: auto;
+	}
+	
+	.nextMove, .prevMove {
+		width: 15%;
+	}
+	
+	.nextMove {
+		text-align: left;
+	}
+	.center {
+		text-align: center;
+	}
+	.prevMove {
+		text-align: right;
+	}
+	
+	a {
+		color: #663333;
+		font-weight: bold;
+	}
 </style>
 
 <div>
@@ -12,7 +34,7 @@
 	<c:set var="next" value="${list['NEXT']}"/>
 	<c:set var="id" value="<%=id %>"/>
 
-	<table style="width: 80%; margin: auto">
+	<table class="move">
 		<tbody>
 			<c:if test="${empty list}">
 				<tr>
@@ -21,21 +43,21 @@
 			</c:if>
 			<c:if test="${!empty list}">
 				<tr>
-					<td style="text-align: left; width:15%">
+					<td class="nextMove">
 						<c:if test="${!empty next}">
-							<a href="<c:url value='/review/detail.do?no=${next}'/>">☜다음글</a>
+							<a href="<c:url value='/review/detail.do?no=${next}'/>">◀다음글</a>
 						</c:if>
 					</td>
-					<td style="text-align: center">
+					<td class="center">
 						<c:if test="${vo.userId==id}">
-							<button onclick="location.href='<c:url value="/review/edit.do?no=${param.no}&pName=${vo.packName}"/>'">수정하기</button>
-							<button onclick="location.href='<c:url value="/review/delete.do?no=${param.no}"/>'">삭제하기</button>
+							<button onClick="location.href='<c:url value="/review/edit.do?no=${param.no}&pName=${vo.packName}"/>'">수정하기</button>
+							<button onClick="location.href='<c:url value="/review/delete.do?no=${param.no}"/>'">삭제하기</button>
 						</c:if>
-						<button onclick="location.href='<c:url value="/review/list.do"/>'">목록으로</button>
+						<button onClick="location.href='<c:url value="/review/list.do"/>'">목록으로</button>
 					</td>
-					<td style="text-align: right; width:15%">
+					<td class="prevMove">
 						<c:if test="${!empty prev}">
-							<a href="<c:url value='/review/detail.do?no=${prev}'/>">이전글☞</a>
+							<a href="<c:url value='/review/detail.do?no=${prev}'/>">이전글▶</a>
 						</c:if>
 					</td>
 				</tr>

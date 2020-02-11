@@ -10,6 +10,10 @@
 		select * from area_detail
 		where area_no=#{areaNo}
 	</select>
+	<select id="selectByAreaNo" parameterType="int" resultType="string">
+		select name from area
+		where area_no=#{areaNo}
+	</select>
 </mapper>
 
 

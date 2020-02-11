@@ -1,7 +1,6 @@
 package com.ezen.tour.pack.model;
 
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import com.ezen.tour.wishList.model.WishListVO;
@@ -22,4 +21,5 @@ public interface PackDetailService {
 	List<PackTwoVO> selectPackByKw2(String keyword);
 	int insertWish(WishListVO vo);
 	List<String> selDate(int packNo);
+	int updateCapaCur(PackDetailVO packDetailVo);
 }

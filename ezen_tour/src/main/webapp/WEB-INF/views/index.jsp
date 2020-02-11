@@ -134,6 +134,26 @@ input#img-6:checked ~ .carousel-dots label#img-dot-6 {
 
 input:checked + .slide-container .nav label { display: block; }
 
+.search-box {
+	width: 1322px;
+	height: 200px;
+	border: 3px solid #8A8AE2;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	flex-direction: column;
+}
+
+#text-box {
+	margin: 20px 0 15px 0;
+	font-size: 40px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #003CA1;
+}
+
 </style>
 <article id="center">
 
@@ -206,7 +226,11 @@ input:checked + .slide-container .nav label { display: block; }
     </div>
 </div>
 
+<div class="search-box">
+<div id="text-box">여행 본능을 깨워라!</div>
+<div style="margin-bottom:15px; font-size:20px; font-weight: 600; color: #8A8AE2">떠나고 싶은 곳을 검색해보세요.</div>
 <c:import url="/package/packCategory.do"></c:import>
+</div>
 
 
 </article>

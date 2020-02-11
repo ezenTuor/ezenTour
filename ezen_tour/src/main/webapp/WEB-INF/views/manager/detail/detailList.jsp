@@ -1,41 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerList.css">
 <style>
-article.managerTable {
-    background: #ecf0f7;
-    padding: 10px;
-}
-table {
-    text-align: center;
-    width: 90%;
-    border-top: 3px solid #5a90f3;
-}
-
-th {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-thead {
-    border-bottom: 1px solid #8eb0fd;
-}
-
-img.editbutton {
-    height: 40px;
-}
-
-td {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-tbody {
-    border-bottom: 2px solid #5a90f3;
-}
+	.managerTable b{
+		display:inline-block;
+		border: 1px solid white;
+		border-radius: 5px;
+		background: lightblue;
+		padding:5px;
+	}
 </style>
 <article class="managerTable">
-	<h2>패키지 일정</h2>
+	<h2>패키지 소분류 </h2>
+	
+	<h4>
+		해당 패키지 - 
+		<a href="<c:url value='/manager/pack/packDetail.do?packNo=${packVo.packNo}'/>"  title="패키지 확인하기">
+			<b>${packVo.name}</b>
+		</a>
+	</h4>
+	
 	<table>
 		<thead>
 			<tr>
@@ -68,5 +53,14 @@ tbody {
 			</c:if>
 		</tbody>
 	</table>
+
+	<p>
+		<a href="<c:url value='/manager/detail/detailWrite.do?packNo=${packVo.packNo}'/>">
+			<button>작성하기</button>
+		</a>
+		<a href="<c:url value='/manager/pack/packList.do'/>">
+			<button>대분류목록</button>
+		</a>
+	</p>
 </article>
 <%@include file="../../inc/adminBottom.jsp" %>
