@@ -11,9 +11,7 @@
 		width: 1064px;
 		margin: auto;
 	}
-	#paymentList{
-		height: 300px;
-	}
+	
 	table{
 		border-top: 1px solid gray;
 		border-bottom: 1px solid gray;
@@ -69,6 +67,7 @@
 		border-top: 1.5px solid black;
 		border-right: 1px solid gray;
 		margin-bottom: 30px;
+		margin-top: 30px;
 	}
 	#information{	
     	float: left;

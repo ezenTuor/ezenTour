@@ -92,7 +92,7 @@ public class SupportController {
 	}
 	@RequestMapping("/supportDetail.do")
 	public String readDetail(@RequestParam(defaultValue = "0") int supportNo,
-			Model model) {
+			@RequestParam(defaultValue = "0") int groupNo, Model model) {
 		logger.info("상세보기 파라미터, no={}", supportNo);
 		if(supportNo==0) {
 			model.addAttribute("msg", "잘못된 url입니다.");
@@ -105,12 +105,16 @@ public class SupportController {
 		logger.info("상세보기 결과, vo={}", supportVo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		String userId = memberService.findUserIdByUserNo(supportVo.getUserNo());
+		List<SupportVO> list = new ArrayList<SupportVO>();
 		
+		list = supportService.selectReply(groupNo);
+				
 		map.put("title", supportVo.getTitle());
 		map.put("userId", userId);
 		map.put("regdate", supportVo.getRegdate());
 		map.put("content", supportVo.getContent());
 		
+		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		return "support/supportDetail";
 	}
@@ -192,5 +196,32 @@ public class SupportController {
 			
 			return "common/message";
 		}
+	}
+	@RequestMapping("/mySupport.do")
+	public String mySupportSelect(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("건의 사항 목록 띄우기");
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		pagingInfo.setCurrentPage(vo.getCurrentPage());
+		
+		vo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		vo.setFirstRecordIndex(vo.getFirstRecordIndex());
+		
+		logger.info("값 셋팅 후 searchVo={}", vo);
+		
+		List<SupportVO> list=supportService.selectmySupport(vo);
+		logger.info("글목록 결과, list.size={}", list.size());
+		
+		int totalRecord=supportService.selectTotalRecord(vo);
+		logger.info("totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "support/mySupport";
 	}
 }
