@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.tour.manager.schedule.ManagerScheduleVO;
 import com.ezen.tour.pack.model.AreaDetailVO;
 import com.ezen.tour.pack.model.AreaVO;
 import com.ezen.tour.pack.model.MaxMinPriceVO;
@@ -61,10 +62,17 @@ public class PackageController {
 			avgScore = Math.round(avg)*100/100.0;
 		} 
 		
+		List<ManagerScheduleVO> sheduleVo = packDetailService.selectSch(packDno);
+		String schDetail = "";
+		for(int i=0; i<sheduleVo.size();i++) {
+			schDetail += ("<div><div class='day-check'>"+(i+1)+"일차</div><div class='day-sch'>"+sheduleVo.get(i).getDetail()+"</div></div><br>");
+		}
+		
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("avgScore", avgScore);
+		model.addAttribute("schDetail", schDetail);
 		return "package/packageDetail";
 	}
 	

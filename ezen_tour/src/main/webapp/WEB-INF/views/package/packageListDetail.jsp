@@ -35,7 +35,7 @@
 							str = 
 							"<li class='pack-lii'>"+
 							"<a href='packSelectSchedule.do?packNo="+item.packNo+"' class='de-li-pack'>"+
-							"<img class='pack-img' src='"+imageName+"'>"+
+							"<img class='pack-img' src='${pageContext.request.contextPath}/resources/pd_images/"+imageName+"'>"+
 							"<div class='info-box'><div class='pack-name'>"+item.name+"</div>"+
 							"<div class='pack-max'>"+item.manmax+"원</div></div>"+				
 							"</a></li>"
