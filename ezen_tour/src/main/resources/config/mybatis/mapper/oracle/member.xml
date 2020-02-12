@@ -61,4 +61,36 @@
 		select user_id from member
 		where user_no=#{userNo}
 	</select>
+	
+	
+	<sql id="searchWhere">
+		<if test="searchKeyword!=null and searchKeyword!=''">
+			where ${searchCondition} like '%'||#{searchKeyword}||'%'
+		</if>
+	</sql>
+	<select id="selectAll" parameterType="searchVo" resultType="memberVo">
+		select *
+		from(
+		    select rownum as RNUM, m.*
+		    from(
+		        select * from member
+		        <include refid="searchWhere"/>
+		        order by user_no desc
+		        )m
+		    )
+		where RNUM > #{firstRecordIndex}
+		<![CDATA[
+		and RNUM <= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectTotal" parameterType="searchVo" resultType="int">
+		select count(*) from member
+		<include refid="searchWhere"/>
+	</select>
+	
+	<select id="selectUser" parameterType="string" resultType="memberVo">
+		select * from member
+		where user_id=#{userId}
+	</select>
 </mapper>

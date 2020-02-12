@@ -11,7 +11,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$('ul li').click(function(){
+	$('#select li').click(function(){
 		var tab_id = $(this).attr('data-tab');
 
 		$('ul li').removeClass('current');
@@ -27,9 +27,6 @@ $(document).ready(function(){
 	#tabs{
 		width: 1064px;
 		margin: auto;
-	}
-	#tabs{
-		height: 1064px;
 	}
 	table{
 		border-top: 1px solid gray;
@@ -48,6 +45,9 @@ $(document).ready(function(){
 		vertical-align: top;
     	border-right: 1px solid #ccc;
     	border-bottom: 1px solid #ccc;
+    	font-size: 13px;
+    	color: #424242;
+    	line-height: 18px;
 	}
 	#tabs ul li{
 		float: left;
@@ -80,7 +80,29 @@ $(document).ready(function(){
     	font-weight: 600;
     	border-right: 1px solid #e4e4e4;
     	border-bottom: 1px solid #e4e4e4;
-}
+	}
+	#attention{
+		width: 1064px;
+		margin: auto;
+		align-content: center;
+		border-bottom: 1px solid gray;
+		border-left: 1px solid gray;
+		border-top: 1.5px solid black;
+		border-right: 1px solid gray;
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
+	#information{	
+    	float: left;
+    	margin-top: 93px;
+    	margin-bottom: 93px;
+    	margin-left: 15px;
+	}
+	#attentionContent{
+		list-style: circle;
+		font-size: 13px;
+    	color: #424242;
+    	margin-left: 115px;
 	}
 </style>
 </head>
@@ -89,7 +111,7 @@ $(document).ready(function(){
 <h2 style="color: black; float: left; font-weight: bold;">내가받은 쿠폰</h2>
 	<br>
 	<br>
-	<ul>
+	<ul id="select">
 		<li class="tab-link current" data-tab="useful">사용 가능한 쿠폰</li>
 		<li class="tab-link" data-tab="n_useful">사용 불가 쿠폰</li>
 	</ul>
@@ -108,7 +130,6 @@ $(document).ready(function(){
 			<input type="hidden" name="currentPage">
 		</form>
 		<table class="box2" summary="사용 가능한 쿠폰">
-			<caption>쿠폰 목록</caption>
 			<colgroup>
 				<col style="width: 11%" />
 				<col style="width: 48%" />
@@ -183,7 +204,6 @@ $(document).ready(function(){
 			<input type="hidden" name="currentPage">
 		</form>
 		<table class="box2" summary="사용 불가능한 쿠폰">
-			<caption>만기된 쿠폰 목록</caption>
 			<colgroup>
 				<col style="width: 11%" />
 				<col style="width: 48%" />
@@ -245,7 +265,20 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-
+<div id="attention">
+	<img src='<c:url value="/resources/images/information.jpg"/>'
+		style="width: 70px; height: 70px;" id="information">
+	<ul id="attentionContent">
+		<li>발급받으신 쿠폰은 PC의 결제 페이지에서 사용하실 수 있습니다.</li>
+		<li>모든 쿠폰은 ID당 1회 발급되며, 1개의 예약에 1개의 쿠폰만 사용하실 수 있습니다.</li>
+		<li>일부 상품에는 쿠폰을 사용하실 수 없습니다.</li>
+		<li>유효기간이 지난 쿠폰은 재발행 되지 않습니다.</li>
+		<li>모든 쿠폰은 쿠폰의 유효기간과 상관없이 예약 및 결제 취소를 할 경우, 사용한 쿠폰은 재발급 되지 않습니다.</li>
+		<li>단, 해외항공쿠폰의 경우 당일 취소 시 쿠폰의 유효기간이 남아있다면 사용한 쿠폰은 재발급 됩니다.</li>
+		<li>해외항공쿠폰 사용 시, 기본요금에 한해 적용됩니다. (TAX, 유류할증료 제외)</li>
+		<li>모든 쿠폰은 당사 사정에 의해 변경 및 조기 종료될 수 있습니다.</li>
+	</ul>
+</div>
 </body>
 </html>
 <%@ include file="../inc/bottom.jsp" %>

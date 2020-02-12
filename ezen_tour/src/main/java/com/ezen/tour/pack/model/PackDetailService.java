@@ -3,6 +3,7 @@ package com.ezen.tour.pack.model;
 
 import java.util.List;
 
+import com.ezen.tour.manager.schedule.ManagerScheduleVO;
 import com.ezen.tour.wishList.model.WishListVO;
 
 public interface PackDetailService {
@@ -22,4 +23,6 @@ public interface PackDetailService {
 	int insertWish(WishListVO vo);
 	List<String> selDate(int packNo);
 	int updateCapaCur(PackDetailVO packDetailVo);
+	int scoreAvg(int packDno);
+	List<ManagerScheduleVO> selectSch(int packDno);
 }

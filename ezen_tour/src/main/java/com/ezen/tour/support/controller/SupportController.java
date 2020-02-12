@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -91,7 +92,7 @@ public class SupportController {
 	}
 	@RequestMapping("/supportDetail.do")
 	public String readDetail(@RequestParam(defaultValue = "0") int supportNo,
-			Model model) {
+			@RequestParam(defaultValue = "0") int groupNo, Model model) {
 		logger.info("상세보기 파라미터, no={}", supportNo);
 		if(supportNo==0) {
 			model.addAttribute("msg", "잘못된 url입니다.");
@@ -104,12 +105,16 @@ public class SupportController {
 		logger.info("상세보기 결과, vo={}", supportVo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		String userId = memberService.findUserIdByUserNo(supportVo.getUserNo());
-
+		List<SupportVO> list = new ArrayList<SupportVO>();
+		
+		list = supportService.selectReply(groupNo);
+				
 		map.put("title", supportVo.getTitle());
 		map.put("userId", userId);
 		map.put("regdate", supportVo.getRegdate());
 		map.put("content", supportVo.getContent());
 		
+		model.addAttribute("list",list);
 		model.addAttribute("map",map);
 		return "support/supportDetail";
 	}
@@ -149,5 +154,74 @@ public class SupportController {
 		model.addAttribute("url",url);
 		
 		return "common/message";
+	}
+	@RequestMapping(value="/supportReply.do", method = RequestMethod.GET)
+	public String reply_get(@RequestParam(defaultValue = "0") int supportNo,
+			ModelMap model) {
+		//1
+		logger.info("답변하기 화면, 파라미터 no={}", supportNo);
+		if(supportNo==0) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/support/support.do");
+			
+			return "common/message";
+		}
+		
+		//2
+		SupportVO vo=supportService.selectByNo(supportNo);
+		logger.info("답변하기 화면 결과 vo={}",vo);
+		
+		//3
+		model.addAttribute("vo", vo);
+		
+		return "support/supportReply";
+	}
+	
+	@RequestMapping(value="/reply.do", method=RequestMethod.POST)
+	public String reply_post(@ModelAttribute SupportVO vo,
+			ModelMap model) {
+		//1
+		logger.info("답변하기 파라미터, vo={}", vo);
+		
+		//2
+		int cnt=supportService.supportReply(vo);
+		logger.info("답변하기 결과, cnt={}", cnt);
+		
+		//3
+		if(cnt>0) {
+			return "redirect:/support/support.do";
+		}else {
+			model.addAttribute("msg", "답변하기 실패!");
+			model.addAttribute("url", "/support/supportReply.do?no="+vo.getSupportNo());
+			
+			return "common/message";
+		}
+	}
+	@RequestMapping("/mySupport.do")
+	public String mySupportSelect(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("건의 사항 목록 띄우기");
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		pagingInfo.setCurrentPage(vo.getCurrentPage());
+		
+		vo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		vo.setFirstRecordIndex(vo.getFirstRecordIndex());
+		
+		logger.info("값 셋팅 후 searchVo={}", vo);
+		
+		List<SupportVO> list=supportService.selectmySupport(vo);
+		logger.info("글목록 결과, list.size={}", list.size());
+		
+		int totalRecord=supportService.selectTotalRecord(vo);
+		logger.info("totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "support/mySupport";
 	}
 }

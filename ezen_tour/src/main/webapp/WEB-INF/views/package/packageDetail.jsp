@@ -6,6 +6,18 @@
 <c:import url="/inc/top.do"></c:import>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/packageDetail.css"/>
 
+<script>
+
+	$(document).ready(function() {
+		var aaa = $("#regdate").text();
+		console.log(aaa);
+		var curdate = new Date(aaa);
+		var realDate = curdate.getTime();
+		console.log(realDate)
+		$("#itemCode").text(realDate);
+
+	})
+</script>
 
 
 <div id="pack-detail">
@@ -14,8 +26,11 @@
 	<div id="fir-line"></div>
 	
 	<div id="pack-semi-detail">
-		<div>상품번호   |  00000ABC</div> 
-		<div><span>고객리뷰   |  00/00</span><a href=#>여행후기</a></div>
+		<div style="display: flex">상품번호   |   <div id="itemCode"></div></div> 
+		<div id="regdate" style="display:none">${packVo.regdate }</div>
+		<div>
+		<span>고객 만족도   |  ${avgScore}점  / 5.0점</span>
+		</div>
 	
 	</div>
 	
@@ -26,6 +41,8 @@
 	</c:forEach>
 
  -->
+ 
+ <!-- ${pageContext.request.contextPath}/resources/images/mainLogo.png 이걸로 바꾸기 -->
 	<!-- 캐러셀 start -->
 	<div class="carousel">
 		<div class="carousel-inner">
@@ -34,7 +51,7 @@
 			    <input class="carousel-open" type="radio" id="carousel-${status.count }"
 					name="carousel" aria-hidden="true" hidden="" checked="checked">
 				<div class="carousel-item">
-					<img src="${item}">
+					<img src="${pageContext.request.contextPath}/resources/pd_images/${item}">
 			</div>
 			</c:forEach>
 			<!-- 
@@ -72,15 +89,18 @@
 	<div id="travel-detail">
 		<div id="travel-sche">
 			<div class="content-1">
-				<span>가나다라마바사</span>
+				<div class="guidance">
+					${packVo.detail}
+				</div>
 			</div>
 			<ul class="menu">
 				<li><a href="#">여행일정</a></li>
 				<li><a href="#">여행자 보험</a></li>
 				<li><a href="#">참고사항</a></li>
 			</ul>
-			<div class="container">
-				${packDetailVo.details }
+			<div class="container" >
+				${schDetail}
+			
 			</div>	
 
 		</div>
@@ -88,19 +108,20 @@
 		
 
 		<div id="travel-credit">
-			<div><span>출발</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaDep }" /></span></div>
-			<div><span>도착</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaEnt }" /></span></div>
-			<div><span>항공</span><span>${packDetailVo.airline }</span></div>
-			<a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${packDetailVo.packNo }">출발일 변경</a>
-			<br>
+			<div id="sticky-credit"> 
 			
-			<hr>
-			<div>가격</div>
-			<div><span>성인</span><span class="man-price">${packDetailVo.man }</span></div>
-			<div><span>아동</span><span class="child-price">${packDetailVo.child }</span></div>
-			<div><span>유아</span><span class="baby-price">${packDetailVo.baby }</span></div>
+			<div><span style="font-weight: 600">출발</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaDep }" /></span></div>
+			<div><span style="font-weight: 600">도착</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaEnt }" /></span></div>
+			<div><span style="font-weight: 600">항공</span><span>${packDetailVo.airline }</span></div>
+			<a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${packDetailVo.packNo }" id="changeDate">출발일 변경</a>
+			<div style="background: white; height: 4px; margin-top: 20px; margin-bottom: 10px;"></div>
 			
-			<div><span>남은좌석</span><span class="left">${packDetailVo.capecityCur }</span>석</div>
+			<div style="font-weight: 600; font-size: 40px; margin-bottom: 30px; margin-top: 20px">여행비용</div>
+			<div><span style="font-weight: 600">성인</span><span class="man-price">${packDetailVo.man } 원</span></div>
+			<div><span style="font-weight: 600">아동</span><span class="child-price">${packDetailVo.child } 원</span></div>
+			<div><span style="font-weight: 600">유아</span><span class="baby-price">${packDetailVo.baby } 원</span></div>
+			
+			<div><span style="font-weight: 600">남은좌석</span><span class="left">${packDetailVo.capecityCur } 석</span></div>
 			
 			
 			<script type="text/javascript">
@@ -142,39 +163,43 @@
 			
 			
 			<form name="intoCart" method="post"
-				action="<c:url value='/package/packageDetail.do?packDno=${packDetailVo.packDno }'/>">
-			성인
+				action="<c:url value='/package/packageDetail.do?packDno=${packDetailVo.packDno }'/>" id="intoCart">
+			성인 인원 : 
 				<select class="adult" name="man">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
+			<br>
 				
-				
-			아동
+			아동 인원 : 
 				<select class="child" name="child">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
+			<br>
 				
-			유아
+			유아 인원 : 
 				<select class="baby" name="baby">
 					<c:forEach var="i" begin="0" end="${packDetailVo.capecityCur }" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
 				<input type="text" value="${packDetailVo.packDno }" name="packDno" style="display:none">
-				<input type="text" class="total-p" name="price" value="0">
+			<br>
+				총 금액 : <input type="text" class="total-p" name="price" value="0">
 				<input type="text" name="detail" value="별거없음.." style="display:none">
-				<input type="text" name="userNo" value="${userNo} " style="display:none">
+				<input type="text" name="userNo" value="${userNo} " style="display:none" >
+			<br>
 				<input type="submit" value="장바구니 담기" class="ck-btn">
 			</form>
+			</div> <!-- sticky -->
 		</div>
 	
 	</div>
 	
-	
 
 </div>
+
 <%@include file="../inc/bottom.jsp"%>

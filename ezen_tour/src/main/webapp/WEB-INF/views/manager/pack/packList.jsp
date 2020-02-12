@@ -107,7 +107,9 @@ function pageFunc(curPage){
 			<input type="text" name="searchKeyword" value="${searchVo.searchKeyword}">
 			<input type="submit" id="search" value="검색">
 		</form>
-		<input type="button" value="작성하기">
+		<a href="<c:url value='/manager/pack/packWrite.do'/>">
+			<input type="button" value="작성하기">
+		</a>
 	</div>
 </article>
 <%@include file="../../inc/adminBottom.jsp" %>

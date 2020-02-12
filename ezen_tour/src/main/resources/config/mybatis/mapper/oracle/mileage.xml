@@ -3,13 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.mileage">
-	<select parameterType="searchVo" resultType="mileageVo" id="selectAll">
+	<select parameterType="memberVo" resultType="mileageVo" id="selectAll">
 	select *
 	from
 		(select rownum as RNUM, A.*
 			from
 				(select * from mileage 
 				where user_no=#{userNo}
+				order by regdate desc
 				)A
 		)
 		where RNUM > #{firstRecordIndex} 

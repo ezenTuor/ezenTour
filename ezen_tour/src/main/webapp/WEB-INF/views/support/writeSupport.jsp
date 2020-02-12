@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 //ckeditor부분
@@ -23,10 +22,6 @@ $(function(){
 			alert("제목을 입력하세요");
 			$("#title").focus();
 			event.preventDefault();
-		}else if($("#name").val().length<1){
-			alert("이름을 입력하세요");
-			$("#name").focus();
-			event.preventDefault();
 		}else if(!$("#pwd").val()){
 			alert("비밀번호를 입력하세요");
 			$("#pwd").focus();
@@ -35,23 +30,36 @@ $(function(){
 	});
 });
 </script>
+<style type="text/css">
+	#writeform{
+		width: 1064px;
+		margin: auto;
+		margin-bottom: 45px;
+	}
+
+	#writeField{
+		width: 800px;
+		margin: auto;
+		font-size: 20px;
+    	color: #424242;
+	}
+</style>
 </head>
 <body>
 <div class="divForm">
-<form name="frmWrite" method="post" enctype="multipart/form-data"
+<form id="writeform" name="frmWrite" method="post" enctype="multipart/form-data"
 	action="<c:url value='/support/writeSupport.do'/>" >
- <fieldset>
-	<legend>글쓰기</legend>
+	<h2 style="color: black; float: left; font-weight: bold;">건의사항 작성</h2>
+ 	<fieldset id="writeField">
+	<br><br>
         <div class="firstDiv">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title"  />
-        </div>
-        <div>
-            <label for="name">작성자</label>
-            <input type="text" id="name" name="name" />
+            <label for="title" style="font-weight: bold;">제목</label>
+            <br>
+            <input type="text" id="title" name="title" style="width: 300px;"/>
         </div>
         <div>  
-        	<label for="content">내용</label>        
+        	<label for="content" style="font-weight: bold;">내용</label>
+        	<br>      
  			<textarea id="content" name="content" rows="12" cols="40"></textarea>
         </div>
         <div class="center">
@@ -62,6 +70,7 @@ $(function(){
         </div>
     </fieldset>
 </form>
-</div> 
+</div>
 </body>
 </html>
+<%@ include file="../inc/bottom.jsp" %>

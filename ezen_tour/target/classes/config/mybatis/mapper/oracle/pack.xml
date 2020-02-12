@@ -107,6 +107,18 @@
 		set capecity_cur=#{capecityCur}
 		where pack_dno=#{packDno}
 	</update>
+	
+	<select id="scoreAvg" parameterType="int" resultType="int">
+		select nvl(avg(score),0) avg from review_view
+		where pack_dno=#{packDno}
+	</select>
+	
+	
+	<select id="selectSch" parameterType="int" resultType="managerScheduleVo">
+		select detail from schedule 
+		where pack_dno=#{packDno}
+		order by schedule_no asc
+	</select>
 </mapper>
 
 

@@ -19,10 +19,13 @@ public class PaymentDAOMybatis implements PaymentDAO{
 		return cnt;
 	}
 
-	/*
 	@Override
-	public List<PaymentVO> selectAll() {
-		return sqlSession.selectList(namespace+"selectAll");
+	public List<PaymentVO> selectAll(int userNo) {
+		return sqlSession.selectList(namespace+"selectAll",userNo);
 	}
-	*/
+
+	@Override
+	public PaymentVO selectByNo(int paymentNo) {
+		return sqlSession.selectOne(namespace+"selectByNo",paymentNo);
+	}
 }

@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.common.SearchVO;
+
 @Repository
 public class MemberDAOMybatis implements MemberDAO{
 	@Autowired
@@ -67,5 +69,20 @@ public class MemberDAOMybatis implements MemberDAO{
 	@Override
 	public String findUserIdByUserNo(int userNo) {
 		return sqlSession.selectOne(namespace+"findUserIdByUserNo",userNo);
+	}
+
+	@Override
+	public List<MemberVO> selectAll(SearchVO searchVo) {
+		return sqlSession.selectList(namespace+"selectAll", searchVo);
+	}
+
+	@Override
+	public int selectTotal(SearchVO searchVo) {
+		return sqlSession.selectOne(namespace+"selectTotal", searchVo);
+	}
+
+	@Override
+	public MemberVO selectUser(String userId) {
+		return sqlSession.selectOne(namespace+"selectUser", userId);
 	}
 }

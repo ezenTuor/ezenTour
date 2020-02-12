@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
 
 @Service
@@ -40,5 +41,20 @@ public class SupportServiceImpl implements SupportService{
 	@Override
 	public SupportVO selectByNo(int supportNo) {
 		return supportDao.selectByNo(supportNo);
+	}
+
+	@Override
+	public List<SupportViewVO> selectAdmin(SearchVO searchVo) {
+		return supportDao.selectAdmin(searchVo);
+	}
+
+	@Override
+	public int selectAdminTotal(SearchVO searchVo) {
+		return supportDao.selectAdminTotal(searchVo);
+	}
+
+	@Override
+	public List<SupportVO> selectmySupport(MemberVO vo) {
+		return supportDao.selectmySupport(vo);
 	}
 }

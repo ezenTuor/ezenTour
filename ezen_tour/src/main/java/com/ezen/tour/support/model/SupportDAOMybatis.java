@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
 
 @Repository
@@ -43,5 +44,20 @@ public class SupportDAOMybatis implements SupportDAO{
 	@Override
 	public SupportVO selectByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectByNo",supportNo);
+	}
+
+	@Override
+	public List<SupportViewVO> selectAdmin(SearchVO searchVo) {
+		return sqlSession.selectList(namespace+"selectAdmin", searchVo);
+	}
+
+	@Override
+	public int selectAdminTotal(SearchVO searchVo) {
+		return sqlSession.selectOne(namespace+"selectAdminTotal", searchVo);
+	}
+
+	@Override
+	public List<SupportVO> selectmySupport(MemberVO vo) {
+		return sqlSession.selectList(namespace+"selectmySupport",vo);
 	}
 }

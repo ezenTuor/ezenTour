@@ -7,6 +7,7 @@ public class Utility {
 	public static final int BLOCK_SIZE=5;
 	public static final int RECORD_COUNT=10;
 	public static final int ZIPCODE_RECORD_COUNT=15;
+	public static final int MEMBER_SIZE=20;
 	
 	public static String getFileInfo(String originalFileName,
 			long fileSize) {

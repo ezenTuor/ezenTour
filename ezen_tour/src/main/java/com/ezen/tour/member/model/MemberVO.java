@@ -23,6 +23,14 @@ public class MemberVO extends SearchVO{
 	private Timestamp regdate;
 	private String delFlag;
 	private Timestamp deldate;
+	private int mileage;
+	
+	public int getMileage() {
+		return mileage;
+	}
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
 	public int getUserNo() {
 		return userNo;
 	}
@@ -137,6 +145,6 @@ public class MemberVO extends SearchVO{
 				+ ", zipcode=" + zipcode + ", address=" + address + ", addressDetail=" + addressDetail + ", hp1=" + hp1
 				+ ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade=" + grade
 				+ ", userSsr=" + userSsr + ", gender=" + gender + ", regdate=" + regdate + ", delFlag=" + delFlag
-				+ ", deldate=" + deldate + "]";
+				+ ", deldate=" + deldate + ", mileage=" + mileage + "]";
 	}
 }

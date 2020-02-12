@@ -68,3 +68,13 @@ from pack p left join area a
 on p.area_no=a.area_no;
 
 select * from pack_view;
+
+
+create or replace view support_view
+as
+select s.*, m.user_id, m.name
+from support s left join member m
+on s.user_no=m.user_no;
+
+select * from support;
+select * from support_view;
