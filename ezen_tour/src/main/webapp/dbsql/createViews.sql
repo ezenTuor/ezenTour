@@ -18,9 +18,11 @@ create or replace view history_view
 as
 select h.*, p.korea_dep, p.korea_ent, p.name,
     CASE
-        when p.korea_ent>=(sysdate)-7 and p.korea_ent<sysdate+1
+        when p.korea_ent>=(sysdate)-7 
+        and p.korea_ent<sysdate+1
+        and h.review='N'
         then 'Y' else 'N'
-        END AS CHECK_DATE
+        END AS "CHECK"
 from history h left join pack_detail_view p
 on h.pack_dno=p.pack_dno;
 
@@ -75,6 +77,3 @@ as
 select s.*, m.user_id, m.name
 from support s left join member m
 on s.user_no=m.user_no;
-
-select * from support;
-select * from support_view;
