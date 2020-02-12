@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.border.EmptyBorder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +54,12 @@ public class PackageController {
 		HttpSession session = request.getSession();
 		String userNo = (String) session.getAttribute("");
 		
-		int avg = packDetailService.scoreAvg(packDno);
-		double avgScore = Math.round(avg)*100/100.0;
+		Integer avg = packDetailService.scoreAvg(packDno);
+		logger.info("avg num={}", avg);
+		double avgScore = 0;
+		if(avg != null) {
+			avgScore = Math.round(avg)*100/100.0;
+		} 
 		
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);

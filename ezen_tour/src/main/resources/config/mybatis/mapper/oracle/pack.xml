@@ -109,7 +109,7 @@
 	</update>
 	
 	<select id="scoreAvg" parameterType="int" resultType="int">
-		select avg(score) from review_view
+		select nvl(avg(score),0) avg from review_view
 		where pack_dno=#{packDno}
 	</select>
 </mapper>
