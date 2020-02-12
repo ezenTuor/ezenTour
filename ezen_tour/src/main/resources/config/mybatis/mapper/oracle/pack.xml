@@ -107,6 +107,11 @@
 		set capecity_cur=#{capecityCur}
 		where pack_dno=#{packDno}
 	</update>
+	
+	<select id="scoreAvg" parameterType="int" resultType="int">
+		select avg(score) from review_view
+		where pack_dno=#{packDno}
+	</select>
 </mapper>
 
 

@@ -102,5 +102,10 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 		int cnt = sqlSession.update(namespace+"updateCapaCur", packDetailVo);
 		return cnt;
 	}
+	
+	@Override
+	public int scoreAvg(int packDno) {
+		return sqlSession.selectOne(namespace+"scoreAvg", packDno);
+	}
 
 }

@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 #pack-detail {
-	background: lightblue;
+	/*background: lightblue;*/
 	width: 1000px;
 	margin: 0 auto;
 }
 
 #fir-line {
 	width: 100%;
-	background: gray;
+	background: #003CA1;
 	height: 2px;
 	margin: 0 auto;
 }
@@ -147,7 +147,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #BFFFF3;
+    background-color: #003CA1;
     top: 0;
     position: -webkit-sticky;
     position: sticky;
@@ -163,7 +163,7 @@
 
 .menu li:hover,
 .menu li:focus {
-    background-color: #66FFE3;
+    background-color: #8A8AE2;
 }
 
 .menu a {
@@ -191,17 +191,59 @@
 
 #travel-sche {
 	width: 69%;
-	background: pink;
+	/*background: pink;*/
+}
+
+.adult, .baby, .child {
+	float: right;
+	width: 80px;
+	height: 30px;
+}
+
+.total-p {
+	float: right;
+	height: 30px;
+	margin-top: 6px;
+}
+
+.ck-btn {
+	border: none;
+	color: #003CA1;
+	background: white;
+	height: 30px;
+	width: 100%;
+	font-weight: 600;
+	margin-top: 20px;
+}
+
+#changeDate {
+	text-decoration: none;
+	border: 2px solid white;
+	padding: 5px;
+	margin-left: 28%;
+	margin-top: 30px;
 }
 
 #travel-credit {
 	width: 29%;
-	background: lightgreen;
+	background: #003CA1;
 }
 
 
-#travel-credit div {
+#sticky-credit div {
 	display: flex;
 	justify-content: space-between;
 	margin: 10px;
+}
+
+#sticky-credit{
+	position: sticky;
+	top: 0px;
+	padding: 4px;
+	background: #003CA1;
+	color: white;
+}
+
+#intoCart {
+	padding: 9px;
 }

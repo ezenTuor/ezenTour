@@ -1,7 +1,53 @@
 @charset "UTF-8";
 
 #packListSel {
-	background: blue;
+	/*background: blue;*/
 	width: 1200px;
 	margin: 0 auto;
+}
+
+.each-li{
+	/*background: purple;*/
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 2px solid #003CA1;
+}
+
+.img-pack {
+	width: 250px;
+}
+
+
+.title-box {
+	width: 350px;
+	/*background: lightblue;*/
+}
+
+.title-text {
+	text-decoration: none;
+	color: black;
+}
+
+.price-box {
+	width: 200px;
+	color: #003CA1;
+	font-weight: 600;
+	/*background: yellow;*/
+}
+
+.more-btn {
+	height: 60px;
+	width: 150px;
+	background: #003CA1;
+	border: none;
+}
+
+.btn-text{
+	text-decoration: none;
+	color: white;
+	font-weight: 600;
 }

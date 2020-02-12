@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#bottom-part {
+	text-align: center;
+	bottom: 0;
+}
+
+#award {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#award li button {
+	border: none;
+}
