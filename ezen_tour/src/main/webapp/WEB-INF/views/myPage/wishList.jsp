@@ -13,7 +13,7 @@ $(function(){
 		var nums="";
 		
 		$(".option").each(function(){
-			var temp=$(this).find("input[type=text]").val();
+			var temp=$(this).find("input[type=hidden]").val();
 			
 			if($(this).find("input[type=checkbox]").is(":checked")){
 				if(nums!=""){
