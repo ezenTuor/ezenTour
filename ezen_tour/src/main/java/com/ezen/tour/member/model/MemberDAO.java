@@ -20,4 +20,5 @@ public interface MemberDAO {
 	
 	List<MemberVO> selectAll(SearchVO searchVo);
 	int selectTotal(SearchVO searchVo);
+	MemberVO selectUser(String userId);
 }

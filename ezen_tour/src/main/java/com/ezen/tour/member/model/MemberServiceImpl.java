@@ -100,4 +100,9 @@ public class MemberServiceImpl implements MemberService{
 	public int selectTotal(SearchVO searchVo) {
 		return memberDao.selectTotal(searchVo);
 	}
+
+	@Override
+	public MemberVO selectUser(String userId) {
+		return memberDao.selectUser(userId);
+	}
 }

@@ -10,6 +10,7 @@
 			from
 				(select * from mileage 
 				where user_no=#{userNo}
+				order by regdate desc
 				)A
 		)
 		where RNUM > #{firstRecordIndex} 

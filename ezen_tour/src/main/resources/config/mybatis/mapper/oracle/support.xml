@@ -48,17 +48,16 @@
 		select * from support
 		where support_no = #{supportNo}
 	</select>
-	<insert id="supportReply" parameterType="supportVo">
-		<selectKey resultType="int" keyProperty="supportNo" order="BEFORE">
-			select reboard_seq.nextval from dual
-		</selectKey>
-		insert into support(support_no, title, content, 
-			groupno, step, sortno)
-		values(#{supportNo}, #{title},#{content}, 
-			#{groupNo}, #{step}+1, #{sortNo}+1)		
-	</insert>
-	<select id="selectReply" parameterType="int" resultType="supportVo">
-		select * from support
-		where group_no=#{groupNo} and sort=1
+
+	
+	
+	<select id="selectAdmin" parameterType="searchVo" resultType="supportViewVo">
+		select * from support_view
+		<include refid="searchWhere"/>
+	</select>
+	
+	<select id="selectAdminTotal" parameterType="searchVo" resultType="int">
+		select count(*) from support_view
+		<include refid="searchWhere"/>
 	</select>
 </mapper>

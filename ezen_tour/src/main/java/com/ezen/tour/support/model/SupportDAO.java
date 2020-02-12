@@ -2,6 +2,7 @@ package com.ezen.tour.support.model;
 
 import java.util.List;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
 
 public interface SupportDAO {
@@ -11,6 +12,7 @@ public interface SupportDAO {
 	SupportVO selectSupportByNo (int supportNo);
 	int editSupport(SupportVO vo);
 	SupportVO selectByNo(int supportNo);
-	int supportReply(SupportVO vo);
-	SupportVO selectReply(int groupNo);
+	
+	List<SupportViewVO> selectAdmin(SearchVO searchVo);
+	int selectAdminTotal(SearchVO searchVo);
 }
