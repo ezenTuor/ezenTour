@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.manager.schedule.ManagerScheduleVO;
 import com.ezen.tour.wishList.model.WishListVO;
 
 @Repository
@@ -106,6 +107,11 @@ public class PackDetailDAOMybatis implements PackDetailDAO {
 	@Override
 	public int scoreAvg(int packDno) {
 		return sqlSession.selectOne(namespace+"scoreAvg", packDno);
+	}
+	
+	@Override
+	public List<ManagerScheduleVO> selectSch(int packDno) {
+		return sqlSession.selectList(namespace+"selectSch", packDno);
 	}
 
 }

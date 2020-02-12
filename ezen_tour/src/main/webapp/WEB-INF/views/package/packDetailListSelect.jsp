@@ -42,7 +42,7 @@
 			<c:set var="string3" value="${item.imgNames}"></c:set>
 			<c:set var = "string4" value ="${fn:split(string3, '|')}" />
 				<li class="each-li">
-					<img src="${string4[0]}" class="img-pack"/>
+					<img src="${pageContext.request.contextPath}/resources/pd_images/${string4[0]}" class="img-pack"/>
 					<div class="title-box"><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${item.packNo }" class="title-text">${item.name}</a></div>
 					<div class="price-box">${item.manmax }원~</div>
 					<button class="more-btn"><a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${item.packNo }" class="btn-text">출발일 보기</a></button>
