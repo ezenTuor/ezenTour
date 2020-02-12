@@ -12,6 +12,7 @@ public interface SupportService {
 	SupportVO selectSupportByNo (int supportNo);
 	int editSupport(SupportVO vo);
 	SupportVO selectByNo(int supportNo);
+	List<SupportVO> selectmySupport(MemberVO vo);
 
 	
 	List<SupportViewVO> selectAdmin(SearchVO searchVo);

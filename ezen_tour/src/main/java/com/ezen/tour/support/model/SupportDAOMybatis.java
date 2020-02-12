@@ -47,7 +47,6 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-
 	public List<SupportViewVO> selectAdmin(SearchVO searchVo) {
 		return sqlSession.selectList(namespace+"selectAdmin", searchVo);
 	}
@@ -55,5 +54,10 @@ public class SupportDAOMybatis implements SupportDAO{
 	@Override
 	public int selectAdminTotal(SearchVO searchVo) {
 		return sqlSession.selectOne(namespace+"selectAdminTotal", searchVo);
+	}
+
+	@Override
+	public List<SupportVO> selectmySupport(MemberVO vo) {
+		return sqlSession.selectList(namespace+"selectmySupport",vo);
 	}
 }
