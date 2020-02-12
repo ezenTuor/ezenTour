@@ -27,7 +27,7 @@
 	</select> -->
 	<select id="selectWishListView" parameterType="int" resultType="wishListViewVo">
 		select * from wishList_view
-		where wish_no=#{wishNo}
+		where user_no=#{userNo}
 	</select>
 	
 	<select id="selectWish" parameterType="int" resultType="wishListViewVo">

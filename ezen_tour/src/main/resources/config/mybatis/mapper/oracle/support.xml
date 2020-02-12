@@ -59,6 +59,6 @@
 	</insert>
 	<select id="selectReply" parameterType="int" resultType="supportVo">
 		select * from support
-		where group_no=#{} and sort=1
+		where group_no=#{groupNo} and sort=1
 	</select>
 </mapper>

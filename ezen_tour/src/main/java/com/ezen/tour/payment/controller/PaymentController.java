@@ -51,15 +51,16 @@ public class PaymentController {
 		logger.info("결제화면 보여주기");
 		HttpSession session=request.getSession();
 		String userId=(String)session.getAttribute("userId");
-		
 
 		MemberVO memberVo=memberService.selectMember(userId);
-		
 		//int userNo=(Integer)session.getAttribute("userNo");
 		//List<WishListViewVO> list=wishListViewService.selectWishListView(userNo);
 		
 		List<WishListViewVO> list=new ArrayList<WishListViewVO>();
 		String[] sArr=nums.split("\\|");
+		
+		logger.info("sArr={} nums={}", sArr, nums);
+		
 		for(int i=0;i<sArr.length;i++) {
 			String temp=sArr[i];
 			int no=Integer.parseInt(temp);
@@ -67,11 +68,9 @@ public class PaymentController {
 			WishListViewVO vo=wishListViewService.selectWish(no);
 			list.add(vo);
 		}
-		
 		String title="";
 		int totalPrice=0;
 		String details="";
-		
 		for(WishListViewVO viewVo : list) {
 			details+="<p>이름-"+viewVo.getName()+" 상세번호-"+viewVo.getPackDno()+"</p><p>성인-"+viewVo.getMan()+" 아동-"+viewVo.getChild()+" 유아-"+viewVo.getBaby()+"</p>";
 			totalPrice+=viewVo.getPrice();
