@@ -11,7 +11,7 @@
 			</where>
 		</if>
 	</sql>
-	<select id="selectAll" parameterType="memberVo" resultType="supportVo">
+	<select id="selectAll" parameterType="memberVo" resultType="supportViewVo">
 		select *
 		from
 		(
@@ -39,19 +39,26 @@
 		insert into support(support_no,user_no,title,content)
 		values(#{supportNo},#{userNo},#{title},#{content})
 	</insert>
-	<select id="selectSupportByNo" parameterType="int" resultType="supportVo">
+	<select id="selectSupportByNo" parameterType="int" resultType="supportViewVo">
 		select * from support where support_no=#{supportNo}
 	</select>
 	<update id="editSupport" parameterType="supportVo">
 		update support
 		set title=#{title}, content=#{content}
 	</update>
-	<select id="selectByNo" parameterType="int" resultType="supportVo">
+	<select id="selectByNo" parameterType="int" resultType="supportViewVo">
 		select * from support
 		where support_no = #{supportNo}
 	</select>
-
-	<select id="selectmySupport" parameterType="memberVo" resultType="supportVo">
+	<sql id="searchWhereMy">
+		<if test="searchKeyword!=null and searchKeyword != ''">
+			<where>
+				${searchCondition} like '%' || #{searchKeyword} || '%'
+				sort=0 and user_no=#{userNo}
+			</where>
+		</if>
+	</sql>
+	<select id="selectmySupport" parameterType="memberVo" resultType="supportViewVo">
 		select *
 		from
 		(
@@ -76,5 +83,9 @@
 	<select id="selectAdminTotal" parameterType="searchVo" resultType="int">
 		select count(*) from support_view
 		<include refid="searchWhere"/>
+	</select>
+	<select id="selectReply" resultType="supportVo" parameterType="int">
+		select * from support
+		where group_no=#{groupNo} and sort=1 
 	</select>
 </mapper>

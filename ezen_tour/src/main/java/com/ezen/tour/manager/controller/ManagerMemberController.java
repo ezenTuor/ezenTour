@@ -73,28 +73,29 @@ public class ManagerMemberController {
 	}
 	
 	@RequestMapping("/mileage.do")
-	public void mileageList(@ModelAttribute SearchVO searchVo, @RequestParam String userId, Model model) {
-		logger.info("유저 마일리지 보여주기, 파라미터 searchVo={}, userId={}", searchVo, userId);
-		MemberVO memberVo=memberService.selectUser(userId);
+	public void mileageList(@ModelAttribute MemberVO memberVo, @RequestParam String userId, Model model) {
+		logger.info("유저 마일리지 보여주기 - 관리자, 파라미터 memberVo={}, userId={}", memberVo, userId);
+		MemberVO vo=memberService.selectUser(userId);
+		memberVo.setName(vo.getName());
 		
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
 		PaginationInfo pagingInfo=new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
 		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		pagingInfo.setCurrentPage(memberVo.getCurrentPage());
 		
 		//[2] searchVo에 recordCountPerPage와 firstRecordIndex를 셋팅한다
-		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT);
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setUserNo(memberVo.getUserNo());
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		memberVo.setRecordCountPerPage(Utility.RECORD_COUNT);
+		memberVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		memberVo.setUserNo(memberVo.getUserNo());
+		logger.info("값 셋팅 후 searchVo={}", memberVo);
 		
 		//2
-		List<MileageVO> list=mileageService.selectAll(searchVo);
+		List<MileageVO> list=mileageService.selectAll(memberVo);
 		logger.info("마일리지 조회 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
-		int totalRecord=mileageService.selectTotalRecord(searchVo.getUserNo());
+		int totalRecord=mileageService.selectTotalRecord(memberVo.getUserNo());
 		logger.info("totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);

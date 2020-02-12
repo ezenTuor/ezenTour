@@ -17,7 +17,7 @@ public class SupportDAOMybatis implements SupportDAO{
 	private String namespace = "config.mybatis.mapper.oracle.support.";
 	
 	@Override
-	public List<SupportVO> selectAll(MemberVO vo) {
+	public List<SupportViewVO> selectAll(MemberVO vo) {
 		return sqlSession.selectList(namespace+"selectAll",vo);
 	}
 
@@ -32,7 +32,7 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-	public SupportVO selectSupportByNo(int supportNo) {
+	public SupportViewVO selectSupportByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectSupportByNo",supportNo);
 	}
 
@@ -42,7 +42,7 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-	public SupportVO selectByNo(int supportNo) {
+	public SupportViewVO selectByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectByNo",supportNo);
 	}
 
@@ -57,7 +57,12 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-	public List<SupportVO> selectmySupport(MemberVO vo) {
+	public List<SupportViewVO> selectmySupport(MemberVO vo) {
 		return sqlSession.selectList(namespace+"selectmySupport",vo);
+	}
+
+	@Override
+	public List<SupportVO> selectReply(int groupNo) {
+		return sqlSession.selectList(namespace+"selectReply",groupNo);
 	}
 }
