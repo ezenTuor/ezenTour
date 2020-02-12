@@ -5,7 +5,10 @@
 <mapper namespace="config.mybatis.mapper.oracle.support">
 	<sql id="searchWhere">
 		<if test="searchKeyword!=null and searchKeyword != ''">
-			where ${searchCondition} like '%' || #{searchKeyword} || '%'
+			<where>
+				${searchCondition} like '%' || #{searchKeyword} || '%'
+				sort=0
+			</where>
 		</if>
 	</sql>
 	<select id="selectAll" parameterType="memberVo" resultType="supportVo">
@@ -17,7 +20,6 @@
 		    (
 		        select * from support
 				<include refid="searchWhere"></include>
-				and sort=0
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -49,7 +51,22 @@
 		where support_no = #{supportNo}
 	</select>
 
-	
+	<select id="selectmySupport" parameterType="memberVo" resultType="supportVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		        select * from support
+				<include refid="searchWhereMy"></include>
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
 	
 	<select id="selectAdmin" parameterType="searchVo" resultType="supportViewVo">
 		select * from support_view

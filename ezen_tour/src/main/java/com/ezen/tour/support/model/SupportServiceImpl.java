@@ -52,4 +52,9 @@ public class SupportServiceImpl implements SupportService{
 	public int selectAdminTotal(SearchVO searchVo) {
 		return supportDao.selectAdminTotal(searchVo);
 	}
+
+	@Override
+	public List<SupportVO> selectmySupport(MemberVO vo) {
+		return supportDao.selectmySupport(vo);
+	}
 }
