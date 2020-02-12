@@ -87,7 +87,7 @@
 		                <a href="<c:url value='/member/logout.do'/>">로그아웃</a>
 		               </c:if>
 		               <c:if test="${empty userNo }">
-			            <a href="<c:url value='/member/login.do'/>">로그인 (임시)</a>		                	
+			            <a href="<c:url value='/member/login.do'/>">로그인</a>		                	
 		               </c:if>
 		            </li>
 		            
