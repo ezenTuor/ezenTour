@@ -2,15 +2,18 @@ package com.ezen.tour.support.model;
 
 import java.util.List;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
 
 public interface SupportDAO {
-	List<SupportVO> selectAll(MemberVO vo);
+	List<SupportViewVO> selectAll(MemberVO vo);
 	int selectTotalRecord(MemberVO vo);
 	int insertSupport(SupportVO vo);
-	SupportVO selectSupportByNo (int supportNo);
+	SupportViewVO selectSupportByNo (int supportNo);
 	int editSupport(SupportVO vo);
-	SupportVO selectByNo(int supportNo);
-	int supportReply(SupportVO vo);
-	SupportVO selectReply(int groupNo);
+	SupportViewVO selectByNo(int supportNo);
+	List<SupportViewVO> selectmySupport(MemberVO vo);
+	List<SupportVO> selectReply(int groupNo);
+	List<SupportViewVO> selectAdmin(SearchVO searchVo);
+	int selectAdminTotal(SearchVO searchVo);
 }

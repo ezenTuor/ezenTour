@@ -41,8 +41,16 @@ function pageFunc(curPage){
 				<c:forEach var="memberVo" items="${list}">
 					<tr>
 						<td>${memberVo.userNo}</td>
-						<td>${memberVo.userId}</td>
-						<td>${memberVo.name}</td>
+						<td>
+							<a href="<c:url value='/manager/member/memberDetail.do?userId=${memberVo.userId}'/>">
+								${memberVo.userId}
+							</a>
+						</td>
+						<td>
+							<a href="<c:url value='/manager/member/memberDetail.do?userId=${memberVo.userId}'/>">
+								${memberVo.name}
+							</a>
+						</td>
 						<td>${memberVo.grade}</td>
 						<td>${memberVo.gender}</td>
 						<td>${memberVo.regdate}</td>

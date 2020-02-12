@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.tour.manager.schedule.ManagerScheduleVO;
 import com.ezen.tour.wishList.model.WishListVO;
 
 @Service
@@ -99,6 +100,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	@Override
 	public int scoreAvg(int packDno) {
 		return packDetailDao.scoreAvg(packDno);
+	}
+
+	@Override
+	public List<ManagerScheduleVO> selectSch(int packDno) {
+		return packDetailDao.selectSch(packDno);
 	}
 	
 	

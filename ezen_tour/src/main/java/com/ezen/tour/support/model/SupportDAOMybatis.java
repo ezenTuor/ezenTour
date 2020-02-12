@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
 
 @Repository
@@ -16,7 +17,7 @@ public class SupportDAOMybatis implements SupportDAO{
 	private String namespace = "config.mybatis.mapper.oracle.support.";
 	
 	@Override
-	public List<SupportVO> selectAll(MemberVO vo) {
+	public List<SupportViewVO> selectAll(MemberVO vo) {
 		return sqlSession.selectList(namespace+"selectAll",vo);
 	}
 
@@ -31,7 +32,7 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-	public SupportVO selectSupportByNo(int supportNo) {
+	public SupportViewVO selectSupportByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectSupportByNo",supportNo);
 	}
 
@@ -41,17 +42,27 @@ public class SupportDAOMybatis implements SupportDAO{
 	}
 
 	@Override
-	public SupportVO selectByNo(int supportNo) {
+	public SupportViewVO selectByNo(int supportNo) {
 		return sqlSession.selectOne(namespace+"selectByNo",supportNo);
 	}
 
 	@Override
-	public int supportReply(SupportVO vo) {
-		return sqlSession.insert(namespace+"supportReply",vo);
+	public List<SupportViewVO> selectAdmin(SearchVO searchVo) {
+		return sqlSession.selectList(namespace+"selectAdmin", searchVo);
 	}
 
 	@Override
-	public SupportVO selectReply(int groupNo) {
-		return sqlSession.selectOne(namespace+"selectReply",groupNo);
+	public int selectAdminTotal(SearchVO searchVo) {
+		return sqlSession.selectOne(namespace+"selectAdminTotal", searchVo);
+	}
+
+	@Override
+	public List<SupportViewVO> selectmySupport(MemberVO vo) {
+		return sqlSession.selectList(namespace+"selectmySupport",vo);
+	}
+
+	@Override
+	public List<SupportVO> selectReply(int groupNo) {
+		return sqlSession.selectList(namespace+"selectReply",groupNo);
 	}
 }

@@ -6,16 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#divForm{
+		width: 900px;
+		margin: auto;
+	}
+	#divForm{
+		font-size: 15px;
+		border: 0.5px solid gray;
+	}
+	#firstDiv{
+		font-weight: bold;
+	}
+	#name{
+		margin: 15px;
+		float: left;
+	}
+</style>
 </head>
 <body>
-<div class="divForm">
+<div id="divForm">
 		<div>
 			<span class="sp1">작성자</span> <span>${map['userId']}</span>
 		</div>
 		<div>
 			<span class="sp1">등록일</span> <span>${map['regdate']}</span>
 		</div>
-		
+		<br>
+		<hr style="size: 1.5px; color: gray;">
+		<br>
 		<div class="lastDiv">	
 			<p class="content">${map['detail']}</p>
 		</div>

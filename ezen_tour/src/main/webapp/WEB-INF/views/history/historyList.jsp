@@ -193,7 +193,7 @@ $(document).ready(function() {
 			
 			<tbody>
 				<c:forEach var="vo" items="${list}">
-				<c:set var="review" value="${vo.review}"/>
+				<c:set var="check" value="${vo.check}"/>
 					<tr>
 						<td>${vo.historyNo}</td>
 						<td class="packName">
@@ -206,12 +206,12 @@ $(document).ready(function() {
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 						<td class="writeChange">
-							<c:if test="${review=='N'}">
+							<c:if test="${check=='N'}">
 								<a href="<c:url value='/review/write.do?historyNo=${vo.historyNo}&name=${vo.name}'/>">
 									작성하기
 								</a>
 							</c:if>
-							<c:if test="${review=='Y'}">
+							<c:if test="${check=='Y'}">
 								<span>완료</span>
 							</c:if>
 						</td>

@@ -5,10 +5,13 @@
 <mapper namespace="config.mybatis.mapper.oracle.support">
 	<sql id="searchWhere">
 		<if test="searchKeyword!=null and searchKeyword != ''">
-			where ${searchCondition} like '%' || #{searchKeyword} || '%'
+			<where>
+				${searchCondition} like '%' || #{searchKeyword} || '%'
+				sort=0
+			</where>
 		</if>
 	</sql>
-	<select id="selectAll" parameterType="memberVo" resultType="supportVo">
+	<select id="selectAll" parameterType="memberVo" resultType="supportViewVo">
 		select *
 		from
 		(
@@ -17,7 +20,6 @@
 		    (
 		        select * from support
 				<include refid="searchWhere"></include>
-				and sort=0
 		    )A
 		)
 		where RNUM > #{firstRecordIndex} 
@@ -37,28 +39,53 @@
 		insert into support(support_no,user_no,title,content)
 		values(#{supportNo},#{userNo},#{title},#{content})
 	</insert>
-	<select id="selectSupportByNo" parameterType="int" resultType="supportVo">
+	<select id="selectSupportByNo" parameterType="int" resultType="supportViewVo">
 		select * from support where support_no=#{supportNo}
 	</select>
 	<update id="editSupport" parameterType="supportVo">
 		update support
 		set title=#{title}, content=#{content}
 	</update>
-	<select id="selectByNo" parameterType="int" resultType="supportVo">
+	<select id="selectByNo" parameterType="int" resultType="supportViewVo">
 		select * from support
 		where support_no = #{supportNo}
 	</select>
-	<insert id="supportReply" parameterType="supportVo">
-		<selectKey resultType="int" keyProperty="supportNo" order="BEFORE">
-			select reboard_seq.nextval from dual
-		</selectKey>
-		insert into support(support_no, title, content, 
-			groupno, step, sortno)
-		values(#{supportNo}, #{title},#{content}, 
-			#{groupNo}, #{step}+1, #{sortNo}+1)		
-	</insert>
-	<select id="selectReply" parameterType="int" resultType="supportVo">
+	<sql id="searchWhereMy">
+		<if test="searchKeyword!=null and searchKeyword != ''">
+			<where>
+				${searchCondition} like '%' || #{searchKeyword} || '%'
+				sort=0 and user_no=#{userNo}
+			</where>
+		</if>
+	</sql>
+	<select id="selectmySupport" parameterType="memberVo" resultType="supportViewVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		        select * from support
+				<include refid="searchWhereMy"></include>
+		    )A
+		)
+		where RNUM > #{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectAdmin" parameterType="searchVo" resultType="supportViewVo">
+		select * from support_view
+		<include refid="searchWhere"/>
+	</select>
+	
+	<select id="selectAdminTotal" parameterType="searchVo" resultType="int">
+		select count(*) from support_view
+		<include refid="searchWhere"/>
+	</select>
+	<select id="selectReply" resultType="supportVo" parameterType="int">
 		select * from support
-		where group_no=#{groupNo} and sort=1
+		where group_no=#{groupNo} and sort=1 
 	</select>
 </mapper>

@@ -80,4 +80,9 @@ public class MemberDAOMybatis implements MemberDAO{
 	public int selectTotal(SearchVO searchVo) {
 		return sqlSession.selectOne(namespace+"selectTotal", searchVo);
 	}
+
+	@Override
+	public MemberVO selectUser(String userId) {
+		return sqlSession.selectOne(namespace+"selectUser", userId);
+	}
 }

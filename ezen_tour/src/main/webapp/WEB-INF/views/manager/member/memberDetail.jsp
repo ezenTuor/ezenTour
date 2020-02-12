@@ -63,5 +63,10 @@
 		<label>마일리지</label>
 		<div>${memberVo.mileage}</div>
 	</div>
+	<p>
+		<a href="<c:url value='/manager/member/memberList.do'/>">
+			<button>회원목록</button>
+		</a>
+	</p>
 </article>
 <%@include file="../../inc/adminBottom.jsp"%>

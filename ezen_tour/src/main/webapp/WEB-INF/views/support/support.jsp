@@ -20,15 +20,19 @@
 		document.frmPage.submit();
 	}
 	
+	function shift1() {
+		location.href="<c:url value='/support/writeSupport.do'/>";
+	}
+	function shift2() {
+		location.href='<c:url value="/support/mySupport.do"/>';
+	}
 </script>
 <style type="text/css">
-	#divList{
+	.divList{
 		width: 1064px;
 		margin: auto;
 	}
-	#divList{
-		height: 300px;
-	}
+	
 	table{
 		border-top: 1px solid gray;
 		border-bottom: 1px solid gray;
@@ -50,7 +54,7 @@
     	color: #424242;
     	line-height: 18px;
 	}
-	#divList ul li{
+	.divList ul li{
 		float: left;
 		width: 530px;
 		border-top: 1px solid gray;
@@ -61,7 +65,7 @@
 		background-color: #ddd;
 	}
 	
-	#divList ul li{
+	.divList ul li{
 		border-top: 1px solid black;
 		border-left: 1px solid black;
 		border-right: 1px solid black;
@@ -74,6 +78,20 @@
     	font-weight: 600;
     	border-right: 1px solid #e4e4e4;
     	border-bottom: 1px solid #e4e4e4;
+	}
+	
+	.divSearch,#frmSearch{
+		width: 1064px;
+		margin: auto;
+		align-content: center;
+		margin-bottom: 40px;
+	}
+	.shift{
+		text-decoration: none;
+		font-size: 13px;
+		color: black;
+		float: right;
+		margin-top: 8px;
 	}
 </style>	
 </head>	
@@ -103,13 +121,15 @@
 	<colgroup>
 		<col style="width:10%;" />
 		<col style="width:50%;" />
-		<col style="width:20%;" />
-		<col style="width:20%;" />
+		<col style="width:14%;" />
+		<col style="width:13%;" />
+		<col style="width:13%;" />
 	</colgroup>
 	<thead>
 	  <tr>
 	    <th scope="col">번호</th>
 	    <th scope="col">제목</th>
+	    <th scope="col">아이디</th>
 	    <th scope="col">작성일</th>
 	    <th scope="col">답변상태</th>
 	  </tr>
@@ -117,24 +137,25 @@
 	<tbody>
 		<c:if test="${empty list }">
 			<tr class="align_center">
-				<td colspan="4" style="text-align: center;">검색된 건의사항이 존재하지 않습니다.</td>
+				<td colspan="5" style="text-align: center;">검색된 건의사항이 없습니다.</td>
 			</tr>
 		</c:if>  
 		<c:if test="${!empty list }">
 			<c:forEach var="vo" items="${list }">				
 				<tr  style="text-align:center">
-					<td>${vo.no}</td>
+					<td>${vo.supportNo}</td>
 					<td style="text-align:left">
-							<a href
-							="<c:url value='/support/supportDetail.do?no=${vo.no}'/>">
-								<c:if test="${fn:length(vo.title)>30}">
-									${fn:substring(vo.title, 0,30)}...
-								</c:if>
-								<c:if test="${fn:length(vo.title)<=30}">
-									${vo.title}
-								</c:if>													
-							</a>
-						</td>
+						<a href
+						="<c:url value='/support/supportDetail.do?supportNo=${vo.supportNo}&groupNo=${vo.groupNo }'/>">
+							<c:if test="${fn:length(vo.title)>30}">
+								${fn:substring(vo.title, 0,30)}...
+							</c:if>
+							<c:if test="${fn:length(vo.title)<=30}">
+								${vo.title}
+							</c:if>													
+						</a>
+					</td>
+					<td>${vo.userId }</td>
 					<td><fmt:formatDate value="${vo.regdate }" 
 						pattern="yyyy-MM-dd"/>
 					</td>
@@ -180,8 +201,8 @@
 	</c:if>	
 </div>
 <div class="divSearch">
-   	<form name="frmSearch" method="post" 
-   		action='<c:url value="/reBoard/list.do"/>'>
+   	<form name="frmSearch" method="post" id="frmSearch"
+   		action='<c:url value="/support/support.do"/>'>
         <select name="searchCondition">
             <option value="title" 
             	<c:if test="${param.searchCondition=='title' }">
@@ -202,13 +223,11 @@
         <input type="text" name="searchKeyword" title="검색어 입력"
         	value="${param.searchKeyword}">   
 		<input type="submit" value="검색">
+		
+		<input type="button" class="shift" style="height: 24px; margin-left: 5px;" value="글쓰기" onclick="shift1()">
+		<input type="button" class="shift" style="height: 24px;" value="내 건의사항" onclick="shift2()">
     </form>
 </div>
-
-<div class="divBtn">
-    <a href='<c:url value=""/>' >글쓰기</a>
-    <a href='<c:url value=""/>' >내 건의사항</a>
-</div>
-
 </body>
 </html>
+<%@ include file="../inc/bottom.jsp" %>

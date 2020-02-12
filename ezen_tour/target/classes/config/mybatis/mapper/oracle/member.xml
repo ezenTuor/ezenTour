@@ -88,4 +88,9 @@
 		select count(*) from member
 		<include refid="searchWhere"/>
 	</select>
+	
+	<select id="selectUser" parameterType="string" resultType="memberVo">
+		select * from member
+		where user_id=#{userId}
+	</select>
 </mapper>
