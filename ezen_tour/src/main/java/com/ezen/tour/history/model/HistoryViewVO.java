@@ -14,6 +14,7 @@ public class HistoryViewVO {
 	private Timestamp koreaDep;
 	private Timestamp koreaEnt;
 	private String name;
+	private String check;
 	
 	
 	public int getHistoryNo() {
@@ -76,12 +77,18 @@ public class HistoryViewVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getCheck() {
+		return check;
+	}
+	public void setCheck(String check) {
+		this.check = check;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "HistoryViewVO [historyNo=" + historyNo + ", userNo=" + userNo + ", state=" + state + ", packDno="
 				+ packDno + ", price=" + price + ", regdate=" + regdate + ", review=" + review + ", koreaDep="
-				+ koreaDep + ", koreaEnt=" + koreaEnt + ", name=" + name + "]";
+				+ koreaDep + ", koreaEnt=" + koreaEnt + ", name=" + name + ", check=" + check + "]";
 	}
 }
