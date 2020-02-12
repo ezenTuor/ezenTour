@@ -24,6 +24,25 @@ $(function(){
 		});
 		$("#wishNums").val(nums);
 		$("form[name=insert]").submit();
+		
+	});
+	
+	$("#submit2").click(function(){
+		var nums="";
+		
+		$(".option").each(function(){
+			var temp=$(this).find("input[type=hidden]").val();
+			
+			if($(this).find("input[type=checkbox]").is(":checked")){
+				if(nums!=""){
+					nums+="|";
+				}
+				nums+=temp;
+			}
+		});
+		$("#wishNums2").val(nums);
+		$("form[name=delete]").submit();
+		
 	});
 });
 </script>
@@ -157,7 +176,7 @@ $(function(){
 							<td>${list.wishDate}</td>
 							<td>
 								<input type="checkbox" >
-								<input type="hidden" value="${list.wishNo}">나중에 히든처리
+								<input type="hidden" value="${list.wishNo}">
 							</td>
 						</tr>
 					</c:forEach>
@@ -189,7 +208,11 @@ $(function(){
 		</div>
 		<form action="<c:url value='/payment/payment.do'/>" name="insert" method="post">
 			<button id="submit">결제하기</button>
-			<input type="hidden" id="wishNums" name="nums">나중에 히든처리
+			<input type="hidden" id="wishNums" name="nums">
+		</form>
+		<form action="<c:url value='/payment/delete.do'/>" name="delete" method="post">
+			<button id="submit2">취소하기</button>
+			<input type="hidden" id="wishNums2" name="nums">
 		</form>
 	</div>
 	<div id="attention">
