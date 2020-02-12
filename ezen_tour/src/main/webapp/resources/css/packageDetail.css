@@ -138,9 +138,15 @@
 <!-- 스티키바 부분-->
 
 .content-1 {
-	background: blue;
+	background: gray;
 	height: 300px;
 	width: 100%;
+}
+
+.guidance {
+	background: #e4e4e4;
+	font-size: 13px;
+	margin: 20px 0 10px 0;
 }
 
 .menu {
@@ -246,4 +252,18 @@
 
 #intoCart {
 	padding: 9px;
+}
+
+.day-check {
+	text-align: center;
+	color: white;
+	background: #003CA1;
+	margin-top: 4px;
+	border-radius: 10px;
+	
+}
+
+.day-sch{
+	color: black;
+	font-size: 13px;
 }

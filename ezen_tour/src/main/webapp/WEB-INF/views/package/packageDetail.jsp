@@ -51,7 +51,7 @@
 			    <input class="carousel-open" type="radio" id="carousel-${status.count }"
 					name="carousel" aria-hidden="true" hidden="" checked="checked">
 				<div class="carousel-item">
-					<img src="${item}">
+					<img src="${pageContext.request.contextPath}/resources/pd_images/${item}">
 			</div>
 			</c:forEach>
 			<!-- 
@@ -89,7 +89,9 @@
 	<div id="travel-detail">
 		<div id="travel-sche">
 			<div class="content-1">
-				${packVo.detail}
+				<div class="guidance">
+					${packVo.detail}
+				</div>
 			</div>
 			<ul class="menu">
 				<li><a href="#">여행일정</a></li>
@@ -97,7 +99,7 @@
 				<li><a href="#">참고사항</a></li>
 			</ul>
 			<div class="container" >
-				${packDetailVo.details }
+				${schDetail}
 			
 			</div>	
 
@@ -112,7 +114,7 @@
 			<div><span style="font-weight: 600">도착</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${packDetailVo.koreaEnt }" /></span></div>
 			<div><span style="font-weight: 600">항공</span><span>${packDetailVo.airline }</span></div>
 			<a href="${pageContext.request.contextPath}/package/packSelectSchedule.do?packNo=${packDetailVo.packNo }" id="changeDate">출발일 변경</a>
-			<div style="width: 100%; background: white; height: 4px; margin-top: 20px; margin-bottom: 10px;"></div>
+			<div style="background: white; height: 4px; margin-top: 20px; margin-bottom: 10px;"></div>
 			
 			<div style="font-weight: 600; font-size: 40px; margin-bottom: 30px; margin-top: 20px">여행비용</div>
 			<div><span style="font-weight: 600">성인</span><span class="man-price">${packDetailVo.man } 원</span></div>
