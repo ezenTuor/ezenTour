@@ -96,7 +96,7 @@
 				<li><a href="#">여행자 보험</a></li>
 				<li><a href="#">참고사항</a></li>
 			</ul>
-			<div class="container" style="height:1000px">
+			<div class="container" >
 				${packDetailVo.details }
 			
 			</div>	

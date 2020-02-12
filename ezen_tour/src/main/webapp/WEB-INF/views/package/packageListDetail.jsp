@@ -37,7 +37,7 @@
 							"<a href='packSelectSchedule.do?packNo="+item.packNo+"' class='de-li-pack'>"+
 							"<img class='pack-img' src='"+imageName+"'>"+
 							"<div class='info-box'><div class='pack-name'>"+item.name+"</div>"+
-							"<div class='pack-max'>"+item.manmax+"</div></div>"+				
+							"<div class='pack-max'>"+item.manmax+"원</div></div>"+				
 							"</a></li>"
 							
 							$("#pack-ex").append(str);

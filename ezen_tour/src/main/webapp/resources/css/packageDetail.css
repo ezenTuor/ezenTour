@@ -238,7 +238,7 @@
 
 #sticky-credit{
 	position: sticky;
-	top: 10px;
+	top: 0px;
 	padding: 4px;
 	background: #003CA1;
 	color: white;
