@@ -38,5 +38,7 @@ public interface PackDetailDAO {
 
 	int updateCapaCur(PackDetailVO packDetailVo);
 
+	int scoreAvg(int packDno);
+
 
 }

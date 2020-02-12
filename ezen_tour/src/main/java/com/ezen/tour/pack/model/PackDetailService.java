@@ -22,4 +22,5 @@ public interface PackDetailService {
 	int insertWish(WishListVO vo);
 	List<String> selDate(int packNo);
 	int updateCapaCur(PackDetailVO packDetailVo);
+	int scoreAvg(int packDno);
 }

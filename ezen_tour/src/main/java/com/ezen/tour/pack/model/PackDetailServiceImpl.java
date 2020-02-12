@@ -95,6 +95,11 @@ public class PackDetailServiceImpl implements PackDetailService {
 	public int updateCapaCur(PackDetailVO packDetailVo) {
 		return packDetailDao.updateCapaCur(packDetailVo);
 	}
+
+	@Override
+	public int scoreAvg(int packDno) {
+		return packDetailDao.scoreAvg(packDno);
+	}
 	
 	
 }

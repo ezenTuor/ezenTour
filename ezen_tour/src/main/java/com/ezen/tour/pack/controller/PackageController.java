@@ -52,11 +52,14 @@ public class PackageController {
 		
 		HttpSession session = request.getSession();
 		String userNo = (String) session.getAttribute("");
-
-
+		
+		int avg = packDetailService.scoreAvg(packDno);
+		double avgScore = Math.round(avg)*100/100.0;
+		
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
 		model.addAttribute("userNo", userNo);
+		model.addAttribute("avgScore", avgScore);
 		return "package/packageDetail";
 	}
 	
