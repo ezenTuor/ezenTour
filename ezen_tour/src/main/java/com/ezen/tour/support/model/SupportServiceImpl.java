@@ -14,7 +14,7 @@ public class SupportServiceImpl implements SupportService{
 	private SupportDAO supportDao;
 
 	@Override
-	public List<SupportVO> selectAll(MemberVO vo) {
+	public List<SupportViewVO> selectAll(MemberVO vo) {
 		return supportDao.selectAll(vo);
 	}
 
@@ -29,7 +29,7 @@ public class SupportServiceImpl implements SupportService{
 	}
 
 	@Override
-	public SupportVO selectSupportByNo(int supportNo) {
+	public SupportViewVO selectSupportByNo(int supportNo) {
 		return supportDao.selectSupportByNo(supportNo);
 	}
 
@@ -39,7 +39,7 @@ public class SupportServiceImpl implements SupportService{
 	}
 
 	@Override
-	public SupportVO selectByNo(int supportNo) {
+	public SupportViewVO selectByNo(int supportNo) {
 		return supportDao.selectByNo(supportNo);
 	}
 
@@ -54,7 +54,12 @@ public class SupportServiceImpl implements SupportService{
 	}
 
 	@Override
-	public List<SupportVO> selectmySupport(MemberVO vo) {
+	public List<SupportViewVO> selectmySupport(MemberVO vo) {
 		return supportDao.selectmySupport(vo);
+	}
+
+	@Override
+	public List<SupportVO> selectReply(int groupNo) {
+		return supportDao.selectReply(groupNo);
 	}
 }

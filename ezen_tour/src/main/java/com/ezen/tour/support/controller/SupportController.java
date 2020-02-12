@@ -26,6 +26,7 @@ import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
 import com.ezen.tour.support.model.SupportService;
 import com.ezen.tour.support.model.SupportVO;
+import com.ezen.tour.support.model.SupportViewVO;
 
 @Controller
 @RequestMapping("/support")
@@ -51,7 +52,7 @@ public class SupportController {
 		
 		logger.info("값 셋팅 후 searchVo={}", vo);
 		
-		List<SupportVO> list=supportService.selectAll(vo);
+		List<SupportViewVO> list=supportService.selectAll(vo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		int totalRecord=supportService.selectTotalRecord(vo);
@@ -101,18 +102,18 @@ public class SupportController {
 			return "common/message";
 		}
 		
-		SupportVO supportVo=supportService.selectSupportByNo(supportNo);
-		logger.info("상세보기 결과, vo={}", supportVo);
+		SupportViewVO supportViewVo=supportService.selectSupportByNo(supportNo);
+		logger.info("상세보기 결과, vo={}", supportViewVo);
 		Map<String, Object> map = new HashMap<String, Object>();
-		String userId = memberService.findUserIdByUserNo(supportVo.getUserNo());
+		String userId = memberService.findUserIdByUserNo(supportViewVo.getUserNo());
 		List<SupportVO> list = new ArrayList<SupportVO>();
 		
 		list = supportService.selectReply(groupNo);
 				
-		map.put("title", supportVo.getTitle());
+		map.put("title", supportViewVo.getTitle());
 		map.put("userId", userId);
-		map.put("regdate", supportVo.getRegdate());
-		map.put("content", supportVo.getContent());
+		map.put("regdate", supportViewVo.getRegdate());
+		map.put("content", supportViewVo.getContent());
 		
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
@@ -129,10 +130,10 @@ public class SupportController {
 			return "common/message";
 		}
 		
-		SupportVO supportVo =supportService.selectByNo(no);
-		logger.info("수정화면 결과, supportVo={}", supportVo);
+		SupportViewVO supportViewVo =supportService.selectByNo(no);
+		logger.info("수정화면 결과, supportVo={}", supportViewVo);
 		
-		model.addAttribute("supportVo", supportVo);
+		model.addAttribute("supportVo", supportViewVo);
 		
 		return "reBoard/edit";
 	}
@@ -155,48 +156,6 @@ public class SupportController {
 		
 		return "common/message";
 	}
-	@RequestMapping(value="/supportReply.do", method = RequestMethod.GET)
-	public String reply_get(@RequestParam(defaultValue = "0") int supportNo,
-			ModelMap model) {
-		//1
-		logger.info("답변하기 화면, 파라미터 no={}", supportNo);
-		if(supportNo==0) {
-			model.addAttribute("msg", "잘못된 url입니다.");
-			model.addAttribute("url", "/support/support.do");
-			
-			return "common/message";
-		}
-		
-		//2
-		SupportVO vo=supportService.selectByNo(supportNo);
-		logger.info("답변하기 화면 결과 vo={}",vo);
-		
-		//3
-		model.addAttribute("vo", vo);
-		
-		return "support/supportReply";
-	}
-	
-	@RequestMapping(value="/reply.do", method=RequestMethod.POST)
-	public String reply_post(@ModelAttribute SupportVO vo,
-			ModelMap model) {
-		//1
-		logger.info("답변하기 파라미터, vo={}", vo);
-		
-		//2
-		int cnt=supportService.supportReply(vo);
-		logger.info("답변하기 결과, cnt={}", cnt);
-		
-		//3
-		if(cnt>0) {
-			return "redirect:/support/support.do";
-		}else {
-			model.addAttribute("msg", "답변하기 실패!");
-			model.addAttribute("url", "/support/supportReply.do?no="+vo.getSupportNo());
-			
-			return "common/message";
-		}
-	}
 	@RequestMapping("/mySupport.do")
 	public String mySupportSelect(@ModelAttribute MemberVO vo, Model model) {
 		logger.info("건의 사항 목록 띄우기");
@@ -211,7 +170,7 @@ public class SupportController {
 		
 		logger.info("값 셋팅 후 searchVo={}", vo);
 		
-		List<SupportVO> list=supportService.selectmySupport(vo);
+		List<SupportViewVO> list=supportService.selectmySupport(vo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		int totalRecord=supportService.selectTotalRecord(vo);
