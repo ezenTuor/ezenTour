@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +48,7 @@ $(document).ready(function(){
         <div>  
         	<label for="content">내용</label>        
  			<textarea id="content" name="content" rows="12" cols="40"></textarea>
-        </div>             
+        </div>
         <div class="center">
             <input type = "submit" value="등록"/>
             <input type = "Button" value="글목록" 

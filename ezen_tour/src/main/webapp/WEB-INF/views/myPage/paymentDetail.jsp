@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <style type="text/css">
 	#divForm{
 		width: 900px;
@@ -23,8 +21,6 @@
 		float: left;
 	}
 </style>
-</head>
-<body>
 <div id="divForm">
 		<div>
 			<span class="sp1">작성자</span> <span>${map['userId']}</span>
@@ -42,6 +38,4 @@
         	<a href='<c:url value="/myPage/payment.do"/>'>목록</a>			
 		</div>
 	</div>
-</body>
-</html>
 <%@ include file="../inc/bottom.jsp" %>

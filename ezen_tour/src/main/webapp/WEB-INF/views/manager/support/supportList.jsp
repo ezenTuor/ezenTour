@@ -42,7 +42,18 @@ function pageFunc(curPage){
 						<td>${supportVo.title}</td>
 						<td>${supportVo.userId}</td>
 						<td>${supportVo.regdate}</td>
-						<td>${supportVo.asFlag}</td>
+						<td>
+							<c:if test="${supportVo.asFlag=='N'}">
+								<a href="<c:url value='/manager/support/supportWrite.do?supportNo=${supportVo.supportNo}'/>">
+									<button>답변하기</button>
+								</a>
+							</c:if>
+							<c:if test="${supportVo.asFlag=='Y'}">
+								<a href="<c:url value='/manager/support/supportDetail.do?supportNo=${supportVo.supportNo}'/>">
+									<button>답변보기</button>
+								</a>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>
