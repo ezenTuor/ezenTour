@@ -27,7 +27,10 @@ from pack_detail
 where pack_no=1;
 
 
+
+
 -- 지역 대분류 관련 --
+/*
 select * from area order by area_no;
 
 insert into area
@@ -85,6 +88,7 @@ commit;
 
 select * from area_detail
 where area_no=1;
+*/
 
 --패키지--
 select * from pack;
