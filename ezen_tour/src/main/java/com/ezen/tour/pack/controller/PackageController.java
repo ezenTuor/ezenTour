@@ -105,7 +105,7 @@ public class PackageController {
 			logger.info("카트 등록 실패");
 		}
 		
-		return "package/packageDetail";
+		return "myPage/wishList.do";
 	}
 	
 	
