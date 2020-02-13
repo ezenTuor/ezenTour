@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,9 @@ public class SupportController {
 		
 		List<SupportViewVO> list=supportService.selectAll(vo);
 		logger.info("글목록 결과, list.size={}", list.size());
+		for(SupportViewVO viewvo:list) {
+			System.out.println("viewvo="+viewvo);
+		}
 		
 		int totalRecord=supportService.selectTotalRecord(vo);
 		logger.info("totalRecord={}", totalRecord);
@@ -73,17 +77,19 @@ public class SupportController {
 	}
 	
 	@RequestMapping(value = "/writeSupport.do", method = RequestMethod.POST)
-	public String writeSupport_post(@ModelAttribute SupportVO vo, Model model) {
+	public String writeSupport_post(@ModelAttribute SupportVO vo,HttpSession session
+			,Model model) {
 		logger.info("건의사항 작성 페이지 처리");
-		
+		int userNo = (Integer)session.getAttribute("userNo");
 		String msg = "", url = "";
+		vo.setUserNo(userNo);
 		int result = supportService.insertSupport(vo);
 		if(result >0) {
 			msg = "건의사항이 등록되었습니다.";
-			url = "support/support.do";
+			url = "/support/support.do";
 		}else {
 			msg = "건의사항 등록이 실패하였습니다.";
-			url = "support/writeSupport.do";
+			url = "/support/writeSupport.do";
 		}
 		
 		model.addAttribute("msg", msg);
