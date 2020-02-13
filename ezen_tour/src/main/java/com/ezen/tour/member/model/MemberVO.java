@@ -145,6 +145,6 @@ public class MemberVO extends SearchVO{
 				+ ", zipcode=" + zipcode + ", address=" + address + ", addressDetail=" + addressDetail + ", hp1=" + hp1
 				+ ", hp2=" + hp2 + ", hp3=" + hp3 + ", email1=" + email1 + ", email2=" + email2 + ", grade=" + grade
 				+ ", userSsr=" + userSsr + ", gender=" + gender + ", regdate=" + regdate + ", delFlag=" + delFlag
-				+ ", deldate=" + deldate + ", mileage=" + mileage + "]";
+				+ ", deldate=" + deldate + ", mileage=" + mileage + ", toString()=" + super.toString() + "]";
 	}
 }

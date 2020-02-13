@@ -44,7 +44,6 @@
 					<ul>
 		                <li><a href="<c:url value="/manager/pack/packWrite.do"/>">상품등록</a></li>
 		                <li><a href="<c:url value='/manager/pack/packList.do'/>">상품목록</a></li>
-		                <li><a href="#">상품이벤트</a></li>
 		            </ul>  
 				</div>
 				<h3>주문관리</h3>
@@ -58,26 +57,23 @@
 				<h3>사용자관리</h3>
 				<div>
 		            <ul>
-		                <li><a href="#">회원리스트</a></li>
+		                <li><a href="<c:url value='/manager/member/memberList.do'/>">회원리스트</a></li>
 		                <li><a href="#">회원등록</a></li>
 		                <li><a href="#">매니저등록</a></li>
 		                <li><a href="#">회원등급</a></li>
 		            </ul>
 				</div>
-				<h3>게시판 관리</h3>
+				<h3>건의 사항 관리</h3>
 				<div>
 					<ul>
-		                <li><a href="#">후기게시판</a></li>
-		                <li><a href="#">FAQ</a></li>
-		                <li><a href="#">건의게시판</a></li>
-		                <li><a href="#">공지사항</a></li>
+		                <li><a href="<c:url value='/manager/support/supportList.do'/>">건의사항 목록</a></li>
 		            </ul>
 				</div>
 				<h3>기타 관리</h3>
 				<div>
 					<ul>
-		                <li><a href="#">쿠폰리스트</a></li>
-		                <li><a href="#">쿠폰등록</a></li>
+		                <li><a href="<c:url value='/manager/cupon/cuponList.do'/>">쿠폰리스트</a></li>
+		                <li><a href="<c:url value='/manager/cupon/cuponWrite.do'/>">쿠폰등록</a></li>
 		            </ul>
 				</div>
 			</div>

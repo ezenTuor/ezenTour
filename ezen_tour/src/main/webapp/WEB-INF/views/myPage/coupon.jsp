@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -105,8 +102,6 @@ $(document).ready(function(){
     	margin-left: 115px;
 	}
 </style>
-</head>
-<body>
 <div id="tabs">
 <h2 style="color: black; float: left; font-weight: bold;">내가받은 쿠폰</h2>
 	<br>
@@ -279,6 +274,4 @@ $(document).ready(function(){
 		<li>모든 쿠폰은 당사 사정에 의해 변경 및 조기 종료될 수 있습니다.</li>
 	</ul>
 </div>
-</body>
-</html>
 <%@ include file="../inc/bottom.jsp" %>

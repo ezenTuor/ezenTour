@@ -65,4 +65,19 @@ public class SupportDAOMybatis implements SupportDAO{
 	public List<SupportVO> selectReply(int groupNo) {
 		return sqlSession.selectList(namespace+"selectReply",groupNo);
 	}
+
+	@Override
+	public int insertAdmin(SupportVO supportVo) {
+		return sqlSession.insert(namespace+"insertAdmin", supportVo);
+	}
+
+	@Override
+	public int updateAdmin(int supportNo) {
+		return sqlSession.update(namespace+"updateAdmin", supportNo);
+	}
+
+	@Override
+	public SupportViewVO selectRe(int groupNo) {
+		return sqlSession.selectOne(namespace+"selectRe", groupNo);
+	}
 }

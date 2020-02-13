@@ -62,4 +62,16 @@ public class SupportServiceImpl implements SupportService{
 	public List<SupportVO> selectReply(int groupNo) {
 		return supportDao.selectReply(groupNo);
 	}
+
+	@Override
+	public int insertAdmin(SupportVO supportVo) {
+		int cnt=supportDao.insertAdmin(supportVo);
+		cnt=supportDao.updateAdmin(supportVo.getGroupNo());
+		return cnt;
+	}
+
+	@Override
+	public SupportViewVO selectRe(int groupNo) {
+		return supportDao.selectRe(groupNo);
+	}
 }

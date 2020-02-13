@@ -12,6 +12,7 @@ public class SupportVO {
 	private int step;
 	private int sort;
 	private String asFlag;
+	
 	public int getSupportNo() {
 		return supportNo;
 	}
