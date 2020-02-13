@@ -14,6 +14,9 @@ public interface SupportService {
 	SupportViewVO selectByNo(int supportNo);
 	List<SupportViewVO> selectmySupport(MemberVO vo);
 	List<SupportVO> selectReply(int groupNo);
+	
 	List<SupportViewVO> selectAdmin(SearchVO searchVo);
 	int selectAdminTotal(SearchVO searchVo);
+	int insertAdmin(SupportVO supportVo);
+	SupportViewVO selectRe(int groupNo);
 }

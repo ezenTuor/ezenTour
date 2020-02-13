@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <style>
 #container {
 	width: 960px;
@@ -29,7 +32,7 @@
 	transition: 0.3s;
 }
 /* Style the tab content */
-.tabcontent {
+.tabcontent88 {
 	display: none;
 	background-color: rgb(0, 154, 200);
 	padding: 6px 12px;
@@ -41,7 +44,7 @@ ul.tab li.current {
 	color: #222;
 }
 
-.tabcontent.current {
+.tabcontent88.current {
 	display: block;
 }
 </style>
@@ -50,7 +53,7 @@ ul.tab li.current {
 	<li data-tab="tab2"><a href="#">개인정보 제3자<br>제공 및 공유 (필수)</a></li>
 	<li data-tab="tab3"><a href="#">개인정보 수집 및<br>이용동의 (선택)</a></li>
 </ul>
-<div id="tab1" class="tabcontent">
+<div id="tab1" class="tabcontent88">
 <h5 class="tit">고유식별정보 수집 및 이용 동의(필수)</h5>
 	 <table class="tbl_basic">
 		<caption>
@@ -86,7 +89,7 @@ ul.tab li.current {
 				</div>
 	
 </div>
-<div id="tab2" class="tabcontent">
+<div id="tab2" class="tabcontent88">
 <h5 class="tit">개인정보 제3자 제공 및 공유에 대한 동의(필수)</h5>
 	<table class="tbl_vertical">
 	<caption>개인정보 수집항목 - 선택항목</caption>
@@ -169,7 +172,7 @@ ul.tab li.current {
 					</div>
 				</div>	
 </div>
-<div id="tab3" class="tabcontent">
+<div id="tab3" class="tabcontent88">
 <div class="step_box box_agree" id="term_con5" title="개인정보 수집 및 이용동의(선택)" style="display: none">
 					<div class="txt_agree" id="box_agree_marketing">
 						<div class="wrap_agree" id="privacyUtilAgree_0_1001002">

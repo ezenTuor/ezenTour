@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.tour.member.model.MemberVO;
+
 @Repository
 public class PaymentDAOMybatis implements PaymentDAO{
 	@Autowired
@@ -20,8 +22,8 @@ public class PaymentDAOMybatis implements PaymentDAO{
 	}
 
 	@Override
-	public List<PaymentVO> selectAll(int userNo) {
-		return sqlSession.selectList(namespace+"selectAll",userNo);
+	public List<PaymentVO> selectAll(MemberVO memberVo) {
+		return sqlSession.selectList(namespace+"selectAll",memberVo);
 	}
 
 	@Override

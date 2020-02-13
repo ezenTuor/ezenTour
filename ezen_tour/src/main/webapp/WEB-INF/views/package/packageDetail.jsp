@@ -117,11 +117,11 @@
 			<div style="background: white; height: 4px; margin-top: 20px; margin-bottom: 10px;"></div>
 			
 			<div style="font-weight: 600; font-size: 40px; margin-bottom: 30px; margin-top: 20px">여행비용</div>
-			<div><span style="font-weight: 600">성인</span><span class="man-price">${packDetailVo.man } 원</span></div>
-			<div><span style="font-weight: 600">아동</span><span class="child-price">${packDetailVo.child } 원</span></div>
-			<div><span style="font-weight: 600">유아</span><span class="baby-price">${packDetailVo.baby } 원</span></div>
+			<div><span style="font-weight: 600">성인</span><span class="man-price">${packDetailVo.man }</span>원</div>
+			<div><span style="font-weight: 600">아동</span><span class="child-price">${packDetailVo.child }</span>원</div>
+			<div><span style="font-weight: 600">유아</span><span class="baby-price">${packDetailVo.baby }</span>원</div>
 			
-			<div><span style="font-weight: 600">남은좌석</span><span class="left">${packDetailVo.capecityCur } 석</span></div>
+			<div><span style="font-weight: 600">남은좌석</span><span class="left">${packDetailVo.capecityCur }</span>석</div>
 			
 			
 			<script type="text/javascript">

@@ -12,6 +12,12 @@
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	
+<style type="text/css">
+	body {
+		background-image: url("<c:url value='/resources/images/7.jpg'/>");
+	}
+</style>
 <script type="text/javascript">
 $(function(){
 	$("#check_module").click(function() {

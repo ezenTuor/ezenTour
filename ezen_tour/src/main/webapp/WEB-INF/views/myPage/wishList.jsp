@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <script type="text/javascript">
 $(function(){
 	$("#submit").click(function(){
@@ -24,6 +21,25 @@ $(function(){
 		});
 		$("#wishNums").val(nums);
 		$("form[name=insert]").submit();
+		
+	});
+	
+	$("#submit2").click(function(){
+		var nums="";
+		
+		$(".option").each(function(){
+			var temp=$(this).find("input[type=hidden]").val();
+			
+			if($(this).find("input[type=checkbox]").is(":checked")){
+				if(nums!=""){
+					nums+="|";
+				}
+				nums+=temp;
+			}
+		});
+		$("#wishNums2").val(nums);
+		$("form[name=delete]").submit();
+		
 	});
 });
 </script>
@@ -103,8 +119,6 @@ $(function(){
     	margin-left: 115px;
 	}
 </style>
-</head>
-<body>
 <div id="PackageWishList">
 		<h2 style="color: black; float: left; font-weight: bold;">Package WishList</h2>
 		<br>
@@ -156,7 +170,7 @@ $(function(){
 							<td>${list.wishDate}</td>
 							<td>
 								<input type="checkbox" >
-								<input type="hidden" value="${list.wishNo}">나중에 히든처리
+								<input type="hidden" value="${list.wishNo}">
 							</td>
 						</tr>
 					</c:forEach>
@@ -188,7 +202,11 @@ $(function(){
 		</div>
 		<form action="<c:url value='/payment/payment.do'/>" name="insert" method="post">
 			<button id="submit">결제하기</button>
-			<input type="hidden" id="wishNums" name="nums">나중에 히든처리
+			<input type="hidden" id="wishNums" name="nums">
+		</form>
+		<form action="<c:url value='/payment/delete.do'/>" name="delete" method="post">
+			<button id="submit2">취소하기</button>
+			<input type="hidden" id="wishNums2" name="nums">
 		</form>
 	</div>
 	<div id="attention">
@@ -205,6 +223,4 @@ $(function(){
 		<li>모든 쿠폰은 당사 사정에 의해 변경 및 조기 종료될 수 있습니다.</li>
 	</ul>
 </div>
-</body>
-</html>
 <%@ include file="../inc/bottom.jsp" %>

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
 <style type="text/css">
 	#paymentList{
 		width: 1064px;
@@ -112,7 +110,6 @@
 					<th scope="col">결제 내역 번호</th>
 					<th scope="col">할인 금액</th>
 					<th scope="col">결제 총 금액</th>
-					<th scope="col">결제 상태</th>
 					<th scope="col">결제 방법</th>
 					<th scope="col">결제일</th>
 				</tr>
@@ -124,25 +121,17 @@
 					</tr>
 				</c:if>
 				<c:if test="${!empty list}">
-					<c:forEach var="list" items="${list }">
+					<c:forEach var="payment" items="${list }">
 						<tr>
-							<td>${list.paymentNo}</td>
-							<td>${list.discount}</td>
-							<td><a href="<c:url value='/myPage/paymentDetail.do?paymentNo=${vo.paymentNo}'/>">${list.price}</a></td>
-							<!-- <td>${list.price}</td> -->
-							<c:if test="${list.state =='Y'}">
-								<td>${list.state}</td>
-							</c:if>
-							<c:if test="${list.state == 'N' }">
-								<td>-</td>
-							</c:if>
-							<td>${list.type}</td>
-							<c:if test="${list.state =='Y'}">
-								<td>${list.regdate }</td>
-							</c:if>
-							<c:if test="${list.state == 'N' }">
-								<td>-</td>
-							</c:if>
+							<td>${payment.paymentNo}</td>
+							<td>${payment.discount}</td>
+							<td>
+								<a style="color: black" href="<c:url value='/myPage/paymentDetail.do?paymentNo=${payment.paymentNo}'/>">
+									${payment.price}
+								</a>
+							</td>
+							<td>${payment.type}</td>
+							<td>${payment.regdate }</td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -186,6 +175,4 @@
 		<li>모든 쿠폰은 당사 사정에 의해 변경 및 조기 종료될 수 있습니다.</li>
 	</ul>
 	</div>
-</body>
-</html>
 <%@ include file="../inc/bottom.jsp" %>

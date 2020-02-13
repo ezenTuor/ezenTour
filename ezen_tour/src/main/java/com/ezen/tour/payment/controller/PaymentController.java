@@ -19,9 +19,11 @@ import com.ezen.tour.history.model.HistoryService;
 import com.ezen.tour.history.model.HistoryVO;
 import com.ezen.tour.member.model.MemberService;
 import com.ezen.tour.member.model.MemberVO;
+import com.ezen.tour.pack.model.PackDetailService;
 import com.ezen.tour.payment.model.PaymentService;
 import com.ezen.tour.payment.model.PaymentVO;
 import com.ezen.tour.wishList.model.WishListService;
+import com.ezen.tour.wishList.model.WishListVO;
 import com.ezen.tour.wishListView.model.WishListViewService;
 import com.ezen.tour.wishListView.model.WishListViewVO;
 
@@ -45,6 +47,9 @@ public class PaymentController {
 	
 	@Autowired
 	private WishListService wishListService;
+	
+	@Autowired
+	private PackDetailService packDetailService;
 	
 	@RequestMapping("/payment.do")
 	public void payment(@RequestParam String nums, Model model, HttpServletRequest request) {	//번호가져오기
@@ -118,6 +123,8 @@ public class PaymentController {
 			
 			int cnt3=wishListService.deleteWish(no);
 			logger.info("찜목록 삭제 결과 cnt={}", cnt3);
+			
+			
 		}
 		
 		
@@ -127,6 +134,21 @@ public class PaymentController {
 	@RequestMapping("/payment2.do")
 	public void payment2() {
 		logger.info("테스트");
+	}
+	
+	@RequestMapping("/delete.do")
+	public String deleteWish(@RequestParam String nums) {
+		
+		String[] sArr=nums.split("\\|");
+		for(int i=0; i<sArr.length; i++){
+			String temp=sArr[i];
+			int no=Integer.parseInt(temp);
+
+			int cnt=wishListService.deleteWish(no);
+			logger.info("찜목록 취소하기 결과 cnt={}", cnt);
+		}
+		
+		return "redirect:/myPage/wishList.do";
 	}
 	
 }

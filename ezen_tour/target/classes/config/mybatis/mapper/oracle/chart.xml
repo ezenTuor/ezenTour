@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.chart">
+	<sql id="searchWhere">
+		<where>
+			<if test="gender!=null and gender!=''">
+				and gender = #{gender}
+			</if>
+			<if test="agerange!=0">
+				and agerange = #{agerange}
+			</if>
+			<if test="year!=null and year!=''">
+				and year = #{year}
+			</if>
+			<if test="month!=null and month!=''">
+				and month = #{month}
+			</if>
+			<if test="areaNo!=null and areaNo!=''">
+				and areaNo = #{areaNo}
+			</if>
+		</where>
+	</sql>
+	<select id="selectChart" parameterType="searchChartVo" resultType="chartVo">
+		select *
+		from(
+		    select rownum as RNUM, c.*
+		    from(
+		        select * from chart_view
+		        <include refid="searchWhere"/>
+		        )c
+		    )
+		where RNUM > #{firstRecordIndex}
+		<![CDATA[
+		and RNUM <= #{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+

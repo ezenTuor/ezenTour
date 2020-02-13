@@ -4,12 +4,12 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.support">
 	<sql id="searchWhere">
-		<if test="searchKeyword!=null and searchKeyword != ''">
-			<where>
-				${searchCondition} like '%' || #{searchKeyword} || '%'
-				sort=0
-			</where>
-		</if>
+		<where>
+			<if test="searchKeyword!=null and searchKeyword != ''">
+			and ${searchCondition} like '%' || #{searchKeyword} || '%'
+			</if>
+			and sort=0
+		</where>
 	</sql>
 	<select id="selectAll" parameterType="memberVo" resultType="supportViewVo">
 		select *
@@ -47,16 +47,16 @@
 		set title=#{title}, content=#{content}
 	</update>
 	<select id="selectByNo" parameterType="int" resultType="supportViewVo">
-		select * from support
+		select * from support_view
 		where support_no = #{supportNo}
 	</select>
 	<sql id="searchWhereMy">
-		<if test="searchKeyword!=null and searchKeyword != ''">
-			<where>
-				${searchCondition} like '%' || #{searchKeyword} || '%'
-				sort=0 and user_no=#{userNo}
-			</where>
-		</if>
+		<where>
+			<if test="searchKeyword!=null and searchKeyword != ''">
+				and ${searchCondition} like '%' || #{searchKeyword} || '%'
+			</if>
+			and sort=0 and user_no=#{userNo}
+		</where>
 	</sql>
 	<select id="selectmySupport" parameterType="memberVo" resultType="supportViewVo">
 		select *
@@ -74,6 +74,11 @@
 		and RNUM<= #{firstRecordIndex} + #{recordCountPerPage}
 		]]>
 	</select>
+	<select id="selectReply" resultType="supportVo" parameterType="int">
+		select * from support
+		where group_no=#{groupNo} and sort=1 
+	</select>
+	
 	
 	<select id="selectAdmin" parameterType="searchVo" resultType="supportViewVo">
 		select * from support_view
@@ -84,8 +89,25 @@
 		select count(*) from support_view
 		<include refid="searchWhere"/>
 	</select>
-	<select id="selectReply" resultType="supportVo" parameterType="int">
-		select * from support
-		where group_no=#{groupNo} and sort=1 
+	
+	<insert id="insertAdmin" parameterType="supportVo">
+		<selectKey keyProperty="supportNo" resultType="int" order="BEFORE">
+			select support_seq.nextval from dual
+		</selectKey>
+		insert into support
+		values(#{supportNo}, -1, #{title}, #{content}, sysdate, #{groupNo}, 1, 1, 'A')
+	</insert>
+	
+	<update id="updateAdmin" parameterType="int">
+		update support
+		set as_flag='Y'
+		where support_no=#{supportNo}
+	</update>
+	
+	<select id="selectRe" parameterType="int" resultType="supportViewVo">
+		select * from support_view
+		where group_no=#{groupNo}
+		and step=1
 	</select>
+	
 </mapper>

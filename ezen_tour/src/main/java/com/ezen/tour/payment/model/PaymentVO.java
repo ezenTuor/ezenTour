@@ -7,7 +7,6 @@ public class PaymentVO {
 	private int userNo;
 	private int discount;
 	private int price;
-	private String state; 
 	private String type;
 	private Timestamp regdate; 
 	private String detail;
@@ -51,12 +50,6 @@ public class PaymentVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
 	public String getType() {
 		return type;
 	}
@@ -79,7 +72,7 @@ public class PaymentVO {
 	@Override
 	public String toString() {
 		return "PaymentVO [paymentNo=" + paymentNo + ", userNo=" + userNo + ", discount=" + discount + ", price="
-				+ price + ", state=" + state + ", type=" + type + ", regdate=" + regdate + ", detail=" + detail
+				+ price + ", type=" + type + ", regdate=" + regdate + ", detail=" + detail
 				+ ", impUid=" + impUid + ", merchUid=" + merchUid + "]";
 	}
 	
