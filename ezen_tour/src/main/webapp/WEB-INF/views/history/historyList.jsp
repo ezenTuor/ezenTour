@@ -15,7 +15,6 @@
 		-webkit-user-select: none;
 		-khtml-user-select: none;
 		user-select: none;
-		background-color: #fff7f2;
 	}
 
 	a {
@@ -28,12 +27,12 @@
 	}
 	
 	.historyHead, .historyBody, .historyList {
-		width: 65%;
+		width: 55%;
 		margin: auto;
 	}
 	
 	.historyHead a {
-		font-size: 1.2em;
+		font-weight: bold;
 	}
 	
 	.historyBody {
@@ -41,7 +40,7 @@
 	}
 	
 	.historyBody span {
-		font-size: large;
+		font-size: medium;
 	}
 	
 	.historySearch {
@@ -49,7 +48,6 @@
 		float: right;
 	}
 	.historyList {
-		border: 1px solid lightgray;
 		background: #fff;
 	}
 	
@@ -58,18 +56,19 @@
 	}
 	
 	thead {
-		background: #cccccc;
+		background: #f2f2f2;
 		margin-bottom: 10px;
-		border: 1px solid lightgray;
+		font-size: 15px;
 	}
 	thead tr, tbody tr {
 		height: 45px;
 	}
 	thead th {
-		border: 1px solid white;
+		border: 1px solid #e4e4e4;
 	}
 	tbody td {
-		border-right: 1px solid lightgray;
+		border-bottom: 1px solid #e4e4e4;
+		font-size: 20px;
 	}
 	
 	.writeChange, .packName a {
@@ -84,7 +83,7 @@
 		color: red;
 	}
 	.writeChange span {
-		color: #BBBBBB;
+		color: #CCCCCC;
 		text-decoration: line-through;
 	}
 </style>
@@ -148,12 +147,11 @@ $(document).ready(function() {
 </script>
 
 <div class="history">
-	<p class="historyHead">
-		<br>
-		<a href="<c:url value='/history/historyList.do'/>">[ 이용내역 조회 ]</a>
-	</p>
+		<h2 class="historyHead">
+			<a href="<c:url value='/history/historyList.do'/>">이용내역</a>
+		</h2>
 	
-	<br>
+	<br><br>
 	
 	<div class="historyBody">
 		<span>
@@ -223,10 +221,5 @@ $(document).ready(function() {
 			</tbody>
 		</table>
 	</c:if>
-	
-	<br>
-	
-	<br>
-	
 </div>
 <%@ include file="../inc/bottom.jsp" %>

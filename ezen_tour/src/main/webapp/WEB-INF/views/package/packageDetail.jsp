@@ -51,7 +51,7 @@
 			    <input class="carousel-open" type="radio" id="carousel-${status.count }"
 					name="carousel" aria-hidden="true" hidden="" checked="checked">
 				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/pd_images/${item}">
+					<img src="${pageContext.request.contextPath}/resources/pd_images/${item}" style="width:1280px; height: 280px">
 			</div>
 			</c:forEach>
 			<!-- 
@@ -188,7 +188,7 @@
 				</select>
 				<input type="text" value="${packDetailVo.packDno }" name="packDno" style="display:none">
 			<br>
-				총 금액 : <input type="text" class="total-p" name="price" value="0">
+				총 금액 : <input type="text" class="total-p" name="price" value="0" readonly="readonly">
 				<input type="text" name="detail" value="별거없음.." style="display:none">
 				<input type="text" name="userNo" value="${userNo} " style="display:none" >
 			<br>

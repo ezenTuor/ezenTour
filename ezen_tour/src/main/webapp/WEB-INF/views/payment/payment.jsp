@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>payment.jsp</title>
+<%@ include file="../inc/top.jsp" %>
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -14,11 +9,15 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	
 <style type="text/css">
-	body {
-		background-image: url("<c:url value='/resources/images/7.jpg'/>");
+	p	{
+		text-align: left;
+	}
+	div.arti{
+		margin: 0 auto;
+		width: fit-content;
 	}
 </style>
-<script type="text/javascript">
+<script type="text/javascript">	
 $(function(){
 	$("#check_module").click(function() {
 		var IMP = window.IMP;
@@ -35,7 +34,7 @@ $(function(){
 			pg : 'inicis',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : 'title',
+			name : title,
 			amount : totalPrice,
 			buyer_email : '${memberVo.email1}@${memberVo.email2}',
 			buyer_name : "${memberVo.name}",
@@ -83,27 +82,112 @@ $(function(){
 		});
 	});
 });
-
 </script>
-</head>
-<body>
+
+
+<div class="arti">
+<div style="align_center">
+    <table class="paymentBefore" 
+	summary="결제전에 정보를 다시한번 확인하는 페이지">
+	<colgroup>
+		<col width="20%" />
+		<col width="30%" />
+		<col width="30%" />
+		<col width="20%" />		
+	</colgroup>
+	<thead>
+		<tr>
+			<th scope="col">패키지명</th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+			<th scope="col"></th>			
+		</tr>
+	</thead>
+	<tbody>
+			<!--반복 시작 -->	
+			<c:forEach var="vo" items="${list }">	
+				<tr class="align_right">
+					<td class="align_left">
+						${vo.wishNo}</td>
+					<td>${vo.name}</td>
+					<td>${vo.detail}..................</td>
+					<td>성인 : ${vo.man } 명<br>
+						아동 : ${vo.child} 명<br>
+						유아 : ${vo.baby} 명<br></td>							
+				</tr>
+				
+			</c:forEach>
+	</tbody>
+</table>
+</div>       
+<br />
+<div class="divForm">    
+	<fieldset>
+		
+
+		<p class="titleP">
+	    	<span class="title">예약하시는 분</span>
+	    </p>
+    
+       <p><span class="sp1">이름 :</span>
+         <span id="oName" >${memberVo.name }</span>
+	   </p>
+       <p>
+           <span class="sp1">주소 :</span>
+           <span id="oZipcode">${memberVo.zipcode }</span>
+           <span id="oAddress1">${memberVo.address }</span>
+           <span id="oAddress2">${memberVo.addressDetail }</span>
+       </p>
+       <p>
+           <span class="sp1">연락처 :</span>
+           <c:if test="${!empty memberVo.hp1}">
+	           <span id="oHp1">${memberVo.hp1 }</span>
+	           - <span id="oHp2">${memberVo.hp2 }</span>
+	           - <span id="oHp3">${memberVo.hp3 }</span>
+           </c:if>
+		</p>
+       <p>
+           <span class="sp1">이메일 :</span>
+           <c:if test="${!empty memberVo.email1 }">
+	           <span>${memberVo.email1 }@${memberVo.email2 }</span>           
+           </c:if>           
+       </p>
+    
+    	<br /> 
+	    
+        <p>
+            <label for="message">요청사항</label><br>
+                <textarea name="message" id="message" cols="82" rows="3" ></textarea>
+        </p>    
+	
+    <br />	
+    <p>
+        <span class="sp1">총 결제금액 : </span>
+        <span><fmt:formatNumber value="${totalPrice}" 
+						pattern="#,###"/>원</span>
+    </p>
+    </fieldset>
+</div>
+    
+
+
+
 	<form name="frmPayment" method="post" 
 		action="#">
-		<p>결제하기</p>
-		<button id="check_module" type="button">결제하기</button>
+		<p><button id="check_module" type="button">결제하기</button></p>
 	</form>
 	<form name="frmSuccess" method="post"
 		action="<c:url value='/payment/paymentInsert.do'/>">
-		<input type="text" name="paymentNo" value="0">
-		<input type="text" name="userNo" value="" id="test1">
-		<input type="text" name="discount" value="0" id="test2">
-		<input type="text" name="price" value="" id="test3">
-		<input type="text" name="state" value="" id="test4">
-		<input type="text" name="type" value="" id="test5">
-		<input type="text" name="detail" value="" id="test6">
-		<input type="text" name="merchUid" value="" id="test7">
-		<input type="text" name="impUid" value="" id="test8">
-		<input type="text" name="nums" value="${nums}">
+		<input type="hidden" name="paymentNo" value="0">
+		<input type="hidden" name="userNo" value="" id="test1">
+		<input type="hidden" name="discount" value="0" id="test2">
+		<input type="hidden" name="price" value="" id="test3">
+		<input type="hidden" name="state" value="" id="test4">
+		<input type="hidden" name="type" value="" id="test5">
+		<input type="hidden" name="detail" value="" id="test6">
+		<input type="hidden" name="merchUid" value="" id="test7">
+		<input type="hidden" name="impUid" value="" id="test8">
+		<input type="hidden" name="nums" value="${nums}">
 	</form>
-</body>
-</html>
+</div>
+<%@ include file="../inc/bottom.jsp" %>
