@@ -11,10 +11,22 @@
 		user-select:none;
 		width: 60%;
 		margin: auto;
+		background-color: #fff;
+		box-shadow: 0px 0px 20px #000;
+	}
+	.back {
+		background-color: rgb(245, 245, 245);
 	}
 	
 	.packName, .score, .title {
 		font-weight: bold;
+	}
+	
+	.packName, .title, .writer, .content {
+		margin-left: 20px;
+	}
+	.date, .score {
+		margin-right: 20px;
 	}
 
 	a {
@@ -50,7 +62,9 @@
 	}
 </style>
 
+<div class="back">
 <div class="detail">
+	<br>
 	<p class="packName">[패키지] ${vo.packName}</p>
 	
 	<br>
@@ -63,7 +77,7 @@
 	
 	<br>
 	
-	<div>
+	<div class="content">
 		<% pageContext.setAttribute("newLine", "\r\n"); %>
 		<c:set var="content" value="${fn:replace(vo.content, newLine,'<br>')}"/>
 		<p>${content}</p>
@@ -78,6 +92,7 @@
 	
 	<br>
 
+</div>
 </div>
 
 <%@ include file="../inc/bottom.jsp"%>

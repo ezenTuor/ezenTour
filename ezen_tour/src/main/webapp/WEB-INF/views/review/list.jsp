@@ -30,12 +30,9 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		opacity : 0.7;
+		opacity : 0.2;
 		z-index: -1;
-		background-color: rgba(249, 249, 249);
-		background-image: url("<c:url value='/resources/images/cloud2.jpg'/>");
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
+		background-color: #FFFFCC;
 	}
 
 	a {
@@ -51,20 +48,19 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		font-size: 1.5em;
+		text-shadow: 4px 2px 2px lightgray;
 	}
 	
 	.reviewList {
-		opacity: 0.96;
 		box-shadow: 0px 0px 20px #000;
 		margin: 10px auto;
 	}
 	
 	.count {
-		color: #666666;
+		color: #555555;
 	}
 	.count span {
 		color: black;
-		text-decoration: underline;
 	}
 	.count p, .write {
 		text-align: right;
@@ -114,26 +110,30 @@
 	.write, .reviewList, .count {
 		width: 70%;
 	}
-	.write a {
-		color: #FF6600;
-		text-shadow: 6px 5px 6px gray;
+	.neon {
+		color: black;
+		-webkit-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	.neon:hover {
+		color: #5CAAEF;
+		text-decoration: underline;
 	}
 	
 	.pagingNo span {
-		color: #F2F8D7;
+		color: red;
 	}
 	.pagingNo a {
-		color: #003399;
+		color: black;
 	}
 	.pagingNo img {
 		width: 1%;
 	}
 	
-	
 	.list, .write, .count {
 		margin: auto;
 	}
-	.listHead, .count, .reviewNo, .reviewTitle a, .score, .write a, .pagingNo a {
+	.listHead, .count, .pagingNo span, .reviewNo, .reviewTitle a, .score, .write a, .count span {
 		font-weight: bold;
 	}
 	
@@ -168,6 +168,9 @@
 		}
 	}
 	*/
+	
+	
+	/* https://wsss.tistory.com/117 */
 </style>
 
 <form name="frmPage" method="post" action="<c:url value='/review/list.do'/>">
@@ -249,7 +252,7 @@
 	</div>
 	
 	<div class="write">
-		<a class="neon" href='<c:url value="/review/write.do"/>'>☞리뷰 작성하기</a>
+		<a class="neon" href='<c:url value="/review/write.do"/>'><span>☞리뷰 작성하기</span></a>
 	</div>
 	
 	<div class="pagingNo">
