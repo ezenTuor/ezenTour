@@ -145,7 +145,7 @@ $(function(){
 			<thead>
 				<tr>
 					<th scope="col">패키지 번호</th>
-					<th scope="col">패키지 상세내역</th>
+					<th scope="col">패키지명</th>
 					<th scope="col">연령대별 인원수</th>
 					<th scope="col">총 가격</th>
 					<th scope="col">찜한 날짜</th>
@@ -162,7 +162,7 @@ $(function(){
 					<c:forEach var="list" items="${list }">
 						<tr class="option">
 							<td>${list.wishNo}</td>
-							<td>${list.detail}</td>
+							<td>${list.name}</td>
 							<td>성인 : ${list.man}<br>
 								아동 : ${list.child}<br>
 								유아 : ${list.baby}</td>

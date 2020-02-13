@@ -25,10 +25,6 @@ $(function(){
 			alert("제목을 입력하세요");
 			$("#title").focus();
 			event.preventDefault();
-		}else if(!$("#pwd").val()){
-			alert("비밀번호를 입력하세요");
-			$("#pwd").focus();
-			event.preventDefault();
 		}
 	});
 });
@@ -46,6 +42,17 @@ $(function(){
 		font-size: 20px;
     	color: #424242;
 	}
+	.inside{
+		width : 810px;
+		height : 480px;
+		padding:5px;
+		border: 1px solid gray;
+		margin-bottom: 3px;
+	}
+	#inline{
+		width: 810px;
+		color: gray;
+	}
 </style>
 </head>
 <body>
@@ -55,16 +62,19 @@ $(function(){
 	<h2 style="color: black; float: left; font-weight: bold;">건의사항 작성</h2>
  	<fieldset id="writeField">
 	<br><br>
+	<div class="inside">
         <div class="firstDiv">
             <label for="title" style="font-weight: bold;">제목</label>
             <br>
             <input type="text" id="title" name="title" style="width: 300px;"/>
         </div>
+            <hr id="inline">
         <div>  
         	<label for="content" style="font-weight: bold;">내용</label>
         	<br>      
  			<textarea id="content" name="content" rows="12" cols="40"></textarea>
         </div>
+    </div>
         <div class="center">
             <input type = "submit" value="등록"/>
             <input type = "Button" value="글목록" 
