@@ -12,20 +12,15 @@
 		-webkit-user-select: none;
 		-khtml-user-select: none;
 		user-select:none;
-		width: 60%;
+		width: 55%;
 		margin: auto;
-		background-color: #fff;
-		box-shadow: 0px 0px 20px #000;
-	}
-	.back {
-		background-color: rgb(245, 245, 245);
 	}
 	
 	.packName, .score, .title {
 		font-weight: bold;
 	}
 	
-	.packName, .title, .writer, .content {
+	.title, .writer, .content {
 		margin-left: 20px;
 	}
 	.date, .score {
@@ -48,8 +43,9 @@
 	}
 	
 	.title {
-		color: #000099;
+		color: black;
 		float: left;
+		font-size: 25px;
 	}
 	
 	.score {
@@ -60,23 +56,30 @@
 		float: right;
 	}
 	
+	.writer {
+		font-size: 20px;
+	}
 	.writer span, .score span {
-		font-size: medium;
+		font-size: small;
+	}
+	
+	.upLine, .downLine {
+		background-color: #003CA1;
+		height: 3px;
 	}
 </style>
 
-<div class="back">
 <div class="detail">
-	<br>
-	<p class="packName">[패키지] ${vo.packName}</p>
+	<h2 class="packName">[패키지] ${vo.packName}</h2>
 	
-	<br>
+	<br><br>
 	
 	<p class="title">${vo.title}</p>
 	<p class="score">★<span>(${vo.score})</span></p>
 	<p class="date"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/></p>
 	<p class="writer">${vo.userId}<c:if test="${userId==vo.userId}"><span>(나)</span></c:if></p>
-	<hr>
+	
+	<div class="upLine"></div>
 	
 	<br>
 	
@@ -88,14 +91,11 @@
 	
 	<br>
 	
-	<hr>
+	<div class="downLine"></div>
+	
 	<div>
 		<c:import url="/review/reviewMove.do"/>
 	</div>
-	
-	<br>
-
-</div>
 </div>
 
 <%@ include file="../inc/bottom.jsp"%>
