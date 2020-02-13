@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ezen.tour.common.SearchVO;
 import com.ezen.tour.member.model.MemberVO;
+import com.ezen.tour.wishListView.model.WishListViewVO;
 
 @Repository
 public class WishListDAOMybatis implements WishListDAO{
@@ -17,7 +18,7 @@ public class WishListDAOMybatis implements WishListDAO{
 	private String namespace = "config.mybatis.mapper.oracle.wishList.";
 
 	@Override
-	public List<WishListVO> selectWishList(MemberVO memberVo) {
+	public List<WishListViewVO> selectWishList(MemberVO memberVo) {
 		return sqlSession.selectList(namespace+"selectWishList",memberVo);
 	}
 

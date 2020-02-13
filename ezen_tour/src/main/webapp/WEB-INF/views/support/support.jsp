@@ -148,7 +148,7 @@
 				<tr  style="text-align:center">
 					<td>${vo.supportNo}</td>
 					<td style="text-align:left">
-						<a href
+						<a style="color:black; text-decoration: none;" href
 						="<c:url value='/support/supportDetail.do?supportNo=${vo.supportNo}&groupNo=${vo.groupNo }'/>">
 							<c:if test="${fn:length(vo.title)>30}">
 								${fn:substring(vo.title, 0,30)}...
@@ -158,9 +158,8 @@
 							</c:if>													
 						</a>
 					</td>
-					<td>${vo.userId }</td>
-					<td><fmt:formatDate value="${vo.regdate }" 
-						pattern="yyyy-MM-dd"/>
+					<td>${vo.userId}</td>
+					<td>${fn:substring(vo.regdate,0,10)}
 					</td>
 					<td>
 						<c:if test="${vo.asFlag=='N'}">

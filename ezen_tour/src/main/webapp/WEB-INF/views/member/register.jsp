@@ -21,6 +21,30 @@ $(function(){
 		window.open(j_ctxPath+"/member/idCheck.do?userId="+userId,"chkId",
 	"width=450,height=200,left=0,top=0,location=yes,resizable=yes");
 	});
+	
+	$("#submit").click(function() {
+		if($("#name").val().length<1){
+			alert("이름을 입력하세요");
+			$("#name").focus();
+			event.preventDefault();				
+		}else if($("#userId").val().length<1){
+			alert("아이디를 입력하세요");
+			$("#userId").focus();
+			event.preventDefault();				
+		}else if($("#userPwd").val().length<1){
+			alert("비밀번호를 입력하세요");
+			$("#userPwd").focus();
+			event.preventDefault();				
+		}else if($("#userPwd").val()!=$("#pwd2").val()){
+			alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+			$("#pwd2").focus();
+			event.preventDefault();				
+		}else if($("#gender").checked==false){
+			alert("성별을 선택하세요");
+			$("#gender").focus();
+			event.preventDefault();				
+		}
+	})
 });
 
 

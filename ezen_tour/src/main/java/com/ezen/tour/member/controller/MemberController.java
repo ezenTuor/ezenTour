@@ -57,7 +57,7 @@ public class MemberController {
 			MemberVO vo = memberService.selectMember(userId);
 			
 			userNo = vo.getUserNo();
-			
+			logger.info("vo = {}",vo);
 			HttpSession session=request.getSession();
 			session.setAttribute("userId", userId);
 			session.setAttribute("name", vo.getName());
