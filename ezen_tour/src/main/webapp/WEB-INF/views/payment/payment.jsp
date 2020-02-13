@@ -9,8 +9,8 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	
 <style type="text/css">
-	body {
-		background-image: url("<c:url value='/resources/images/7.jpg'/>");
+	p	{
+		text-align: left;
 	}
 </style>
 <script type="text/javascript">
@@ -85,7 +85,6 @@ $(function(){
 <div>
     <table class="paymentBefore" 
 	summary="결제전에 정보를 다시한번 확인하는 페이지">
-	<caption>패키지 목록</caption>
 	<colgroup>
 		<col width="49%" />
 		<col width="17%" />
@@ -122,20 +121,14 @@ $(function(){
 						pattern="#,###"/>원 </td>							
 				</tr>
 				
-				<c:set var="buyPrice" value="${buyPrice+sum }" />				
 			</c:forEach>
 			<!-- 반복 끝 -->			
-			<c:if test="${buyPrice<30000 }">
-				<c:set var="delivery" value="3000" />
-			</c:if>
-			
-			<c:set var="sumPrice" value="${buyPrice+delivery }" />
 			
 			<tr>
 				<td colspan="3" align="right" style="border-right:none">
-					총 구매금액 : <br>
-					   + 배송비 : <br>
-					총 주문합계 :    
+					성인 <br>
+					아동 <br>
+					유아    
 				</td>
 				<td align="right" style="border-left:none">
 					<fmt:formatNumber value="${buyPrice}" 
@@ -152,8 +145,6 @@ $(function(){
 </div>       
 <br />
 <div class="divForm">    
-	<form name="frm1" method="post" 
-		action="<c:url value='/shop/order/orderSheet.do'/>" >
 	<fieldset>
 		<legend>상품 받으시는 분</legend>
 
@@ -187,58 +178,27 @@ $(function(){
        </p>
     
     	<br /> 
-	    <p class="titleP">
-	    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
-	    	<span class="title">상품 받으시는 분</span>
-	    </p>	
-	    <p>        
-	        <span class="sp1">배송지 선택</span>    	       
-	        <input type="radio" name="delivery" id="delivery1" checked> 
-	        <label for="delivery1" class="lbl">주문고객과 동일 주소</label>                 
-	        <input type="radio" name="delivery"	id="delivery2" > 
-	        <label for="delivery2" class="lbl">새로운 주소 입력</label>
-	    </p>
+	    
         <p>
-            <label for="customerName">성명</label> 
-            <input type="Text" name="customerName" id="customerName" class="infobox">
-        </p>
-        <p>
-            <label for="zipcode">주소</label>                           
-            <input type="Text" name="zipcode" id="zipcode" size="15" title="우편번호" >
-&nbsp;		<input type="Button" value="우편번호찾기" id="btnZipcode"/>
-            <br />
-            <span class="sp1"></span>
-            <input type="Text" name="address"  size="60" title="주소"  class="infobox">
-            <br />
-            <span class="sp1"></span>
-            <input type="Text" name="addressDetail"  size="60" title="상세주소"  class="infobox">           
-        </p>
-        <p>
-            <label for="hp">연락처</label>
-            <input type="Text" name="hp" id="hp" size="17"  class="infobox">
-        </p>
-        <p>
-            <label for="message">배송시 요청사항</label>
+            <label for="message">요청사항</label><br>
                 <textarea name="message" id="message" cols="82" rows="3" ></textarea>
         </p>    
 	
     <br />	
     <p>
-        <span class="sp1">결제금액</span>
+        <span class="sp1">총 결제금액 : </span>
         <span><fmt:formatNumber value="${totalPrice}" 
 						pattern="#,###"/>원</span>
     </p>
     </fieldset>
-    </form>
-    </div>
+</div>
     
 
 
 
 	<form name="frmPayment" method="post" 
 		action="#">
-		<p>결제하기</p>
-		<button id="check_module" type="button">결제하기</button>
+		<p><button id="check_module" type="button">결제하기</button></p>
 	</form>
 	<form name="frmSuccess" method="post"
 		action="<c:url value='/payment/paymentInsert.do'/>">
