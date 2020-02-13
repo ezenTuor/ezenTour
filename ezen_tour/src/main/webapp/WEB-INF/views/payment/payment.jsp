@@ -30,7 +30,7 @@ $(function(){
 			pg : 'inicis',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : 'title',
+			name : title,
 			amount : totalPrice,
 			buyer_email : '${memberVo.email1}@${memberVo.email2}',
 			buyer_name : "${memberVo.name}",
@@ -101,12 +101,6 @@ $(function(){
 		</tr>
 	</thead>
 	<tbody>
-		<c:if test="${empty list }">
-			<tr class="align_center">
-				<td colspan="4">장바구니가 비었습니다.</td>
-			</tr>
-		</c:if>
-		<c:if test="${!empty list }">
 			<c:set var="buyPrice" value="0" />
 			<c:set var="delivery" value="0" />
 			<c:set var="sumPrice" value="0" />
@@ -153,7 +147,6 @@ $(function(){
 						
 				</td>
 			</tr>
-		</c:if>
 	</tbody>
 </table>
 </div>       
@@ -229,14 +222,10 @@ $(function(){
                 <textarea name="message" id="message" cols="82" rows="3" ></textarea>
         </p>    
 	
-    <br />
-    <p class="titleP">
-    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
-    	<span class="title">결제 정보</span>
-    </p>	
+    <br />	
     <p>
         <span class="sp1">결제금액</span>
-        <span><fmt:formatNumber value="${sumPrice}" 
+        <span><fmt:formatNumber value="${totalPrice}" 
 						pattern="#,###"/>원</span>
     </p>
     </fieldset>
