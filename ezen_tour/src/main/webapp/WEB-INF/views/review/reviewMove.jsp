@@ -24,7 +24,7 @@
 	}
 	
 	a {
-		color: #663333;
+		color: #330000;
 		font-weight: bold;
 	}
 </style>
