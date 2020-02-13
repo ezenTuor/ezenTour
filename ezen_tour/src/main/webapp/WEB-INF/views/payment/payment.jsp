@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>payment.jsp</title>
+<%@ include file="../inc/top.jsp" %>
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -83,10 +78,174 @@ $(function(){
 		});
 	});
 });
-
 </script>
-</head>
-<body>
+
+
+
+<div>
+    <table class="paymentBefore" 
+	summary="결제전에 정보를 다시한번 확인하는 페이지">
+	<caption>패키지 목록</caption>
+	<colgroup>
+		<col width="49%" />
+		<col width="17%" />
+		<col width="17%" />
+		<col width="*" />		
+	</colgroup>
+	<thead>
+		<tr>
+			<th scope="col">패키지명</th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+			<th scope="col"></th>			
+		</tr>
+	</thead>
+	<tbody>
+		<c:if test="${empty list }">
+			<tr class="align_center">
+				<td colspan="4">장바구니가 비었습니다.</td>
+			</tr>
+		</c:if>
+		<c:if test="${!empty list }">
+			<c:set var="buyPrice" value="0" />
+			<c:set var="delivery" value="0" />
+			<c:set var="sumPrice" value="0" />
+			
+			<!--반복 시작 -->	
+			<c:forEach var="map" items="${list }">	
+				<c:set var="sum" value="${map['SELLPRICE']* map['QUANTITY']}" />
+				<tr class="align_right">
+					<td class="align_left">
+						<img src=
+						"<c:url value='/resources/pd_images/${map["IMAGEURL"]}'/>" 
+							alt="${map['PRODUCTNAME']}" width="50"
+							align="absmiddle">
+						${map['PRODUCTNAME']}</td>
+					<td><fmt:formatNumber value="${map['SELLPRICE']}" 
+						pattern="#,###"/>원 </td>
+					<td>${map['QUANTITY']}</td>
+					<td><fmt:formatNumber value="${sum}" 
+						pattern="#,###"/>원 </td>							
+				</tr>
+				
+				<c:set var="buyPrice" value="${buyPrice+sum }" />				
+			</c:forEach>
+			<!-- 반복 끝 -->			
+			<c:if test="${buyPrice<30000 }">
+				<c:set var="delivery" value="3000" />
+			</c:if>
+			
+			<c:set var="sumPrice" value="${buyPrice+delivery }" />
+			
+			<tr>
+				<td colspan="3" align="right" style="border-right:none">
+					총 구매금액 : <br>
+					   + 배송비 : <br>
+					총 주문합계 :    
+				</td>
+				<td align="right" style="border-left:none">
+					<fmt:formatNumber value="${buyPrice}" 
+						pattern="#,###"/>원<br>
+					<fmt:formatNumber value="${delivery}" 
+						pattern="#,###"/>원<br>
+					<fmt:formatNumber value="${sumPrice}" 
+						pattern="#,###"/>원<br>
+						
+				</td>
+			</tr>
+		</c:if>
+	</tbody>
+</table>
+</div>       
+<br />
+<div class="divForm">    
+	<form name="frm1" method="post" 
+		action="<c:url value='/shop/order/orderSheet.do'/>" >
+	<fieldset>
+		<legend>상품 받으시는 분</legend>
+
+		<p class="titleP">
+	    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
+	    	<span class="title">주문하시는 분</span>
+	    </p>
+    
+       <p><span class="sp1">이름</span>
+         <span id="oName" >${memberVo.name }</span>
+	   </p>
+       <p>
+           <span class="sp1">주소</span>
+           <span id="oZipcode">${memberVo.zipcode }</span>
+           <span id="oAddress1">${memberVo.address }</span>
+           <span id="oAddress2">${memberVo.addressDetail }</span>
+       </p>
+       <p>
+           <span class="sp1">연락처</span>
+           <c:if test="${!empty memberVo.hp1}">
+	           <span id="oHp1">${memberVo.hp1 }</span>
+	           - <span id="oHp2">${memberVo.hp2 }</span>
+	           - <span id="oHp3">${memberVo.hp3 }</span>
+           </c:if>
+		</p>
+       <p>
+           <span class="sp1">이메일</span>
+           <c:if test="${!empty memberVo.email1 }">
+	           <span>${memberVo.email1 }@${memberVo.email2 }</span>           
+           </c:if>           
+       </p>
+    
+    	<br /> 
+	    <p class="titleP">
+	    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
+	    	<span class="title">상품 받으시는 분</span>
+	    </p>	
+	    <p>        
+	        <span class="sp1">배송지 선택</span>    	       
+	        <input type="radio" name="delivery" id="delivery1" checked> 
+	        <label for="delivery1" class="lbl">주문고객과 동일 주소</label>                 
+	        <input type="radio" name="delivery"	id="delivery2" > 
+	        <label for="delivery2" class="lbl">새로운 주소 입력</label>
+	    </p>
+        <p>
+            <label for="customerName">성명</label> 
+            <input type="Text" name="customerName" id="customerName" class="infobox">
+        </p>
+        <p>
+            <label for="zipcode">주소</label>                           
+            <input type="Text" name="zipcode" id="zipcode" size="15" title="우편번호" >
+&nbsp;		<input type="Button" value="우편번호찾기" id="btnZipcode"/>
+            <br />
+            <span class="sp1"></span>
+            <input type="Text" name="address"  size="60" title="주소"  class="infobox">
+            <br />
+            <span class="sp1"></span>
+            <input type="Text" name="addressDetail"  size="60" title="상세주소"  class="infobox">           
+        </p>
+        <p>
+            <label for="hp">연락처</label>
+            <input type="Text" name="hp" id="hp" size="17"  class="infobox">
+        </p>
+        <p>
+            <label for="message">배송시 요청사항</label>
+                <textarea name="message" id="message" cols="82" rows="3" ></textarea>
+        </p>    
+	
+    <br />
+    <p class="titleP">
+    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
+    	<span class="title">결제 정보</span>
+    </p>	
+    <p>
+        <span class="sp1">결제금액</span>
+        <span><fmt:formatNumber value="${sumPrice}" 
+						pattern="#,###"/>원</span>
+    </p>
+    </fieldset>
+    </form>
+    </div>
+    
+
+
+
 	<form name="frmPayment" method="post" 
 		action="#">
 		<p>결제하기</p>
@@ -94,16 +253,15 @@ $(function(){
 	</form>
 	<form name="frmSuccess" method="post"
 		action="<c:url value='/payment/paymentInsert.do'/>">
-		<input type="text" name="paymentNo" value="0">
-		<input type="text" name="userNo" value="" id="test1">
-		<input type="text" name="discount" value="0" id="test2">
-		<input type="text" name="price" value="" id="test3">
-		<input type="text" name="state" value="" id="test4">
-		<input type="text" name="type" value="" id="test5">
-		<input type="text" name="detail" value="" id="test6">
-		<input type="text" name="merchUid" value="" id="test7">
-		<input type="text" name="impUid" value="" id="test8">
-		<input type="text" name="nums" value="${nums}">
+		<input type="hidden" name="paymentNo" value="0">
+		<input type="hidden" name="userNo" value="" id="test1">
+		<input type="hidden" name="discount" value="0" id="test2">
+		<input type="hidden" name="price" value="" id="test3">
+		<input type="hidden" name="state" value="" id="test4">
+		<input type="hidden" name="type" value="" id="test5">
+		<input type="hidden" name="detail" value="" id="test6">
+		<input type="hidden" name="merchUid" value="" id="test7">
+		<input type="hidden" name="impUid" value="" id="test8">
+		<input type="hidden" name="nums" value="${nums}">
 	</form>
-</body>
-</html>
+<%@ include file="../inc/bottom.jsp" %>
