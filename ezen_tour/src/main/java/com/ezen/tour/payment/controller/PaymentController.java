@@ -48,8 +48,6 @@ public class PaymentController {
 	@Autowired
 	private WishListService wishListService;
 	
-	@Autowired
-	private PackDetailService packDetailService;
 	
 	@RequestMapping("/payment.do")
 	public void payment(@RequestParam String nums, Model model, HttpServletRequest request) {	//번호가져오기
@@ -81,16 +79,17 @@ public class PaymentController {
 			totalPrice+=viewVo.getPrice();
 			title+=viewVo.getName()+" ";
 		}
+		
 		System.out.println(details);
 		System.out.println(totalPrice);
 		System.out.println(title);
-		
 		System.out.println(memberVo);
 		model.addAttribute("memberVo", memberVo);
 		model.addAttribute("details", details);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("title", title);
 		model.addAttribute("nums", nums);
+		//model.addAttribute("list", list);
 	}
 	
 	
