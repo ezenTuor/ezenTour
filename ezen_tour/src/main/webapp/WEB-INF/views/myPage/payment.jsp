@@ -110,7 +110,6 @@
 					<th scope="col">결제 내역 번호</th>
 					<th scope="col">할인 금액</th>
 					<th scope="col">결제 총 금액</th>
-					<th scope="col">결제 상태</th>
 					<th scope="col">결제 방법</th>
 					<th scope="col">결제일</th>
 				</tr>
@@ -122,25 +121,17 @@
 					</tr>
 				</c:if>
 				<c:if test="${!empty list}">
-					<c:forEach var="list" items="${list }">
+					<c:forEach var="payment" items="${list }">
 						<tr>
-							<td>${list.paymentNo}</td>
-							<td>${list.discount}</td>
-							<td><a href="<c:url value='/myPage/paymentDetail.do?paymentNo=${vo.paymentNo}'/>">${list.price}</a></td>
-							<!-- <td>${list.price}</td> -->
-							<c:if test="${list.state =='Y'}">
-								<td>${list.state}</td>
-							</c:if>
-							<c:if test="${list.state == 'N' }">
-								<td>-</td>
-							</c:if>
-							<td>${list.type}</td>
-							<c:if test="${list.state =='Y'}">
-								<td>${list.regdate }</td>
-							</c:if>
-							<c:if test="${list.state == 'N' }">
-								<td>-</td>
-							</c:if>
+							<td>${payment.paymentNo}</td>
+							<td>${payment.discount}</td>
+							<td>
+								<a style="color: black" href="<c:url value='/myPage/paymentDetail.do?paymentNo=${payment.paymentNo}'/>">
+									${payment.price}
+								</a>
+							</td>
+							<td>${payment.type}</td>
+							<td>${payment.regdate }</td>
 						</tr>
 					</c:forEach>
 				</c:if>

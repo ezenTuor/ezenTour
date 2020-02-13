@@ -184,10 +184,11 @@ public class MyPageController {
 	}
 	@RequestMapping("/payment")
 	public String paymentSelect(HttpSession session, Model model,
-			MemberVO memberVo) {
-		logger.info("결제내역 띄우기 처리");
+			@ModelAttribute MemberVO memberVo) {
+		logger.info("결제내역 띄우기 처리, 파라미터 memberVo={}", memberVo);
 		int userNo = (Integer)session.getAttribute("userNo");
-
+		System.out.println("디버깅중 - userNo="+userNo);
+		
 		memberVo.setUserNo(userNo);
 		//[1] 먼저 PaginationInfo객체를 생성하여 firstRecordIndex 값을 구한다
 		PaginationInfo pagingInfo=new PaginationInfo();
@@ -199,10 +200,10 @@ public class MyPageController {
 		memberVo.setRecordCountPerPage(Utility.RECORD_COUNT);
 		memberVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		memberVo.setUserNo(userNo);
-		logger.info("값 셋팅 후 searchVo={}", memberVo);
+		logger.info("값 셋팅 후 memberVo={}", memberVo);
 
 		//2
-		List<PaymentVO> list = paymentService.selectAll(userNo);
+		List<PaymentVO> list = paymentService.selectAll(memberVo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅
