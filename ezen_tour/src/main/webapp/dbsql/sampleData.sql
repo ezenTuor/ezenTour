@@ -2,9 +2,11 @@
 insert into member_grade
 values('C', '회원 가입시 기본으로 주어지는 일반회원 등급입니다.', '등급 혜택 해당사항 없음, 마일리지 적립 5%', 5);
 
+
 insert into member
 values(member_seq.nextval, 'hong', '1234', '홍길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '990101-1122333', 'M', sysdate, 'N', null, default);
 
+/*
 insert into member
 values(member_seq.nextval, 'kim', '1234', '김길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '010101-3122333', 'M', sysdate, 'N', null, default);
 
@@ -14,10 +16,10 @@ values(member_seq.nextval, 'lee', '1234', '이길동', 13494, '경기 성남시 분당구 �
 insert into member
 values(member_seq.nextval, 'park', '1234', '박길동', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'C', '040101-4122333', 'F', sysdate, 'N', null, default);
 
+*/
 --관리자 --
 insert into manager
-values('admin123', '123', '김관리', 'ADMIN', 'test2', 'naver.com', '010', '2222', '3333');
-
+values('admin123', '123', '최상현', 'ADMIN', 'chltkdgus092', 'naver.com', '010', '2222', '3333');
 
 commit;
 
@@ -93,6 +95,7 @@ where area_no=1;
 --패키지--
 select * from pack;
 
+
 insert into pack
 values(pack_seq.nextval, '테스트용 패키지', 'https://dimgcdn.ybtour.co.kr/TN/3c/3c48dd0e2bf489ad54f6c0da2e07fa66.tn.410x280.jpg|메인이미지2.jpg', '21432|31324', '프랑스', '파리', '프랑스|파리|서유럽|에펠탑|테스트1', '김포공항', '6~7일', '월, 수, 금', '테스트용 대분류 내용', sysdate, 1);
 
@@ -127,8 +130,3 @@ values('M', '관리자 등급입니다.', '관리자 특별 등급입니다.', 0);
 
 insert into member
 values(-1, 'admin', '17391', '관리자', 13494, '경기 성남시 분당구 삼평동 681', 'A스퀘어 4층', '010', '1111', '2222', 'test', 'naver.com', 'M', '990101-1122333', 'M', sysdate, 'N', null, default);
-
-
-
-
-commit;

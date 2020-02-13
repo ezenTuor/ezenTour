@@ -258,7 +258,6 @@ $(function(){
 			    </div>
 			</div>
 			<p class="managerSubmit">
-				<input type="button" value="테스트버튼" id="test">
 				<input type="submit" value="전송">
 				<a href="<c:url value='/manager/pack/packDetail.do?packNo=${packVo.packNo}'/>">
 					<input type="button" value="취소">

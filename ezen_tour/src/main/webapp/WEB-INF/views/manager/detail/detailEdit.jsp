@@ -92,7 +92,7 @@ $(function(){
 		</div>
 		
 		<p class="managerSubmit">
-			<input type="text" name="packDno" value="${detailVo.packDno}">나중에 히든처리(소분류)
+			<input type="hidden" name="packDno" value="${detailVo.packDno}">
 			<input type="button" value="테스트버튼" id="test">
 			<input type="submit" value="전송">
 		</p>

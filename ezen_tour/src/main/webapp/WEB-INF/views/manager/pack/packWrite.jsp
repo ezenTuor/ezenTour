@@ -78,22 +78,6 @@ $(function(){
 		});
 		$("#daysWeek").val(str);
 	});
-	
-	$("#test").click(function(){
-		alert("버튼눌림");
-		var str="";
-		$(".item").each(function(){
-			if($(this).is(":checked")){
-				if(str==""){
-					str+=$(this).val();
-				}else{
-					str+=", "+$(this).val();
-				}
-			}
-		});
-		alert(str);
-		$("#daysWeek").val(str);
-	});
 });
 </script>
 <script type="text/javascript">
@@ -233,7 +217,6 @@ $(function(){
 			    </div>
 			</div>
 			<p class="managerSubmit">
-				<input type="button" value="테스트버튼" id="test">
 				<input type="submit" value="전송">
 				<a href="<c:url value='/manager/pack/packList.do'/>">
 					<input type="button" value="취소">
