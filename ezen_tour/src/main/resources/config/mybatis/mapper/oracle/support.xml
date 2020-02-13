@@ -45,6 +45,7 @@
 	<update id="editSupport" parameterType="supportVo">
 		update support
 		set title=#{title}, content=#{content}
+		where support_no=#{supportNo}
 	</update>
 	<select id="selectByNo" parameterType="int" resultType="supportViewVo">
 		select * from support_view
