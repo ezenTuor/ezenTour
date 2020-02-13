@@ -52,9 +52,6 @@ public class PackageController {
 		
 		PackVO packVo = packDetailService.selectPack(packNumber);
 		
-		HttpSession session = request.getSession();
-		String userNo = (String) session.getAttribute("");
-		
 		Integer avg = packDetailService.scoreAvg(packDno);
 		logger.info("avg num={}", avg);
 		double avgScore = 0;
@@ -70,7 +67,6 @@ public class PackageController {
 		
 		model.addAttribute("packDetailVo", packDetailVo);
 		model.addAttribute("packVo", packVo);
-		model.addAttribute("userNo", userNo);
 		model.addAttribute("avgScore", avgScore);
 		model.addAttribute("schDetail", schDetail);
 		return "package/packageDetail";
@@ -92,6 +88,9 @@ public class PackageController {
 		packDetailVo.setCapecityCur(nowLeft);
 		packDetailVo.setPackDno(packDnoNo);
 		
+		HttpSession session = request.getSession();
+		Integer userNo = (Integer) session.getAttribute("userNo");
+		
 		if(cnt>0) {
 			int updateCnt = packDetailService.updateCapaCur(packDetailVo);
 			logger.info("카트 등록 성공");
@@ -105,7 +104,9 @@ public class PackageController {
 			logger.info("카트 등록 실패");
 		}
 		
-		return "myPage/wishList.do";
+		model.addAttribute("userNo", userNo);
+		
+		return "redirect:/myPage/wishList.do";
 	}
 	
 	
