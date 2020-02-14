@@ -14,9 +14,6 @@ function pageFunc(curPage){
 	
 	<h4>
 		[${memberVo.name }]님의 마일리지
-		<c:if test="${!empty list }">
-			${pagingInfo.totalRecord }건 검색되었습니다.
-		</c:if>
 		<br>
 		현재 마일리지는 [${memberVo.mileage}]입니다.
 	</h4>

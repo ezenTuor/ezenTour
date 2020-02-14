@@ -54,6 +54,7 @@ $(function(){
 		border-bottom: 1px solid gray;
 		margin: auto;
 		width: 1064px;
+		text-align: center;
 	}
 	table th{
 		background-color: #ddd;
@@ -118,14 +119,13 @@ $(function(){
     	color: #424242;
     	margin-left: 115px;
 	}
+	form[name=insert]{
+		display: inline-block;
+	}
 </style>
 <div id="PackageWishList">
 		<h2 style="color: black; float: left; font-weight: bold;">Package WishList</h2>
 		<br>
-		<br>
-		<c:if test="${!empty list }">
-		${pagingInfo.totalRecord }건 검색되었습니다.
-		</c:if>
 		<br>
 		<br>
 		<!-- 페이징 처리 관련 form -->
@@ -204,8 +204,8 @@ $(function(){
 			<button id="submit">결제하기</button>
 			<input type="hidden" id="wishNums" name="nums">
 		</form>
-		<form action="<c:url value='/payment/delete.do'/>" name="delete" method="post">
-			<button id="submit2">취소하기</button>
+		<form action="<c:url value='/payment/delete.do'/>" name="delete" method="post" style="float: left;">
+			<button id="submit2" style="margin-right: 5px;">취소하기</button>
 			<input type="hidden" id="wishNums2" name="nums">
 		</form>
 	</div>

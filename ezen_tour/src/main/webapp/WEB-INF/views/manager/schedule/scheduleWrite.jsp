@@ -91,7 +91,6 @@ $(function(){
 			<c:set var="i" value="${i+1}"/>
 		</c:forEach>
 		<p class="managerSubmit">
-			<input type="button" value="테스트버튼" id="test">
 			<input type="submit" value="전송">
 		</p>
 	</form>

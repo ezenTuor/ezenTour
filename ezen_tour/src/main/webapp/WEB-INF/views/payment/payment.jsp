@@ -12,8 +12,12 @@
 	p	{
 		text-align: left;
 	}
+	div.arti{
+		margin: 0 auto;
+		width: fit-content;
+	}
 </style>
-<script type="text/javascript">
+<script type="text/javascript">	
 $(function(){
 	$("#check_module").click(function() {
 		var IMP = window.IMP;
@@ -81,15 +85,15 @@ $(function(){
 </script>
 
 
-
-<div>
+<div class="arti">
+<div style="align_center">
     <table class="paymentBefore" 
 	summary="결제전에 정보를 다시한번 확인하는 페이지">
 	<colgroup>
-		<col width="49%" />
-		<col width="17%" />
-		<col width="17%" />
-		<col width="*" />		
+		<col width="20%" />
+		<col width="30%" />
+		<col width="30%" />
+		<col width="20%" />		
 	</colgroup>
 	<thead>
 		<tr>
@@ -100,70 +104,42 @@ $(function(){
 		</tr>
 	</thead>
 	<tbody>
-			<c:set var="buyPrice" value="0" />
-			<c:set var="delivery" value="0" />
-			<c:set var="sumPrice" value="0" />
-			
 			<!--반복 시작 -->	
-			<c:forEach var="map" items="${list }">	
-				<c:set var="sum" value="${map['SELLPRICE']* map['QUANTITY']}" />
+			<c:forEach var="vo" items="${list }">	
 				<tr class="align_right">
 					<td class="align_left">
-						<img src=
-						"<c:url value='/resources/pd_images/${map["IMAGEURL"]}'/>" 
-							alt="${map['PRODUCTNAME']}" width="50"
-							align="absmiddle">
-						${map['PRODUCTNAME']}</td>
-					<td><fmt:formatNumber value="${map['SELLPRICE']}" 
-						pattern="#,###"/>원 </td>
-					<td>${map['QUANTITY']}</td>
-					<td><fmt:formatNumber value="${sum}" 
-						pattern="#,###"/>원 </td>							
+						${vo.wishNo}</td>
+					<td>${vo.name}</td>
+					<td>${vo.detail}..................</td>
+					<td>성인 : ${vo.man } 명<br>
+						아동 : ${vo.child} 명<br>
+						유아 : ${vo.baby} 명<br></td>							
 				</tr>
 				
 			</c:forEach>
-			<!-- 반복 끝 -->			
-			
-			<tr>
-				<td colspan="3" align="right" style="border-right:none">
-					성인 <br>
-					아동 <br>
-					유아    
-				</td>
-				<td align="right" style="border-left:none">
-					<fmt:formatNumber value="${buyPrice}" 
-						pattern="#,###"/>원<br>
-					<fmt:formatNumber value="${delivery}" 
-						pattern="#,###"/>원<br>
-					<fmt:formatNumber value="${sumPrice}" 
-						pattern="#,###"/>원<br>
-						
-				</td>
-			</tr>
 	</tbody>
 </table>
 </div>       
 <br />
 <div class="divForm">    
 	<fieldset>
-		<legend>상품 받으시는 분</legend>
+		
 
 		<p class="titleP">
-	    	<img src="${pageContext.request.contextPath}/resources/images/dot7.JPG" align="absmiddle" />
-	    	<span class="title">주문하시는 분</span>
+	    	<span class="title">예약하시는 분</span>
 	    </p>
     
-       <p><span class="sp1">이름</span>
+       <p><span class="sp1">이름 :</span>
          <span id="oName" >${memberVo.name }</span>
 	   </p>
        <p>
-           <span class="sp1">주소</span>
+           <span class="sp1">주소 :</span>
            <span id="oZipcode">${memberVo.zipcode }</span>
            <span id="oAddress1">${memberVo.address }</span>
            <span id="oAddress2">${memberVo.addressDetail }</span>
        </p>
        <p>
-           <span class="sp1">연락처</span>
+           <span class="sp1">연락처 :</span>
            <c:if test="${!empty memberVo.hp1}">
 	           <span id="oHp1">${memberVo.hp1 }</span>
 	           - <span id="oHp2">${memberVo.hp2 }</span>
@@ -171,7 +147,7 @@ $(function(){
            </c:if>
 		</p>
        <p>
-           <span class="sp1">이메일</span>
+           <span class="sp1">이메일 :</span>
            <c:if test="${!empty memberVo.email1 }">
 	           <span>${memberVo.email1 }@${memberVo.email2 }</span>           
            </c:if>           
@@ -213,4 +189,5 @@ $(function(){
 		<input type="hidden" name="impUid" value="" id="test8">
 		<input type="hidden" name="nums" value="${nums}">
 	</form>
+</div>
 <%@ include file="../inc/bottom.jsp" %>

@@ -84,12 +84,13 @@ public class PaymentController {
 		System.out.println(totalPrice);
 		System.out.println(title);
 		System.out.println(memberVo);
+		System.out.println(list);
 		model.addAttribute("memberVo", memberVo);
 		model.addAttribute("details", details);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("title", title);
 		model.addAttribute("nums", nums);
-		//model.addAttribute("list", list);
+		model.addAttribute("list", list);
 	}
 	
 	

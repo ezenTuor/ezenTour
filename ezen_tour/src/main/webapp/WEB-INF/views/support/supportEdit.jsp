@@ -8,30 +8,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.4.1.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+//ckeditor부분
+$(function(){
+    CKEDITOR.replace('content', {//해당 이름으로 된 textarea에 에디터를 적용
+    	filebrowserUploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+    	uploadUrl : "<c:url value='/managerFile/userUpload.do'/>",
+    	extraPlugins : 'uploadimage'
+    });
+	$("form[name=frmWrite]").submit(function(){
+		if($("#title").val()==''){
+			alert("제목을 입력하세요");
+			$("#title").focus();
+			event.preventDefault();
+		}
+	});
+});
+</script>
+<style type="text/css">
+	#writeform{
+		width: 1064px;
+		margin: auto;
+		margin-bottom: 45px;
+	}
+
+	#writeField{
+		width: 800px;
+		margin: auto;
+		font-size: 20px;
+    	color: #424242;
+	}
+	.inside{
+		width : 810px;
+		height : 480px;
+		padding:5px;
+		border: 1px solid gray;
+		margin-bottom: 3px;
+	}
+	#inline{
+		width: 810px;
+		color: gray;
+	}
+</style>
 </head>
 <body>
 <div class="divForm">
-<form name="frmEdit" method="post" enctype="multipart/form-data"
-	action="<c:url value='/support/supportEdit.do'/>"> 
-    <input type="hidden" name="no" value="${supportVo.supportNo}">
-    
-    <fieldset>
-	<legend>글수정</legend>
+<form id="writeform" name="frmWrite" method="post" enctype="multipart/form-data"
+	action="<c:url value='/support/supportEdit.do'/>" >
+	<input type="hidden" name="supportNo" value="${supportVo.supportNo}">
+	<h2 style="color: black; float: left; font-weight: bold;">건의사항 수정</h2>
+ 	<fieldset id="writeField">
+	<br><br>
+	<div class="inside">
         <div class="firstDiv">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title"  
-            	value="${supportVo.title}" class="infobox" />
+            <label for="title" style="font-weight: bold;">제목</label>
+            <br>
+            <input type="text" id="title" name="title" style="width: 300px;"/>
         </div>
-        <div>
-            <label for="name">작성자</label>
-            <input type="text" id="name" name="name" 
-            	value="${sessionScope.name}" class="infobox"/>
-        </div>     
+            <hr id="inline">
         <div>  
-        	<label for="content">내용</label>        
- 			<textarea id="content" name="content" rows="12" cols="40">${supportVo.content}</textarea>
+        	<label for="content" style="font-weight: bold;">내용</label>
+        	<br>      
+ 			<textarea id="content" name="content" rows="12" cols="40"></textarea>
         </div>
+    </div>
         <div class="center">
             <input type = "submit" value="수정"/>
             <input type = "Button" value="글목록" 

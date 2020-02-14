@@ -123,37 +123,39 @@ public class SupportController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("map",map);
+		model.addAttribute("supportNo", supportNo);
 		return "support/supportDetail";
 	}
 	@RequestMapping(value="/supportEdit.do", method =RequestMethod.GET)
-	public String edit_get(@RequestParam(defaultValue = "0") int no,
+	public String edit_get(@ModelAttribute SupportVO vo,
 			Model model) {
-		logger.info("수정화면 파라미터 no={}", no);		
-		if(no==0) {
+		int supportNo = vo.getSupportNo();
+		logger.info("수정화면 파라미터 supportNo={}",supportNo);		
+		if(supportNo==0) {
 			model.addAttribute("msg", "잘못된 url입니다.");
 			model.addAttribute("url", "/support/support.do");
 			
 			return "common/message";
 		}
 		
-		SupportViewVO supportViewVo =supportService.selectByNo(no);
+		SupportViewVO supportViewVo =supportService.selectByNo(supportNo);
 		logger.info("수정화면 결과, supportVo={}", supportViewVo);
 		
 		model.addAttribute("supportVo", supportViewVo);
 		
-		return "reBoard/edit";
+		return "support/supportEdit";
 	}
 	
 	@RequestMapping(value="/supportEdit.do", method = RequestMethod.POST)
 	public String edit_post(@ModelAttribute SupportVO supportVo, Model model){
 		logger.info("글 수정 처리, 파라미터 vo={}");
 		
-		String msg="", url="/support/supportEdit.do?no="+supportVo.getSupportNo();
+		String msg="", url="/support/supportEdit.do?supportNo="+supportVo.getSupportNo();
 		
 		int cnt=supportService.editSupport(supportVo);
 		if(cnt>0) {
 			msg="글 수정되었습니다.";
-			url="/support/supportDetail.do?no="+supportVo.getSupportNo();
+			url="/support/supportDetail.do?supportNo="+supportVo.getSupportNo();
 		}else {
 			msg="글 수정 실패!";
 		}

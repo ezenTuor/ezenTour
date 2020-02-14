@@ -192,7 +192,7 @@
 				<input type="text" name="detail" value="별거없음.." style="display:none">
 				<input type="text" name="userNo" value="${userNo} " style="display:none" >
 			<br>
-				<input type="submit" value="장바구니 담기" class="ck-btn">
+				<input type="submit" value="상품 찜하기" class="ck-btn">
 			</form>
 			</div> <!-- sticky -->
 		</div>

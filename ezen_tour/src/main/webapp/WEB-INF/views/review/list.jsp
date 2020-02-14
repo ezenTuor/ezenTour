@@ -24,38 +24,20 @@
 		-webkit-user-select: none;
 		-khtml-user-select: none;
 		user-select: none;
-		position: relative;
-	}
-	.list:after {
-		position: absolute;
-		content : "";
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity : 0.2;
-		z-index: -1;
-		background-color: #FFFFCC;
+		width: 65%;
 	}
 
+	.listHead {
+		margin: auto;
+		text-align: left;
+	}
+	
 	a {
 		text-decoration: none;
 	}
 	
-	.listHead {
-		font-size: 1.5em;
-		color: black;
-	}
-	.listHead a {
-		background: -webkit-linear-gradient(#003CA1, #00CCFF);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		font-size: 1.5em;
-		text-shadow: 4px 2px 2px lightgray;
-	}
-	
 	.reviewList {
-		box-shadow: 0px 0px 20px #000;
+		box-shadow: 0px 0px 10px #003CA1;
 		margin: 10px auto;
 	}
 	
@@ -97,7 +79,7 @@
 		font-size: medium;
 	}
 	
-	.listHead, tr, .pagingNo, .searchForm, .btn {
+	tr, .pagingNo, .searchForm, .btn {
 		text-align: center;
 	}
 	tbody tr:nth-child(2n) {
@@ -111,7 +93,7 @@
 	}
 	
 	.write, .reviewList, .count {
-		width: 70%;
+		width: 100%;
 	}
 	.neon {
 		color: black;
@@ -119,8 +101,7 @@
 		transition: all 0.2s ease;
 	}
 	.neon:hover {
-		color: #5CAAEF;
-		text-decoration: underline;
+		color: #003CA1;
 	}
 	
 	.pagingNo span {
@@ -184,12 +165,11 @@
 
 <div class="list">
 	<div>
-		<p class="listHead">
-			<br><br><br>
+		<h2 class="listHead">
 			<a href="#" onClick="history.go(0)">여행 후기 게시판</a>
-		</p>
+		</h2>
 		
-		<br>
+		<br><br>
 		
 		<div class="count">
 			<c:if test="${empty param.searchKeyword}">
@@ -255,7 +235,7 @@
 	</div>
 	
 	<div class="write">
-		<a class="neon" href='<c:url value="/review/write.do"/>'><span>☞리뷰 작성하기</span></a>
+		<a class="neon" href='<c:url value="/review/write.do"/>'><span>리뷰 작성하기</span></a>
 	</div>
 	
 	<div class="pagingNo">
@@ -299,9 +279,6 @@
 			<input class="btn" type="submit" value="검색">
 		</form>
 	</div>
-	
-	<br><br>
-
 </div>
 
 <%@ include file="../inc/bottom.jsp"%>

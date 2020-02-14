@@ -95,8 +95,7 @@ $(function(){
 		</div>
 		
 		<p class="managerSubmit">
-			<input type="text" name="packNo" value="${param.packNo}">나중에 히든처리(대분류)
-			<input type="button" value="테스트버튼" id="test">
+			<input type="hidden" name="packNo" value="${param.packNo}">
 			<input type="submit" value="전송">
 			<a href="<c:url value='/manager/detail/detailList.do?packNo=${param.packNo}'/>">
 				<input type="button" value="취소">

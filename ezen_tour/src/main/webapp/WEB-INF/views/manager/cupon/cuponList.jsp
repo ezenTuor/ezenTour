@@ -40,12 +40,6 @@ function pageFunc(curPage){
 <article class="managerTable">
 	<h2>쿠폰 - 관리자</h2>
 	
-	<h4>
-		<c:if test="${!empty list }">
-			${pagingInfo.totalRecord }건 검색되었습니다.
-		</c:if>
-	</h4>
-	
 	<!-- 페이징 처리 관련 form -->
 	<form action="<c:url value='/manager/cupon/cuponList.do'/>" name="frmPage" method="post">
 		<input type="text" name="currentPage">현재 페이지
@@ -153,7 +147,7 @@ function pageFunc(curPage){
 	
 	<div>
 		<form name="del" action="<c:url value='/manager/cupon/cuponDelete.do'/>" method="post">
-			<input type="text" name="delNums" id="delNums">나중에 히든 처리
+			<input type="hidden" name="delNums" id="delNums">
 			<button id="del">삭제하기</button>
 		</form>
 	</div>

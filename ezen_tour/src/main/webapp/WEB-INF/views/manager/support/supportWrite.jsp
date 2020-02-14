@@ -38,8 +38,7 @@ $(function(){
 				</div>
 			</div>
 			<p class="managerSubmit">
-				<input type="text" name="groupNo" value="${supportViewVo.groupNo}">나중에 히든처리
-				<input type="button" value="테스트버튼" id="test">
+				<input type="hidden" name="groupNo" value="${supportViewVo.groupNo}">
 				<input type="submit" value="전송">
 				<a href="<c:url value='/manager/support/supportList.do'/>">
 					<input type="button" value="취소">

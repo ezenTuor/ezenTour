@@ -21,21 +21,6 @@
 			<h1 class = "managerTitle" >
 				<a href="<c:url value="/manager/managerMain.do"/>">EZEN TOUR</a>
 			</h1>
-			<div class="managerLogin">
-				<a href="<c:url value='/index.do'/>">서비스 페이지 바로가기</a>
-				<c:if test="${!empty sessionScope.adminId }">
-					${sessionScope.name}님 환영합니다. <a href="<c:url value='/manager/logout.do'/>">로그아웃</a>
-				</c:if>
-				<c:if test="${empty sessionScope.adminId }">
-					<form>
-						<label for="adminId">아이디</label>
-						<input type="text" name="adminId" id="adminId">
-						<label for="adminPwd">비밀번호</label>
-						<input type="text" name="adminPwd" id="adminPwd">
-						<input type="submit" value="로그인">
-					</form>
-				</c:if>
-			</div>
 		</div>
 		<section class="navSection">
 			<div class="managerNav">
