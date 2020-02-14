@@ -90,7 +90,7 @@ $(function(){
 			<div>
 				수용인원 : <input type="text" name="capecity"> 명 <br>
 				최소인원 : <input type="text" name="capecityMin"> 명
-				<input type="text" name="capecityCur" value="0">나중에 히든처리
+				<input type="hidden" name="capecityCur" value="0">
 			</div>
 		</div>
 		
