@@ -96,14 +96,7 @@
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/payment.do'/>" class="li-sel">결제 내역</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/wishList.do'/>" class="li-sel">Wish List</a></li>
 
-		            <ul>
 		            </ul>
-		                <li><a href="<c:url value='/myPage/coupon.do'/>">내가받은 쿠폰</a></li>
-		                <li><a href="<c:url value='/myPage/mileage.do'/>">마일리지</a></li>
-		                <li><a href="<c:url value='/myPage/payment.do'/>">결제 내역</a></li>
-		                <li><a href="<c:url value='/myPage/wishList.do'/>">찜 목록</a></li>
-
-		            </ul>        
 		            </li>		            
 		            
 		            <li id="review-title"><a href="#">리뷰게시판</a>
