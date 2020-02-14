@@ -25,6 +25,9 @@
 	function shift1() {
 		location.href="<c:url value='/support/writeSupport.do'/>";
 	}
+	function shift2() {
+		location.href="<c:url value='/support/support.do'/>";
+	}
 </script>
 <style type="text/css">
 	.divList{
@@ -216,6 +219,7 @@
 		<input type="submit" value="검색">
 		
 		<input type="button" class="shift" style="height: 24px; margin-left: 5px;" value="글쓰기" onclick="shift1()">
+		<input type="button" class="shift" style="height: 24px; margin-left: 5px;" value="전체 목록" onclick="shift2()">
     </form>
 </div>
 

@@ -83,6 +83,11 @@ public class MemberController {
 			msg="로그인 처리 실패!";			
 		}
 		
+		if(userNo==-1) {
+			msg="관리자 화면으로 전환합니다.";
+			url="/manager/managerMain.do";
+		}
+		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
