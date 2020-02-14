@@ -84,7 +84,7 @@ public class MemberController {
 		}
 		
 		if(userNo==-1) {
-			msg="관리자 화면으로 전환합니다.";
+			msg="관리자로 로그인 되었습니다. 관리자 화면으로 전환합니다.";
 			url="/manager/managerMain.do";
 		}
 		

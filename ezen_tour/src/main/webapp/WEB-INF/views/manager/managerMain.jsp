@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../inc/adminTop.jsp" %>
+<style>
+	.managerNotice{
+		background-color: #ecf0f7;
+		padding:20px;
+	}
+</style>
 <article class="managerNotice">
 	<h2>상품 등록 절차</h2>
 	<div>
