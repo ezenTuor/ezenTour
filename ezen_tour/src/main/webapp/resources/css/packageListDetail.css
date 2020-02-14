@@ -35,7 +35,6 @@
 #areaDetail-nav {
 
 	display: flex;
-	width: 70%;
 	font-size: 14px;
 	margin: 0 auto;
 	flex-wrap: wrap;
@@ -44,7 +43,7 @@
 
 .areaDetail-sel {
 	align-items: center;
-	width: 158px;
+	width: 170px;
 	border: 1px solid gray;
 	text-align: center;
 	font-weight:600;
