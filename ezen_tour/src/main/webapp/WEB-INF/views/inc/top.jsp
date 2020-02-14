@@ -31,6 +31,38 @@
 			$("#packCate").mouseleave(function() {
 				$("#packCate").css("display", "none");
 			})
+			
+			
+			$("#mypage-title").mouseenter(function() {
+				$("#myPageCate").css("display", "flex");
+			});
+			$("#mypage-title").mouseleave(function() {
+				$("#myPageCate").css("display", "none");
+			})
+			$("#myPageCate").mouseenter(function() {
+				$("#myPageCate").css("display", "flex");
+			})
+			
+			$("#myPageCate").mouseleave(function() {
+				$("#myPageCate").css("display", "none");
+			})
+			
+			
+			
+			$("#review-title").mouseenter(function() {
+				$("#reviewCate").css("display", "flex");
+			});
+			$("#review-title").mouseleave(function() {
+				$("#reviewCate").css("display", "none");
+			})
+			$("#reviewCate").mouseenter(function() {
+				$("#reviewCate").css("display", "flex");
+			})
+			
+			$("#reviewCate").mouseleave(function() {
+				$("#reviewCate").css("display", "none");
+			})
+			
 		});
 	</script>
 	
@@ -56,28 +88,30 @@
 		     
 		            <li><a href="#">배낭 여행</a>
 		            <!-- Second Tier Drop Down -->
+		            <!-- 
 		            <ul>
 		                <li><a href="#">Themes</a></li>
 		                <li><a href="#">Plugins</a></li>
 		                <li><a href="#">Tutorials</a></li>
-		            </ul>        
+		            </ul>           
+		             -->
 		            </li>
 		            
 		            
-		            <li><a href="#">마이페이지</a>
+		            <li id="mypage-title"><a href="#">마이페이지</a>
 		            <!-- Third Tier Drop Down -->
-		            <ul>
-		                <li><a href="<c:url value='/myPage/coupon.do'/>">내가받은 쿠폰</a></li>
-		                <li><a href="<c:url value='/myPage/mileage.do'/>">마일리지</a></li>
-		                <li><a href="<c:url value='/myPage/payment.do'/>">결제 내역</a></li>
-		                <li><a href="<c:url value='/myPage/wishList.do'/>">Wish List</a></li>
+		            <ul id="myPageCate">
+		                <li class="mypage-sel"><a href="<c:url value='/myPage/coupon.do'/>" class="li-sel">내가받은 쿠폰</a></li>
+		                <li class="mypage-sel"><a href="<c:url value='/myPage/mileage.do'/>" class="li-sel">마일리지</a></li>
+		                <li class="mypage-sel"><a href="<c:url value='/myPage/payment.do'/>" class="li-sel">결제 내역</a></li>
+		                <li class="mypage-sel"><a href="<c:url value='/myPage/wishList.do'/>" class="li-sel">Wish List</a></li>
 		            </ul>        
 		            </li>		            
 		            
-		            <li><a href="#">리뷰게시판</a>
-		            <ul>
-		                <li><a href="<c:url value='/review/list.do'/>">게시판 목록</a></li>
-		                <li><a href="<c:url value='/history/historyList.do'/>">이용내역</a></li>
+		            <li id="review-title"><a href="#">리뷰게시판</a>
+		            <ul id="reviewCate">
+		                <li class="review-sel"><a href="<c:url value='/review/list.do'/>" class="li-sel">게시판 목록</a></li>
+		                <li class="review-sel"><a href="<c:url value='/history/historyList.do'/>" class="li-sel">이용내역</a></li>
 		            </ul> 
 		            
 		            <li><a href="#">고객센터</a></li>
