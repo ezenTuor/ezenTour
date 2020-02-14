@@ -87,36 +87,22 @@
 		            </li>
 		     
 		            <li><a href="#">배낭 여행</a>
-		            <!-- Second Tier Drop Down -->
-		            <!-- 
-		            <ul>
-<<<<<<< HEAD
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
-		            </ul>           
-		             -->
-=======
-		            </ul>        
->>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour
 		            </li>
-		            
-		            
 		            <li id="mypage-title"><a href="#">마이페이지</a>
 		            <!-- Third Tier Drop Down -->
-<<<<<<< HEAD
 		            <ul id="myPageCate">
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/coupon.do'/>" class="li-sel">내가받은 쿠폰</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/mileage.do'/>" class="li-sel">마일리지</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/payment.do'/>" class="li-sel">결제 내역</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/wishList.do'/>" class="li-sel">Wish List</a></li>
-=======
+
 		            <ul>
+		            </ul>
 		                <li><a href="<c:url value='/myPage/coupon.do'/>">내가받은 쿠폰</a></li>
 		                <li><a href="<c:url value='/myPage/mileage.do'/>">마일리지</a></li>
 		                <li><a href="<c:url value='/myPage/payment.do'/>">결제 내역</a></li>
 		                <li><a href="<c:url value='/myPage/wishList.do'/>">찜 목록</a></li>
->>>>>>> branch 'master' of https://github.com/ezenTuor/ezenTour
+
 		            </ul>        
 		            </li>		            
 		            
