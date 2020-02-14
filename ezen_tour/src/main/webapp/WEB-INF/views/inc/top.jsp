@@ -94,7 +94,7 @@
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/coupon.do'/>" class="li-sel">내가받은 쿠폰</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/mileage.do'/>" class="li-sel">마일리지</a></li>
 		                <li class="mypage-sel"><a href="<c:url value='/myPage/payment.do'/>" class="li-sel">결제 내역</a></li>
-		                <li class="mypage-sel"><a href="<c:url value='/myPage/wishList.do'/>" class="li-sel">Wish List</a></li>
+		                <li class="mypage-sel"><a href="<c:url value='/myPage/wishList.do'/>" class="li-sel">찜 목록</a></li>
 
 		            </ul>
 		            </li>		            
@@ -105,7 +105,7 @@
 		                <li class="review-sel"><a href="<c:url value='/history/historyList.do'/>" class="li-sel">이용내역</a></li>
 		            </ul> 
 		            
-		            <li><a href="#">고객센터</a></li>
+		            <li><a href="<c:url value='/support/support.do'/>">고객센터</a></li>
 		            
 		            <li style="float:right; margin-right: 40px">
 		               <c:if test="${!empty userNo }">
