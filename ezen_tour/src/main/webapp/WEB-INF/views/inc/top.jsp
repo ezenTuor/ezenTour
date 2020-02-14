@@ -57,9 +57,6 @@
 		            <li><a href="#">배낭 여행</a>
 		            <!-- Second Tier Drop Down -->
 		            <ul>
-		                <li><a href="#">Themes</a></li>
-		                <li><a href="#">Plugins</a></li>
-		                <li><a href="#">Tutorials</a></li>
 		            </ul>        
 		            </li>
 		            
@@ -70,7 +67,7 @@
 		                <li><a href="<c:url value='/myPage/coupon.do'/>">내가받은 쿠폰</a></li>
 		                <li><a href="<c:url value='/myPage/mileage.do'/>">마일리지</a></li>
 		                <li><a href="<c:url value='/myPage/payment.do'/>">결제 내역</a></li>
-		                <li><a href="<c:url value='/myPage/wishList.do'/>">Wish List</a></li>
+		                <li><a href="<c:url value='/myPage/wishList.do'/>">찜 목록</a></li>
 		            </ul>        
 		            </li>		            
 		            
