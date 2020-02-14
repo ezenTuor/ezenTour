@@ -28,6 +28,7 @@ import com.ezen.tour.payment.model.PaymentService;
 import com.ezen.tour.payment.model.PaymentVO;
 import com.ezen.tour.wishList.model.WishListService;
 import com.ezen.tour.wishList.model.WishListVO;
+import com.ezen.tour.wishListView.model.WishListViewService;
 import com.ezen.tour.wishListView.model.WishListViewVO;
 import com.ezen.tour.common.PaginationInfo;
 import com.ezen.tour.common.Utility;
@@ -49,6 +50,8 @@ public class MyPageController {
 	private WishListService wishListService;
 	@Autowired
 	private PaymentService paymentService;
+	@Autowired
+	private WishListViewService wishListViewService;
 	
 	@RequestMapping("/coupon.do")
 	public String couponList(@ModelAttribute MemberVO memberVo
@@ -168,7 +171,7 @@ public class MyPageController {
 		logger.info("값 셋팅 후 searchVo={}", memberVo);
 		
 		//2
-		List<WishListViewVO> list = wishListService.selectWishList(memberVo);
+		List<WishListViewVO> list = wishListViewService.selectWishListView(userNo);
 		logger.info("글목록 결과, list.size={}", list.size());
 		
 		//[3] 레코드 개수 조회후 셋팅

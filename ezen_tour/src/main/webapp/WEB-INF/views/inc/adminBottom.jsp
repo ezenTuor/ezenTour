@@ -12,7 +12,7 @@ li > a:only-child:after { content: ''; }
 	width: 100%;
 	height: 250px;
 	color: black;
-	font-size: 7px;
+	font-size: 12px;
 	word-break: break-all;
 }
 

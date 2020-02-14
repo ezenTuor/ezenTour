@@ -68,4 +68,10 @@ article.managerSchedule {
 		</c:forEach>
 		</div>
 	</article>
+	<a href="<c:url value='/manager/schedule/scheduleEdit.do?packDno=${dNo}'/>">
+		<button>일정편집</button>
+	</a>
+	<a href="<c:url value='/manager/detail/detail.do?packDno=${dNo}'/>">
+		<button>소분류로 돌아가기</button>
+	</a>
 <%@include file="../../inc/adminBottom.jsp"%>

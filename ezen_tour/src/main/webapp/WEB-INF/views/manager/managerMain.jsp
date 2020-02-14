@@ -19,19 +19,5 @@
 			원할한 정보 제공을 위해 일정가지 입력해 주시기 바랍니다.
 		</div>
 	</div>
-	<div>
-		<label>패키지명</label>
-		<div>${packVo.name}</div>
-	</div>
-	<div>
-		<label>패키지 이미지</label>
-		<div>
-			<c:if test="${!empty packVo.imgNames}">
-				<c:forEach var="imgName" items="${fn:split(packVo.imgNames, '|') }">
-					<img src="<c:url value='/resources/pd_images/${imgName}'/>">
-				</c:forEach>
-			</c:if>
-		</div>
-	</div>
 </article>
 <%@include file="../inc/adminBottom.jsp"%>

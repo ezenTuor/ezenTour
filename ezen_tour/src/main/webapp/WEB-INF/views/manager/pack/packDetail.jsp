@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../../inc/adminTop.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerDetail.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerFile.css">
 <article class="managerDetail">
 	<h2>패키지 상세 보기</h2>
 	<div>
@@ -13,11 +14,12 @@
 		<div>${packVo.name}</div>
 	</div>
 	<div>
-		<label>패키지 이미지</label>
 		<div>
 			<c:if test="${!empty packVo.imgNames}">
 				<c:forEach var="imgName" items="${fn:split(packVo.imgNames, '|') }">
-					<img src="<c:url value='/resources/pd_images/${imgName}'/>">
+					<div class="thumb">
+						<img src="<c:url value='/resources/pd_images/${imgName}'/>">
+					</div>
 				</c:forEach>
 			</c:if>
 		</div>

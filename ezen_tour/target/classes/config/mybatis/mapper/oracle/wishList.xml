@@ -10,7 +10,7 @@
 		    select rownum as RNUM, A.*
 		    from
 		    (
-		       select * from wishList
+		       select * from wishListView
 		       where user_no = #{userNo}
 		    )A
 		)

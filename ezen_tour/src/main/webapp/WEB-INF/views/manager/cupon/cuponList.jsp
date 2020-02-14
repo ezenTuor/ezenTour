@@ -42,7 +42,7 @@ function pageFunc(curPage){
 	
 	<!-- 페이징 처리 관련 form -->
 	<form action="<c:url value='/manager/cupon/cuponList.do'/>" name="frmPage" method="post">
-		<input type="text" name="currentPage">현재 페이지
+		<input type="hidden" name="currentPage">
 	</form>
 	
 	<table>
@@ -146,10 +146,13 @@ function pageFunc(curPage){
 	</div>
 	
 	<div>
-		<form name="del" action="<c:url value='/manager/cupon/cuponDelete.do'/>" method="post">
+		<form style="display:inline-block;"left name="del" action="<c:url value='/manager/cupon/cuponDelete.do'/>" method="post">
 			<input type="hidden" name="delNums" id="delNums">
 			<button id="del">삭제하기</button>
 		</form>
+		<a href="<c:url value='/manager/cupon/cuponWrite.do'/>">
+			<button>등록하기</button>
+		</a>
 	</div>
 </article>
 <%@include file="../../inc/adminBottom.jsp"%>

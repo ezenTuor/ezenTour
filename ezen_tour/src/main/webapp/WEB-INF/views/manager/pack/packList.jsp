@@ -41,7 +41,7 @@ function pageFunc(curPage){
 						<td>${pack.packNo}</td>
 						<td>
 							<a href="<c:url value='/manager/pack/packDetail.do?packNo=${pack.packNo}'/>">
-								${pack.name}
+								<b>${pack.name}</b>
 							</a>
 						</td>
 						<td>${pack.areaName}</td>

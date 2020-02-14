@@ -83,7 +83,7 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	$("#areaNo").change(function(){
-		alert($(this).val());
+		//alert($(this).val());
 		var val=$(this).find("option:selected").val();
 		var name=$(this).find("option:selected").text();
 		//alert("값 변화 확인, 값="+val+", 이름="+name);

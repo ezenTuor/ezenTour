@@ -30,9 +30,8 @@
 				<th>최소인원</th>
 				<th>최대인원</th>
 				<th>현재인원</th>
-				<th>어른가격</th>
-				<th>유아가격</th>
-				<th>아동가격</th>
+				<th>가격</th>
+				<th>상세확인</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,8 +45,11 @@
 						<td>${detail.capecity}</td>
 						<td>${detail.capecityCur}</td>
 						<td>${detail.man}</td>
-						<td>${detail.child}</td>
-						<td>${detail.baby}</td>
+						<td>
+							<a href="<c:url value='/manager/detail/detail.do?packDno=${detail.packDno}'/>">
+								<button>상세확인</button>
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

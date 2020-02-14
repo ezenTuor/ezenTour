@@ -60,8 +60,8 @@ $(function(){
 			<label>패키지가격</label>
 			<div>
 				성인 : <input type="text" name="man"> 원 <br>
-				유아 : <input type="text" name="child"> 원 <br>
-				아동 : <input type="text" name="baby"> 원
+				아동 : <input type="text" name="child"> 원 <br>
+				유아 : <input type="text" name="baby"> 원
 			</div>
 		</div>
 		<div>

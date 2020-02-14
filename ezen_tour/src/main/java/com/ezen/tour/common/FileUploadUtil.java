@@ -131,7 +131,8 @@ public class FileUploadUtil {
 		try {
 			if(fName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
 				// 한글이 포함된 문자열
-				fileName="temp"+time+ext;
+				int temp=(int)Math.random()*100;
+				fileName=temp+time+ext;
 			} else {
 				// 한글이 포함되지 않은 문자열
 				fileName=fName+time+ext;

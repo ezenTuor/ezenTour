@@ -101,9 +101,8 @@
 				<col style="width: 10%" />
 				<col style="width: 40%" />
 				<col style="width: 15%" />
-				<col style="width: 10%" />
 				<col style="width: 15%" />
-				<col style="width: 10%" />
+				<col style="width: 20%" />
 			</colgroup>
 			<thead>
 				<tr>
@@ -117,7 +116,7 @@
 			<tbody>
 				<c:if test="${empty list}">
 					<tr class="align_center">
-						<td colspan="6" style="text-align: center;">결제 대기/완료 내역이 없습니다.</td>
+						<td colspan="5" style="text-align: center;">결제 대기/완료 내역이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${!empty list}">

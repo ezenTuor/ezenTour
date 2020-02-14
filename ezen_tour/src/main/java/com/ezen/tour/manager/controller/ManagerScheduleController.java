@@ -185,12 +185,20 @@ public class ManagerScheduleController {
 	}
 	
 	@RequestMapping("/scheduleList.do")
-	public void scheduleList(@RequestParam int packDno, Model model) {
+	public String scheduleList(@RequestParam int packDno, Model model) {
 		logger.info("일정 목록 보여주기, 파라미터 packDno={}", packDno);
 		
 		List<ManagerScheduleVO> list=managerScheduleService.selectByPackDno(packDno);
 		logger.info("스케줄 목록 list.size={}",list.size());
 		
+		if(list.size()==0) {
+			model.addAttribute("msg", "등록되어 있는 일정이 없어 입력화면으로 이동합니다.");
+			model.addAttribute("url", "/manager/schedule/scheduleWrite.do?packDno="+packDno);
+			return "common/message";
+		}
+		
 		model.addAttribute("list", list);
+		model.addAttribute("dNo", packDno);
+		return "manager/schedule/scheduleList";
 	}
 }

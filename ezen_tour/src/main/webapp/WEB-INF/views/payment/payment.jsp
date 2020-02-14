@@ -1,22 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:import url="/inc/top.do"></c:import>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/managerList.css">
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	
-<style type="text/css">
-	p	{
-		text-align: left;
-	}
-	div.arti{
-		margin: 0 auto;
-		width: fit-content;
-	}
-</style>
 <script type="text/javascript">	
 $(function(){
 	$("#check_module").click(function() {
@@ -27,8 +21,9 @@ $(function(){
 		var details="";
 
  		title='${title}';
-		totalPrice=${totalPrice};
-		details="${details}";
+		//totalPrice=${totalPrice};
+		totalPrice=1000;
+		details="${details}"+"요청사항 : "+$("#message").val();
 		
 		IMP.request_pay({
 			pg : 'inicis',
@@ -83,37 +78,46 @@ $(function(){
 	});
 });
 </script>
-
-
-<div class="arti">
-<div style="align_center">
+<style>
+	.managerTable{
+		background: white;
+		width: 70%;
+		margin: 0 auto;
+		text-align: center;
+	}
+</style>
+<article class="managerTable">
+<div>
+<div style="width: 100%">
     <table class="paymentBefore" 
-	summary="결제전에 정보를 다시한번 확인하는 페이지">
+	summary="결제전에 정보를 다시한번 확인하는 페이지" style="width: 100%">
 	<colgroup>
 		<col width="20%" />
-		<col width="30%" />
-		<col width="30%" />
-		<col width="20%" />		
+		<col width="20%" />
+		<col width="20%" />
+		<col width="20%" />
+		<col width="20%" />
 	</colgroup>
-	<thead>
+	<thead style="border-bottom:0;">
 		<tr>
-			<th scope="col">패키지명</th>
-			<th scope="col"></th>
-			<th scope="col"></th>
-			<th scope="col"></th>			
+			<th scope="col">NO</th>
+			<th scope="col">상품명</th>
+			<th scope="col">인원</th>
+			<th scope="col">여행기간</th>		
 		</tr>
 	</thead>
 	<tbody>
 			<!--반복 시작 -->	
 			<c:forEach var="vo" items="${list }">	
-				<tr class="align_right">
+				<tr class="align_right" style="border-top: 1px solid #5a90f3">
 					<td class="align_left">
 						${vo.wishNo}</td>
 					<td>${vo.name}</td>
-					<td>${vo.detail}..................</td>
 					<td>성인 : ${vo.man } 명<br>
 						아동 : ${vo.child} 명<br>
-						유아 : ${vo.baby} 명<br></td>							
+						유아 : ${vo.baby} 명<br></td>	
+					<td>${fn:substring(vo.koreaDep,0,16)}<br>
+					${fn:substring(vo.koreaEnt,0,16)}</td>				
 				</tr>
 				
 			</c:forEach>
@@ -121,14 +125,13 @@ $(function(){
 </table>
 </div>       
 <br />
-<div class="divForm">    
+<div class="divForm" style="width: 100%">    
 	<fieldset>
 		
-
 		<p class="titleP">
 	    	<span class="title">예약하시는 분</span>
 	    </p>
-    
+    <br>
        <p><span class="sp1">이름 :</span>
          <span id="oName" >${memberVo.name }</span>
 	   </p>
@@ -189,5 +192,5 @@ $(function(){
 		<input type="hidden" name="impUid" value="" id="test8">
 		<input type="hidden" name="nums" value="${nums}">
 	</form>
-</div>
+</article>
 <%@ include file="../inc/bottom.jsp" %>

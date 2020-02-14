@@ -53,9 +53,6 @@
 		<div>${detailViewVo.capecityCur}/${detailViewVo.capecity } (${detailViewVo.capecityMin })</div>
 	</div>
 	<p>
-		<a href="<c:url value='/manager/detail/detailEdit.do?packDno=${detailViewVo.packDno}'/>">
-			<button>편집</button>
-		</a>
 		<a href="<c:url value='/manager/schedule/scheduleList.do?packDno=${detailViewVo.packDno}'/>">
 			<button>일정보기</button>
 		</a>

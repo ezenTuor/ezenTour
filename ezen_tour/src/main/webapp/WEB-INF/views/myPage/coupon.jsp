@@ -153,9 +153,8 @@ $(document).ready(function(){
 							<td>${list.cuponSerial}</td>
 							<td>${list.cuponDetail}</td>
 							<td>${list.cuponKind}</td>
-							<td class="align_right">${list.discount}</td>
+							<td>${list.discount}</td>
 							<td>${list.deldate}</td>
-							<td><a href="#">취소</a></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -178,7 +177,7 @@ $(document).ready(function(){
 				</c:if>
 			</c:forEach>
 
-			<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">
+			<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage}">
 				<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> <img
 					src="<c:url value='/resources/images/last.JPG'/>" alt="다음 블럭으로">
 				</a>

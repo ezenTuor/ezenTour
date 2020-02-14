@@ -53,8 +53,8 @@ $(function(){
 			<label>패키지가격</label>
 			<div>
 				성인 : <input type="text" name="man" value="${detailVo.man}"> 원 <br>
-				유아 : <input type="text" name="child" value="${detailVo.child}"> 원 <br>
-				아동 : <input type="text" name="baby" value="${detailVo.baby}"> 원
+				아동 : <input type="text" name="child" value="${detailVo.child}"> 원 <br>
+				유아 : <input type="text" name="baby" value="${detailVo.baby}"> 원
 			</div>
 		</div>
 		<div>
@@ -93,6 +93,7 @@ $(function(){
 		
 		<p class="managerSubmit">
 			<input type="hidden" name="packDno" value="${detailVo.packDno}">
+			<input type="hidden" name="daysDetail" value="${detailVo.daysDetail}">
 			<input type="button" value="테스트버튼" id="test">
 			<input type="submit" value="전송">
 		</p>

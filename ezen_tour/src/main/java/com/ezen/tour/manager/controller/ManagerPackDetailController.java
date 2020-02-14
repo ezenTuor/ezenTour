@@ -101,7 +101,17 @@ public class ManagerPackDetailController {
 		model.addAttribute("detailVo", detailVo);
 	}
 	
-	@RequestMapping("/detail.do")
+	@RequestMapping(value="/detailEdit.do", method=RequestMethod.POST)
+	public String detailList(@ModelAttribute ManagerDetailVO detailVo) {
+		logger.info("패키지 소분류 목록 보여주기, 파라미터 detailVo={}", detailVo);
+		
+		int cnt=managerDetailService.insertDetail(detailVo);
+		logger.info("입력 처리 결과 cnt={}", cnt);
+		
+		return "redirect:/manager/detail/detail.do?packDno="+detailVo.getPackDno();
+	}
+	
+	@RequestMapping(value="/detail.do")
 	public void detailShow(@RequestParam int packDno, Model model) {
 		logger.info("패키지 소분류 디테일화면, 파라미터 packDno={}", packDno);
 		

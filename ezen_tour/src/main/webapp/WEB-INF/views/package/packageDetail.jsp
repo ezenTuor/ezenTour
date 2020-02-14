@@ -189,7 +189,7 @@
 				<input type="text" value="${packDetailVo.packDno }" name="packDno" style="display:none">
 			<br>
 				총 금액 : <input type="text" class="total-p" name="price" value="0" readonly="readonly">
-				<input type="text" name="detail" value="별거없음.." style="display:none">
+				<input type="text" name="detail" value="" style="display:none">
 				<input type="text" name="userNo" value="${userNo} " style="display:none" >
 			<br>
 				<input type="submit" value="상품 찜하기" class="ck-btn">
