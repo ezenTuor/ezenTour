@@ -88,11 +88,6 @@
 		<h2 style="color: black; float: left; font-weight: bold;">마일리지</h2>
 		<br>
 		<br>
-		<c:if test="${!empty list }">
-	${pagingInfo.totalRecord }건 검색되었습니다.
-		</c:if>
-		<br>
-		<br>
 		<!-- 페이징 처리 관련 form -->
 		<form action="<c:url value='/myPage/mileage.do'/>" name="frmPage"
 			method="post">
@@ -125,13 +120,13 @@
 							<td>${list.mileageNo}</td>
 							<td>${list.detail}</td>
 							<td>${list.point}</td>
-							<td>${list.regdate}</td>
+							<td>${fn:substring(list.regdate,0,10)}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
 			</tbody>
 		</table>
-		<div class="divPage">
+		<%-- <div class="divPage">
 			<c:if test="${pagingInfo.firstPage>1 }">
 				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> <img
 					src="<c:url value='/resources/images/first.JPG'/>" alt="이전 블럭으로">
@@ -153,7 +148,7 @@
 					src="<c:url value='/resources/images/last.JPG'/>" alt="다음 블럭으로">
 				</a>
 			</c:if>
-		</div>
+		</div> --%>
 	</div>
 	<div id="attention">
 	<img src='<c:url value="/resources/images/information.jpg"/>'
